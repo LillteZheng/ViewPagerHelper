@@ -88,7 +88,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         }
     }
 
-    public void setPagerListener(PageBean bean, int layoutid, PageHelperListener listener){
+    public void setPageListener(PageBean bean, int layoutid, PageHelperListener listener){
         CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(bean.datas,layoutid,listener);
         adapter.notifyDataSetChanged();
         setAdapter(adapter);
