@@ -51,7 +51,7 @@ public class GlideZoomActivity extends AppCompatActivity {
 
         // 把数据添加到 viewpager中，并把view提供出来，这样除了方便调试，也不会出现一个view，多个
         // parent的问题，这里在轮播图比较明显
-        viewPager.setPagerListener(bean, R.layout.image_layout, new PageHelperListener() {
+        viewPager.setPageListener(bean, R.layout.image_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
                 //通过获取到这个view，你可以随意定制你的内容

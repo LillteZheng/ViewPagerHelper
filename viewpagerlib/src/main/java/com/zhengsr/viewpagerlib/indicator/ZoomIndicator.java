@@ -99,6 +99,9 @@ public class ZoomIndicator extends LinearLayout implements ViewPager.OnPageChang
                 }
 
                 ImageView imageView = new ImageView(mContext);
+            /*    if (mSelector == 0){
+                }else {
+                }*/
                 imageView.setBackgroundResource(mSelector);
                 imageView.setLayoutParams(params);
                 imageView.setAlpha(mAlpha_min);

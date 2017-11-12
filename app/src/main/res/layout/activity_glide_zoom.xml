@@ -33,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        zsr:zoom_selector="@drawable/bottom_circle"
         zsr:zoom_leftmargin="10dp"
         zsr:zoom_max="1.5"
         zsr:zoom_alpha_min="0.4"

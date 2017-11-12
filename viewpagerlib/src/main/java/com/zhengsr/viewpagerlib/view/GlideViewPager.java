@@ -31,7 +31,7 @@ public class GlideViewPager extends ViewPager {
         super(context, attrs);
         mInflater = LayoutInflater.from(context);
     }
-    public void setPagerListener(PageBean bean, int layoutid, PageHelperListener listener){
+    public void setPageListener(PageBean bean, int layoutid, PageHelperListener listener){
         CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(bean.datas,layoutid,listener);
         setAdapter(adapter);
         setOffscreenPageLimit(3);

@@ -52,7 +52,7 @@ public class GlideTransActivity extends AppCompatActivity {
 
         // 把数据添加到 viewpager中，并把view提供出来，这样除了方便调试，也不会出现一个view，多个
         // parent的问题，这里在轮播图比较明显
-        viewPager.setPagerListener(bean, R.layout.image_layout, new PageHelperListener() {
+        viewPager.setPageListener(bean, R.layout.image_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
                 ImageView imageView = view.findViewById(R.id.icon);
