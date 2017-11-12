@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical"
+    tools:context="com.zhengsr.viewpagerhelper.MainActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="app首次启动引导图 正常版"
+        android:onClick="glide"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="app首次启动引导图 放大版"
+        android:onClick="glide_scale"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="app首次启动引导图 移动版"
+        android:onClick="glide_tran"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="轮播图"
+        android:onClick="loop_max"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="三种样式的指示器"
+        android:onClick="fragment"/>
+
+    <com.zhengsr.viewpagerlib.view.ArcImageView
+        android:id="@+id/arcimage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        app:arc_height="15dp"
+       />
+    <com.zhengsr.viewpagerlib.view.ColorTextView
+        android:id="@+id/colortext"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:text="sdfsdfsdf"
+        app:colortext_size="24sp"
+        app:colortext_default_color="@color/black"
+        app:colortext_change_color="@color/red"
+        android:layout_height="40dp"
+        android:background="#3333"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:onClick="leftchange"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="从左到右变化"/>
+        <Button
+            android:onClick="rightchange"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="从右到左变化"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

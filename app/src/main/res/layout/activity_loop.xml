@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zsr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:text="放大版，自动轮播加魅族效果"
+            android:textSize="24sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipChildren="false">
+
+            <com.zhengsr.viewpagerlib.view.BannerViewPager
+                android:id="@+id/loop_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:clipChildren="false"
+                zsr:isloop="true"
+                zsr:looptime="3000"
+                zsr:switchtime="600" />
+
+            <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
+                android:id="@+id/bottom_scale_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                zsr:zoom_alpha_min="0.5"
+                zsr:zoom_leftmargin="10dp"
+                zsr:zoom_max="1.5"
+                zsr:zoom_selector="@drawable/bottom_circle" />
+        </FrameLayout>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="放大版，弧形不轮播加魅族效果"
+            android:background="@color/white"
+            android:textSize="24sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipChildren="false">
+
+            <com.zhengsr.viewpagerlib.view.BannerViewPager
+                android:id="@+id/loop_viewpager_arc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:clipChildren="false"
+                zsr:isloop="false"
+                zsr:switchtime="600" />
+
+            <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
+                android:id="@+id/bottom_zoom_arc"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                zsr:zoom_alpha_min="0.5"
+                zsr:zoom_leftmargin="10dp"
+                zsr:zoom_max="1.5"
+                zsr:zoom_selector="@drawable/bottom_circle" />
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:text="移动版，不自动轮播"
+            android:textSize="24sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <com.zhengsr.viewpagerlib.view.BannerViewPager
+                android:id="@+id/loop_text2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                zsr:switchtime="600" />
+
+            <com.zhengsr.viewpagerlib.indicator.TransIndicator
+                android:id="@+id/bottom_trans_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="10dp"
+                zsr:trans_defaultcolor="@color/gray_cccc"
+                zsr:trans_leftmargin="10dp"
+                zsr:trans_movecolor="@color/white"
+                zsr:trans_type="round"
+                zsr:trans_round_radius="4dp"
+                zsr:trans_width="15dp"
+                zsr:trans_height="5dp"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="文字版，不自动轮播"
+            android:background="@color/white"
+            android:textSize="24sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <com.zhengsr.viewpagerlib.view.BannerViewPager
+                android:id="@+id/loop_viewpager_text"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                zsr:switchtime="600" />
+
+            <com.zhengsr.viewpagerlib.indicator.TextIndicator
+                android:id="@+id/bottom_text_layout"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="5dp"
+                zsr:circle_color="@color/black_ff"
+                zsr:show_circle="true"
+                zsr:text_color="@color/white"
+                zsr:text_size="14sp"
+
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+</ScrollView>

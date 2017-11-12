@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_fragment_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zhengsr.viewpagerhelper.tab.TabActivity">
+
+    <com.zhengsr.viewpagerlib.indicator.TabIndicator
+        android:id="@+id/line_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/gray_cccc"
+        app:tab_color="@color/colorAccent"
+        app:tab_width="50dp"
+        app:tab_height="2dp"
+        app:tab_text_default_color="@color/black_ff"
+        app:tab_text_change_color="@color/colorAccent"
+        app:tab_show="true"
+        app:tab_text_type="normaltext"
+        app:tab_textsize="16sp"
+        app:visiabel_size="3"
+        app:tap_type="rect"
+        >
+
+    </com.zhengsr.viewpagerlib.indicator.TabIndicator>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:background="@color/gray_cccc"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

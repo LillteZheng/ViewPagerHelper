@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zsr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <com.zhengsr.viewpagerlib.view.GlideViewPager
+        android:id="@+id/splase_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/splase_start_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/glide_bottom_btn_bg"
+        android:textColor="@color/white"
+        android:text="@string/start"
+        android:textSize="18sp"
+        android:visibility="gone"
+        />
+
+    <com.zhengsr.viewpagerlib.indicator.NormalIndicator
+        android:id="@+id/splase_bottom_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        zsr:normal_leftmargin="10dp"
+        zsr:normal_dismiss_open="true"
+        zsr:normal_selector="@drawable/glide_bottom_selector"
+        android:orientation="horizontal"/>
+
+</RelativeLayout>

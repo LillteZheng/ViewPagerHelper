@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e176fd06c2ad5b50a2f5cb4de6000a83a7cb48f5">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-26.0.0-alpha1_7480406e62d7261985400e5c9f73e7681ab4ebbc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\zhengshaorui\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\gifdecoder\4.0.0\47c487cc4e64e6ab127a517669ca9a7b49f8c61d\gifdecoder-4.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="47c487cc4e64e6ab127a517669ca9a7b49f8c61d">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\gifdecoder-4.0.0_05ce9a9aeb168442d658f800b68f097f3d9af47d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-26.0.0-alpha1_b630d3fead98af0fa38c45a0c29d54a9c7a862dd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\zhengshaorui\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\annotations\4.0.0\f80192e6fd828d41c7da6f3552b0bef5d89cb26e\annotations-4.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f80192e6fd828d41c7da6f3552b0bef5d89cb26e">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\annotations-4.0.0_1694a1130428c7fa946d1a2172c199809a2ae163.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.github.LillteZheng\viewpagerlib\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="4383976ce4ca0b4e12eb194087a666f11295f95d">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.github.LillteZheng-viewpagerlib-unspecified_ab55f48b58bdc6a9076f4a08db3193e88f859c8f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\support-fragment\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-26.0.0-alpha1_7aa02f94778e02d83cd87fead6f3cd6caeb6c866.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-26.0.0-alpha1_7831686a03f12b9f238aac1e7e53ed48017673d7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\zhengshaorui\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\disklrucache\4.0.0\d88059003509074dd59fa226c822724bcf5ec0ca\disklrucache-4.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d88059003509074dd59fa226c822724bcf5ec0ca">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\disklrucache-4.0.0_756126536546ce9ec51727cc28d7a81b05b4621e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="952944218ecedea1554a513dec0c14d570642843">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-26.0.0-alpha1_2554f27515041d1edf7be16a1098c6ab73fc0648.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android_studio\sdk\extras\android\m2repository\com\android\support\support-annotations\26.0.0-alpha1\support-annotations-26.0.0-alpha1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\support-annotations-26.0.0-alpha1_d8acf54c17d5df615add646b809b9a57bb19b8c7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-26.0.0-alpha1_48a7983ad07ca73f3c1d9445e88bf83ad955190e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\support-compat\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-26.0.0-alpha1_bf194bebc6a2400bef4994f91b099c26749fc345.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\support-v4\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-26.0.0-alpha1_6fcacdc5b4178fefaf3df16c14b7444ba5e8d52f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-26.0.0-alpha1_e9c42d48cfcaf59bc8bbbfecdf347a83beaff60e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\zhengshaorui\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\4.0.0\dff931af436f0a2815d0109ab2258bbce2d6275d\glide-4.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="dff931af436f0a2815d0109ab2258bbce2d6275d">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\glide-4.0.0_1c4f439afb9b3b3b04f5d057bc7402acab7a3c73.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-26.0.0-alpha1_b60d05b262acc0c49cdcf380f184123de22df74c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android_studio\ViewPagerHelper\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\26.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="F:\Android_studio\ViewPagerHelper\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-26.0.0-alpha1_16b35396ebd26a9e44ac1530f5b3a1858f08f159.jar" />
+    </item>
+
+</items>

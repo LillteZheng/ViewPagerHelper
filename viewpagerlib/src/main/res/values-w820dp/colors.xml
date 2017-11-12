@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="page_colorPrimary">#3F51B5</color>
+    <color name="page_colorPrimaryDark">#303F9F</color>
+    <color name="page_colorAccent">#FF4081</color>
+    <color name="page_loop_bottom">#a0a1a1a1</color>
+    <color name="page_white">#ffffff</color>
+    <color name="page_gray_ff">#ded2d2</color>
+    <color name="page_gray_cc">#cccccc</color><!--灰色cc -->
+    <color name="page_gray_cccc">#b0cccccc</color><!--灰色cc -->
+    <color name="page_black_cc">#b01a1a1a</color><!--灰色cc -->
+
+</resources>
