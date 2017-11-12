@@ -29,13 +29,16 @@ public class TriTabActivity extends AppCompatActivity {
             mFragments.add(fragment);
         }
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        TabIndicator tritabIndecator = (TabIndicator) findViewById(R.id.line_indicator);
         viewPager.setAdapter(new CusAdapter(getSupportFragmentManager()));
-       // tritabIndecator.setTabData(viewPager,mTitle);
-        tritabIndecator.setViewPagerSwitchSpeed(viewPager,600);
-        tritabIndecator.setTabData(viewPager,mTitle, new TabIndicator.TabClickListener() {
+        /**
+         * 把 TabIndicator 跟viewpager关联起来
+         */
+        TabIndicator tabIndecator = (TabIndicator) findViewById(R.id.line_indicator);
+        tabIndecator.setViewPagerSwitchSpeed(viewPager,600);
+        tabIndecator.setTabData(viewPager,mTitle, new TabIndicator.TabClickListener() {
             @Override
             public void onClick(int position) {
+                //顶部点击的方法公布出来
                 viewPager.setCurrentItem(position);
             }
         });

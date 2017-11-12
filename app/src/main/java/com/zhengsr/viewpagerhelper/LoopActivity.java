@@ -69,7 +69,7 @@ public class LoopActivity extends AppCompatActivity {
         // 和DepthPageTransformer，可以体验一下
         mBannerCountViewPager.setPageTransformer(false,new MzTransformer());
         //
-        mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelperListener() {
+        mBannerCountViewPager.setPageListener(bean, R.layout.loop_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
                 ImageView imageView = view.findViewById(R.id.loop_icon);
@@ -97,7 +97,7 @@ public class LoopActivity extends AppCompatActivity {
                 .setDataObjects(loopBeens)
                 .setIndicator(arcZoomIndicator)
                 .builder();
-        arcBannerViewPager.setPagerListener(arcbean, R.layout.arc_loop_layout, new PageHelperListener() {
+        arcBannerViewPager.setPageListener(arcbean, R.layout.arc_loop_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
                 ArcImageView imageView = view.findViewById(R.id.arc_icon);
@@ -131,7 +131,7 @@ public class LoopActivity extends AppCompatActivity {
                 .setIndicator(transIndicator)
                 .builder();
 
-        transBannerViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelperListener() {
+        transBannerViewPager.setPageListener(bean, R.layout.loop_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
                 ImageView imageView = view.findViewById(R.id.loop_icon);
@@ -166,7 +166,7 @@ public class LoopActivity extends AppCompatActivity {
                 .setIndicator(textIndicator)
                 .builder();
 
-        textBannerViewPager.setPagerListener(bean, R.layout.image_layout, new PageHelperListener() {
+        textBannerViewPager.setPageListener(bean, R.layout.image_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
                 ImageView imageView = view.findViewById(R.id.icon);

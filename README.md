@@ -1,47 +1,54 @@
 
+你是否有遇到这样的问题，每次开发一个新的项目，在 viewpager 这一块上，总是在做重复的东西，比如app引导页，轮播图，
+viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每个app都要的，而且很耗时，有没有每次在写这个，都很无语的感觉呢？
+
+基于上面这种情况，ViewPagerHelper 就诞生了。ViewPagerHelper 是一个能快速帮你的完成 app引导页，轮播，和viewpager 指示器的工具，
+内面内置了常用属性，满足你日常对油腻的师姐的一切幻想，解放你的双手，释放你的灵魂。。。。。
 
 # ViewPagerHelper
 这是一个 viewpager 的工具类，可以帮助你快速实现，app启动页、图片轮播、viewpager + fragment 等功能，并添加多种指示器功能
 
-## 使用
+## **How to use**
+这里用的是 jitpack 这个网站，所以：
 
 ```
 allprojects {
-        repositories {
-            ...
-            maven { url 'https://jitpack.io' }
-        }
-    }
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
 ```
-然后添加：
+然后在你的 module 中添加：
+
 ```
-dependencies {
-        compile 'com.github.LillteZheng:viewpagerhelper:v1.0'
-    }
+compile 'com.github.LillteZheng:ViewPagerHelper:v0.1'
 ```
 
 **目前还只是添加了app首次启动引导页，还是图片轮播图；后期将会加入更多的内容**
 
-## 图片轮播
-首先，先看四种效果：
+##  **效果图**
 
-**指示器为放大缩小，加上viewpager也是放大缩小的**
+首先，大家最常用到的就是轮播图了，这里给大家提供了 4 中常用的 Indicator
 
+### **1、轮播图**
 
+**第一个，仿魅族的轮播图，加底部放大圆点：**
 
 ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_mz.gif)
 
-**指示器为放大缩小，图片为比较流行的弧形图片**
+**第二个，现在比较流行的弧形图片**
 
 ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif)
 
-**指示器为移动版的，注意小圆点的移动**
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_trans.gif)
+**第三个，底部指示器是移动的，看起来比较舒服**
 
-**指示器文字，可以去掉文字的圆圈和设置文字的颜色**
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_tran.gif)
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif)
+
+**第四个，底部指示器文字版本**
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
 
 
 如果你要使用图片功能，只需要几步即可：
@@ -148,6 +155,24 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
         android:scaleType="centerCrop"/>
 ```
 
+## **2、Tab指示器**
+
+
+**第一种**
+
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/tab_tri.gif)
+
+
+
+**第二种，条形状的版本**
+
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/tab_rect.gif)
+
+**第三种，文字颜色渐变的方式**
+
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/tab_color.gif)
+
+
 
 ### app 首次启动引导页
 
@@ -230,7 +255,10 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
 **一些自定义属性：**
 
 ```
-<!--放大缩小的 indicator-->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--放大缩小的 indicator-->
     <declare-styleable name="ZoomIndicator">
         <attr name="zoom_selector" format="reference"/> <!--selecotr，一般就一个圆点即可-->
         <attr name="zoom_leftmargin" format="dimension"/><!--两个圆点之间的间距-->
@@ -246,13 +274,19 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
         <attr name="normal_dismiss_open" format="boolean"/>
     </declare-styleable>
 
-    <!--移动小球 indicator-->
+    <!--移动indicator indicator-->
     <declare-styleable name="TransIndicator">
-        <attr name="trans_size" format="dimension"/> <!--移动小球的大小-->
-        <attr name="trans_defaultcolor" format="reference"/> <!--小球默认的颜色-->
+        <attr name="trans_width" format="dimension"/> <!--指示器的大小-->
+        <attr name="trans_height" format="dimension"/> <!--指示器的大小-->
+        <attr name="trans_defaultcolor" format="color|reference"/> <!--指示器默认的颜色-->
         <attr name="trans_leftmargin" format="dimension"/>
-        <attr name="trans_movecolor" format="reference"/> <!--小球移动的颜色-->
+        <attr name="trans_movecolor" format="color|reference"/> <!--指示器移动的颜色-->
         <attr name="trans_dismiss_open" format="boolean"/>
+        <attr name="trans_round_radius" format="dimension"/>
+        <attr name="trans_type">
+            <enum name="circle" value="0"/>
+            <enum name="round" value="1"/>
+        </attr>
     </declare-styleable>
 
     <!--文字indicator-->
@@ -274,8 +308,39 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
     <declare-styleable name="ArcImageView">
         <attr name="arc_height" format="dimension"/> <!--弧度的高度-->
     </declare-styleable>
+
+    <!--顶部viewpager指示器-->
+    <declare-styleable name="TabIndicator">
+        <attr name="visiabel_size" format="integer"/> <!--可视化个数，比如有一排，我们就只要显示4个-->
+        <attr name="tab_color" format="color|reference"/> <!--指示器的颜色-->
+        <attr name="tab_width" format="dimension"/>  <!--指示器的宽度-->
+        <attr name="tab_height" format="dimension"/> <!--指示器的高度-->
+        <attr name="tab_textsize" format="dimension"/> <!--顶部文字的大小-->
+        <attr name="tab_text_default_color" format="color|reference"/> <!--顶部文字默认的颜色-->
+        <attr name="tab_text_change_color" format="color|reference"/> <!--移动时，顶部文字的颜色-->
+        <attr name="tab_show" format="boolean"/>  <!--是否显示指示器-->
+        <attr name="tab_text_type">               <!--顶部文字的类型，nromaltext为普通的textview，
+                                                       corlortext为文件渐变-->
+            <enum name="normaltext" value="0"/>     
+            <enum name="colortext" value="1"/>
+        </attr>
+        <attr name="tap_type" >           <!--指示器类型，有三角形或者圆条-->
+            <enum name="tri" value="0"/>
+            <enum name="rect" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!--文件渐变属性-->
+    <declare-styleable name="ColorTextView">
+        <attr name="colortext_size" format="dimension"/>
+        <attr name="colortext_default_color" format="color|reference"/> <!--默认颜色-->
+        <attr name="colortext_change_color" format="color|reference"/> <!--渐变颜色-->
+    </declare-styleable>
+
+</resources>
 ```
 
-如有问题，或者你需要哪种效果，可以在 issue 中提出来，我有空会根据大家的需求写上的。
+如果你有想要的效果，而本项目中没有的，你可以在 issue 中提出来，作者看到了，会抽空去实现的，
+如果有发现问题了或者需要提供哪些接口出来，也可以在 issue 中提出来。当然，喜欢请 start 或 fork 来一波。
 
 代码是最好的老师，可以download，改成自己喜欢的。

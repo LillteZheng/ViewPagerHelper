@@ -23,7 +23,6 @@
         app:tab_textsize="16sp"
         app:visiabel_size="4"
         >
-
     </com.zhengsr.viewpagerlib.indicator.TabIndicator>
 
     <android.support.v4.view.ViewPager

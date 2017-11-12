@@ -24,7 +24,6 @@
         app:visiabel_size="3"
         app:tap_type="tri"
         >
-
     </com.zhengsr.viewpagerlib.indicator.TabIndicator>
 
     <android.support.v4.view.ViewPager

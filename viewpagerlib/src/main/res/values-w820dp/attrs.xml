@@ -54,28 +54,30 @@
 
     <!--顶部viewpager指示器-->
     <declare-styleable name="TabIndicator">
-        <attr name="visiabel_size" format="integer"/>
-        <attr name="tab_color" format="reference"/>
-        <attr name="tab_width" format="dimension"/>
-        <attr name="tab_height" format="dimension"/>
-        <attr name="tab_textsize" format="dimension"/>
-        <attr name="tab_text_default_color" format="color|reference"/>
-        <attr name="tab_text_change_color" format="color|reference"/>
-        <attr name="tab_show" format="boolean"/>
-        <attr name="tab_text_type">
+        <attr name="visiabel_size" format="integer"/> <!--可视化个数，比如有一排，我们就只要显示4个-->
+        <attr name="tab_color" format="color|reference"/> <!--指示器的颜色-->
+        <attr name="tab_width" format="dimension"/>  <!--指示器的宽度-->
+        <attr name="tab_height" format="dimension"/> <!--指示器的高度-->
+        <attr name="tab_textsize" format="dimension"/> <!--顶部文字的大小-->
+        <attr name="tab_text_default_color" format="color|reference"/> <!--顶部文字默认的颜色-->
+        <attr name="tab_text_change_color" format="color|reference"/> <!--移动时，顶部文字的颜色-->
+        <attr name="tab_show" format="boolean"/>  <!--是否显示指示器-->
+        <attr name="tab_text_type">               <!--顶部文字的类型，nromaltext为普通的textview，
+                                                       corlortext为文件渐变-->
             <enum name="normaltext" value="0"/>
             <enum name="colortext" value="1"/>
         </attr>
-        <attr name="tap_type" >
+        <attr name="tap_type" >           <!--指示器类型，有三角形或者圆条-->
             <enum name="tri" value="0"/>
             <enum name="rect" value="1"/>
         </attr>
     </declare-styleable>
 
+    <!--文件渐变属性-->
     <declare-styleable name="ColorTextView">
         <attr name="colortext_size" format="dimension"/>
-        <attr name="colortext_default_color" format="color|reference"/>
-        <attr name="colortext_change_color" format="color|reference"/>
+        <attr name="colortext_default_color" format="color|reference"/> <!--默认颜色-->
+        <attr name="colortext_change_color" format="color|reference"/> <!--渐变颜色-->
     </declare-styleable>
 
 </resources>
