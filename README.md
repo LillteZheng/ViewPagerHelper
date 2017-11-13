@@ -5,27 +5,25 @@ viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每�
 基于上面这种情况，ViewPagerHelper 就诞生了。ViewPagerHelper 是一个能快速帮你的完成 app引导页，轮播，和viewpager 指示器的工具，
 内面内置了常用属性，满足你日常对油腻的师姐的一切幻想，解放你的双手，释放你的灵魂。。。。。
 
-# ViewPagerHelper
-这是一个 viewpager 的工具类，可以帮助你快速实现，app启动页、图片轮播、viewpager + fragment 等功能，并添加多种指示器功能
+详细内容可以参考这篇博客：
+http://blog.csdn.net/u011418943/article/details/78493002
 
 ## **How to use**
 这里用的是 jitpack 这个网站，所以：
 
 ```
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 然后在你的 module 中添加：
 
 ```
 compile 'com.github.LillteZheng:ViewPagerHelper:v0.1'
 ```
-
-**目前还只是添加了app首次启动引导页，还是图片轮播图；后期将会加入更多的内容**
 
 ##  **效果图**
 
@@ -48,11 +46,11 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.1'
 
 
 **第四个，底部指示器文字版本**
+
 ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
 
 
 如果你要使用图片功能，只需要几步即可：
-
 **step1：**
 
 配置数据,这里把 url 的连接封装到list中
@@ -106,44 +104,29 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
 
 **xml的配置，其实就是一个viewpager 加一个 linearlayout，位置你自己去摆放**
 ```
-<TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:text="放大版，弧形不轮播加魅族效果"
-            android:background="@color/white"
-            android:textSize="24sp" />
+    <com.zhengsr.viewpagerlib.view.BannerViewPager
+        android:id="@+id/loop_viewpager_arc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:clipChildren="false"
+        zsr:isloop="false"
+        zsr:switchtime="600" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:clipChildren="false">
-
-            <com.zhengsr.viewpagerlib.view.BannerViewPager
-                android:id="@+id/loop_viewpager_arc"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:clipChildren="false"
-                zsr:isloop="false"
-                zsr:switchtime="600" />
-
-            <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
-                android:id="@+id/bottom_zoom_arc"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
-                zsr:zoom_alpha_min="0.5"
-                zsr:zoom_leftmargin="10dp"
-                zsr:zoom_max="1.5"
-                zsr:zoom_selector="@drawable/bottom_circle" />
-        </FrameLayout>
+    <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
+        android:id="@+id/bottom_zoom_arc"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        zsr:zoom_alpha_min="0.5"
+        zsr:zoom_leftmargin="10dp"
+        zsr:zoom_max="1.5"
+        zsr:zoom_selector="@drawable/bottom_circle" />
+    
 ```
-
 如果你要使用弧形图片，可以用 ArcImageView 这个控件，可以这样配置：
 ```
  <!--弧形图片，arc_height 为弧度的高度-->
@@ -172,7 +155,45 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
 
 ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/tab_color.gif)
 
+这里的配置就更简单了，viewpager 就是普通的，关键就是这个 TabIndicator 了，因为我把这三种效果都装进去了.
 
+**xml 的配置**
+```
+<com.zhengsr.viewpagerlib.indicator.TabIndicator
+        android:id="@+id/line_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/black_ff"
+        app:tab_color="@color/white"
+        app:tab_width="25dp"
+        app:tab_height="5dp"
+        app:tab_text_default_color="@color/white_ff"
+        app:tab_text_change_color="@color/white"
+        app:tab_show="true"
+        app:tab_text_type="normaltext"
+        app:tab_textsize="16sp"
+        app:visiabel_size="3"
+        app:tap_type="tri"
+        >
+    </com.zhengsr.viewpagerlib.indicator.TabIndicator>
+```
+然后在代码中这样配置：
+```
+    /**
+     * 把 TabIndicator 跟viewpager关联起来
+     */
+    TabIndicator tabIndecator = (TabIndicator) findViewById(R.id.line_indicator);
+    // 设置 viewpager的切换速度，这样点击的时候比较自然
+    tabIndecator.setViewPagerSwitchSpeed(viewPager,600);
+    tabIndecator.setTabData(viewPager,mTitle, new TabIndicator.TabClickListener() {
+        @Override
+        public void onClick(int position) {
+            //顶部点击的方法公布出来
+            viewPager.setCurrentItem(position);
+        }
+    });
+```
+这样，一个比较好用的viewpager 加指示器的方式就完成了。
 
 ### app 首次启动引导页
 
