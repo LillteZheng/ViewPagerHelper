@@ -22,8 +22,12 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-compile 'com.github.LillteZheng:ViewPagerHelper:v0.1'
+compile 'com.github.LillteZheng:ViewPagerHelper:v0.2'
 ```
+
+**版本迭代**
+v0.2  --> 修复TabIndicator的宽度，不是 match_parent时，通过SetTabData添加数据，却显示不全问题
+v0.1  --> 发布稳定版
 
 ##  **效果图**
 
@@ -31,29 +35,16 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.1'
 
 ### **1、轮播图**
 
-**第一个，仿魅族的轮播图，加底部放大圆点：**
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_mz.gif)
-
-**第二个，现在比较流行的弧形图片**
-
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif)
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_mz.gif)  ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif)
 
 
-**第三个，底部指示器是移动的，看起来比较舒服**
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_tran.gif) ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_tran.gif)
-
-
-**第四个，底部指示器文字版本**
-
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
-
-
-如果你要使用图片功能，只需要几步即可：
+使用图片轮播，你需要以下几个步骤
 **step1：**
 
-配置数据,这里把 url 的连接封装到list中
+配置数据,把图片的资源(resid,url) 填充到listview 中，这里的LoopBean，是你定义的工具类，我这里是 img，和text
 ```
         List<LoopBean> loopBeens = new ArrayList<>();
         for (int i = 0; i < TEXT.length; i++) {
@@ -66,7 +57,7 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.1'
 ```
 **step2：**
 
-配置PageBean，这里主要是为了viewpager的指示器的作用，注意记得写上泛型.这里为上面的LoopBean
+配置PageBean，PageBean是必须要添加的，主要是为了viewpager的指示器的作用，注意记得写上泛型.这里为上面的LoopBean
 
 ```
 PageBean bean = new PageBean.Builder<LoopBean>()
@@ -75,7 +66,7 @@ PageBean bean = new PageBean.Builder<LoopBean>()
                 .builder();
 ```
 
-设置viewpager的动画，这里提供了三种，分别是MzTransformer，ZoomOutPageTransformer, 和DepthPageTransformer，可以体验一下,这里可有可无，这里我设置了魅族的效果，这样加上弧形的图片更好看。
+设置viewpager的动画(可不设)，这里提供了三种，分别是MzTransformer，ZoomOutPageTransformer, 和DepthPageTransformer，可以体验一下,这里可有可无，这里我设置了魅族的效果，这样加上弧形的图片更好看。
 ```
 mBannerCountViewPager.setPageTransformer(false,new MzTransformer());
 ```
@@ -127,6 +118,8 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
         zsr:zoom_selector="@drawable/bottom_circle" />
     
 ```
+可以使用上面四种指示器，任意搭配。。
+
 如果你要使用弧形图片，可以用 ArcImageView 这个控件，可以这样配置：
 ```
  <!--弧形图片，arc_height 为弧度的高度-->
@@ -144,7 +137,6 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
 **第一种**
 
 ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/tab_tri.gif)
-
 
 
 **第二种，条形状的版本**
@@ -177,7 +169,9 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
         >
     </com.zhengsr.viewpagerlib.indicator.TabIndicator>
 ```
-然后在代码中这样配置：
+你可以通过这些属性，自由配置三角形，条状，或者只使用文字颜色变化，自定义属性的名字跟它的功能一样。
+
+代码这样配置：
 ```
     /**
      * 把 TabIndicator 跟viewpager关联起来
