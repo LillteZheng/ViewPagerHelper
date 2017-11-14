@@ -26,8 +26,9 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.2'
 ```
 
 **版本迭代**
-v0.2  --> 修复TabIndicator的宽度，不是 match_parent时，通过SetTabData添加数据，却显示不全问题
-v0.1  --> 发布稳定版
+
+- **v0.2  --> 修复TabIndicator的宽度，不是 match_parent时，通过SetTabData添加数据，却显示不全的问题**
+- **v0.1  --> 发布稳定版**
 
 ##  **效果图**
 
@@ -36,10 +37,10 @@ v0.1  --> 发布稳定版
 ### **1、轮播图**
 
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_mz.gif)  ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif)
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_mz.gif)  ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif)  ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
 
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_tran.gif) ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_tran.gif)
 
 使用图片轮播，你需要以下几个步骤
 **step1：**
