@@ -13,10 +13,10 @@ http://blog.csdn.net/u011418943/article/details/78493002
 
 ```
 allprojects {
-	repositories {
-		...
-		maven { url 'https://jitpack.io' }
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
 然后在你的 module 中添加：
@@ -35,12 +35,21 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.2'
 首先，大家最常用到的就是轮播图了，这里给大家提供了 4 中常用的 Indicator
 
 ### **1、轮播图**
+**第一种**
 
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_mz.gif)
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_mz.gif)  ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif)  ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
+**第二种**
 
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif)
+
+**第三种**
 
 ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_tran.gif)
+
+**第四种**
+
+ ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
 
 使用图片轮播，你需要以下几个步骤
 **step1：**
