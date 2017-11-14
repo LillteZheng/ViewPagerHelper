@@ -35,7 +35,6 @@ public class GlideViewPager extends ViewPager {
         CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(bean.datas,layoutid,listener);
         setAdapter(adapter);
         setOffscreenPageLimit(3);
-        setCurrentItem(bean.datas.size());
         setCurrentItem(0);
         if (bean.bottomLayout != null){
             //选择不同的indicator

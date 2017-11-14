@@ -44,11 +44,11 @@ public class ViewPagerHelperUtils {
             this.time = time;
         }
 
-        @Override
+        /*@Override
         public void startScroll(int startX, int startY, int dx, int dy) {
             super.startScroll(startX, startY, dx, time);
         }
-
+*/
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duration) {
             super.startScroll(startX, startY, dx, dy, time);
