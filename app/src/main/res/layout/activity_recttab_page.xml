@@ -10,6 +10,7 @@
 
     <com.zhengsr.viewpagerlib.indicator.TabIndicator
         android:id="@+id/line_indicator"
+        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/gray_cccc"
@@ -24,6 +25,25 @@
         app:visiabel_size="3"
         app:tap_type="rect"
         >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="heel"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="heel"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="heel"
+            android:layout_height="match_parent" />
 
     </com.zhengsr.viewpagerlib.indicator.TabIndicator>
 

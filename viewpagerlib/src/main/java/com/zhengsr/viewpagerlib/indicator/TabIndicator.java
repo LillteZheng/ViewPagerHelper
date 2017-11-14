@@ -12,7 +12,6 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +20,7 @@ import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.ViewPagerHelperUtils;
 import com.zhengsr.viewpagerlib.view.ColorTextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,6 +57,7 @@ public class TabIndicator extends LinearLayout  {
      */
     private Path mPath;
     private Paint mPaint;
+    private List<String> mTitles = new ArrayList<>();
 
     public TabIndicator(Context context) {
         this(context,null);
@@ -109,17 +110,6 @@ public class TabIndicator extends LinearLayout  {
         super.dispatchDraw(canvas);
     }
 
-
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-
-        mWidth = wm.getDefaultDisplay().getWidth();
-     
-
-    }
-
     /**
      * 设置viewpager的切换速度
      * @param viewPager
@@ -147,20 +137,22 @@ public class TabIndicator extends LinearLayout  {
     /**
      * 如果使用这个函数，则在xml里面的子控件将被清除，
      * @param viewPager
-     * @param titles textview 的内容
+     * @param titles 通过获取titles，动态加载 textview
      */
     public void setTabData(final ViewPager viewPager, final List<String> titles,
                            final TabClickListener listener){
         if (titles != null && titles.size() > 0){
+            mTitles.clear();
+            mTitles.addAll(titles);
             removeAllViews();
             for (int i = 0; i < titles.size(); i++) {
                 String title = titles.get(i);
 
                 if (mTextType == COLOR_TEXT) {
                     ColorTextView textView = new ColorTextView(getContext());
-                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT,
                             LayoutParams.MATCH_PARENT);
-                    params.width = mWidth / mCount;
+                    //params.width = mWidth / mCount;
 
                     textView.setText(title);
                     textView.setLayoutParams(params);
@@ -168,9 +160,9 @@ public class TabIndicator extends LinearLayout  {
                     addView(textView);
                 }else{
                     TextView textView = new TextView(getContext());
-                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT,
                             LayoutParams.MATCH_PARENT);
-                    params.width = mWidth / mCount;
+                   // params.width = mWidth / mCount;
                     textView.setText(title);
                     textView.setGravity(Gravity.CENTER);
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,mTextSize);
@@ -243,7 +235,7 @@ public class TabIndicator extends LinearLayout  {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mHeight = h;
-
+        mWidth = w;
         mPath = new Path();
         int width = mWidth/mCount;
         if (mTabtyle == TRI_TAB){
@@ -261,15 +253,30 @@ public class TabIndicator extends LinearLayout  {
             mPath.lineTo((width - mTabWidth)/2 ,mHeight - mTabHeight);
             mPath.close();
         }
+        // 这里需要对textview的宽度重新设置一下，因为在 setTabData 的时候，
+        // view的测量还没有完成，mWidth，所以，我们在这里重新设一下；
+        if (mTitles.size() > 0) {
+            for (int i = 0; i < getChildCount(); i++) {
+                TextView textView = (TextView) getChildAt(i);
+                LayoutParams params = (LayoutParams) textView.getLayoutParams();
+                params.width = mWidth / mCount;
+                textView.setLayoutParams(params);
+
+            }
+        }
 
 
     }
 
 
-
-
+    /**
+     * 指示器真正滑动的方法
+     * @param position
+     * @param offset
+     */
     private void onScroll(int position, float offset) {
         int tabWidth = getWidth()/mCount;
+        //获取移动的宽度
         mLineTransX = (int) (tabWidth*position + tabWidth*offset);
         if (position >= (mCount - 1) && offset >0 ){
             scrollTo(

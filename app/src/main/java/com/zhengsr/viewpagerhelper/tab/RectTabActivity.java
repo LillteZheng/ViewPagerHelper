@@ -33,9 +33,10 @@ public class RectTabActivity extends AppCompatActivity {
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabIndicator tritabIndecator = (TabIndicator) findViewById(R.id.line_indicator);
         viewPager.setAdapter(new CusAdapter(getSupportFragmentManager()));
-       // tritabIndecator.setTabData(viewPager,mTitle);
         tritabIndecator.setViewPagerSwitchSpeed(viewPager,600);
-        tritabIndecator.setTabData(viewPager,mTitle, new TabIndicator.TabClickListener() {
+        // 使用这个方法，则使用xml里面的控件
+        //tritabIndecator.setTabData(viewPager,new TabIndicator.TabClickListener()
+        tritabIndecator.setTabData(viewPager, mTitle,new TabIndicator.TabClickListener() {
             @Override
             public void onClick(int position) {
                 viewPager.setCurrentItem(position);
