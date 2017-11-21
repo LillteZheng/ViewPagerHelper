@@ -22,11 +22,12 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-compile 'com.github.LillteZheng:ViewPagerHelper:v0.2'
+compile 'com.github.LillteZheng:ViewPagerHelper:v0.3'
 ```
 
 **版本迭代**
 
+- **v0.3  --> 从lib中移除glide的依赖，防止干扰其他项目，去掉和优化一些代码，谢谢各位的提醒**
 - **v0.2  --> 修复TabIndicator的宽度，不是 match_parent时，通过SetTabData添加数据，却显示不全的问题**
 - **v0.1  --> 发布稳定版**
 
