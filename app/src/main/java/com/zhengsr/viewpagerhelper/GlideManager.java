@@ -1,4 +1,4 @@
-package com.zhengsr.viewpagerlib;
+package com.zhengsr.viewpagerhelper;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -6,19 +6,23 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.zhengsr.viewpagerlib.callback.BitmapListener;
 
 public class GlideManager {
     public static final int BITMAP_SCAN_CENTERN = 1;
     public static final int BITMAP_SCAN_FIT = 2;
     private static final String TAG = "zsr";
+
+    //可以用来监听图片加载成功与否
+    public interface BitmapListener {
+        void onSuccess(Object responseObj);
+        void onFailure(Object errorObj);
+    }
     private BitmapListener mBitmapListener;
 
     public GlideManager(Builder builder){
@@ -79,12 +83,14 @@ public class GlideManager {
         }
 
         @Override
-        public boolean onResourceReady(Object resource, Object model, Target target, DataSource dataSource, boolean isFirstResource) {
+        public boolean onResourceReady(Object resource, Object model, Target target, com.bumptech.glide.load.DataSource dataSource, boolean isFirstResource) {
             if (mBitmapListener != null){
                 mBitmapListener.onSuccess(resource);
             }
             return false;
         }
+
+
     }
 
     public static class Builder{

@@ -11,7 +11,6 @@ import com.zhengsr.viewpagerhelper.activity.glide.GlideTransActivity;
 import com.zhengsr.viewpagerhelper.activity.glide.GlideZoomActivity;
 import com.zhengsr.viewpagerhelper.activity.glide.GlidenormalActivity;
 import com.zhengsr.viewpagerhelper.tab.TabActivity;
-import com.zhengsr.viewpagerlib.GlideManager;
 import com.zhengsr.viewpagerlib.view.ArcImageView;
 import com.zhengsr.viewpagerlib.view.ColorTextView;
 

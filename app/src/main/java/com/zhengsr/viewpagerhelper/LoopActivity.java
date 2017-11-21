@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zhengsr.viewpagerlib.GlideManager;
 import com.zhengsr.viewpagerlib.callback.PageHelperListener;
 import com.zhengsr.viewpagerlib.anim.MzTransformer;
 import com.zhengsr.viewpagerlib.bean.PageBean;

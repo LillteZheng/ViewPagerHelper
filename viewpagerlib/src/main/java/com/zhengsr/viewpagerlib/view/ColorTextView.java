@@ -60,7 +60,7 @@ public class ColorTextView extends TextView {
      * @param changeColor
      * @param textsize
      */
-    public void setTextColor(int defaultColor,int changeColor,int textsize){
+    public void setCusTextColor(int defaultColor, int changeColor, int textsize){
         mDefaultColor = defaultColor;
         mChangeColor = changeColor;
         mPaint.setTextSize(textsize);

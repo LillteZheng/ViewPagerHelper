@@ -93,8 +93,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         adapter.notifyDataSetChanged();
         setAdapter(adapter);
         setOffscreenPageLimit(3);
-        setCurrentItem(bean.datas.size());
-        setCurrentItem(ViewPagerHelperUtils.LOOP_COUNT/2);
+        setCurrentItem(ViewPagerHelperUtils.LOOP_COUNT/2+bean.datas.size());
         if (bean.bottomLayout != null){
             //选择不同的indicator
             if (bean.bottomLayout instanceof NormalIndicator){

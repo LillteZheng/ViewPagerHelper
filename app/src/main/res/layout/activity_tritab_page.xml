@@ -10,7 +10,7 @@
 
     <com.zhengsr.viewpagerlib.indicator.TabIndicator
         android:id="@+id/line_indicator"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:background="@color/black_ff"
         app:tab_color="@color/white"
