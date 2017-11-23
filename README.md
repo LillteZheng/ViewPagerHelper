@@ -52,7 +52,12 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.3'
 
  ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
 
-使用图片轮播，你需要以下几个步骤
+使用图片轮播，你需要以下几个步骤和需要注意的地方：
+**注意：**
+当你使用 BannerViewpager ，把轮播设置为true的时候，轮播是使用 handler 的，所以，请使用它的onPause 和onResume 进行轮播的暂停和重新启动；如果不使用这个，handler 会在后台一直运行的。别忘记了
+
+**步骤：** 
+
 **step1：**
 
 配置数据,把图片的资源(resid,url) 填充到listview 中，这里的LoopBean，是你定义的工具类，我这里是 img，和text
