@@ -56,7 +56,7 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.3'
 
 **注意：**
 
-当你使用 BannerViewpager ，把轮播设置为true的时候，轮播是使用 handler 的，所以，请使用它的onPause 和onResume 进行轮播的暂停和重新启动；如果不使用这个，handler 会在后台一直运行的。别忘记了
+当你使用 BannerViewpager ，把轮播设置为true的时候，轮播是使用 handler 的，所以，请**使用它的onPause 和onResume 进行轮播的暂停和重新启动；如果不使用这个，handler 会在后台一直运行的。**别忘记了
 
 **步骤：** 
 
