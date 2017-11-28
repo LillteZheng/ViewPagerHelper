@@ -31,9 +31,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:clipChildren="false"
-                zsr:isloop="true"
-                zsr:looptime="3000"
-                zsr:switchtime="600" />
+                zsr:banner_isloop="true"
+                zsr:banner_looptime="3000"
+                zsr:banner_switchtime="600" />
 
             <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
                 android:id="@+id/bottom_scale_layout"
@@ -71,8 +71,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:clipChildren="false"
-                zsr:isloop="false"
-                zsr:switchtime="600" />
+                zsr:banner_isloop="false"
+                zsr:banner_switchtime="600" />
 
             <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
                 android:id="@+id/bottom_zoom_arc"
@@ -106,7 +106,7 @@
                 android:id="@+id/loop_text2"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                zsr:switchtime="600" />
+                zsr:banner_switchtime="600" />
 
             <com.zhengsr.viewpagerlib.indicator.TransIndicator
                 android:id="@+id/bottom_trans_layout"
@@ -141,7 +141,7 @@
                 android:id="@+id/loop_viewpager_text"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                zsr:switchtime="600" />
+                zsr:banner_switchtime="600" />
 
             <com.zhengsr.viewpagerlib.indicator.TextIndicator
                 android:id="@+id/bottom_text_layout"
@@ -149,10 +149,10 @@
                 android:layout_height="40dp"
                 android:layout_gravity="bottom|right"
                 android:layout_marginRight="5dp"
-                zsr:circle_color="@color/black_ff"
-                zsr:show_circle="true"
-                zsr:text_color="@color/white"
-                zsr:text_size="14sp"
+                zsr:word_circle_color="@color/black_ff"
+                zsr:word_show_circle="true"
+                zsr:word_text_color="@color/white"
+                zsr:word_text_size="14sp"
 
                 />
         </FrameLayout>

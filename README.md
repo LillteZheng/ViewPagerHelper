@@ -22,11 +22,11 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-compile 'com.github.LillteZheng:ViewPagerHelper:v0.3'
+compile 'com.github.LillteZheng:ViewPagerHelper:v0.4'
 ```
 
 **版本迭代**
-
+- **v0.4  --> 解决app引导页，快速滑动时，“立即体验”按钮会不显示问题,并修改自定义属性，防止干扰**
 - **v0.3  --> 从lib中移除glide的依赖，防止干扰其他项目，去掉和优化一些代码，谢谢各位的提醒**
 - **v0.2  --> 修复TabIndicator的宽度，不是 match_parent时，通过SetTabData添加数据，却显示不全的问题**
 - **v0.1  --> 发布稳定版**
@@ -56,7 +56,7 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.3'
 
 **注意：**
 
-当你使用 BannerViewpager ，把轮播设置为true的时候，轮播是使用 handler 的，所以，请**使用它的onPause 和onResume 进行轮播的暂停和重新启动；如果不使用这个，handler 会在后台一直运行的。**别忘记了
+当你使用 BannerViewpager ，把轮播设置为true的时候，轮播是使用 handler 的，所以，请**使用它的onPause 和onResume 进行轮播的暂停和重新启动；如果不使用这个，handler 会在后台一直运行的**。别忘记了
 
 **步骤：** 
 
@@ -113,27 +113,28 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
 
 **xml的配置，其实就是一个viewpager 加一个 linearlayout，位置你自己去摆放**
 ```
-    <com.zhengsr.viewpagerlib.view.BannerViewPager
-        android:id="@+id/loop_viewpager_arc"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:clipChildren="false"
-        zsr:isloop="false"
-        zsr:switchtime="600" />
+<com.zhengsr.viewpagerlib.view.BannerViewPager
+                android:id="@+id/loop_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:clipChildren="false"
+                zsr:banner_isloop="true"
+                zsr:banner_looptime="3000"
+                zsr:banner_switchtime="600" />
 
-    <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
-        android:id="@+id/bottom_zoom_arc"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="bottom|right"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        zsr:zoom_alpha_min="0.5"
-        zsr:zoom_leftmargin="10dp"
-        zsr:zoom_max="1.5"
-        zsr:zoom_selector="@drawable/bottom_circle" />
+            <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
+                android:id="@+id/bottom_scale_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                zsr:zoom_alpha_min="0.5"
+                zsr:zoom_leftmargin="10dp"
+                zsr:zoom_max="1.5"
+                zsr:zoom_selector="@drawable/bottom_circle" />
     
 ```
 可以使用上面四种指示器，任意搭配。。
@@ -324,17 +325,17 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
 
     <!--文字indicator-->
     <declare-styleable name="TextIndicator">
-        <attr name="show_circle" format="boolean"/> <!--是否显示外援的圆圈-->
-        <attr name="circle_color" format="reference"/> <!--圆圈的颜色-->
-        <attr name="text_color" format="reference"/> <!--文字颜色-->
-        <attr name="text_size" format="dimension"/> <!--文字大小-->
+        <attr name="word_show_circle" format="boolean"/> <!--是否显示外援的圆圈-->
+        <attr name="word_circle_color" format="reference"/> <!--圆圈的颜色-->
+        <attr name="word_text_color" format="reference"/> <!--文字颜色-->
+        <attr name="word_text_size" format="dimension"/> <!--文字大小-->
     </declare-styleable>
 
     <!--轮播控件的属性-->
     <declare-styleable name="BannerViewPager">
-        <attr name="isloop" format="boolean"/> <!--是否自动轮播-->
-        <attr name="looptime" format="integer"/> <!--自动轮播的时间-->
-        <attr name="switchtime" format="integer"/> <!--轮播时，viewpager的切换速度-->
+        <attr name="banner_isloop" format="boolean"/> <!--是否自动轮播-->
+        <attr name="banner_looptime" format="integer"/> <!--自动轮播的时间-->
+        <attr name="banner_switchtime" format="integer"/> <!--轮播时，viewpager的切换速度-->
     </declare-styleable>
 
     <!--弧形图片-->
@@ -354,7 +355,7 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
         <attr name="tab_show" format="boolean"/>  <!--是否显示指示器-->
         <attr name="tab_text_type">               <!--顶部文字的类型，nromaltext为普通的textview，
                                                        corlortext为文件渐变-->
-            <enum name="normaltext" value="0"/>     
+            <enum name="normaltext" value="0"/>
             <enum name="colortext" value="1"/>
         </attr>
         <attr name="tap_type" >           <!--指示器类型，有三角形或者圆条-->

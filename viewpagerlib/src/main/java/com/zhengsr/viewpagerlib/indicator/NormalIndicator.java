@@ -1,17 +1,14 @@
 package com.zhengsr.viewpagerlib.indicator;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -140,7 +137,7 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
      * 显示最后一页的状态
      * @param position
      */
-    private void showStartView(int position) {
+    private void showStartView(final int position) {
         // 最后一页
         if (position == mCount - 1) {
             if (mOpenView != null) {
@@ -148,27 +145,17 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
                 ObjectAnimator animator = ObjectAnimator.ofFloat(mOpenView,
                         "alpha", 0, 1);
                 animator.setDuration(500);
-                animator.setInterpolator(new LinearInterpolator());
+                animator.setInterpolator(new AccelerateDecelerateInterpolator());
                 animator.start();
-                Log.d(TAG, "zsr --> showStartView: "+mDismissOpen);
                 if (mDismissOpen){
                     setVisibility(View.GONE);
                 }
             }
         } else {
             if (mOpenView != null) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(mOpenView,
-                        "alpha", 1, 0);
-                animator.setDuration(300);
-                animator.setInterpolator(new LinearInterpolator());
-                animator.start();
-                animator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        mOpenView.setVisibility(GONE);
-                    }
-                });
+
+                mOpenView.setVisibility(GONE);
+
                 if (mDismissOpen){
                     setVisibility(VISIBLE);
                 }

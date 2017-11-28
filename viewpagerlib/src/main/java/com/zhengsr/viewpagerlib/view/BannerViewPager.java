@@ -76,9 +76,9 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     public BannerViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.BannerViewPager);
-        isLoop = ta.getBoolean(R.styleable.BannerViewPager_isloop,false);
-        mLoopTime = ta.getInteger(R.styleable.BannerViewPager_looptime,2000);
-        mSwitchTime = ta.getInteger(R.styleable.BannerViewPager_switchtime,600);
+        isLoop = ta.getBoolean(R.styleable.BannerViewPager_banner_isloop,false);
+        mLoopTime = ta.getInteger(R.styleable.BannerViewPager_banner_looptime,2000);
+        mSwitchTime = ta.getInteger(R.styleable.BannerViewPager_banner_switchtime,600);
         ta.recycle();
         mInflater = LayoutInflater.from(context);
         setOnTouchListener(this);

@@ -1,7 +1,5 @@
 package com.zhengsr.viewpagerlib.indicator;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,10 +7,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 
 import com.zhengsr.viewpagerlib.R;
@@ -58,12 +55,11 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
         super(context, attrs, defStyleAttr);
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TextIndicator);
-        mShowCircle = ta.getBoolean(R.styleable.TextIndicator_show_circle,false);
-        int circleColor = ta.getResourceId(R.styleable.TextIndicator_circle_color,
+        mShowCircle = ta.getBoolean(R.styleable.TextIndicator_word_show_circle,false);
+        int circleColor = ta.getResourceId(R.styleable.TextIndicator_word_circle_color,
                 R.color.page_black_cc);
-        int textcolor = ta.getResourceId(R.styleable.TextIndicator_text_color,R.color.page_white);
-        int textsize = ta.getDimensionPixelSize(R.styleable.TextIndicator_text_size,15);
-        Log.d(TAG, "zsr --> TextIndicator: "+textsize);
+        int textcolor = ta.getResourceId(R.styleable.TextIndicator_word_text_color,R.color.page_white);
+        int textsize = ta.getDimensionPixelSize(R.styleable.TextIndicator_word_text_size,15);
         ta.recycle();
         setGravity(Gravity.CENTER);
 
@@ -168,27 +164,17 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
                 ObjectAnimator animator = ObjectAnimator.ofFloat(mOpenView,
                         "alpha", 0, 1);
                 animator.setDuration(500);
-                animator.setInterpolator(new LinearInterpolator());
+                animator.setInterpolator(new AccelerateDecelerateInterpolator());
                 animator.start();
-                Log.d(TAG, "zsr --> showStartView: "+mDismissOpen);
                 if (mDismissOpen){
                     setVisibility(View.GONE);
                 }
             }
         } else {
             if (mOpenView != null) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(mOpenView,
-                        "alpha", 1, 0);
-                animator.setDuration(300);
-                animator.setInterpolator(new LinearInterpolator());
-                animator.start();
-                animator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        mOpenView.setVisibility(GONE);
-                    }
-                });
+
+                mOpenView.setVisibility(GONE);
+
                 if (mDismissOpen){
                     setVisibility(VISIBLE);
                 }

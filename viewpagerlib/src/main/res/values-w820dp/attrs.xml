@@ -34,17 +34,17 @@
 
     <!--文字indicator-->
     <declare-styleable name="TextIndicator">
-        <attr name="show_circle" format="boolean"/> <!--是否显示外援的圆圈-->
-        <attr name="circle_color" format="reference"/> <!--圆圈的颜色-->
-        <attr name="text_color" format="reference"/> <!--文字颜色-->
-        <attr name="text_size" format="dimension"/> <!--文字大小-->
+        <attr name="word_show_circle" format="boolean"/> <!--是否显示外援的圆圈-->
+        <attr name="word_circle_color" format="reference"/> <!--圆圈的颜色-->
+        <attr name="word_text_color" format="reference"/> <!--文字颜色-->
+        <attr name="word_text_size" format="dimension"/> <!--文字大小-->
     </declare-styleable>
 
     <!--轮播控件的属性-->
     <declare-styleable name="BannerViewPager">
-        <attr name="isloop" format="boolean"/> <!--是否自动轮播-->
-        <attr name="looptime" format="integer"/> <!--自动轮播的时间-->
-        <attr name="switchtime" format="integer"/> <!--轮播时，viewpager的切换速度-->
+        <attr name="banner_isloop" format="boolean"/> <!--是否自动轮播-->
+        <attr name="banner_looptime" format="integer"/> <!--自动轮播的时间-->
+        <attr name="banner_switchtime" format="integer"/> <!--轮播时，viewpager的切换速度-->
     </declare-styleable>
 
     <!--弧形图片-->
