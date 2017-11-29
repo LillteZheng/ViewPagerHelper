@@ -188,8 +188,11 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
 
     /**
      * 处理嵌套有其他滑动viewgroup，抢占事件
+     * 感觉这个要不要去掉，因为父控件的 interceptouchevent
+     * 的 down 事件必须是 返回false，这样干扰太大了。
+     * 2017/11/29 如果要处理滑动冲突，请在父控件中处理，这样比较容易
      */
-    private float lastX,lastY;
+   /* private float lastX,lastY;
     private float moveX,moveY;
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -213,11 +216,15 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
                 lastX = ev.getX();
                 lastY = ev.getY();
                 break;
+            case MotionEvent.ACTION_UP:
+                moveX = 0;
+                moveY = 0;
+                break;
             default:
                 break;
         }
         return super.dispatchTouchEvent(ev);
-    }
+    }*/
 
 
 
