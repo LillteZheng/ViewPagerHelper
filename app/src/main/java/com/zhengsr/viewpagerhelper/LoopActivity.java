@@ -7,9 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zhengsr.viewpagerlib.callback.PageHelperListener;
 import com.zhengsr.viewpagerlib.anim.MzTransformer;
 import com.zhengsr.viewpagerlib.bean.PageBean;
+import com.zhengsr.viewpagerlib.callback.PageHelperListener;
 import com.zhengsr.viewpagerlib.indicator.TextIndicator;
 import com.zhengsr.viewpagerlib.indicator.TransIndicator;
 import com.zhengsr.viewpagerlib.indicator.ZoomIndicator;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoopActivity extends AppCompatActivity {
-
+    private static final String TAG = "LoopActivity";
 
     private static final Integer[] RES = {R.mipmap.guide1,R.mipmap.guide2,R.mipmap.guide3,
             R.mipmap.guide4 };
@@ -41,9 +41,6 @@ public class LoopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loop);
-
-
-
 
         // 第一个viewpager
         mBannerCountViewPager = (BannerViewPager) findViewById(R.id.loop_viewpager);
@@ -115,7 +112,7 @@ public class LoopActivity extends AppCompatActivity {
 
         //配置数据
         loopBeens = new ArrayList<>();
-        for (int i = 0; i < TEXT.length; i++) {
+        for (int i = 0; i < 2; i++) {
             LoopBean bean2 = new LoopBean();
             bean2.res = RES[i];
             bean2.text = TEXT[i];

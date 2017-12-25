@@ -45,6 +45,7 @@
         <attr name="banner_isloop" format="boolean"/> <!--是否自动轮播-->
         <attr name="banner_looptime" format="integer"/> <!--自动轮播的时间-->
         <attr name="banner_switchtime" format="integer"/> <!--轮播时，viewpager的切换速度-->
+        <attr name="banner_loop_max_count" format="integer"/> <!--超过这个数字时，才会轮播效果-->
     </declare-styleable>
 
     <!--弧形图片-->
