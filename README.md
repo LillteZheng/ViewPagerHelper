@@ -22,7 +22,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-compile 'com.github.LillteZheng:ViewPagerHelper:v0.4'
+compile 'com.github.LillteZheng:ViewPagerHelper:v0.5'
 ```
 
 **版本迭代**
