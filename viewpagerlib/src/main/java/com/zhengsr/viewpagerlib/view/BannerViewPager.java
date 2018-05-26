@@ -70,7 +70,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
                     if (mCurrentIndex > LOOP_COUNT) {
                         mCurrentIndex = LOOP_COUNT / 2;
                     }
-                    Log.d(TAG, "zsr --> handleMessage: "+ isOutVisiableWindow());
+                   
                     setCurrentItem(mCurrentIndex);
 
                     mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
