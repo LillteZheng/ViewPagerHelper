@@ -12,7 +12,6 @@ import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.zhengsr.viewpagerlib.R;
@@ -70,14 +69,12 @@ public class ArcImageView extends ImageView {
     @Override
     public void setImageResource(int resId) {
         mBitmap = BitmapFactory.decodeResource(getResources(),resId);
-        Log.d(TAG, "zsr --> setImageResource: ");
         invalidate();
     }
 
     @Override
     public void setImageDrawable(Drawable drawable) {
         BitmapDrawable bd = (BitmapDrawable) drawable;
-        Log.d(TAG, "zsr --> setImageDrawable: "+drawable);
         if (bd != null){
             mBitmap = bd.getBitmap();
             invalidate();
@@ -87,7 +84,6 @@ public class ArcImageView extends ImageView {
     @Override
     public void setImageBitmap(Bitmap bm) {
         mBitmap = bm;
-        Log.d(TAG, "zsr --> setImageBitmap: ");
         invalidate();
     }
 

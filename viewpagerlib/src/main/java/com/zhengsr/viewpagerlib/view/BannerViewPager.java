@@ -10,6 +10,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -69,6 +70,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
                     if (mCurrentIndex > LOOP_COUNT) {
                         mCurrentIndex = LOOP_COUNT / 2;
                     }
+                    Log.d(TAG, "zsr --> handleMessage: "+ isOutVisiableWindow());
                     setCurrentItem(mCurrentIndex);
 
                     mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
@@ -103,9 +105,9 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
 
     /**
      * 设置监听
-     * @param bean
-     * @param layoutid
-     * @param listener
+     * @param bean 配置的数据
+     * @param layoutid 子控件的 layout
+     * @param listener 这里可以把 子控件的 layout 获得的view公布出去
      */
     public void setPageListener(PageBean bean, int layoutid, PageHelperListener listener){
         if (bean.datas.size() >= mLoopMaxCount){
@@ -162,7 +164,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     /**
      * 手动停止
      */
-    public void stop(){
+    public void stopAnim(){
         if (isLoop) {
             mHandler.removeMessages(LOOP_MSG);
         }
@@ -171,10 +173,12 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     /**
      * 手动开始
      */
-    public void reStart(){
+    public void startAnim(){
         if (isLoop) {
+
             mHandler.removeMessages(LOOP_MSG);
             mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
+
 
         }
     }
@@ -237,10 +241,9 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         super.onWindowVisibilityChanged(visibility);
         if (isLoop){
             if (visibility == View.VISIBLE){
-                mHandler.removeMessages(LOOP_MSG);
-                mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
+               startAnim();
             }else{
-                mHandler.removeMessages(LOOP_MSG);
+               stopAnim();
             }
         }
     }
@@ -249,8 +252,11 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
      * 判断是否移出可见屏幕外
      * @return
      */
-    public boolean isInVisiableWindow(){
-        return this.getLocalVisibleRect(mScreentRect);
+    public boolean isOutVisiableWindow(){
+        int[] pos = new int[2];
+        this.getLocationOnScreen(pos);
+        boolean isOutVisiabel = pos[1] <= 0 || (pos[1] > (mScreentRect.height() - this.getHeight())); //超出屏幕
+        return isOutVisiabel ;
     }
 
 

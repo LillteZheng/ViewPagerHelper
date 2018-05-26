@@ -26,7 +26,7 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.6'
 ```
 
 **版本迭代**
-- **v0.6  --> 退出时自动关轮播，isInVisiableWindow()方法，用于滚动判断是否停止轮播**
+- **v0.6  --> 退出时自动关轮播，isOutVisiableWindow()方法，用于有滚动时，判断是否停止轮播**
 - **v0.5  --> 增加 banner_loop_max_count 变量，当数据大于这个数值时，才会填充多个数据和轮播**
 - **v0.5  --> 增加 banner_loop_max_count 变量，当数据大于这个数值时，才会填充多个数据和轮播**
 - **v0.4  --> 解决app引导页，快速滑动时，“立即体验”按钮会不显示问题,并修改自定义属性，防止干扰**
@@ -58,7 +58,7 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.6'
 使用图片轮播，你需要以下几个步骤和需要注意的地方：
 
 **注意：**
-使用轮播图，如果设置动画自动启动，可以使用 **stop()** 和 **reStart()**关闭和启动动画，如果退出，动画会自动退出，所以不用担心后台继续运行的问题；当视图可以滚动时，可以使用 **isInVisiableWindow()** 方法，判断轮播图是否已经超过了可视界面，从而去停止它。
+使用轮播图，如果设置动画自动启动，可以使用 **stopAnim()** 和 **startAnim()** 关闭和启动动画，如果退出，动画会自动退出，所以不用担心后台继续运行的问题；当视图可以滚动时，可以使用 **isOutVisiableWindow()** 方法，判断轮播图是否已经超过了可视界面，从而去停止它。
 
 
 **步骤一，配置布局，把 BannerViewPager 和 指示器弄上，这里我用放大的 Indicator**
