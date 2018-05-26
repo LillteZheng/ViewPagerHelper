@@ -22,10 +22,12 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-compile 'com.github.LillteZheng:ViewPagerHelper:v0.5'
+compile 'com.github.LillteZheng:ViewPagerHelper:v0.6'
 ```
 
 **版本迭代**
+- **v0.6  --> 退出时自动关轮播，isInVisiableWindow()方法，用于滚动判断是否停止轮播**
+- **v0.5  --> 增加 banner_loop_max_count 变量，当数据大于这个数值时，才会填充多个数据和轮播**
 - **v0.5  --> 增加 banner_loop_max_count 变量，当数据大于这个数值时，才会填充多个数据和轮播**
 - **v0.4  --> 解决app引导页，快速滑动时，“立即体验”按钮会不显示问题,并修改自定义属性，防止干扰**
 - **v0.3  --> 从lib中移除glide的依赖，防止干扰其他项目，去掉和优化一些代码，谢谢各位的提醒**
@@ -39,31 +41,58 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.5'
 ### **1、轮播图**
 **第一种**
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_mz.gif)
+![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a09eff6a37?w=309&h=169&f=gif&s=776017)
 
 **第二种**
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif)
+![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a0aac0cd9a?w=294&h=166&f=gif&s=1103755)
 
 **第三种**
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_tran.gif)
+![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a0a6ff8996?w=383&h=233&f=gif&s=1672890)
 
 **第四种**
 
- ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif )
+ ![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a09e9d1fcf?w=311&h=160&f=gif&s=801670 )
 
 使用图片轮播，你需要以下几个步骤和需要注意的地方：
 
 **注意：**
+使用轮播图，如果设置动画自动启动，可以使用 **stop()** 和 **reStart()**关闭和启动动画，如果退出，动画会自动退出，所以不用担心后台继续运行的问题；当视图可以滚动时，可以使用 **isInVisiableWindow()** 方法，判断轮播图是否已经超过了可视界面，从而去停止它。
 
-当你使用 BannerViewpager ，把轮播设置为true的时候，轮播是使用 handler 的，所以，请**使用它的onPause 和onResume 进行轮播的暂停和重新启动；如果不使用这个，handler 会在后台一直运行的**。别忘记了
 
-**步骤：** 
+**步骤一，配置布局，把 BannerViewPager 和 指示器弄上，这里我用放大的 Indicator**
 
-**step1：**
+它的父布局是一个RelativeLayout，如果要上面魅族的放大效果，需要在父布局加上 clipChildren="false" 属性，然后配置你想要的自定义属性即可。
+```
+<com.zhengsr.viewpagerlib.view.BannerViewPager
+                android:id="@+id/loop_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                zsr:banner_isloop="true"
+                zsr:banner_looptime="3000"
+                zsr:banner_switchtime="600" />
 
-配置数据,把图片的资源(resid,url) 填充到listview 中，这里的LoopBean，是你定义的工具类，我这里是 img，和text
+            <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
+                android:id="@+id/bottom_scale_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                zsr:zoom_alpha_min="0.5"
+                zsr:zoom_leftmargin="10dp"
+                zsr:zoom_max="1.5"
+                zsr:zoom_selector="@drawable/bottom_circle" />
+    
+```
+其中 bottom_circle，只是一个白色的shape圆球，你也可以不自己写，默认就是白色的白球放大缩小。
+
+**步骤二，填充轮播的数据，比如url或者resId**
+
+配置数据,这里的LoopBean，是我定义的类，用来显示图片和文字,(如果只有图片，可以用String，也可以用 integer类型)
 ```
         List<LoopBean> loopBeens = new ArrayList<>();
         for (int i = 0; i < TEXT.length; i++) {
@@ -74,10 +103,9 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.5'
 
         }
 ```
-**step2：**
+**步骤三，配置 PageBean，设置指示器和数据**
 
 配置PageBean，PageBean是必须要添加的，主要是为了viewpager的指示器的作用，注意记得写上泛型.这里为上面的LoopBean
-
 ```
 PageBean bean = new PageBean.Builder<LoopBean>()
                 .setDataObjects(loopBeens)
@@ -89,9 +117,9 @@ PageBean bean = new PageBean.Builder<LoopBean>()
 ```
 mBannerCountViewPager.setPageTransformer(false,new MzTransformer());
 ```
-**step3：**
+**步骤四，监听数据**
 
- view 的接口提供出来，供大家自行配置，这样的好处在于，实用性更高，你可以添加gif，或者视频，或者简单的图片。
+ view 的接口提供出来，供大家自行配置，这样的好处在于，实用性更高，你可以添加gif，或者视频，或者简单的图片,这里我用 glide 去加载图片的 url。
 ```
 mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelperListener() {
             @Override
@@ -111,35 +139,7 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
             }
         });
 ``` 
-
-**xml的配置，其实就是一个viewpager 加一个 linearlayout，位置你自己去摆放**
-```
-<com.zhengsr.viewpagerlib.view.BannerViewPager
-                android:id="@+id/loop_viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:clipChildren="false"
-                zsr:banner_isloop="true"
-                zsr:banner_looptime="3000"
-                zsr:banner_switchtime="600" />
-
-            <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
-                android:id="@+id/bottom_scale_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
-                zsr:zoom_alpha_min="0.5"
-                zsr:zoom_leftmargin="10dp"
-                zsr:zoom_max="1.5"
-                zsr:zoom_selector="@drawable/bottom_circle" />
-    
-```
-可以使用上面四种指示器，任意搭配。。
-
+其中，R.layout.loop_layout 为你的banner item 布局
 如果你要使用弧形图片，可以用 ArcImageView 这个控件，可以这样配置：
 ```
  <!--弧形图片，arc_height 为弧度的高度-->
@@ -151,23 +151,24 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
         android:scaleType="centerCrop"/>
 ```
 
+
 ## **2、Tab指示器**
 
 
 **第一种**
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/tab_tri.gif)
+![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a0a3bc1cbf?w=388&h=611&f=gif&s=122502)
 
 
 **第二种，条形状的版本**
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/tab_rect.gif)
+![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a09d93c694?w=387&h=563&f=gif&s=297157)
 
 **第三种，文字颜色渐变的方式**
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/tab_color.gif)
+![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a1a5952402?w=379&h=576&f=gif&s=262083)
 
-这里的配置就更简单了，viewpager 就是普通的，关键就是这个 TabIndicator 了，因为我把这三种效果都装进去了.
+这里的配置就更简单了，关键就是这个 TabIndicator 了，可以选择你想要的属性，上面三种效果都集中在 TabIndicator 了，详细可以下载demo查看。
 
 **xml 的配置**
 ```
@@ -188,6 +189,9 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
         app:tap_type="tri"
         >
     </com.zhengsr.viewpagerlib.indicator.TabIndicator>
+    
+    <ViewPage
+        ..../>
 ```
 你可以通过这些属性，自由配置三角形，条状，或者只使用文字颜色变化，自定义属性的名字跟它的功能一样。
 
@@ -213,7 +217,7 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
 
 如果你要使用 引导页，也是非常简单，只需要使用 GlideViewPager 即可。配置与上面基本一致，只需要三部，我们就可以实现引导图；小看效果
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/glidenormal.gif)    ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/glidetrans.gif)        ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/glidezoom.gif)        
+![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a1b510db01?w=316&h=554&f=gif&s=1242480)    ![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a1e6572a79?w=292&h=550&f=gif&s=1828051)        ![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a1acf55be1?w=334&h=551&f=gif&s=1314348)        
 
 看一个完整的配置：
 ```
@@ -228,7 +232,7 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
             images.add(RES[i]);
 
         }
-        //配置pagerbean，这里主要是为了viewpager的指示器的作用，注意记得写上泛型
+        //配置pagerbean，这里主要是为了viewpager的指示器的作用，然后把最后一页的button也添加进来，注意记得写上泛型
         PagerBean bean = new PagerBean.Builder<Integer>()
                 .setDataObjects(images)
                 .setIndicator(zoomIndicator)

@@ -187,7 +187,7 @@ public class LoopActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mBannerCountViewPager.onPause();
+        mBannerCountViewPager.stop();
 
 
     }
@@ -195,6 +195,6 @@ public class LoopActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mBannerCountViewPager.onReusme();
+        mBannerCountViewPager.reStart();
     }
 }

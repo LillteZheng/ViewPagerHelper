@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                 .builder();
         mColorTextView = (ColorTextView) findViewById(R.id.colortext);
 
-
     }
 
 

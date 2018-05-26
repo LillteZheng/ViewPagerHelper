@@ -2,16 +2,19 @@ package com.zhengsr.viewpagerlib.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.ViewPagerHelperUtils;
@@ -42,13 +45,14 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     private boolean isLoop; //是否自动轮播
     private int mSwitchTime;
     private int mLoopMaxCount = 1;
+    private boolean isSlide; //是否可以轮播滑动
     /**
      * others
      */
     private boolean isFirst = true;
     private int mCurrentIndex;
     private LayoutInflater mInflater;
-    private boolean isSlide; //是否可以轮播滑动
+    private Rect mScreentRect;
     /**
      * handle
      */
@@ -66,7 +70,9 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
                         mCurrentIndex = LOOP_COUNT / 2;
                     }
                     setCurrentItem(mCurrentIndex);
+
                     mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
+
                 }
             }
         }
@@ -88,11 +94,19 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         mInflater = LayoutInflater.from(context);
         setOnTouchListener(this);
         ViewPagerHelperUtils.initSwitchTime(getContext(),this,mSwitchTime);
-        if (isLoop){
-            mHandler.sendEmptyMessageDelayed(LOOP_MSG,mLoopTime);
-        }
+
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(dm);
+        mScreentRect = new Rect(0,0,dm.widthPixels,dm.heightPixels);
     }
 
+    /**
+     * 设置监听
+     * @param bean
+     * @param layoutid
+     * @param listener
+     */
     public void setPageListener(PageBean bean, int layoutid, PageHelperListener listener){
         if (bean.datas.size() >= mLoopMaxCount){
             isSlide = true;
@@ -145,21 +159,26 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         return false;
     }
 
-
-    public void onPause(){
+    /**
+     * 手动停止
+     */
+    public void stop(){
         if (isLoop) {
             mHandler.removeMessages(LOOP_MSG);
         }
     }
-    public void onReusme(){
+
+    /**
+     * 手动开始
+     */
+    public void reStart(){
         if (isLoop) {
-            if (isFirst) {
-                isFirst = false;
-                mHandler.removeMessages(LOOP_MSG);
-                mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
-            }
+            mHandler.removeMessages(LOOP_MSG);
+            mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
+
         }
     }
+
 
 
     /**
@@ -210,44 +229,29 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     }
 
     /**
-     * 处理嵌套有其他滑动viewgroup，抢占事件
-     * 感觉这个要不要去掉，因为父控件的 interceptouchevent
-     * 的 down 事件必须是 返回false，这样干扰太大了。
-     * 2017/11/29 如果要处理滑动冲突，请在父控件中处理，这样比较容易
+     * 如果退出了，自动停止，进来则自动开始
+     * @param visibility
      */
-   /* private float lastX,lastY;
-    private float moveX,moveY;
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                lastX = ev.getX();
-                lastY = ev.getY();
-                //保证子 view 能够接受 action_move事件
-                getParent().requestDisallowInterceptTouchEvent(true);
-                break;
-            case MotionEvent.ACTION_MOVE:
-                float dx = ev.getX() - lastX;
-                float dy = ev.getY() - lastY;
-                moveX += Math.abs(dx);
-                moveY += Math.abs(dy);
-                if (moveX - moveY > 0) {
-                     getParent().requestDisallowInterceptTouchEvent(true);
-                }else{
-                    getParent().requestDisallowInterceptTouchEvent(false);
-                }
-                lastX = ev.getX();
-                lastY = ev.getY();
-                break;
-            case MotionEvent.ACTION_UP:
-                moveX = 0;
-                moveY = 0;
-                break;
-            default:
-                break;
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        if (isLoop){
+            if (visibility == View.VISIBLE){
+                mHandler.removeMessages(LOOP_MSG);
+                mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
+            }else{
+                mHandler.removeMessages(LOOP_MSG);
+            }
         }
-        return super.dispatchTouchEvent(ev);
-    }*/
+    }
+
+    /**
+     * 判断是否移出可见屏幕外
+     * @return
+     */
+    public boolean isInVisiableWindow(){
+        return this.getLocalVisibleRect(mScreentRect);
+    }
 
 
 
