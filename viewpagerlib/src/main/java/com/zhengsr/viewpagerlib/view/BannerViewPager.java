@@ -70,7 +70,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
                     if (mCurrentIndex > LOOP_COUNT) {
                         mCurrentIndex = LOOP_COUNT / 2;
                     }
-                    Log.d(TAG, "zsr --> handleMessage: "+mCurrentIndex);
+                   // Log.d(TAG, "zsr --> handleMessage: "+mCurrentIndex);
 
                     setCurrentItem(mCurrentIndex);
 
@@ -252,7 +252,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         super.onWindowVisibilityChanged(visibility);
         if (isLoop){
             if (visibility == View.VISIBLE){
-                Log.d(TAG, "zsr --> onWindowVisibilityChanged: ");
+               // Log.d(TAG, "zsr --> onWindowVisibilityChanged: ");
                 startAnim();
             }else{
                stopAnim();
