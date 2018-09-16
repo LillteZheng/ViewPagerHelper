@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="org.jetbrains.trove4j:trove4j:20160824@jar">
+    <CLASSES>
+      <root url="jar://$APPLICATION_HOME_DIR$/gradle/m2repository/org/jetbrains/trove4j/trove4j/20160824/trove4j-20160824.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

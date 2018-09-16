@@ -40,7 +40,7 @@
     <com.zhengsr.viewpagerlib.view.ArcImageView
         android:id="@+id/arcimage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="160dp"
         android:scaleType="centerCrop"
         app:arc_height="15dp"
        />
@@ -70,6 +70,12 @@
             android:layout_height="wrap_content"
             android:text="从右到左变化"/>
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="网络测试"
+        android:onClick="test"/>
 
 
 

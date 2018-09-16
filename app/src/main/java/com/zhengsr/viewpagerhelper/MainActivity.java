@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.zhengsr.viewpagerhelper.activity.LoopActivity;
+import com.zhengsr.viewpagerhelper.activity.NetWorkActivity;
 import com.zhengsr.viewpagerhelper.activity.glide.GlideTransActivity;
 import com.zhengsr.viewpagerhelper.activity.glide.GlideZoomActivity;
 import com.zhengsr.viewpagerhelper.activity.glide.GlidenormalActivity;
@@ -25,11 +27,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArcImageView arcImageView = (ArcImageView) findViewById(R.id.arcimage);
-        new GlideManager.Builder()
-                .setContext(this)
-                .setImgSource("http://img.mukewang.com/54bf7e1f000109c506000338-590-330.jpg")
-                .setImageView(arcImageView)
-                .builder();
+       GlideApp.with(this)
+               .load(R.mipmap.beauty1)
+               .into(arcImageView);
         mColorTextView = (ColorTextView) findViewById(R.id.colortext);
 
     }
@@ -82,5 +82,9 @@ public class MainActivity extends AppCompatActivity {
                 mColorTextView.setprogress(value,ColorTextView.DEC_RIGHT);
             }
         });
+    }
+
+    public void test(View view) {
+        startActivity(new Intent(this, NetWorkActivity.class));
     }
 }

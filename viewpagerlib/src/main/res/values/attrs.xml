@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--放大缩小的 indicator-->
+    <declare-styleable name="ZoomIndicator">
+        <attr name="zoom_selector" format="reference"/> <!--selecotr，一般就一个圆点即可-->
+        <attr name="zoom_leftmargin" format="dimension"/><!--两个圆点之间的间距-->
+        <attr name="zoom_max" format="float"/> <!--小圆点放大的倍数-->
+        <attr name="zoom_alpha_min" format="float"/><!--小圆点缩小的倍数-->
+        <attr name="zoom_dismiss_open" format="boolean"/><!--做引导页的最后一页，是否隐藏圆点-->
+    </declare-styleable>
+
+    <!--与上面同理-->
+    <declare-styleable name="NormalIndicator">
+        <attr name="normal_selector" format="reference"/>
+        <attr name="normal_leftmargin" format="dimension"/>
+        <attr name="normal_dismiss_open" format="boolean"/>
+    </declare-styleable>
+
+    <!--移动indicator indicator-->
+    <declare-styleable name="TransIndicator">
+        <attr name="trans_width" format="dimension"/> <!--指示器的大小-->
+        <attr name="trans_height" format="dimension"/> <!--指示器的大小-->
+        <attr name="trans_defaultcolor" format="color|reference"/> <!--指示器默认的颜色-->
+        <attr name="trans_leftmargin" format="dimension"/>
+        <attr name="trans_movecolor" format="color|reference"/> <!--指示器移动的颜色-->
+        <attr name="trans_dismiss_open" format="boolean"/>
+        <attr name="trans_round_radius" format="dimension"/>
+        <attr name="trans_type">
+            <enum name="circle" value="0"/>
+            <enum name="round" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!--文字indicator-->
+    <declare-styleable name="TextIndicator">
+        <attr name="word_show_circle" format="boolean"/> <!--是否显示外援的圆圈-->
+        <attr name="word_circle_color" format="reference|color"/> <!--圆圈的颜色-->
+        <attr name="word_text_color" format="reference|color"/> <!--文字颜色-->
+        <attr name="word_text_size" format="dimension"/> <!--文字大小-->
+    </declare-styleable>
+
+    <!--轮播控件的属性-->
+    <declare-styleable name="BannerViewPager">
+        <attr name="banner_isloop" format="boolean"/> <!--是否自动轮播-->
+        <attr name="banner_looptime" format="integer"/> <!--自动轮播的时间-->
+        <attr name="banner_switchtime" format="integer"/> <!--轮播时，viewpager的切换速度-->
+        <attr name="banner_loop_max_count" format="integer"/> <!--超过这个数字时，才会轮播效果-->
+    </declare-styleable>
+
+    <!--弧形图片-->
+    <declare-styleable name="ArcImageView">
+        <attr name="arc_height" format="dimension"/> <!--弧度的高度-->
+    </declare-styleable>
+
+    <!--顶部viewpager指示器-->
+    <declare-styleable name="TabIndicator">
+        <attr name="visiabel_size" format="integer"/> <!--可视化个数，比如有一排，我们就只要显示4个-->
+        <attr name="tab_color" format="color|reference"/> <!--指示器的颜色-->
+        <attr name="tab_width" format="dimension"/>  <!--指示器的宽度-->
+        <attr name="tab_height" format="dimension"/> <!--指示器的高度-->
+        <attr name="tab_textsize" format="dimension"/> <!--顶部文字的大小-->
+        <attr name="tab_text_default_color" format="color|reference"/> <!--顶部文字默认的颜色-->
+        <attr name="tab_text_change_color" format="color|reference"/> <!--移动时，顶部文字的颜色-->
+        <attr name="tab_show" format="boolean"/>  <!--是否显示指示器-->
+        <attr name="tab_text_type">               <!--顶部文字的类型，nromaltext为普通的textview，
+                                                       corlortext为文件渐变-->
+            <enum name="normaltext" value="0"/>
+            <enum name="colortext" value="1"/>
+        </attr>
+        <attr name="tap_type" >           <!--指示器类型，有三角形或者圆条-->
+            <enum name="tri" value="0"/>
+            <enum name="rect" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!--文件渐变属性-->
+    <declare-styleable name="ColorTextView">
+        <attr name="colortext_size" format="dimension"/>
+        <attr name="colortext_default_color" format="color|reference"/> <!--默认颜色-->
+        <attr name="colortext_change_color" format="color|reference"/> <!--渐变颜色-->
+    </declare-styleable>
+
+</resources>

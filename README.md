@@ -22,11 +22,12 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-compile 'com.github.LillteZheng:ViewPagerHelper:v1.0'
+compile 'com.github.LillteZheng:ViewPagerHelper:v0.9'
 ```
 
 **版本迭代**
-- **v1.0  --> 退出时自动关轮播，isOutVisiableWindow()方法，用于有滚动时，判断是否停止轮播**
+- **v0.9  --> 处理第一次轮播图 index 不对问题，优化代码**
+- **v0.8  --> 退出时自动关轮播，isOutVisiableWindow()方法，用于有滚动时，判断是否停止轮播**
 - **v0.5  --> 增加 banner_loop_max_count 变量，当数据大于这个数值时，才会填充多个数据和轮播**
 - **v0.5  --> 增加 banner_loop_max_count 变量，当数据大于这个数值时，才会填充多个数据和轮播**
 - **v0.4  --> 解决app引导页，快速滑动时，“立即体验”按钮会不显示问题,并修改自定义属性，防止干扰**
@@ -41,19 +42,19 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v1.0'
 ### **1、轮播图**
 **第一种**
 
-![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a09eff6a37?w=309&h=169&f=gif&s=776017)
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_scale.gif)
 
 **第二种**
 
-![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a0aac0cd9a?w=294&h=166&f=gif&s=1103755)
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif)
 
 **第三种**
 
-![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a0a6ff8996?w=383&h=233&f=gif&s=1672890)
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_line.gif)
 
 **第四种**
 
- ![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a09e9d1fcf?w=311&h=160&f=gif&s=801670 )
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif)
 
 使用图片轮播，你需要以下几个步骤和需要注意的地方：
 
@@ -120,26 +121,23 @@ mBannerCountViewPager.setPageTransformer(false,new MzTransformer());
 **步骤四，监听数据**
 
  view 的接口提供出来，供大家自行配置，这样的好处在于，实用性更高，你可以添加gif，或者视频，或者简单的图片,这里我用 glide 去加载图片的 url。
+ **记得也在PageHelperListener加泛型，这样 getItemView 的数据就是你泛型的数据了**
 ```
-mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelperListener() {
+mBannerCountViewPager.setPageListener(bean, R.layout.loop_layout, new PageHelperListener<LoopBean>() {
             @Override
-            public void getItemView(View view, Object data) {
+            public void getItemView(View view, LoopBean data) {
+
                 ImageView imageView = view.findViewById(R.id.loop_icon);
-                LoopBean bean = (LoopBean) data;
-                new GlideManager.Builder()
-                        .setContext(LoopActivity.this)
-                        .setImgSource(bean.url)
-                        .setLoadingBitmap(R.mipmap.ic_launcher)
-                        .setImageView(imageView)
-                        .builder();
+                imageView.setImageResource(data.res);
                 TextView textView = view.findViewById(R.id.loop_text);
-                textView.setText(bean.text);
+                textView.setText(data.text);
 
                 //如若你要设置点击事件，也可以直接通过这个view 来设置，或者图片的更新等等
             }
         });
 ``` 
-其中，R.layout.loop_layout 为你的banner item 布局
+其中，R.layout.loop_layout 为你的banner item 布局,为什么要单独再添加一个 layout 呢？
+一时方便自定义，二是如果指定在 viewpager 写布局，容易出现 parent 冲突的问题；
 如果你要使用弧形图片，可以用 ArcImageView 这个控件，可以这样配置：
 ```
  <!--弧形图片，arc_height 为弧度的高度-->
@@ -241,12 +239,12 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
 
         // 把数据添加到 viewpager中，并把view提供出来，这样除了方便调试，也不会出现一个view，多个
         // parent的问题，这里在轮播图比较明显
-        viewPager.setPagerListener(bean, R.layout.image_layout, new PagerHelperListener() {
+        viewPager.setPagerListener(bean, R.layout.image_layout, new PagerHelperListener<Integer>() {
             @Override
-            public void getItemView(View view, Object data) {
+            public void getItemView(View view, Integer data) {
                 //通过获取到这个view，你可以随意定制你的内容
                 ImageView imageView = view.findViewById(R.id.icon);
-                imageView.setImageResource((Integer) data);
+                imageView.setImageResource(data);
             }
         });
 ```
@@ -293,91 +291,89 @@ mBannerCountViewPager.setPagerListener(bean, R.layout.loop_layout, new PageHelpe
 
 **一些自定义属性：**
 
-```
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+**BannerViewPager**
 
-    <!--放大缩小的 indicator-->
-    <declare-styleable name="ZoomIndicator">
-        <attr name="zoom_selector" format="reference"/> <!--selecotr，一般就一个圆点即可-->
-        <attr name="zoom_leftmargin" format="dimension"/><!--两个圆点之间的间距-->
-        <attr name="zoom_max" format="float"/> <!--小圆点放大的倍数-->
-        <attr name="zoom_alpha_min" format="float"/><!--小圆点缩小的倍数-->
-        <attr name="zoom_dismiss_open" format="boolean"/><!--做引导页的最后一页，是否隐藏圆点-->
-    </declare-styleable>
+| 名称 | 类型 |说明 |
+|---|---|---|
+|banner_isloop|boolean|是否自动轮播|
+|banner_looptime|integer|轮播的时间|
+|banner_switchtime|integer|viewpager的切换速度|
+|banner_loop_max_count|integer|超过这个数字时，才会轮播效果|
 
-    <!--与上面同理-->
-    <declare-styleable name="NormalIndicator">
-        <attr name="normal_selector" format="reference"/>
-        <attr name="normal_leftmargin" format="dimension"/>
-        <attr name="normal_dismiss_open" format="boolean"/>
-    </declare-styleable>
+**ZoomIndicator**
 
-    <!--移动indicator indicator-->
-    <declare-styleable name="TransIndicator">
-        <attr name="trans_width" format="dimension"/> <!--指示器的大小-->
-        <attr name="trans_height" format="dimension"/> <!--指示器的大小-->
-        <attr name="trans_defaultcolor" format="color|reference"/> <!--指示器默认的颜色-->
-        <attr name="trans_leftmargin" format="dimension"/>
-        <attr name="trans_movecolor" format="color|reference"/> <!--指示器移动的颜色-->
-        <attr name="trans_dismiss_open" format="boolean"/>
-        <attr name="trans_round_radius" format="dimension"/>
-        <attr name="trans_type">
-            <enum name="circle" value="0"/>
-            <enum name="round" value="1"/>
-        </attr>
-    </declare-styleable>
+| 名称 | 类型 |说明 |
+|---|---|---|
+|zoom_selector|reference|selecotr，一般就一个圆点即可|
+|zoom_leftmargin|dimension|两个圆点之间的间距|
+|zoom_max|float|小圆点放大的倍数|
+|zoom_alpha_min|float|小圆点缩小的倍数|
+|zoom_dismiss_open|boolean|做引导页的最后一页，是否隐藏圆点|
 
-    <!--文字indicator-->
-    <declare-styleable name="TextIndicator">
-        <attr name="word_show_circle" format="boolean"/> <!--是否显示外援的圆圈-->
-        <attr name="word_circle_color" format="reference"/> <!--圆圈的颜色-->
-        <attr name="word_text_color" format="reference"/> <!--文字颜色-->
-        <attr name="word_text_size" format="dimension"/> <!--文字大小-->
-    </declare-styleable>
+**NormalIndicator**
 
-    <!--轮播控件的属性-->
-    <declare-styleable name="BannerViewPager">
-        <attr name="banner_isloop" format="boolean"/> <!--是否自动轮播-->
-        <attr name="banner_looptime" format="integer"/> <!--自动轮播的时间-->
-        <attr name="banner_switchtime" format="integer"/> <!--轮播时，viewpager的切换速度-->
-    </declare-styleable>
+| 名称 | 类型 |说明 |
+|---|---|---|
+|normal_selector|reference|selecotr，一般就一个圆点即可-|
+|normal_leftmargin|dimension|两个圆点之间的间距|
+|normal_dismiss_open|boolean|做引导页的最后一页，是否隐藏圆点|
 
-    <!--弧形图片-->
-    <declare-styleable name="ArcImageView">
-        <attr name="arc_height" format="dimension"/> <!--弧度的高度-->
-    </declare-styleable>
+**TransIndicator**
 
-    <!--顶部viewpager指示器-->
-    <declare-styleable name="TabIndicator">
-        <attr name="visiabel_size" format="integer"/> <!--可视化个数，比如有一排，我们就只要显示4个-->
-        <attr name="tab_color" format="color|reference"/> <!--指示器的颜色-->
-        <attr name="tab_width" format="dimension"/>  <!--指示器的宽度-->
-        <attr name="tab_height" format="dimension"/> <!--指示器的高度-->
-        <attr name="tab_textsize" format="dimension"/> <!--顶部文字的大小-->
-        <attr name="tab_text_default_color" format="color|reference"/> <!--顶部文字默认的颜色-->
-        <attr name="tab_text_change_color" format="color|reference"/> <!--移动时，顶部文字的颜色-->
-        <attr name="tab_show" format="boolean"/>  <!--是否显示指示器-->
-        <attr name="tab_text_type">               <!--顶部文字的类型，nromaltext为普通的textview，
-                                                       corlortext为文件渐变-->
-            <enum name="normaltext" value="0"/>
-            <enum name="colortext" value="1"/>
-        </attr>
-        <attr name="tap_type" >           <!--指示器类型，有三角形或者圆条-->
-            <enum name="tri" value="0"/>
-            <enum name="rect" value="1"/>
-        </attr>
-    </declare-styleable>
+| 名称 | 类型 |说明 |
+|---|---|---|
+|trans_width|dimension|指示器宽度|
+|trans_height|dimension|指示器高度|
+|trans_defaultcolor|color,reference|指示器默认的颜色|
+|trans_leftmargin|dimension|两个圆点之间的间距|
+|trans_movecolor|color,reference|指示器移动的颜色|
+|trans_dismiss_open|boolean|做引导页的最后一页，是否隐藏圆点|
+|trans_round_radius|dimension|矩形圆角|
+|trans_type|round,circle|矩形圆角|
 
-    <!--文件渐变属性-->
-    <declare-styleable name="ColorTextView">
-        <attr name="colortext_size" format="dimension"/>
-        <attr name="colortext_default_color" format="color|reference"/> <!--默认颜色-->
-        <attr name="colortext_change_color" format="color|reference"/> <!--渐变颜色-->
-    </declare-styleable>
 
-</resources>
-```
+**TextIndicator**
+
+| 名称 | 类型 |说明 |
+|---|---|---|
+|word_show_circle|boolean|是否显示外援的圆圈|
+|word_circle_color|reference,color|圆圈的颜色|
+|word_text_color|reference,color|文字颜色|
+|word_text_size|reference|文字大小|
+
+
+**弧形图片 ArcImageView**
+
+| 名称 | 类型 |说明 |
+|---|---|---|
+|arc_height|dimension|弧度的高度|
+
+**顶部viewpager指示器 TabIndicator**
+
+| 名称 | 类型 |说明 |
+|---|---|---|
+|visiabel_size|integer|可视化个数，比如有一排，我们就只要显示4个|
+|tab_color|color,reference|指示器的颜色|
+|tab_show|boolean|是否显示指示器|
+|tab_text_type|normaltext,colortext|顶部文字的类型，nromaltext为普通的textview，corlortext为文件渐变|
+|tab_width|dimension|指示器的宽度|
+|tab_height|dimension|指示器的高度|
+|tab_textsize|dimension|顶部文字的大小|
+|tab_text_default_color|color,reference|顶部文字默认的颜色|
+|tab_text_change_color|color,reference|移动时，顶部文字的颜色|
+|tap_type|tri,rect|指示器类型，有三角形或者圆条|
+
+
+
+**渐变文字 TextIndicator**
+
+| 名称 | 类型 |说明 |
+|---|---|---|
+|colortext_size|dimension|文字大小|
+|colortext_default_color|reference,color|默认颜色|
+|colortext_change_color|reference,color|渐变颜色|
+
+
 
 如果你有想要的效果，而本项目中没有的，你可以在 issue 中提出来，作者看到了，会抽空去实现的，
 如果有发现问题了或者需要提供哪些接口出来，也可以在 issue 中提出来。当然，喜欢请 start 或 fork 来一波。

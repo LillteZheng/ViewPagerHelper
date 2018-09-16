@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhengsr.viewpagerhelper.activity.NetWorkActivity"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="正在加载...."
+            android:gravity="center"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="200dp">
+
+        <com.zhengsr.viewpagerlib.view.BannerViewPager
+            android:id="@+id/recy_banner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:banner_isloop="true"
+            app:banner_looptime="3000"
+            app:banner_switchtime="600" />
+
+        <com.zhengsr.viewpagerlib.indicator.TextIndicator
+            android:id="@+id/recy_text_indicator"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="5dp"
+            app:word_circle_color="@color/black_ff"
+            app:word_show_circle="true"
+            app:word_text_color="@color/white"
+            app:word_text_size="14sp"
+            />
+    </FrameLayout>
+
+</LinearLayout>

@@ -39,7 +39,7 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
 
     private View mOpenView;
     private int mRadius;
-    private String mTextString;
+    private String mTextString = "";
 
 
 

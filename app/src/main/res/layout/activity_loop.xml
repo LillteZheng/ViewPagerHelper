@@ -10,32 +10,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/ic_launcher"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/ic_launcher"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/ic_launcher"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/ic_launcher"/>
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:padding="10dp"
-            android:background="@color/white"
             android:text="放大版，自动轮播加魅族效果"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -76,8 +61,7 @@
             android:gravity="center_horizontal"
             android:padding="10dp"
             android:text="放大版，弧形不轮播加魅族效果"
-            android:background="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -114,9 +98,8 @@
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:padding="10dp"
-            android:background="@color/white"
             android:text="移动版，不自动轮播"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -151,8 +134,7 @@
             android:gravity="center_horizontal"
             android:padding="10dp"
             android:text="文字版，不自动轮播"
-            android:background="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -167,32 +149,16 @@
             <com.zhengsr.viewpagerlib.indicator.TextIndicator
                 android:id="@+id/bottom_text_layout"
                 android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:layout_marginRight="5dp"
                 zsr:word_circle_color="@color/black_ff"
                 zsr:word_show_circle="true"
                 zsr:word_text_color="@color/white"
                 zsr:word_text_size="14sp"
-
                 />
         </FrameLayout>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/ic_launcher"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/ic_launcher"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/ic_launcher"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/ic_launcher"/>
+
        
     </LinearLayout>
 

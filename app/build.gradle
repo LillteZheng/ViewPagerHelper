@@ -18,9 +18,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion '26.0.0-beta1'
+                }
+            }
+        }
+    }
 }
 
+
 dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -31,4 +43,17 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //调试的时候，可以使用这种加载 module的方式
     compile project(':viewpagerlib')
+    implementation 'com.android.support:recyclerview-v7:26.0.0-beta1'
+    implementation 'com.android.support:cardview-v7:26.0.0-beta1'
+
+    implementation  'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation  'com.squareup.retrofit2:converter-scalars:2.4.0'
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.alibaba:fastjson:1.1.70.android'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
 }

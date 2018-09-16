@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -36,7 +37,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     /**
      * const
      */
-    private static final String TAG = "zsr";
+    private static final String TAG = "BannerViewPager";
     private static final int LOOP_MSG = 0x1001;
     private static final int LOOP_COUNT = 5000;
     /**
@@ -50,14 +51,13 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     /**
      * others
      */
-    private boolean isFirst = true;
     private int mCurrentIndex;
     private LayoutInflater mInflater;
     private Rect mScreentRect;
     /**
      * handle
      */
-    private Handler mHandler = new Handler(Looper.getMainLooper()){
+    private  Handler mHandler = new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -70,7 +70,8 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
                     if (mCurrentIndex > LOOP_COUNT) {
                         mCurrentIndex = LOOP_COUNT / 2;
                     }
-                    Log.d(TAG, "zsr --> handleMessage: "+ isOutVisiableWindow());
+                    Log.d(TAG, "zsr --> handleMessage: "+mCurrentIndex);
+
                     setCurrentItem(mCurrentIndex);
 
                     mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
@@ -103,6 +104,10 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         mScreentRect = new Rect(0,0,dm.widthPixels,dm.heightPixels);
     }
 
+
+
+
+
     /**
      * 设置监听
      * @param bean 配置的数据
@@ -120,7 +125,9 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         setAdapter(adapter);
         setOffscreenPageLimit(3);
         if (isSlide) {
-            setCurrentItem(ViewPagerHelperUtils.LOOP_COUNT / 2 + bean.datas.size());
+            int index = ViewPagerHelperUtils.LOOP_COUNT/2 % bean.datas.size();
+            //这样能保证从第一页开始
+            setCurrentItem(ViewPagerHelperUtils.LOOP_COUNT / 2 - index +bean.datas.size());
         }else{
             setCurrentItem(0);
         }
@@ -192,12 +199,15 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     class CusViewPagerAdapter<T> extends PagerAdapter{
         PageHelperListener listener;
         List<T> list;
-        int layoutid;
+        int layoutid ;
+
         public CusViewPagerAdapter(List<T> list,
-                                   int layoutid,PageHelperListener listener) {
+                                   @Nullable int layoutid,
+                                  PageHelperListener listener) {
             this.listener = listener;
             this.list = list;
             this.layoutid = layoutid;
+
         }
 
         @Override
@@ -217,6 +227,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = mInflater.inflate(layoutid,null);
+
             if (isSlide) {
                 this.listener.getItemView(view, this.list.get(position % this.list.size()));
             }else{
@@ -241,7 +252,8 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         super.onWindowVisibilityChanged(visibility);
         if (isLoop){
             if (visibility == View.VISIBLE){
-               startAnim();
+                Log.d(TAG, "zsr --> onWindowVisibilityChanged: ");
+                startAnim();
             }else{
                stopAnim();
             }
@@ -259,6 +271,9 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         return isOutVisiabel ;
     }
 
-
-
+    @Override
+    protected void detachAllViewsFromParent() {
+        super.detachAllViewsFromParent();
+        mHandler.removeCallbacksAndMessages(null);
+    }
 }
