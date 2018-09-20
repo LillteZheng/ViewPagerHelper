@@ -90,6 +90,8 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.9'
     
 ```
 其中 bottom_circle，只是一个白色的shape圆球，你也可以不自己写，默认就是白色的白球放大缩小。
+demo 中的layout参看这里：
+https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/res/layout/activity_loop.xml
 
 **步骤二，填充轮播的数据，比如url或者resId**
 
@@ -138,6 +140,11 @@ mBannerCountViewPager.setPageListener(bean, R.layout.loop_layout, new PageHelper
 ``` 
 其中，R.layout.loop_layout 为你的banner item 布局,为什么要单独再添加一个 layout 呢？
 一时方便自定义，二是如果指定在 viewpager 写布局，容易出现 parent 冲突的问题；
+
+demo 中的 activity代码参考下面的链接：
+https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com/zhengsr/viewpagerhelper/activity/LoopActivity.java
+
+
 如果你要使用弧形图片，可以用 ArcImageView 这个控件，可以这样配置：
 ```
  <!--弧形图片，arc_height 为弧度的高度-->
