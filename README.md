@@ -199,6 +199,7 @@ https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com
         ..../>
 ```
 你可以通过这些属性，自由配置三角形，条状，或者只使用文字颜色变化，自定义属性的名字跟它的功能一样。
+三角形参考布局如下：https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/res/layout/activity_tritab_page.xml
 
 代码这样配置：
 ```
