@@ -2,8 +2,7 @@
 你是否有遇到这样的问题，每次开发一个新的项目，在 viewpager 这一块上，总是在做重复的东西，比如app引导页，轮播图，
 viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每个app都要的，而且很耗时，有没有每次在写这个，都很无语的感觉呢？
 
-基于上面这种情况，ViewPagerHelper 就诞生了。ViewPagerHelper 是一个能快速帮你的完成 app引导页，轮播，和viewpager 指示器的工具，
-内面内置了常用属性，满足你日常对油腻的师姐的一切幻想，解放你的双手，释放你的灵魂。。。。。
+最新版本: [![](https://jitpack.io/v/LillteZheng/ViewPagerHelper.svg)](https://jitpack.io/#LillteZheng/ViewPagerHelper)
 
 详细内容可以参考这篇博客：
 http://blog.csdn.net/u011418943/article/details/78493002
@@ -170,7 +169,7 @@ https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com
 
 ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rect.gif)
 
-**第三种，文字颜色渐变方式**
+**第三种，文字颜色渐变方式，加了滚动效果**
 
 ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/color.gif)
 
