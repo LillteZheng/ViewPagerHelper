@@ -373,6 +373,7 @@ TabIndicator 默认支持滚动，也可以设置不可滚动；
 |tab_text_default_color|color,reference|顶部文字默认的颜色|
 |tab_text_change_color|color,reference|移动时，顶部文字的颜色|
 |tap_type|tri,rect|指示器类型，有三角形或者圆条|
+|tab_iscanscroll|boolean|指示器是否支持滚动|
 
 
 
