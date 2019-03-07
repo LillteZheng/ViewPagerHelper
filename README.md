@@ -2,7 +2,7 @@
 你是否有遇到这样的问题，每次开发一个新的项目，在 viewpager 这一块上，总是在做重复的东西，比如app引导页，轮播图，
 viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每个app都要的，而且很耗时，有没有每次在写这个，都很无语的感觉呢？
 
-最新版本: [![](https://jitpack.io/v/LillteZheng/ViewPagerHelper.svg)](https://jitpack.io/#LillteZheng/ViewPagerHelper)
+[![](https://jitpack.io/v/LillteZheng/ViewPagerHelper.svg)](https://jitpack.io/#LillteZheng/ViewPagerHelper)
 
 详细内容可以参考这篇博客：
 http://blog.csdn.net/u011418943/article/details/78493002
@@ -21,7 +21,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-compile 'com.github.LillteZheng:ViewPagerHelper:v0.9'
+compile 'com.github.LillteZheng:ViewPagerHelper:v1.0'
 ```
 
 **版本迭代**
