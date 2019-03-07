@@ -72,6 +72,7 @@
             <enum name="tri" value="0"/>
             <enum name="rect" value="1"/>
         </attr>
+        <attr name="tab_iscanscroll" format="boolean"/>
     </declare-styleable>
 
     <!--文件渐变属性-->

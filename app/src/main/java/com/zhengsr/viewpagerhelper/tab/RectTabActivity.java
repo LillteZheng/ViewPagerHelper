@@ -18,8 +18,8 @@ import java.util.List;
 public class RectTabActivity extends AppCompatActivity {
     private List<Fragment> mFragments = new ArrayList<>();
     private List<String> mTitle = Arrays.asList("新闻","娱乐","学习",
-            "新闻","娱乐","学习",
-            "新闻","娱乐","学习");
+            "Java","Android","Python",
+            "天才","蠢材","庸才");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

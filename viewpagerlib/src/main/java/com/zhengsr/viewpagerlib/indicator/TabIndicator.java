@@ -11,10 +11,13 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
+import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.zhengsr.viewpagerlib.R;
@@ -27,7 +30,7 @@ import java.util.List;
  * Created by Administrator on 2017/10/21.
  */
 
-public class TabIndicator extends LinearLayout  {
+public class TabIndicator extends LinearLayout implements ViewPager.OnPageChangeListener {
     private static final String TAG = "zsr";
     /**
      * const
@@ -52,11 +55,16 @@ public class TabIndicator extends LinearLayout  {
     private int mLineTransX = 0; //移动的位置
     private int mTextType = 0;
     private boolean isShowTab = false;
+    private boolean isCanScroll = true; //是否能移动，默认为true
     /**
      * others
      */
     private Path mPath;
     private Paint mPaint;
+    private Scroller mScroller;
+    private float mSnap;
+    private float mDownX,mMoveX;
+    private float mLastMoveX;
 
     public TabIndicator(Context context) {
         this(context,null);
@@ -81,16 +89,22 @@ public class TabIndicator extends LinearLayout  {
 
         mTextType = ta.getInteger(R.styleable.TabIndicator_tab_text_type,1);
         isShowTab = ta.getBoolean(R.styleable.TabIndicator_tab_show,isShowTab);
+        isCanScroll = ta.getBoolean(R.styleable.TabIndicator_tab_iscanscroll,true);
         ta.recycle();
         initData();
 
     }
 
     private void initData() {
+        setClickable(true);
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setColor(getResources().getColor(mTriColor));
-        mPaint.setPathEffect(new CornerPathEffect(2)); //使三角形更加圆润
+
+        //实例一个 scroller
+        mScroller = new Scroller(getContext());
+        mSnap = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+
     }
 
     /**
@@ -109,6 +123,79 @@ public class TabIndicator extends LinearLayout  {
         super.dispatchDraw(canvas);
     }
 
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+        int count = getChildCount() ;
+        mRightBorder = getChildAt(count -1).getRight();
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        if (isCanScroll) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    mDownX = event.getRawX();
+                    mLastMoveX = mDownX;
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    mMoveX = event.getRawX();
+                    float dx = Math.abs(mMoveX - mDownX);
+                    mLastMoveX = mMoveX;
+                    if (dx > mSnap) {
+                        //可以移动了，屏蔽子控件，接着在 ontouchEvent 中去处理移动
+                        return true;
+                    }
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        return super.onInterceptTouchEvent(event);
+    }
+
+    private int mRightBorder ;
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (isCanScroll) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_MOVE:
+                    mMoveX = event.getRawX();
+                    int scrolledX = (int) (mLastMoveX - mMoveX);
+                    //边界判断
+                    if (getScrollX() + scrolledX < 0) {
+                        scrollTo(0, 0);
+                        return true;
+                    } else if (getScrollX() + getWidth() + scrolledX > mRightBorder) {
+                        scrollTo(mRightBorder - getWidth(), 0);
+                        return true;
+                    }
+                    scrollBy(scrolledX, 0);
+
+                    mLastMoveX = mMoveX;
+                    break;
+                case MotionEvent.ACTION_UP :
+                    invalidate();
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void computeScroll() {
+        //开始移动
+        if (mScroller.computeScrollOffset()){
+            scrollTo(mScroller.getCurrX(),0);
+            invalidate();
+        }
+    }
 
     @Override
     protected void onFinishInflate() {
@@ -128,6 +215,8 @@ public class TabIndicator extends LinearLayout  {
     public void setViewPagerSwitchSpeed(ViewPager viewPager,int time){
         ViewPagerHelperUtils.initSwitchTime(getContext(),viewPager,time);
     }
+
+
 
 
     /**
@@ -191,48 +280,15 @@ public class TabIndicator extends LinearLayout  {
             getChildAt(i).setOnClickListener(new OnClickListener() {
                @Override
                public void onClick(View view) {
-                   //算了，切换也公布出去吧
-                  // viewPager.setCurrentItem(finalI);
                    listener.onClick(finalI);
                }
            });
         }
 
         if (viewPager != null){
-            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                    onScroll(position,positionOffset);
-                }
-
-                @Override
-                public void onPageSelected(int position) {
-
-                    if (mTextType == NORMAL_TEXT) {
-                        for (int i = 0; i < getChildCount(); i++) {
-                            if (i == position) {
-                                TextView currentView = (TextView) getChildAt(position);
-                                if (currentView != null) {
-                                    currentView.setTextColor(mChangeColor);
-                                    ObjectAnimator alpha = ObjectAnimator.ofFloat(currentView, "alpha", 0.2f, 1);
-                                    alpha.setDuration(1000);
-                                    alpha.setInterpolator(new AccelerateDecelerateInterpolator());
-
-                                }
-                            } else {
-                                TextView lastview = (TextView) getChildAt(i);
-                                lastview.setTextColor(mDefaultColor);
-                            }
-                        }
-                    }
-
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int state) {
-                }
-            });
+            viewPager.addOnPageChangeListener(this);
         }
+
     }
 
 
@@ -248,6 +304,7 @@ public class TabIndicator extends LinearLayout  {
         int width = mWidth/mCount;
         if (mTabtyle == TRI_TAB){
             //画三角形
+            mPaint.setPathEffect(new CornerPathEffect(2)); //使三角形更加圆润
             mPath.moveTo((width - mTabWidth) / 2, mHeight);
             mPath.lineTo((width + mTabWidth) / 2, mHeight);
             mPath.lineTo(width / 2, mHeight - mTabHeight);
@@ -267,6 +324,37 @@ public class TabIndicator extends LinearLayout  {
 
 
 
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        onScroll(position,positionOffset);
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        if (mTextType == NORMAL_TEXT) {
+            for (int i = 0; i < getChildCount(); i++) {
+                if (i == position) {
+                    TextView currentView = (TextView) getChildAt(position);
+                    if (currentView != null) {
+                        currentView.setTextColor(mChangeColor);
+                        ObjectAnimator alpha = ObjectAnimator.ofFloat(currentView, "alpha", 0.2f, 1);
+                        alpha.setDuration(1000);
+                        alpha.setInterpolator(new AccelerateDecelerateInterpolator());
+
+                    }
+                } else {
+                    TextView lastview = (TextView) getChildAt(i);
+                    lastview.setTextColor(mDefaultColor);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
 
     private void onScroll(int position, float offset) {
         int tabWidth = getWidth()/mCount;

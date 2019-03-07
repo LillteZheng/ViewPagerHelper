@@ -26,6 +26,7 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v0.9'
 ```
 
 **版本迭代**
+- **v1.0  --> TabIndicator 支持滚动，app:tab_iscanscroll 默认true滚动，可设置不滚动**
 - **v0.9  --> 处理第一次轮播图 index 不对问题，优化代码**
 - **v0.8  --> 退出时自动关轮播，isOutVisiableWindow()方法，用于有滚动时，判断是否停止轮播**
 - **v0.5  --> 增加 banner_loop_max_count 变量，当数据大于这个数值时，才会填充多个数据和轮播**
@@ -160,18 +161,19 @@ https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com
 ## **2、Tab指示器**
 
 
-**第一种**
+**第一种,三角形版本**
 
-![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a0a3bc1cbf?w=388&h=611&f=gif&s=122502)
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/tri.gif)
 
 
-**第二种，条形状的版本**
+**第二种，条形状版本**
 
-![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a09d93c694?w=387&h=563&f=gif&s=297157)
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rect.gif)
 
-**第三种，文字颜色渐变的方式**
+**第三种，文字颜色渐变方式**
 
-![image](https://user-gold-cdn.xitu.io/2018/5/26/1639a4a1a5952402?w=379&h=576&f=gif&s=262083)
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/color.gif)
+
 
 这里的配置就更简单了，关键就是这个 TabIndicator 了，可以选择你想要的属性，上面三种效果都集中在 TabIndicator 了，详细可以下载demo查看。
 
@@ -199,6 +201,7 @@ https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com
         ..../>
 ```
 你可以通过这些属性，自由配置三角形，条状，或者只使用文字颜色变化，自定义属性的名字跟它的功能一样。
+TabIndicator 默认支持滚动，也可以设置不可滚动；
 三角形参考布局如下：https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/res/layout/activity_tritab_page.xml
 
 代码这样配置：
