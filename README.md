@@ -21,11 +21,11 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-compile 'com.github.LillteZheng:ViewPagerHelper:v1.0'
+compile 'com.github.LillteZheng:ViewPagerHelper:v1.3'
 ```
 
 **版本迭代**
-- **v1.0  --> TabIndicator 支持滚动，app:tab_iscanscroll 默认true滚动，可设置不滚动**
+- **v1.3  --> TabIndicator 支持滚动，app:tab_iscanscroll 默认true滚动，可设置不滚动**
 - **v0.9  --> 处理第一次轮播图 index 不对问题，优化代码**
 - **v0.8  --> 退出时自动关轮播，isOutVisiableWindow()方法，用于有滚动时，判断是否停止轮播**
 - **v0.5  --> 增加 banner_loop_max_count 变量，当数据大于这个数值时，才会填充多个数据和轮播**
