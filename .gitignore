@@ -12,3 +12,4 @@
  *.apk
 bin/
 gen/
+.gradle/
