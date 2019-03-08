@@ -2,11 +2,11 @@
 你是否有遇到这样的问题，每次开发一个新的项目，在 viewpager 这一块上，总是在做重复的东西，比如app引导页，轮播图，
 viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每个app都要的，而且很耗时，有没有每次在写这个，都很无语的感觉呢？
 
-[![](https://jitpack.io/v/LillteZheng/ViewPagerHelper.svg)](https://jitpack.io/#LillteZheng/ViewPagerHelper)
+[![](https://jitpack.io/v/LillteZheng/ViewPagerHelper.svg)](https://jitpack.io/#LillteZheng/ViewPagerHelpe
+[![](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-%E9%83%91%E5%B0%91%E9%94%90-green.svg)](https://blog.csdn.net/u011418943)
 
 详细内容可以参考这篇博客：
 http://blog.csdn.net/u011418943/article/details/78493002
-https://img.shields.io/badge/%E4%BD%9C%E8%80%85-%E9%83%91%E5%B0%91%E9%94%90-green.svg
 
 ## **How to use**
 这里用的是 jitpack 这个网站，所以：
