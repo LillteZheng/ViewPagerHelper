@@ -6,6 +6,7 @@ viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每�
 
 详细内容可以参考这篇博客：
 http://blog.csdn.net/u011418943/article/details/78493002
+https://img.shields.io/badge/%E4%BD%9C%E8%80%85-%E9%83%91%E5%B0%91%E9%94%90-green.svg
 
 ## **How to use**
 这里用的是 jitpack 这个网站，所以：
