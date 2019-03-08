@@ -167,7 +167,7 @@ https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com
 
 **第二种，条形状版本**
 
-![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rect.gif)
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rect2.gif)
 
 **第三种，文字颜色渐变方式，加了滚动效果**
 
