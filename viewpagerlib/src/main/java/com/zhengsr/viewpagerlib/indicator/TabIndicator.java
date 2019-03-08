@@ -65,6 +65,7 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     private float mSnap;
     private float mDownX,mMoveX;
     private float mLastMoveX;
+    private boolean isColorMove;
 
     public TabIndicator(Context context) {
         this(context,null);
@@ -174,7 +175,7 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
                         return true;
                     }
                     scrollBy(scrolledX, 0);
-
+                    isColorMove = true;
                     mLastMoveX = mMoveX;
                     break;
                 case MotionEvent.ACTION_UP :
@@ -201,10 +202,7 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     protected void onFinishInflate() {
         super.onFinishInflate();
         WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-
         mWidth = wm.getDefaultDisplay().getWidth();
-     
-
     }
 
     /**
@@ -281,6 +279,13 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
                @Override
                public void onClick(View view) {
                    listener.onClick(finalI);
+                   //在点击的时候，我们需要做一些处理
+                   int moveX = getScrollX();
+                   if (moveX < 1920) {
+                       mScroller.startScroll(0, 0,  0, 0);
+                       invalidate();
+                   }
+
                }
            });
         }
@@ -290,8 +295,6 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
         }
 
     }
-
-
 
 
 
@@ -367,11 +370,22 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
         if (mTextType == COLOR_TEXT) {
             if (offset >= 0) {
                 try {
+                    //避免移动之后，颜色不对问题
+                    if (isColorMove){
+                        int count = getChildCount();
+                        for (int i = 0; i < count; i++) {
+                            ColorTextView textView = (ColorTextView) getChildAt(i);
+                            textView.setTextColor(mDefaultColor);
+                        }
+                        ColorTextView textView = (ColorTextView) getChildAt(position);
+                        textView.setTextColor(mChangeColor);
+                        isColorMove = false;
+                    }
                     ColorTextView leftView = (ColorTextView) getChildAt(position);
                     ColorTextView rightView = (ColorTextView) getChildAt(position + 1);
-
                     leftView.setprogress(1 - offset, ColorTextView.DEC_RIGHT);
                     rightView.setprogress(offset, ColorTextView.DEC_LEFT);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
