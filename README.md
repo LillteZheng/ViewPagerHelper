@@ -1,6 +1,7 @@
 
 你是否有遇到这样的问题，每次开发一个新的项目，在 viewpager 这一块上，总是在做重复的东西，比如app引导页，轮播图，
 viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每个app都要的，而且很耗时，有没有每次在写这个，都很无语的感觉呢？
+基于这个，ViewPagerHleper 就诞生了，它可以快速帮你搞定 banner 轮播图，实现高级定制化，内置多种指示器，满足你的日常需求，妈妈再也不用担心我不会复制粘贴了。
 
 [![](https://jitpack.io/v/LillteZheng/ViewPagerHelper.svg)](https://jitpack.io/#LillteZheng/ViewPagerHelpe)
 [![](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-%E9%83%91%E5%B0%91%E9%94%90-green.svg)](https://blog.csdn.net/u011418943)
