@@ -23,10 +23,11 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-compile 'com.github.LillteZheng:ViewPagerHelper:v1.3'
+compile 'com.github.LillteZheng:ViewPagerHelper:v1.4'
 ```
 
 **版本迭代**
+- **v1.4  --> 添加ScaleImageView可缩放控件，可支持在viewpager等滑动控件中使用**
 - **v1.3  --> TabIndicator 支持滚动，app:tab_iscanscroll 默认true滚动，可设置不滚动**
 - **v0.9  --> 处理第一次轮播图 index 不对问题，优化代码**
 - **v0.8  --> 退出时自动关轮播，isOutVisiableWindow()方法，用于有滚动时，判断是否停止轮播**
@@ -56,6 +57,10 @@ compile 'com.github.LillteZheng:ViewPagerHelper:v1.3'
 **第四种**
 
 ![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif)
+
+**第五种,使用缩放控件**
+
+![image](https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/scale.gif)
 
 使用图片轮播，你需要以下几个步骤和需要注意的地方：
 
@@ -156,7 +161,20 @@ https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com
         app:arc_height="15dp"
         android:scaleType="centerCrop"/>
 ```
-
+如果你要使用缩放控件，可以用 ScaleImageView 这个控件，可以这样配置：
+```
+ <!--缩放图片控件，属性可参看最后面的说明-->
+<com.zhengsr.viewpagerlib.view.ScaleImageView
+    android:id="@+id/scaleview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:scale_double_factor="2"
+    app:scale_auto_time="5"
+    app:scale_autofit="true"
+    app:scale_max_factor="6"
+    app:scale_limit_board="true"
+    app:scale_interrupt_parent_touch="true"/>
+```
 
 ## **2、Tab指示器**
 
@@ -385,6 +403,17 @@ TabIndicator 默认支持滚动，也可以设置不可滚动；
 |colortext_default_color|reference,color|默认颜色|
 |colortext_change_color|reference,color|渐变颜色|
 
+
+**缩放控件 ScaleImageView**
+
+| 名称 | 类型 |说明 |
+|---|---|---|
+|scale_auto_time|reference,integer|双击时，达到放大的时间|
+|scale_limit_board|boolean|是否限制边界，即不能缩放到比控件小|
+|scale_autofit|boolean|自动适配缩放值，有些图片是正方形，如果你的高度没设定好，建议设置为false，不能会变形|
+|scale_double_factor|integer|双击时放大倍数|
+|scale_max_factor|integer|可放大的最大倍数|
+|scale_interrupt_parent_touch|boolean|是否截获父控件触摸事件，放大时，需要截取，不然无法移动|
 
 
 如果你有想要的效果，而本项目中没有的，你可以在 issue 中提出来，作者看到了，会抽空去实现的，

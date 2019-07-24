@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.zhengsr.viewpagerhelper.activity.LoopActivity;
 import com.zhengsr.viewpagerhelper.activity.NetWorkActivity;
+import com.zhengsr.viewpagerhelper.activity.ScaleImageActivity;
 import com.zhengsr.viewpagerhelper.activity.glide.GlideTransActivity;
 import com.zhengsr.viewpagerhelper.activity.glide.GlideZoomActivity;
 import com.zhengsr.viewpagerhelper.activity.glide.GlidenormalActivity;
@@ -86,5 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void test(View view) {
         startActivity(new Intent(this, NetWorkActivity.class));
+    }
+
+    public void scaleiamge(View view) {
+        startActivity(new Intent(this, ScaleImageActivity.class));
     }
 }
