@@ -70,8 +70,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
                     if (mCurrentIndex > LOOP_COUNT) {
                         mCurrentIndex = LOOP_COUNT / 2;
                     }
-                   // Log.d(TAG, "zsr --> handleMessage: "+mCurrentIndex);
-
+                    //Log.d(TAG, "zsr --> handleMessage: "+mCurrentIndex);
                     setCurrentItem(mCurrentIndex);
 
                     mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
@@ -102,6 +101,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         DisplayMetrics dm = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(dm);
         mScreentRect = new Rect(0,0,dm.widthPixels,dm.heightPixels);
+        setClipChildren(false);
     }
 
 
@@ -125,9 +125,11 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         setAdapter(adapter);
         setOffscreenPageLimit(3);
         if (isSlide) {
-            int index = ViewPagerHelperUtils.LOOP_COUNT/2 % bean.datas.size();
+            int radio = ViewPagerHelperUtils.LOOP_COUNT/2 % bean.datas.size();
+            int index = ViewPagerHelperUtils.LOOP_COUNT / 2 - radio +bean.datas.size();
+            Log.d(TAG, "zsr setPageListener: "+index+" "+radio);
             //这样能保证从第一页开始
-            setCurrentItem(ViewPagerHelperUtils.LOOP_COUNT / 2 - index +bean.datas.size());
+            setCurrentItem(index);
         }else{
             setCurrentItem(0);
         }
@@ -227,8 +229,8 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = mInflater.inflate(layoutid,null);
-
             if (isSlide) {
+                Log.d(TAG, "zsr instantiateItem: "+position);
                 this.listener.getItemView(view, this.list.get(position % this.list.size()));
             }else{
                 this.listener.getItemView(view,this.list.get(position));
@@ -267,7 +269,8 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     public boolean isOutVisiableWindow(){
         int[] pos = new int[2];
         this.getLocationOnScreen(pos);
-        boolean isOutVisiabel = pos[1] <= 0 || (pos[1] > (mScreentRect.height() - this.getHeight())); //超出屏幕
+        //超出屏幕
+        boolean isOutVisiabel = pos[1] <= 0 || (pos[1] > (mScreentRect.height() - this.getHeight()));
         return isOutVisiabel ;
     }
 
@@ -276,4 +279,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         super.detachAllViewsFromParent();
         mHandler.removeCallbacksAndMessages(null);
     }
+
+
 }

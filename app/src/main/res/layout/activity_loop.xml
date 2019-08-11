@@ -4,14 +4,33 @@
     android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#15000000"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
+
+        android:clipChildren="false"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="卡片版本"
+            android:textSize="20sp" />
+
+        <com.zhengsr.viewpagerlib.view.BannerViewPager
+            android:id="@+id/loop_viewpager_card"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipChildren="false"
+            zsr:banner_loop_max_count="5"
+            />
 
 
         <TextView
@@ -19,6 +38,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:padding="10dp"
+            android:layout_marginTop="20dp"
             android:text="放大版，自动轮播加魅族效果"
             android:textSize="20sp" />
 
@@ -52,8 +72,6 @@
 
 
         </FrameLayout>
-
-
 
         <TextView
             android:layout_width="match_parent"
@@ -138,6 +156,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
             android:layout_height="200dp">
 
             <com.zhengsr.viewpagerlib.view.BannerViewPager
@@ -159,7 +178,10 @@
                 />
         </FrameLayout>
 
-       
+
+
+
+
     </LinearLayout>
 
 </ScrollView>
