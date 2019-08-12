@@ -83,7 +83,7 @@ public class ZoomIndicator extends LinearLayout implements ViewPager.OnPageChang
 
     public void addPagerData(PageBean bean, ViewPager viewPager) {
         if (bean != null){
-            mCount = bean.datas.size();
+            mCount = bean.getParams().getDatas().size();
             //这里加小圆点
             for (int i = 0; i < mCount; i++) {
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -106,8 +106,8 @@ public class ZoomIndicator extends LinearLayout implements ViewPager.OnPageChang
                 addView(imageView);
             }
         }
-        if (bean.openview != null){
-            mOpenView = bean.openview;
+        if (bean.getParams().getOpenview() != null){
+            mOpenView = bean.getParams().getOpenview();
         }
         if (viewPager != null){
             viewPager.addOnPageChangeListener(this);

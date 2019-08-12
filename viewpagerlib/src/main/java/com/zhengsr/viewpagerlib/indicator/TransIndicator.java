@@ -107,12 +107,12 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
 
     public void addPagerData(PageBean bean, ViewPager viewPager){
         if (bean != null){
-            mCount = bean.datas.size();
+            mCount = bean.getParams().getDatas().size();
             if (mCount == 0){
                 return;
             }
 
-            mOpenView = bean.openview;
+            mOpenView = bean.getParams().getOpenview();
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(mLeftMargin,0,0,0);

@@ -72,8 +72,8 @@ public class NetWorkActivity extends AppCompatActivity {
                      @Override
                      public void accept(List<BannerBean> bannerBeans) throws Exception {
                          PageBean bean = new PageBean.Builder<BannerBean>()
-                                 .setDataObjects(bannerBeans)
-                                 .setIndicator(mTextIndicator)
+                                 .data(bannerBeans)
+                                 .indicator(mTextIndicator)
                                  .builder();
 
                          mBannerViewPager.setPageListener(bean, R.layout.loop_layout, new PageHelperListener<BannerBean>() {

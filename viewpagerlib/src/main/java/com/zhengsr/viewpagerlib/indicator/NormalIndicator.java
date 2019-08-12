@@ -65,7 +65,7 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
 
     public void addPagerData(PageBean bean, ViewPager viewPager){
         if (bean != null) {
-            mCount = bean.datas.size();
+            mCount = bean.getParams().getDatas().size();
             //这里加小圆点
             LayoutParams params = new
                     LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -88,8 +88,8 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
                 viewPager.addOnPageChangeListener(this);
             }
         }
-        if (bean.openview != null){
-            mOpenView = bean.openview;
+        if (bean.getParams().getOpenview() != null){
+            mOpenView = bean.getParams().getOpenview();
         }
     }
 

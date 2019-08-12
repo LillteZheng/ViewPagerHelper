@@ -19,16 +19,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.glide.GlideZoomActivity" />
-        <activity android:name=".activity.glide.GlideTransActivity" />
-        <activity android:name=".activity.glide.GlidenormalActivity" />
-        <activity android:name=".activity.LoopActivity" />
+        <activity android:name=".activity.guide.GlideZoomActivity" />
+        <activity android:name=".activity.guide.GlideTransActivity" />
+        <activity android:name=".activity.guide.GlidenormalActivity" />
+        <activity android:name=".activity.loop.LoopActivity" />
         <activity android:name=".tab.TabActivity" />
         <activity android:name=".tab.TriTabActivity" />
         <activity android:name=".tab.RectTabActivity" />
         <activity android:name=".tab.ColorTabActivity" />
         <activity android:name=".activity.NetWorkActivity" />
-        <activity android:name=".activity.ScaleImageActivity"></activity>
+        <activity android:name=".activity.ScaleImageActivity" />
+        <activity android:name=".activity.guide.GuideActivity" />
+        <activity android:name=".activity.loop.CardLoopActivity" />
+        <activity android:name=".activity.loop.MzLoopActivity"></activity>
     </application>
 
 </manifest>

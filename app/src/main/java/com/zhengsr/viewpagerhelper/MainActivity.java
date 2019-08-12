@@ -7,12 +7,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.zhengsr.viewpagerhelper.activity.LoopActivity;
+import com.zhengsr.viewpagerhelper.activity.loop.CardLoopActivity;
+import com.zhengsr.viewpagerhelper.activity.loop.LoopActivity;
 import com.zhengsr.viewpagerhelper.activity.NetWorkActivity;
 import com.zhengsr.viewpagerhelper.activity.ScaleImageActivity;
-import com.zhengsr.viewpagerhelper.activity.glide.GlideTransActivity;
-import com.zhengsr.viewpagerhelper.activity.glide.GlideZoomActivity;
-import com.zhengsr.viewpagerhelper.activity.glide.GlidenormalActivity;
+import com.zhengsr.viewpagerhelper.activity.guide.GuideActivity;
 import com.zhengsr.viewpagerhelper.tab.TabActivity;
 import com.zhengsr.viewpagerlib.view.ArcImageView;
 import com.zhengsr.viewpagerlib.view.ColorTextView;
@@ -37,17 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void glide(View view) {
-        startActivity(new Intent(this, GlidenormalActivity.class));
-    }
 
-    public void glide_tran(View view) {
-        startActivity(new Intent(this, GlideTransActivity.class));
-    }
-
-    public void glide_scale(View view) {
-        startActivity(new Intent(this, GlideZoomActivity.class));
-    }
 
 
     public void loop_max(View view) {
@@ -91,5 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void scaleiamge(View view) {
         startActivity(new Intent(this, ScaleImageActivity.class));
+    }
+
+    public void guide(View view) {
+        startActivity(new Intent(this, GuideActivity.class));
+
     }
 }

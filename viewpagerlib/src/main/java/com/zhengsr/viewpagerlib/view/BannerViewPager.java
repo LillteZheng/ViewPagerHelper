@@ -11,7 +11,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,12 +19,17 @@ import android.view.WindowManager;
 
 import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.ViewPagerHelperUtils;
+import com.zhengsr.viewpagerlib.anim.CardTransformer;
+import com.zhengsr.viewpagerlib.anim.DepthPageTransformer;
+import com.zhengsr.viewpagerlib.anim.MzTransformer;
+import com.zhengsr.viewpagerlib.anim.ZoomOutPageTransformer;
 import com.zhengsr.viewpagerlib.bean.PageBean;
 import com.zhengsr.viewpagerlib.callback.PageHelperListener;
 import com.zhengsr.viewpagerlib.indicator.NormalIndicator;
 import com.zhengsr.viewpagerlib.indicator.TextIndicator;
 import com.zhengsr.viewpagerlib.indicator.TransIndicator;
 import com.zhengsr.viewpagerlib.indicator.ZoomIndicator;
+import com.zhengsr.viewpagerlib.type.BannerTransType;
 
 import java.util.List;
 
@@ -44,16 +48,20 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
      * attrs
      */
     private int mLoopTime;
-    private boolean isLoop; //是否自动轮播
+    private boolean isAutoLoop; //是否自动轮播
     private int mSwitchTime;
-    private int mLoopMaxCount = 1;
-    private boolean isSlide; //是否可以轮播滑动
+    private int mLoopMaxCount = -1;
+    //private boolean isCanLoopMove; //是否可以轮播滑动
+
+    private int mCardHeigth;
+    private BannerTransType mBannerTransType;
     /**
      * others
      */
     private int mCurrentIndex;
     private LayoutInflater mInflater;
     private Rect mScreentRect;
+    private View mCurrentContent;
     /**
      * handle
      */
@@ -62,7 +70,8 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == LOOP_MSG){
-                if (isSlide) {
+                if (isAutoLoop) {
+                    isDataConfigFinish = true;
                     mCurrentIndex = getCurrentItem(); //重新获取index
                     if (mCurrentIndex >= LOOP_COUNT / 2) {
                         mCurrentIndex++;
@@ -81,6 +90,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     };
 
 
+
     public BannerViewPager(Context context) {
         this(context,null);
     }
@@ -88,10 +98,28 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     public BannerViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.BannerViewPager);
-        isLoop = ta.getBoolean(R.styleable.BannerViewPager_banner_isloop,false);
+        isAutoLoop = ta.getBoolean(R.styleable.BannerViewPager_banner_isAutoLoop,false);
         mLoopTime = ta.getInteger(R.styleable.BannerViewPager_banner_looptime,2000);
         mSwitchTime = ta.getInteger(R.styleable.BannerViewPager_banner_switchtime,600);
-        mLoopMaxCount = ta.getInteger(R.styleable.BannerViewPager_banner_loop_max_count,mLoopMaxCount);
+        mLoopMaxCount = ta.getInteger(R.styleable.BannerViewPager_banner_loop_max_count,-1);
+        mCardHeigth = ta.getDimensionPixelSize(R.styleable.BannerViewPager_banner_card_height,15);
+
+        /**
+         * 当允许的最大个数被设置时，isAutoLoop 应根据是否大于 mLoopMaxCount 来决定
+         */
+        if (mLoopMaxCount != -1){
+            isAutoLoop = false;
+        }
+
+        int type = ta.getInteger(R.styleable.BannerViewPager_banner_transformer,-1);
+        if (type != -1){
+            mBannerTransType = BannerTransType.values()[type];
+        }else{
+            mBannerTransType = BannerTransType.UNKNOWN;
+        }
+        //设置transformer
+        setTransformer(mBannerTransType, mCardHeigth);
+
         ta.recycle();
         mInflater = LayoutInflater.from(context);
         setOnTouchListener(this);
@@ -101,10 +129,31 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         DisplayMetrics dm = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(dm);
         mScreentRect = new Rect(0,0,dm.widthPixels,dm.heightPixels);
-        setClipChildren(false);
+
     }
 
 
+    private int getStartSelectItem(int readCount){
+        if(readCount == 0){
+            return 0;
+        }
+        if (isAutoLoop) {
+            int count = ViewPagerHelperUtils.LOOP_COUNT / 2;
+            // 我们设置当前选中的位置为Integer.MAX_VALUE / 2,这样开始就能往左滑动
+            // 但是要保证这个值与getRealPosition 的 余数为0，因为要从第一页开始显示
+            int currentItem = count;
+            if (count % readCount == 0) {
+                return currentItem;
+            }
+            // 直到找到从0开始的位置
+            while (currentItem % readCount != 0){
+                currentItem++;
+            }
+            return currentItem;
+        }else{
+            return 0;
+        }
+    }
 
 
 
@@ -114,52 +163,92 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
      * @param layoutid 子控件的 layout
      * @param listener 这里可以把 子控件的 layout 获得的view公布出去
      */
-    public void setPageListener(PageBean bean, int layoutid, PageHelperListener listener){
-        if (bean.datas.size() >= mLoopMaxCount){
-            isSlide = true;
-        }else{
-            isSlide = false;
+    public void setPageListener(final PageBean bean, int layoutid, final PageHelperListener listener){
+        final PageBean.Builder params = bean.getParams();
+        //动态配置参数
+        configParams(params);
+        if (mLoopMaxCount != -1 && params.getDatas().size() >= mLoopMaxCount){
+            isAutoLoop = true;
         }
-        CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(bean.datas,layoutid,listener);
+        CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(params.getDatas(),layoutid,listener);
         adapter.notifyDataSetChanged();
         setAdapter(adapter);
+        setCurrentItem(getStartSelectItem(params.getDatas().size()));
         setOffscreenPageLimit(3);
-        if (isSlide) {
-            int radio = ViewPagerHelperUtils.LOOP_COUNT/2 % bean.datas.size();
-            int index = ViewPagerHelperUtils.LOOP_COUNT / 2 - radio +bean.datas.size();
-            Log.d(TAG, "zsr setPageListener: "+index+" "+radio);
-            //这样能保证从第一页开始
-            setCurrentItem(index);
-        }else{
-            setCurrentItem(0);
-        }
-        if (bean.bottomLayout != null){
+        View indicator = params.getIndicator();
+        if (indicator != null){
             //选择不同的indicator
-            if (bean.bottomLayout instanceof NormalIndicator){
-                ((NormalIndicator) bean.bottomLayout).addPagerData(bean,this);
+            if (indicator instanceof NormalIndicator){
+                ((NormalIndicator)indicator).addPagerData(bean,this);
+            } if (indicator instanceof TransIndicator){
+                ((TransIndicator) indicator).addPagerData(bean,this);
+            } if (indicator instanceof ZoomIndicator){
+                ((ZoomIndicator) indicator).addPagerData(bean,this);
+            }if (indicator instanceof TextIndicator){
+                ((TextIndicator) indicator).addPagerData(bean,this);
             }
-            if (bean.bottomLayout instanceof TransIndicator){
-                ((TransIndicator) bean.bottomLayout).addPagerData(bean,this);
-            }
-            if (bean.bottomLayout instanceof ZoomIndicator){
-                ((ZoomIndicator) bean.bottomLayout).addPagerData(bean,this);
-            }
-            if (bean.bottomLayout instanceof TextIndicator){
-                ((TextIndicator) bean.bottomLayout).addPagerData(bean,this);
-            }
+
+        }else {
+            addOnPageChangeListener(new OnPageChangeListener() {
+
+                @Override
+                public void onPageScrolled(int i, float v, int i1) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    if (!isAutoLoop) {
+                        listener.getItemView(mCurrentContent,params.getDatas().get(position));
+                    }
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int i) {
+                }
+            });
         }
 
+
+    }
+
+    private void configParams(PageBean.Builder params) {
+        if (params.isUseCode()){
+            isAutoLoop = params.isAutoLoop();
+            if (params.getLoopMaxCount() != -1) {
+                mLoopMaxCount = params.getLoopMaxCount();
+                isAutoLoop = false;
+            }
+            if (params.getPagerSwitchTime() != -1) {
+                mSwitchTime = params.getPagerSwitchTime();
+            }
+            if (params.getLoopTime() != -1) {
+                mLoopTime = params.getLoopTime();
+            }
+            if (params.getCardHeight() != -1){
+                mCardHeigth = params.getCardHeight();
+            }
+            if (params.getBannerTransformer() != BannerTransType.UNKNOWN) {
+                mBannerTransType = params.getBannerTransformer();
+            }
+            setTransformer(mBannerTransType, mCardHeigth);
+        }
     }
 
     /**
      * 当有触摸时停止
      */
+    private boolean isDataConfigFinish = false;
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         mHandler.removeMessages(LOOP_MSG);
         switch (motionEvent.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                isDataConfigFinish = false;
+                break;
             case MotionEvent.ACTION_UP :
-                if (isLoop) {
+                isDataConfigFinish = true;
+                if (isAutoLoop) {
                     mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
                 }
                 break;
@@ -174,7 +263,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
      * 手动停止
      */
     public void stopAnim(){
-        if (isLoop) {
+        if (isAutoLoop) {
             mHandler.removeMessages(LOOP_MSG);
         }
     }
@@ -183,7 +272,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
      * 手动开始
      */
     public void startAnim(){
-        if (isLoop) {
+        if (isAutoLoop) {
 
             mHandler.removeMessages(LOOP_MSG);
             mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
@@ -192,6 +281,28 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         }
     }
 
+    /**
+     * 设置transformer
+     * @param transformer
+     */
+    private void setTransformer(BannerTransType transformer,int cardHeight) {
+        switch (transformer){
+            case CARD:
+                setPageTransformer(true,new CardTransformer(cardHeight));
+                break;
+            case MZ:
+                setPageTransformer(false,new MzTransformer());
+                break;
+            case ZOOM:
+                setPageTransformer(false,new ZoomOutPageTransformer());
+                break;
+            case DEPATH:
+                setPageTransformer(false,new DepthPageTransformer());
+                break;
+
+            default:break;
+        }
+    }
 
 
     /**
@@ -203,18 +314,16 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         List<T> list;
         int layoutid ;
 
-        public CusViewPagerAdapter(List<T> list,
-                                   @Nullable int layoutid,
-                                  PageHelperListener listener) {
+        public CusViewPagerAdapter(List<T> list, @Nullable int layoutId, PageHelperListener listener) {
             this.listener = listener;
             this.list = list;
-            this.layoutid = layoutid;
+            this.layoutid = layoutId;
 
         }
 
         @Override
         public int getCount() {
-            if (isSlide) {
+            if (isAutoLoop) {
                 return this.list.size() + ViewPagerHelperUtils.LOOP_COUNT;
             }else{
                 return this.list.size();
@@ -228,22 +337,36 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            View view = mInflater.inflate(layoutid,null);
-            if (isSlide) {
-                Log.d(TAG, "zsr instantiateItem: "+position);
-                this.listener.getItemView(view, this.list.get(position % this.list.size()));
-            }else{
-                this.listener.getItemView(view,this.list.get(position));
+            mCurrentContent = mInflater.inflate(layoutid,BannerViewPager.this,false);
+            final int index ;
+            int cacheSize = BannerViewPager.this.getOffscreenPageLimit();
+            if (cacheSize == list.size() - 1 && isDataConfigFinish){
+                if (position > ViewPagerHelperUtils.LOOP_COUNT /2){
+                    position ++;
+                }else{
+                    position --;
+                }
             }
-            container.addView(view,0);
-            return view;
+            index = position % list.size();
+            if (isAutoLoop) {
+                listener.getItemView(mCurrentContent, this.list.get(index));
+            }else{
+                listener.getItemView(mCurrentContent,this.list.get(position));
+            }
+            container.addView(mCurrentContent);
+            return mCurrentContent;
         }
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
         }
+
     }
+
+
+
+
 
     /**
      * 如果退出了，自动停止，进来则自动开始
@@ -252,9 +375,8 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     @Override
     protected void onWindowVisibilityChanged(int visibility) {
         super.onWindowVisibilityChanged(visibility);
-        if (isLoop){
+        if (isAutoLoop){
             if (visibility == View.VISIBLE){
-               // Log.d(TAG, "zsr --> onWindowVisibilityChanged: ");
                 startAnim();
             }else{
                stopAnim();
@@ -279,6 +401,5 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         super.detachAllViewsFromParent();
         mHandler.removeCallbacksAndMessages(null);
     }
-
 
 }

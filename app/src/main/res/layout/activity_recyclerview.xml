@@ -27,7 +27,7 @@
             android:id="@+id/recy_banner"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:banner_isloop="true"
+            app:banner_isAutoLoop ="true"
             app:banner_looptime="3000"
             app:banner_switchtime="600" />
 

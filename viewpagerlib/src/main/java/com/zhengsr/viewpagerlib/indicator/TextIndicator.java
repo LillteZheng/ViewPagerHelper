@@ -111,14 +111,14 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
 
     public void addPagerData(PageBean bean, ViewPager viewPager){
         if (bean != null) {
-            mCount = bean.datas.size();
+            mCount = bean.getParams().getDatas().size();
             mTextString = 1+"/"+mCount;
             if (viewPager != null){
                 viewPager.addOnPageChangeListener(this);
             }
         }
-        if (bean.openview != null){
-            mOpenView = bean.openview;
+        if (bean.getParams().getOpenview() != null){
+            mOpenView = bean.getParams().getOpenview();
         }
         invalidate();
 

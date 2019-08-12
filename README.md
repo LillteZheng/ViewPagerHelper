@@ -324,7 +324,7 @@ TabIndicator 默认支持滚动，也可以设置不可滚动；
 
 | 名称 | 类型 |说明 |
 |---|---|---|
-|banner_isloop|boolean|是否自动轮播|
+|banner_isAutoLoop|boolean|是否自动轮播|
 |banner_looptime|integer|轮播的时间|
 |banner_switchtime|integer|viewpager的切换速度|
 |banner_loop_max_count|integer|超过这个数字时，才会轮播效果|

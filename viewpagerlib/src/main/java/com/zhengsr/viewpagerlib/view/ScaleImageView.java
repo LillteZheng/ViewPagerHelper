@@ -199,7 +199,9 @@ public class ScaleImageView extends AppCompatImageView implements  ViewTreeObser
             //加0.01 是为了防止手指缩放导致的问题
             if (rectF.width() > (getWidth()+0.01) || rectF.height() > (getHeight()+0.01)){
                 //屏蔽viewpager的事件传递
-                getParent().requestDisallowInterceptTouchEvent(true);
+                if (getParent() != null) {
+                    getParent().requestDisallowInterceptTouchEvent(true);
+                }
             }
         }
     }

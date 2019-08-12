@@ -32,26 +32,22 @@ public class GlideViewPager extends ViewPager {
         mInflater = LayoutInflater.from(context);
     }
     public void setPageListener(PageBean bean, int layoutid, PageHelperListener listener){
-        CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(bean.datas,layoutid,listener);
+        CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(bean.getParams().getDatas(),layoutid,listener);
         setAdapter(adapter);
         setOffscreenPageLimit(3);
         setCurrentItem(0);
-        if (bean.bottomLayout != null){
+        View indicator = bean.getParams().getIndicator();
+        if (indicator != null){
             //选择不同的indicator
-            if (bean.bottomLayout instanceof NormalIndicator){
-                ((NormalIndicator) bean.bottomLayout).addPagerData(bean,this);
+            if (indicator instanceof NormalIndicator){
+                ((NormalIndicator)indicator).addPagerData(bean,this);
+            } if (indicator instanceof TransIndicator){
+                ((TransIndicator) indicator).addPagerData(bean,this);
+            } if (indicator instanceof ZoomIndicator){
+                ((ZoomIndicator) indicator).addPagerData(bean,this);
+            }if (indicator instanceof TextIndicator){
+                ((TextIndicator) indicator).addPagerData(bean,this);
             }
-            if (bean.bottomLayout instanceof TransIndicator){
-                ((TransIndicator) bean.bottomLayout).addPagerData(bean,this);
-            }
-            if (bean.bottomLayout instanceof ZoomIndicator){
-                ((ZoomIndicator) bean.bottomLayout).addPagerData(bean,this);
-            }
-            if (bean.bottomLayout instanceof TextIndicator){
-                ((TextIndicator) bean.bottomLayout).addPagerData(bean,this);
-            }
-
-
         }
     }
 

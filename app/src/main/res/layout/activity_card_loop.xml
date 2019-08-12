@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7ec6e7"
+    tools:context="com.zhengsr.viewpagerhelper.activity.loop.CardLoopActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:clipChildren="false"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="卡片版本"
+            android:textSize="20sp" />
+
+        <com.zhengsr.viewpagerlib.view.BannerViewPager
+            android:id="@+id/loop_viewpager_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:layout_marginBottom="20dp"
+            />
+
+    </LinearLayout>
+
+
+</FrameLayout>

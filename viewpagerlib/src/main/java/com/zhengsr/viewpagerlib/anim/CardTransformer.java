@@ -10,17 +10,25 @@ import android.view.View;
  * Describe: 卡片式viewpager
  */
 public class CardTransformer implements ViewPager.PageTransformer {
-    private float mScaleRadio = 40;
+    private float mCardHeight = 10;
+
+    public CardTransformer(float cardheight) {
+        this.mCardHeight = cardheight;
+    }
+
     @Override
     public void transformPage(@NonNull View view, float position) {
         if (position <= 0){
             view.setTranslationX(0f);
+            view.setClickable(true);
         }else {
             view.setTranslationX(-view.getWidth() * position);
-            float scale = (view.getWidth() - mScaleRadio * position) / view.getWidth();
+            float scale = (view.getWidth() - mCardHeight * position) / view.getWidth();
             view.setScaleX(scale);
             view.setScaleY(scale);
-            view.setTranslationY(mScaleRadio * position);
+            view.setClickable(false);
+            view.setTranslationY(mCardHeight * position);
         }
+
     }
 }
