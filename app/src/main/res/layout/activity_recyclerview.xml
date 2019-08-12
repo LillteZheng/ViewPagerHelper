@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zhengsr.viewpagerhelper.activity.NetWorkActivity"
+    tools:context="com.zhengsr.viewpagerhelper.activity.loop.NetWorkActivity"
     android:orientation="vertical">
 
     <FrameLayout
@@ -17,6 +17,11 @@
             android:text="正在加载...."
             android:gravity="center"/>
     </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <FrameLayout
         android:layout_width="match_parent"

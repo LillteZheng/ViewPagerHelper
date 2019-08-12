@@ -45,6 +45,7 @@ public class CardLoopActivity extends AppCompatActivity {
                 .loopTime(4000)
                 .data(beans)
                 .cardHeight(30)
+                .cycle(true)
                 .bannerTransformer(BannerTransType.CARD)
                 .builder();
 

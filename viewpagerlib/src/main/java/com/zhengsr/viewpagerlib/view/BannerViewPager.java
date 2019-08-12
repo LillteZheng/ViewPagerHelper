@@ -11,6 +11,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,6 +50,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
      */
     private int mLoopTime;
     private boolean isAutoLoop; //是否自动轮播
+    private boolean isCycle; //是否填充循环
     private int mSwitchTime;
     private int mLoopMaxCount = -1;
     //private boolean isCanLoopMove; //是否可以轮播滑动
@@ -103,12 +105,10 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         mSwitchTime = ta.getInteger(R.styleable.BannerViewPager_banner_switchtime,600);
         mLoopMaxCount = ta.getInteger(R.styleable.BannerViewPager_banner_loop_max_count,-1);
         mCardHeigth = ta.getDimensionPixelSize(R.styleable.BannerViewPager_banner_card_height,15);
+        isCycle = ta.getBoolean(R.styleable.BannerViewPager_banner_iscycle,false);
 
-        /**
-         * 当允许的最大个数被设置时，isAutoLoop 应根据是否大于 mLoopMaxCount 来决定
-         */
         if (mLoopMaxCount != -1){
-            isAutoLoop = false;
+            isCycle = false;
         }
 
         int type = ta.getInteger(R.styleable.BannerViewPager_banner_transformer,-1);
@@ -137,7 +137,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         if(readCount == 0){
             return 0;
         }
-        if (isAutoLoop) {
+        if (isCycle) {
             int count = ViewPagerHelperUtils.LOOP_COUNT / 2;
             // 我们设置当前选中的位置为Integer.MAX_VALUE / 2,这样开始就能往左滑动
             // 但是要保证这个值与getRealPosition 的 余数为0，因为要从第一页开始显示
@@ -168,12 +168,14 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         //动态配置参数
         configParams(params);
         if (mLoopMaxCount != -1 && params.getDatas().size() >= mLoopMaxCount){
-            isAutoLoop = true;
+            isCycle = true;
         }
         CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(params.getDatas(),layoutid,listener);
         adapter.notifyDataSetChanged();
         setAdapter(adapter);
-        setCurrentItem(getStartSelectItem(params.getDatas().size()));
+        int startSelectItem = getStartSelectItem(params.getDatas().size());
+        Log.d(TAG, "zsr setPageListener: "+mLoopMaxCount+" "+isCycle+" "+startSelectItem);
+        setCurrentItem(startSelectItem);
         setOffscreenPageLimit(3);
         View indicator = params.getIndicator();
         if (indicator != null){
@@ -198,8 +200,9 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
 
                 @Override
                 public void onPageSelected(int position) {
-                    if (!isAutoLoop) {
-                        listener.getItemView(mCurrentContent,params.getDatas().get(position));
+                    Log.d(TAG, "zsr onPageSelected: "+position);
+                    if (!isCycle) {
+                        listener.getItemView(mCurrentContent,params.getDatas().get(position%params.getDatas().size()));
                     }
                 }
 
@@ -215,9 +218,10 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     private void configParams(PageBean.Builder params) {
         if (params.isUseCode()){
             isAutoLoop = params.isAutoLoop();
+            isCycle = params.isCycle();
             if (params.getLoopMaxCount() != -1) {
                 mLoopMaxCount = params.getLoopMaxCount();
-                isAutoLoop = false;
+                isCycle = false;
             }
             if (params.getPagerSwitchTime() != -1) {
                 mSwitchTime = params.getPagerSwitchTime();
@@ -273,7 +277,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
      */
     public void startAnim(){
         if (isAutoLoop) {
-
             mHandler.removeMessages(LOOP_MSG);
             mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
 
@@ -323,7 +326,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
 
         @Override
         public int getCount() {
-            if (isAutoLoop) {
+            if (isCycle) {
                 return this.list.size() + ViewPagerHelperUtils.LOOP_COUNT;
             }else{
                 return this.list.size();
@@ -339,18 +342,21 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         public Object instantiateItem(ViewGroup container, int position) {
             mCurrentContent = mInflater.inflate(layoutid,BannerViewPager.this,false);
             final int index ;
-            int cacheSize = BannerViewPager.this.getOffscreenPageLimit();
-            if (cacheSize == list.size() - 1 && isDataConfigFinish){
-                if (position > ViewPagerHelperUtils.LOOP_COUNT /2){
-                    position ++;
-                }else{
-                    position --;
+            /*if (isCycle) {
+                int cacheSize = BannerViewPager.this.getOffscreenPageLimit();
+                if (cacheSize == list.size() - 1 && isDataConfigFinish) {
+                    if (position > ViewPagerHelperUtils.LOOP_COUNT / 2) {
+                        position++;
+                    } else {
+                        position--;
+                    }
                 }
-            }
+            }*/
             index = position % list.size();
-            if (isAutoLoop) {
+            if (isCycle) {
                 listener.getItemView(mCurrentContent, this.list.get(index));
             }else{
+                position = position % list.size();
                 listener.getItemView(mCurrentContent,this.list.get(position));
             }
             container.addView(mCurrentContent);

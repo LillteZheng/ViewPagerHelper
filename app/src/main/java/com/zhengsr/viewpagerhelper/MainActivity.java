@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.zhengsr.viewpagerhelper.activity.loop.CardLoopActivity;
 import com.zhengsr.viewpagerhelper.activity.loop.LoopActivity;
-import com.zhengsr.viewpagerhelper.activity.NetWorkActivity;
-import com.zhengsr.viewpagerhelper.activity.ScaleImageActivity;
+import com.zhengsr.viewpagerhelper.activity.loop.NetWorkActivity;
+import com.zhengsr.viewpagerhelper.activity.loop.ScaleImageActivity;
 import com.zhengsr.viewpagerhelper.activity.guide.GuideActivity;
 import com.zhengsr.viewpagerhelper.tab.TabActivity;
 import com.zhengsr.viewpagerlib.view.ArcImageView;

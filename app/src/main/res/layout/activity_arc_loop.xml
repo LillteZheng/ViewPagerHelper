@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
     android:orientation="vertical"
-    tools:context="com.zhengsr.viewpagerhelper.activity.loop.MzLoopActivity">
+    tools:context="com.zhengsr.viewpagerhelper.activity.loop.ArcLoopActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:padding="10dp"
-        android:text="放大版，自动轮播加魅族效果"
+        android:text="放大版，弧形不轮播加魅族效果"
         android:textSize="20sp" />
 
     <FrameLayout
@@ -23,20 +21,18 @@
         android:clipChildren="false">
 
         <com.zhengsr.viewpagerlib.view.BannerViewPager
-            android:id="@+id/loop_viewpager_mz"
+            android:id="@+id/loop_viewpager_arc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            app:banner_isAutoLoop="true"
-            app:banner_looptime="3000"
+            app:banner_isAutoLoop="false"
             app:banner_transformer="mz"
-            app:banner_iscycle="true"
             app:banner_switchtime="600" />
 
         <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
-            android:id="@+id/scale_indicator"
-            android:layout_width="wrap_content"
+            android:id="@+id/bottom_zoom_arc"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="bottom|right"
             android:layout_marginRight="20dp"
@@ -44,9 +40,8 @@
             app:zoom_alpha_min="0.5"
             app:zoom_leftmargin="10dp"
             app:zoom_max="1.5"
-            />
-
+            app:zoom_selector="@drawable/bottom_circle" />
     </FrameLayout>
 
 
-</LinearLayout>
+</android.support.v7.widget.LinearLayoutCompat>

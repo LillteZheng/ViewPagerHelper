@@ -32,6 +32,7 @@ public class PageBean {
         private int pagerSwitchTime = -1;
         private int cardHeight = -1;
         private int loopMaxCount = -1;
+        private boolean isCycle;
         private BannerTransType bannerTransformer = BannerTransType.UNKNOWN;
 
         public Builder indicator(View bottomLayout){
@@ -40,6 +41,11 @@ public class PageBean {
         }
         public Builder openView(View openView){
             this.openview = openView;
+            return this;
+        }
+
+        public Builder cycle(boolean isCycle){
+            this.isCycle = isCycle;
             return this;
         }
 
@@ -126,6 +132,10 @@ public class PageBean {
 
         public int getCardHeight() {
             return cardHeight;
+        }
+
+        public boolean isCycle() {
+            return isCycle;
         }
     }
 

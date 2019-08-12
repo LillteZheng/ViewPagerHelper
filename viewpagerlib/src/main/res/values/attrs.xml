@@ -47,6 +47,7 @@
         <attr name="banner_loop_max_count" format="integer"/> <!--超过这个数字时，才会轮播效果-->
         <attr name="banner_isAutoLoop" format="boolean"/> <!--是否自动轮播-->
         <attr name="banner_card_height" format="integer|dimension"/>
+        <attr name="banner_iscycle" format="boolean"/> <!--是否循环-->
         <attr name="banner_transformer">
             <enum name="card" value="0"/>
             <enum name="mz" value="1"/>

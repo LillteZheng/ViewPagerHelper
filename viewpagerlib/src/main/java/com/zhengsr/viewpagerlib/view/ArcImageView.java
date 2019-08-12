@@ -49,9 +49,7 @@ public class ArcImageView extends ImageView {
         mPaint.setAntiAlias(true);
         mPath = new Path();
 
-
-
-
+        setScaleType(ScaleType.MATRIX);
     }
 
     @Override
@@ -101,8 +99,6 @@ public class ArcImageView extends ImageView {
         mPath.moveTo(0,0);
         mPath.addRect(0,0,width,height -mArcHeight, Path.Direction.CW);
 
-
-
         mPath.moveTo(0, height - mArcHeight);
         mPath.quadTo(width / 2, height + mArcHeight, width, height - mArcHeight);
         setMeasuredDimension(width, height);
@@ -145,5 +141,8 @@ public class ArcImageView extends ImageView {
         }
         return result;
     }
-    
+
+    public void setArcHeight(int mArcHeight) {
+        this.mArcHeight = mArcHeight;
+    }
 }

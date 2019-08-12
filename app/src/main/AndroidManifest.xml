@@ -27,11 +27,13 @@
         <activity android:name=".tab.TriTabActivity" />
         <activity android:name=".tab.RectTabActivity" />
         <activity android:name=".tab.ColorTabActivity" />
-        <activity android:name=".activity.NetWorkActivity" />
-        <activity android:name=".activity.ScaleImageActivity" />
+        <activity android:name=".activity.loop.NetWorkActivity" />
+        <activity android:name=".activity.loop.ScaleImageActivity" />
         <activity android:name=".activity.guide.GuideActivity" />
         <activity android:name=".activity.loop.CardLoopActivity" />
-        <activity android:name=".activity.loop.MzLoopActivity"></activity>
+        <activity android:name=".activity.loop.MzLoopActivity" />
+        <activity android:name=".activity.loop.ArcLoopActivity" />
+        <activity android:name=".activity.loop.RectTextLoopActivity"></activity>
     </application>
 
 </manifest>

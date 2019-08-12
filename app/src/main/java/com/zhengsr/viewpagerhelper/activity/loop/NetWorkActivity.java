@@ -1,4 +1,4 @@
-package com.zhengsr.viewpagerhelper.activity;
+package com.zhengsr.viewpagerhelper.activity.loop;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bumptech.glide.Glide;
 import com.zhengsr.viewpagerhelper.GlideApp;
 import com.zhengsr.viewpagerhelper.R;
 import com.zhengsr.viewpagerhelper.bean.BannerBean;
@@ -94,6 +95,11 @@ public class NetWorkActivity extends AppCompatActivity {
                  });
 
     }
+
+    class ImageBean{
+
+    }
+
 
 
 }
