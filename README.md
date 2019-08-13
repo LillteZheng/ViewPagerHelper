@@ -63,8 +63,8 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.5'
     <th>卡片效果</th>
   </tr>
    <tr>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/scale.gif" align="left" height="200" width="340"></a></td>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/card.gif" align="left" height="200" width="340" ></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/scale.gif" align="left" height="480" width="340"></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/card.gif" align="left" height="480" width="340" ></a></td>
   </tr>
 
 </table>
@@ -91,27 +91,6 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.5'
 [Tab指示器使用说明](https://github.com/LillteZheng/ViewPagerHelper/edit/master/README_TAB.md)
 
 
-你可以通过这些属性，自由配置三角形，条状，或者只使用文字颜色变化，自定义属性的名字跟它的功能一样。
-TabIndicator 默认支持滚动，也可以设置不可滚动；
-三角形参考布局如下：https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/res/layout/activity_tritab_page.xml
-
-代码这样配置：
-```
-    /**
-     * 把 TabIndicator 跟viewpager关联起来
-     */
-    TabIndicator tabIndecator = (TabIndicator) findViewById(R.id.line_indicator);
-    // 设置 viewpager的切换速度，这样点击的时候比较自然
-    tabIndecator.setViewPagerSwitchSpeed(viewPager,600);
-    tabIndecator.setTabData(viewPager,mTitle, new TabIndicator.TabClickListener() {
-        @Override
-        public void onClick(int position) {
-            //顶部点击的方法公布出来
-            viewPager.setCurrentItem(position);
-        }
-    });
-```
-这样，一个比较好用的viewpager 加指示器的方式就完成了。
 
 ### app 启动引导页
 
