@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zhengsr.viewpagerhelper.GlideApp;
 import com.zhengsr.viewpagerhelper.R;
@@ -37,6 +38,7 @@ public class MzLoopActivity extends AppCompatActivity {
         BannerViewPager bannerViewPager = findViewById(R.id.loop_viewpager_mz);
         ZoomIndicator zoomIndicator = findViewById(R.id.scale_indicator);
         List<MzBean> beans = new ArrayList<>();
+        //配置数据，这里是resid和text
         for (int i = 0; i < TEXT.length; i++) {
             MzBean bean = new MzBean();
             bean.resId = RESID[i];
@@ -44,24 +46,36 @@ public class MzLoopActivity extends AppCompatActivity {
             beans.add(bean);
         }
 
+        /**
+         * PageBean 必填，记得泛型写上自己的类型
+         */
         PageBean pageBean = new PageBean.Builder<MzBean>()
                 .data(beans)
                 .indicator(zoomIndicator)
                 .builder();
 
+        /**
+         * 可以在 PageHelperListener 写上泛型，这样就可以直接拿到数据了
+         */
         bannerViewPager.setPageListener(pageBean, R.layout.loop_layout, new PageHelperListener<MzBean>() {
 
             @Override
-            public void getItemView(View view, MzBean data) {
+            public void getItemView(View view, final MzBean data) {
                 ImageView imageView = view.findViewById(R.id.loop_icon);
                 GlideApp.with(view)
                         .load(data.resId)
                         .into(imageView);
                 TextView textView = view.findViewById(R.id.loop_text);
                 textView.setText(data.msg);
+
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MzLoopActivity.this, data.msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
-
 
     }
 

@@ -24,6 +24,15 @@ public class ScaleImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scale_image);
+
+        ScaleImageView imageView = findViewById(R.id.scaleimageview);
+        //配置参数
+        imageView.autoScaleTime(5)
+                .limitBroad(false)
+                .doubleFactor(2)
+                .maxFactor(4)
+                .autoFit(true);
+
         ViewPager viewPager = findViewById(R.id.viewpager);
 
         for (int i = 0; i < mRes.length; i++) {

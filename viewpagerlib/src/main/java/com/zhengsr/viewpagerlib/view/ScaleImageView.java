@@ -361,6 +361,65 @@ public class ScaleImageView extends AppCompatImageView implements  ViewTreeObser
         }
 
         mMatrix.postTranslate(dx,dy);
+    }
 
+    /**
+     * 配置参数
+     * @param time
+     * @return
+     */
+    /**
+     * 双击时的缩放时间
+     * @param time
+     * @return
+     */
+    public ScaleImageView autoScaleTime(int time){
+        mDoubleAutoTime = time;
+        return this;
+    }
+
+    /**
+     * 限制边界
+     * @param isLimit
+     * @return
+     */
+    public ScaleImageView limitBroad(boolean isLimit){
+        mIsLimitBroad = isLimit;
+        return this;
+    }
+
+    /**
+     * 自动适配缩放值，有些图片是正方形，如果你的高度没设定好，建议设置为false，不能会变形
+     * @param autofit
+     * @return
+     */
+    public ScaleImageView autoFit(boolean autofit){
+        mIsAutoFit = autofit;
+        return this;
+    }
+
+    /**
+     * 双击放大倍数
+     * @param factor
+     * @return
+     */
+    public ScaleImageView doubleFactor(int factor){
+        mDoubleFactor = factor;
+        return this;
+    }
+
+    /**
+     * 可放大的最大倍数
+     * @param factor
+     * @return
+     */
+    public ScaleImageView maxFactor(int factor){
+        mScaleMaxFactor = factor;
+        return this;
+    }
+
+    public ScaleImageView disPatchParentTouch(boolean touch){
+        mRequestParentTouch = touch;
+        return this;
     }
 }

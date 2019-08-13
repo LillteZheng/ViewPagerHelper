@@ -1,7 +1,9 @@
 package com.zhengsr.viewpagerhelper.activity.loop;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -30,7 +32,8 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class NetWorkActivity extends AppCompatActivity {
-    private static final String WANANDROID_BANNER = "http://www.wanandroid.com/banner/json";
+    private static final String TAG = "NetWorkActivity";
+    private static final String WANANDROID_BANNER = "https://www.wanandroid.com/banner/json";
     private FrameLayout mFrameLayout;
     private BannerViewPager mBannerViewPager;
     private TextIndicator mTextIndicator;
@@ -44,15 +47,15 @@ public class NetWorkActivity extends AppCompatActivity {
 
     private void initView() {
         mFrameLayout = findViewById(R.id.content);
-
-        mBannerViewPager = (BannerViewPager) findViewById(R.id.recy_banner);
-        mTextIndicator = (TextIndicator) findViewById(R.id.recy_text_indicator);
+        mBannerViewPager =  findViewById(R.id.recy_banner);
+        mTextIndicator = findViewById(R.id.recy_text_indicator);
 
 
         loadBannerData();
     }
 
 
+    @SuppressLint("CheckResult")
     public void loadBannerData(){
         Observable<String> observable = new RxNetClient.Builder()
                 .setUrl(WANANDROID_BANNER)
@@ -99,7 +102,6 @@ public class NetWorkActivity extends AppCompatActivity {
     class ImageBean{
 
     }
-
 
 
 }

@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -128,9 +129,7 @@ public class ZoomIndicator extends LinearLayout implements ViewPager.OnPageChang
 
     @Override
     public void onPageSelected(int position) {
-      /*  viewPagerSeleted(mBannerStyle.getRealPosition(mMode,position));
         //用于glide是否显示 openview
-        mBannerStyle.getPageSeleted(position);*/
         showStartView(position%mCount);
         viewPagerSeleted(position%mCount);
     }
@@ -218,8 +217,34 @@ public class ZoomIndicator extends LinearLayout implements ViewPager.OnPageChang
 
         animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
         animatorSet.start();
-
     }
 
+
+    /**
+     * 配置selector
+     * @param selector
+     * @return
+     */
+    public ZoomIndicator selector(int selector){
+        mSelector = selector;
+        return this;
+    }
+    public ZoomIndicator selectorMargin(int margin){
+        mLeftMargin = margin;
+        return this;
+    }
+    public ZoomIndicator zoomMax(int max){
+        mScale_max = max;
+        return this;
+    }
+
+    public ZoomIndicator zoomMin(int min){
+        mAlpha_min = min;
+        return this;
+    }
+    public ZoomIndicator dismissWhenOpen(boolean dismiss){
+        mDismissOpen = dismiss;
+        return this;
+    }
 
 }

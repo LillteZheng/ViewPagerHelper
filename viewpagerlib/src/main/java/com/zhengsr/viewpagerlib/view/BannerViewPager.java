@@ -285,7 +285,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     }
 
     /**
-     * 设置transformer
+     * 设置trnsformer
      * @param transformer
      */
     private void setTransformer(BannerTransType transformer,int cardHeight) {

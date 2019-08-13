@@ -73,13 +73,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void test(View view) {
-        startActivity(new Intent(this, NetWorkActivity.class));
-    }
-
-    public void scaleiamge(View view) {
-        startActivity(new Intent(this, ScaleImageActivity.class));
-    }
 
     public void guide(View view) {
         startActivity(new Intent(this, GuideActivity.class));

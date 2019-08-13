@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ViewPagerHelper.iml" filepath="$PROJECT_DIR$/.idea/ViewPagerHelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ViewPagerHelper.iml" filepath="$PROJECT_DIR$/ViewPagerHelper.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/viewpagerlib/viewpagerlib.iml" filepath="$PROJECT_DIR$/viewpagerlib/viewpagerlib.iml" />
     </modules>

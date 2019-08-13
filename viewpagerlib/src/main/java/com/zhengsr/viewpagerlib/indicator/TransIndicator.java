@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 
 import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.bean.PageBean;
+import com.zhengsr.viewpagerlib.type.TransType;
 
 
 /**
@@ -31,11 +32,7 @@ import com.zhengsr.viewpagerlib.bean.PageBean;
 public class TransIndicator extends LinearLayout implements ViewPager.OnPageChangeListener {
     private static final String TAG = "zsr";
 
-    /**
-     * const
-     */
-    private static final int TRANS_CIRCLE = 0;
-    private static final int TRANS_ROUND = 1;
+
 
     /**
      * ui
@@ -64,7 +61,7 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
     private int mDefaultcolor = 0xb0cccccc;
     private int mMovecolor = 0xffffff;
     private boolean mDismissOpen; //是否隐藏底部指示器，当“立即体验”的view 出现的时候。
-    private int mTransType;
+    private TransType mTransType;
     private int mRoundRadius;
 
     public TransIndicator(Context context) {
@@ -88,7 +85,12 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
         mMovecolor = ta.getColor(R.styleable.TransIndicator_trans_movecolor,
                mMovecolor);
         mDismissOpen = ta.getBoolean(R.styleable.TransIndicator_trans_dismiss_open,false);
-        mTransType = ta.getInteger(R.styleable.TransIndicator_trans_type,TRANS_CIRCLE);
+        int type = ta.getInteger(R.styleable.TransIndicator_trans_type,0);
+        if (type == 0){
+            mTransType = TransType.TRANS_ROUND;
+        }else{
+            mTransType = TransType.TRANS_CIRCLE;
+        }
         mRoundRadius = ta.getDimensionPixelSize(R.styleable.TransIndicator_trans_round_radius,7);
         ta.recycle();
 
@@ -117,7 +119,7 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(mLeftMargin,0,0,0);
             GradientDrawable drawable = new GradientDrawable();
-            if (mTransType == TRANS_ROUND) {
+            if (mTransType == TransType.TRANS_ROUND) {
                 drawable.setShape(GradientDrawable.RECTANGLE);
                 drawable.setSize(mTransWidht, mTransHeight);
                 drawable.setCornerRadius(mRoundRadius);
@@ -237,7 +239,7 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
 
         // 获取到第一个小圆点的坐标，并重绘
         int firstViewX = mFirstPosition[0] - pos[0];
-        if (mTransType == TRANS_CIRCLE) {
+        if (mTransType == TransType.TRANS_CIRCLE) {
             mPath.addCircle(firstViewX + mTransWidht, getHeight() / 2,
                     mTransWidht, Path.Direction.CW);
         }else{
@@ -249,6 +251,42 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
             mPath.addRoundRect(rectF,mRoundRadius,mRoundRadius,Path.Direction.CW);
         }
 
+    }
+
+    public TransIndicator transWidth(int size){
+        mTransWidht = size;
+        return this;
+    }
+    public TransIndicator transHeight(int size){
+        mTransHeight = size;
+        return this;
+    }
+    public TransIndicator defaultColor(int color){
+        mDefaultcolor = color;
+        return this;
+    }
+    public TransIndicator moveColor(int color){
+        mMovecolor = color;
+        return this;
+    }
+    public TransIndicator transMargin(int size){
+        mLeftMargin = size;
+        return this;
+    }
+
+    public TransIndicator rectradius(int size){
+        mRoundRadius = size;
+        return this;
+    }
+
+    public TransIndicator transType(TransType transType){
+        mTransType = transType;
+        return this;
+    }
+
+    public TransIndicator dismissWhenOpen(boolean dismiss){
+        mDismissOpen = dismiss;
+        return this;
     }
 
 

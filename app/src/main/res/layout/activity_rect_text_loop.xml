@@ -14,7 +14,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:padding="10dp"
-        android:text="矩形版，不自动轮播"
+        android:text="矩形版，已填充循环"
         android:textSize="20sp" />
 
     <FrameLayout

@@ -15,14 +15,10 @@
         android:text="双击和多指可缩放"/>
 
     <com.zhengsr.viewpagerlib.view.ScaleImageView
+        android:id="@+id/scaleimageview"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="10dp"
-        app:scale_limit_board="false"
-        app:scale_max_factor="5"
-        app:scale_autofit="true"
-        app:scale_auto_time="5"
-        app:scale_double_factor="2"
         android:src="@mipmap/beauty1"/>
 
     <android.support.v4.view.ViewPager

@@ -40,7 +40,9 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
     private View mOpenView;
     private int mRadius;
     private String mTextString = "";
-
+    private int mCircleColor;
+    private int mTextcolor;
+    private int mTextsize;
 
 
     public TextIndicator(Context context) {
@@ -56,22 +58,22 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TextIndicator);
         mShowCircle = ta.getBoolean(R.styleable.TextIndicator_word_show_circle,false);
-        int circleColor = ta.getResourceId(R.styleable.TextIndicator_word_circle_color,
+        mCircleColor = ta.getResourceId(R.styleable.TextIndicator_word_circle_color,
                 R.color.page_black_cc);
-        int textcolor = ta.getResourceId(R.styleable.TextIndicator_word_text_color,R.color.page_white);
-        int textsize = ta.getDimensionPixelSize(R.styleable.TextIndicator_word_text_size,15);
+        mTextcolor = ta.getResourceId(R.styleable.TextIndicator_word_text_color,R.color.page_white);
+        mTextsize = ta.getDimensionPixelSize(R.styleable.TextIndicator_word_text_size,15);
         ta.recycle();
         setGravity(Gravity.CENTER);
 
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
-        mPaint.setColor(getResources().getColor(circleColor));
+        mPaint.setColor(getResources().getColor(mCircleColor));
         mPaint.setStyle(Paint.Style.FILL);
 
         mTextPaint = new Paint();
         mTextPaint.setAntiAlias(true);
-        mTextPaint.setTextSize(textsize);
-        mTextPaint.setColor(getResources().getColor(textcolor));
+        mTextPaint.setTextSize(mTextsize);
+        mTextPaint.setColor(getResources().getColor(mTextcolor));
 
     }
 
@@ -219,6 +221,26 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
             }
         }
         return result;
+    }
+
+
+    public TextIndicator showCircle(boolean showcircle){
+        mShowCircle = showcircle;
+        return this;
+    }
+    public TextIndicator circleColor(int color){
+        mCircleColor = color;
+        return this;
+    }
+
+    public TextIndicator textColor(int color){
+        mTextcolor = color;
+        return this;
+    }
+
+    public TextIndicator textSize(int size){
+        mTextsize = size;
+        return this;
     }
 
 }

@@ -31,12 +31,6 @@
             android:onClick="loop_max"
             android:text="轮播图" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:onClick="scaleiamge"
-            android:text="图片放大" />
 
         <Button
             android:layout_width="match_parent"
@@ -85,12 +79,6 @@
                 android:text="从右到左变化" />
         </LinearLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:onClick="test"
-            android:text="网络测试" />
 
     </LinearLayout>
 

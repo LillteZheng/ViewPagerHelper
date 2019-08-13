@@ -22,6 +22,9 @@ import android.widget.TextView;
 
 import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.ViewPagerHelperUtils;
+import com.zhengsr.viewpagerlib.type.TabShapeType;
+import com.zhengsr.viewpagerlib.type.TabTextType;
+import com.zhengsr.viewpagerlib.type.TransType;
 import com.zhengsr.viewpagerlib.view.ColorTextView;
 
 import java.util.List;
@@ -35,8 +38,6 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     /**
      * const
      */
-    private static final int NORMAL_TEXT = 0;
-    private static final int COLOR_TEXT = 1;
     private static final int TRI_TAB = 0;
     private static final int RECT_TAB = 1;
     /**
@@ -44,16 +45,16 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
      */
     private int mTabWidth;
     private int mTabHeight;
-    private int mTriColor;
-    private int mCount ;
+    private int mTabColor;
+    private int mVisiableSize;
     private int mHeight;
     private int mWidth;
     private int mDefaultColor = 0xff000000;
     private int mChangeColor = 0xffff0000;
     private int mTextSize;
-    private int mTabtyle;
+    private TabShapeType mTabtyle;
     private int mLineTransX = 0; //移动的位置
-    private int mTextType = 0;
+    private TabTextType mTextType ;
     private boolean isShowTab = false;
     private boolean isCanScroll = true; //是否能移动，默认为true
     /**
@@ -78,17 +79,29 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     public TabIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TabIndicator);
-        mCount = ta.getInt(R.styleable.TabIndicator_visiabel_size,4);
+        mVisiableSize = ta.getInt(R.styleable.TabIndicator_visiabel_size,4);
         mTabWidth = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_width,30);
         mTabHeight = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_height,10);
-        mTriColor = ta.getResourceId(R.styleable.TabIndicator_tab_color,R.color.page_white);
+        mTabColor = ta.getResourceId(R.styleable.TabIndicator_tab_color,R.color.page_white);
         mDefaultColor = ta.getColor(R.styleable.TabIndicator_tab_text_default_color,mDefaultColor);
         mChangeColor = ta.getColor(R.styleable.TabIndicator_tab_text_change_color,mChangeColor);
         mTextSize = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_textsize,
                 getResources().getDimensionPixelSize(R.dimen.tabsize));
-        mTabtyle = ta.getInteger(R.styleable.TabIndicator_tap_type,1);
+        int tt = ta.getInteger(R.styleable.TabIndicator_tap_type,0);
+        if (tt == 0){
+            mTabtyle = TabShapeType.TRI;
+        }else{
+            mTabtyle = TabShapeType.ROUND;
+        }
 
-        mTextType = ta.getInteger(R.styleable.TabIndicator_tab_text_type,1);
+
+
+        int type = ta.getInteger(R.styleable.TabIndicator_tab_text_type,1);
+        if (type == 1){
+            mTextType = TabTextType.COLOR;
+        }else{
+            mTextType = TabTextType.NORMAL;
+        }
         isShowTab = ta.getBoolean(R.styleable.TabIndicator_tab_show,isShowTab);
         isCanScroll = ta.getBoolean(R.styleable.TabIndicator_tab_iscanscroll,true);
         ta.recycle();
@@ -100,7 +113,7 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
         setClickable(true);
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
-        mPaint.setColor(getResources().getColor(mTriColor));
+        mPaint.setColor(getResources().getColor(mTabColor));
 
         //实例一个 scroller
         mScroller = new Scroller(getContext());
@@ -243,11 +256,11 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
             for (int i = 0; i < titles.size(); i++) {
                 String title = titles.get(i);
 
-                if (mTextType == COLOR_TEXT) {
+                if (mTextType == TabTextType.COLOR) {
                     ColorTextView textView = new ColorTextView(getContext());
                     LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
                             LayoutParams.MATCH_PARENT);
-                    params.width = mWidth / mCount;
+                    params.width = mWidth / mVisiableSize;
 
                     textView.setText(title);
                     textView.setLayoutParams(params);
@@ -257,7 +270,7 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
                     TextView textView = new TextView(getContext());
                     LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
                             LayoutParams.MATCH_PARENT);
-                    params.width = mWidth / mCount;
+                    params.width = mWidth / mVisiableSize;
                     textView.setText(title);
                     textView.setGravity(Gravity.CENTER);
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,mTextSize);
@@ -304,8 +317,8 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
         mHeight = h;
 
         mPath = new Path();
-        int width = mWidth/mCount;
-        if (mTabtyle == TRI_TAB){
+        int width = mWidth/ mVisiableSize;
+        if (mTabtyle == TabShapeType.TRI){
             //画三角形
             mPaint.setPathEffect(new CornerPathEffect(2)); //使三角形更加圆润
             mPath.moveTo((width - mTabWidth) / 2, mHeight);
@@ -335,7 +348,7 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
 
     @Override
     public void onPageSelected(int position) {
-        if (mTextType == NORMAL_TEXT) {
+        if (mTextType == TabTextType.NORMAL) {
             for (int i = 0; i < getChildCount(); i++) {
                 if (i == position) {
                     TextView currentView = (TextView) getChildAt(position);
@@ -360,14 +373,14 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     }
 
     private void onScroll(int position, float offset) {
-        int tabWidth = getWidth()/mCount;
+        int tabWidth = getWidth()/ mVisiableSize;
         mLineTransX = (int) (tabWidth*position + tabWidth*offset);
-        if (position >= (mCount - 1) && offset >0 ){
+        if (position >= (mVisiableSize - 1) && offset >0 ){
             scrollTo(
-                    (position - (mCount - 1))*tabWidth+(int)(tabWidth*offset),
+                    (position - (mVisiableSize - 1))*tabWidth+(int)(tabWidth*offset),
                     0 );
         }
-        if (mTextType == COLOR_TEXT) {
+        if (mTextType == TabTextType.COLOR) {
             if (offset >= 0) {
                 try {
                     //避免移动之后，颜色不对问题
@@ -395,5 +408,58 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
         invalidate();
     }
 
+
+    public TabIndicator visiabelSize(int size){
+        mVisiableSize = size;
+        return this;
+    }
+
+    public TabIndicator tabColor(int color){
+        mTabColor = color;
+        return this;
+    }
+
+    public TabIndicator showTab(boolean showtab){
+        isShowTab = showtab;
+        return this;
+    }
+
+    public TabIndicator tabTextType(TabTextType textType){
+        mTextType = textType;
+        return this;
+    }
+    public TabIndicator tabWidth(int width){
+        mTabWidth = width;
+        return this;
+    }
+
+    public TabIndicator tabHeight(int height){
+        mTabHeight = height;
+        return this;
+    }
+
+
+    public TabIndicator textSize(int size){
+        mTextSize = size;
+        return this;
+    }
+
+    public TabIndicator defaultColor(int color){
+        mDefaultColor = color;
+        return this;
+    }
+    public TabIndicator moveColor(int color){
+         mChangeColor = color;
+        return this;
+    }
+    public TabIndicator tabShapeType(TabShapeType type){
+        mTabtyle = type;
+        return this;
+    }
+
+    public TabIndicator isCanScroll(boolean isCanScroll){
+        this.isCanScroll = isCanScroll;
+        return this;
+    }
 
 }

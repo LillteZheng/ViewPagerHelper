@@ -40,13 +40,13 @@ public class CardLoopActivity extends AppCompatActivity {
 
         PageBean pageBean = new PageBean.Builder<CardBean>()
                 .useCode(true) //比填，不然不起作用
-                .autoLoop(true)
+                .autoLoop(true) //自动轮播
                 .pagerSwitchTime(600) //切换速度
-                .loopTime(4000)
-                .data(beans)
-                .cardHeight(30)
-                .cycle(true)
-                .bannerTransformer(BannerTransType.CARD)
+                .loopTime(4000)  //轮播事件
+                .data(beans) //添加数据
+                .cardHeight(30)  //卡片的高度
+                .cycle(true)  //是否填充可以循环
+                .bannerTransformer(BannerTransType.CARD)  //设置 transformer，即卡片效果，也可以是魅族，zoom，depath的效果
                 .builder();
 
 

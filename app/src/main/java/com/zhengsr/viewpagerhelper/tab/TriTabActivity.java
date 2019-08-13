@@ -34,6 +34,7 @@ public class TriTabActivity extends AppCompatActivity {
          * 把 TabIndicator 跟viewpager关联起来
          */
         TabIndicator tabIndecator = (TabIndicator) findViewById(R.id.line_indicator);
+        //设置viewpager滑动速度
         tabIndecator.setViewPagerSwitchSpeed(viewPager,600);
         tabIndecator.setTabData(viewPager,mTitle, new TabIndicator.TabClickListener() {
             @Override

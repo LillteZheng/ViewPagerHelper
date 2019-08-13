@@ -162,4 +162,18 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
             }
         }
     }
+
+    public NormalIndicator selector(int selector){
+        mSelector = selector;
+        return this;
+    }
+    public NormalIndicator selectorMargin(int margin){
+        mLeftMargin = margin;
+        return this;
+    }
+
+    public NormalIndicator dismissWhenOpen(boolean dismiss){
+        mDismissOpen = dismiss;
+        return this;
+    }
 }

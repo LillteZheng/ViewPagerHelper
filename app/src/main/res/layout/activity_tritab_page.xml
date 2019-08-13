@@ -32,6 +32,4 @@
         android:background="@color/gray_cccc"
         android:layout_height="wrap_content"/>
 
-
-
 </LinearLayout>
