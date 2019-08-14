@@ -72,7 +72,7 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.5'
 </table>
 
 
-[轮播使用说明](https://blog.csdn.net/u011418943/article/details/99449028)
+[轮播使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_TAB.md)
 
 ## **2、Tab指示器**
 
@@ -90,7 +90,7 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.5'
 
 </table>
 
-[Tab指示器使用说明](https://blog.csdn.net/u011418943/article/details/99449735)
+[Tab指示器使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_TAB.md)
 
 
 
@@ -109,7 +109,7 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.5'
   </tr>
 </table>
 
-[引导页使用说明](https://blog.csdn.net/u011418943/article/details/99449980)
+[引导页使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_GUIDE.md)
 
 
 ## 版本说明
