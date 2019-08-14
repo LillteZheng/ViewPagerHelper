@@ -4,6 +4,8 @@ viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每�
 基于这个，ViewPagerHleper 就诞生了，它可以快速帮你搞定 banner 轮播图，实现高级定制化，内置多种指示器，满足你的日常需求，妈妈再也不用担心我不会复制粘贴了。
 
 [![](https://jitpack.io/v/LillteZheng/ViewPagerHelper.svg)](https://jitpack.io/#LillteZheng/ViewPagerHelpe)
+![](https://img.shields.io/github/stars/LillteZheng/ViewPagerHelper.svg) 
+![](https://img.shields.io/github/forks/LillteZheng/ViewPagerHelper.svg)
 [![](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-%E9%83%91%E5%B0%91%E9%94%90-green.svg)](https://blog.csdn.net/u011418943)
 
 详细内容可以参考这篇博客：
