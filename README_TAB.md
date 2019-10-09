@@ -89,4 +89,4 @@ tabIndecator.setTabData(viewPager,mTitle, new TabIndicator.TabClickListener() {
 可以通过代码去查看怎么配置
 
 [三角形xml](https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/res/layout/activity_tritab_page.xml)
-[三角形Activity](https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com/zhengsr/viewpagerhelper/activity/tab/TriTabActivity.java)
+[三角形Activity](https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com/zhengsr/viewpagerhelper/tab/RectTabActivity.java)
