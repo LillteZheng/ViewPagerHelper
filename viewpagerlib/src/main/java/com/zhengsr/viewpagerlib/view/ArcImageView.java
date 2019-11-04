@@ -49,7 +49,7 @@ public class ArcImageView extends ImageView {
         mPaint.setAntiAlias(true);
         mPath = new Path();
 
-        setScaleType(ScaleType.MATRIX);
+       // setScaleType(ScaleType.MATRIX);
     }
 
     @Override
