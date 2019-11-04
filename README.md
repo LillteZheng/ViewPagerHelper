@@ -25,7 +25,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v1.5'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v1.6'
 ```
 
 
@@ -113,6 +113,9 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.5'
 
 
 ## 版本说明
+**v1.6**
+- ArcImageView 去掉scaleType中的 matrix 属性
+
 
 **v1.5**
 - 修改了BannerViewpager 的一些自定说明，避免歧义，小伙伴记得更新呀
