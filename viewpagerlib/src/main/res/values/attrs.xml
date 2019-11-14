@@ -59,6 +59,8 @@
     <!--弧形图片-->
     <declare-styleable name="ArcImageView">
         <attr name="arc_height" format="dimension"/> <!--弧度的高度-->
+        <attr name="arc_blur" format="integer"/>
+        <attr name="arc_use_color" format="color|reference"/>
     </declare-styleable>
 
     <!--顶部viewpager指示器-->

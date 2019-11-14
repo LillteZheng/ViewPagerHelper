@@ -25,7 +25,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v1.6'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v1.7'
 ```
 
 
@@ -112,7 +112,15 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.6'
 [引导页使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_GUIDE.md)
 
 
-## 版本说明
+## 版本说明    
+
+**v1.7**
+- 修改ArcImageView 
+- arcHeight 支持负数，凹进去，方便在user界面使用
+- 增加高斯模糊，arc_blur ，对应参数0到25
+- 支持使用背景色，采用arc_use_color
+
+
 **v1.6**
 - ArcImageView 去掉scaleType中的 matrix 属性
 
@@ -193,11 +201,16 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.6'
 |word_text_size|reference|文字大小|
 
 
+  <attr name="arc_blur" format="integer"/>
+        <attr name="arc_use_color" format="color|reference"/>
 **弧形图片 ArcImageView**
 
 | 名称 | 类型 |说明 |
 |---|---|---|
 |arc_height|dimension|弧度的高度|
+|arc_blur|integer|图片的模糊度，0到25|
+|arc_use_color|color，reference|是否使用背景色|
+
 
 **顶部viewpager指示器 TabIndicator**
 

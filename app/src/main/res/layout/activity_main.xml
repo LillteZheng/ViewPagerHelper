@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
         android:orientation="vertical">
 
         <Button
@@ -45,6 +46,14 @@
             android:layout_height="160dp"
             android:layout_marginTop="5dp"
             android:scaleType="centerCrop"
+            app:arc_blur="10"
+            app:arc_height="-35dp" />
+        <com.zhengsr.viewpagerlib.view.ArcImageView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
+            app:arc_use_color="@color/sienna"
             app:arc_height="15dp" />
 
         <com.zhengsr.viewpagerlib.view.ColorTextView
@@ -82,4 +91,4 @@
 
     </LinearLayout>
 
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>
