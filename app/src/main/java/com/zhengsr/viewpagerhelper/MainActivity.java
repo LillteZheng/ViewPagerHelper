@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.zhengsr.viewpagerhelper.activity.ArcActivity;
 import com.zhengsr.viewpagerhelper.activity.loop.LoopActivity;
 import com.zhengsr.viewpagerhelper.activity.loop.NetWorkActivity;
 import com.zhengsr.viewpagerhelper.activity.loop.ScaleImageActivity;
@@ -25,10 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArcImageView arcImageView = (ArcImageView) findViewById(R.id.arcimage);
-       GlideApp.with(this)
-               .load(R.mipmap.beauty1)
-               .into(arcImageView);
+
         mColorTextView = (ColorTextView) findViewById(R.id.colortext);
 
     }
@@ -77,5 +75,9 @@ public class MainActivity extends AppCompatActivity {
     public void guide(View view) {
         startActivity(new Intent(this, GuideActivity.class));
 
+    }
+
+    public void arc(View view) {
+        startActivity(new Intent(this, ArcActivity.class));
     }
 }

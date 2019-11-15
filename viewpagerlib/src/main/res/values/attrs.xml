@@ -61,6 +61,10 @@
         <attr name="arc_height" format="dimension"/> <!--弧度的高度-->
         <attr name="arc_blur" format="integer"/>
         <attr name="arc_use_color" format="color|reference"/>
+        <attr name="arc_scaleX" format="dimension"/>
+        <attr name="arc_scaleY" format="dimension"/>
+        <attr name="arc_scaleFactor" format="float"/>
+        <attr name="arc_auto_fix" format="boolean"/>
     </declare-styleable>
 
     <!--顶部viewpager指示器-->

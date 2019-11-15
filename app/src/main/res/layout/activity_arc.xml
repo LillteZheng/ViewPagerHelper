@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhengsr.viewpagerhelper.activity.ArcActivity">
+
+    <com.zhengsr.viewpagerlib.view.ArcImageView
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_margin="10dp"
+        android:src="@mipmap/beauty1"
+        app:arc_height="-30dp"
+        app:arc_scaleFactor="1.5"
+        app:arc_scaleX="220dp"
+        app:arc_scaleY="0dp"
+        app:arc_blur="12"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="198dp"
+        android:src="@mipmap/beauty1"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.zhengsr.viewpagerlib.view.ArcImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="300dp"
+        app:arc_height="10dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

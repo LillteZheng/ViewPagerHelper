@@ -40,21 +40,14 @@
             android:onClick="fragment"
             android:text="三种样式的指示器" />
 
-        <com.zhengsr.viewpagerlib.view.ArcImageView
-            android:id="@+id/arcimage"
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:scaleType="centerCrop"
-            app:arc_blur="10"
-            app:arc_height="-35dp" />
-        <com.zhengsr.viewpagerlib.view.ArcImageView
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_marginTop="5dp"
-            android:scaleType="centerCrop"
-            app:arc_use_color="@color/sienna"
-            app:arc_height="15dp" />
+            android:onClick="arc"
+            android:text="弧形图片" />
+
+
 
         <com.zhengsr.viewpagerlib.view.ColorTextView
             android:id="@+id/colortext"

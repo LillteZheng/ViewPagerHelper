@@ -25,7 +25,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v1.7'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v1.8'
 ```
 
 
@@ -33,7 +33,7 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.7'
 
 首先，大家最常用到的就是轮播图了，这里给大家提供了 4 中常用的 Indicator
 
-### **1、轮播图**
+### **轮播图**
 
 <table  align="center">
  <tr>
@@ -74,7 +74,7 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.7'
 
 [轮播使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_Banner.md)
 
-## **2、Tab指示器**
+## **Tab指示器**
 
 <table  align="center">
  <tr>
@@ -92,6 +92,17 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.7'
 
 [Tab指示器使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_TAB.md)
 
+## **Tab指示器**
+
+<table  align="center">
+ <tr>
+    <th>弧形图片</th>
+  </tr>
+   <tr>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/arc.png" align="left" height="480" width="340"></a></td>
+  </tr>
+
+</table>
 
 
 ### app 启动引导页
@@ -113,6 +124,11 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.7'
 
 
 ## 版本说明    
+
+**v1.8**
+- 修改ArcImageView 
+- 增加缩放因子
+- 增加缩放中心点坐标
 
 **v1.7**
 - 修改ArcImageView 
@@ -200,9 +216,6 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.7'
 |word_text_color|reference,color|文字颜色|
 |word_text_size|reference|文字大小|
 
-
-  <attr name="arc_blur" format="integer"/>
-        <attr name="arc_use_color" format="color|reference"/>
 **弧形图片 ArcImageView**
 
 | 名称 | 类型 |说明 |
@@ -210,6 +223,10 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.7'
 |arc_height|dimension|弧度的高度|
 |arc_blur|integer|图片的模糊度，0到25|
 |arc_use_color|color，reference|是否使用背景色|
+|arc_scaleX|dimension|缩放中心点X方向|
+|arc_scaleY|dimension|缩放中心点Y方向|
+|arc_scaleFactor|float|缩放比例|
+|arc_auto_fix|boolean|自动适配大小，如果用glide，可以忽略,默认为true|
 
 
 **顶部viewpager指示器 TabIndicator**
