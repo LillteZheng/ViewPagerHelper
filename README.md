@@ -92,7 +92,7 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.8'
 
 [Tab指示器使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_TAB.md)
 
-## **Tab指示器**
+## **弧形图片，支持高斯模糊**
 
 <table  align="center">
  <tr>
