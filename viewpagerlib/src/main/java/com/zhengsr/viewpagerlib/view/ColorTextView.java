@@ -29,6 +29,8 @@ public class ColorTextView extends TextView {
     private int mDefaultColor = 0xff000000;
     private int mChangeColor = 0xffff0000;
     private int mDecection = DEC_LEFT;
+
+    private boolean isUseUserColor = false;
     public ColorTextView(Context context) {
         this(context,null);
     }
@@ -74,17 +76,29 @@ public class ColorTextView extends TextView {
     }
 
     @Override
+    public void setTextColor(int color) {
+        super.setTextColor(color);
+        isUseUserColor = true;
+        invalidate();
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
-        if (mDecection == DEC_RIGHT) {
-            //绘制一遍黑色
-            drawText(canvas, 0, mWidth, mDefaultColor);
-            // 再绘制一遍其他颜色
-            drawText(canvas, (int) ((1 - mProgress) * mWidth), mWidth, mChangeColor);
-        }else{
-            //绘制一遍黑色
-            drawText(canvas, 0, mWidth, mDefaultColor);
-            // 再绘制一遍其他颜色
-            drawText(canvas, 0,(int) ( mProgress * mWidth), mChangeColor);
+        if (isUseUserColor){
+            drawText(canvas,0,mWidth,getCurrentTextColor());
+            isUseUserColor = false;
+        }else {
+            if (mDecection == DEC_RIGHT) {
+                //绘制一遍黑色
+                drawText(canvas, 0, mWidth, mDefaultColor);
+                // 再绘制一遍其他颜色
+                drawText(canvas, (int) ((1 - mProgress) * mWidth), mWidth, mChangeColor);
+            } else {
+                //绘制一遍黑色
+                drawText(canvas, 0, mWidth, mDefaultColor);
+                // 再绘制一遍其他颜色
+                drawText(canvas, 0, (int) (mProgress * mWidth), mChangeColor);
+            }
         }
     }
     private void drawText(Canvas canvas,int start,int end,int color){

@@ -9,12 +9,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.WindowManager;
+import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
@@ -24,17 +25,17 @@ import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.ViewPagerHelperUtils;
 import com.zhengsr.viewpagerlib.type.TabShapeType;
 import com.zhengsr.viewpagerlib.type.TabTextType;
-import com.zhengsr.viewpagerlib.type.TransType;
 import com.zhengsr.viewpagerlib.view.ColorTextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/10/21.
  */
 
-public class TabIndicator extends LinearLayout implements ViewPager.OnPageChangeListener {
-    private static final String TAG = "zsr";
+public class TabIndicator extends LinearLayout implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnGlobalLayoutListener {
+    private static final String TAG = "TabIndicator";
     /**
      * const
      */
@@ -54,7 +55,7 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     private int mTextSize;
     private TabShapeType mTabtyle;
     private int mLineTransX = 0; //移动的位置
-    private TabTextType mTextType ;
+    private TabTextType mTextType;
     private boolean isShowTab = false;
     private boolean isCanScroll = true; //是否能移动，默认为true
     /**
@@ -64,48 +65,54 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     private Paint mPaint;
     private Scroller mScroller;
     private float mSnap;
-    private float mDownX,mMoveX;
+    private float mDownX, mMoveX;
     private float mLastMoveX;
     private boolean isColorMove;
+    private List<String> mTitles = new ArrayList<>();
+    private TabClickListener mListener;
+    private boolean isFirstLoadData = true;
+    private int mMoveClickIndex;
+    private int mMoveLastIndex;
 
     public TabIndicator(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public TabIndicator(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public TabIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TabIndicator);
-        mVisiableSize = ta.getInt(R.styleable.TabIndicator_visiabel_size,4);
-        mTabWidth = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_width,30);
-        mTabHeight = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_height,10);
-        mTabColor = ta.getResourceId(R.styleable.TabIndicator_tab_color,R.color.page_white);
-        mDefaultColor = ta.getColor(R.styleable.TabIndicator_tab_text_default_color,mDefaultColor);
-        mChangeColor = ta.getColor(R.styleable.TabIndicator_tab_text_change_color,mChangeColor);
+        mVisiableSize = ta.getInt(R.styleable.TabIndicator_visiabel_size, 4);
+        mTabWidth = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_width, 30);
+        mTabHeight = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_height, 10);
+        mTabColor = ta.getResourceId(R.styleable.TabIndicator_tab_color, R.color.page_white);
+        mDefaultColor = ta.getColor(R.styleable.TabIndicator_tab_text_default_color, mDefaultColor);
+        mChangeColor = ta.getColor(R.styleable.TabIndicator_tab_text_change_color, mChangeColor);
         mTextSize = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_textsize,
                 getResources().getDimensionPixelSize(R.dimen.tabsize));
-        int tt = ta.getInteger(R.styleable.TabIndicator_tap_type,0);
-        if (tt == 0){
+        int tt = ta.getInteger(R.styleable.TabIndicator_tap_type, 0);
+        if (tt == 0) {
             mTabtyle = TabShapeType.TRI;
-        }else{
+        } else {
             mTabtyle = TabShapeType.ROUND;
         }
 
 
-
-        int type = ta.getInteger(R.styleable.TabIndicator_tab_text_type,1);
-        if (type == 1){
+        int type = ta.getInteger(R.styleable.TabIndicator_tab_text_type, 1);
+        if (type == 1) {
             mTextType = TabTextType.COLOR;
-        }else{
+        } else {
             mTextType = TabTextType.NORMAL;
         }
-        isShowTab = ta.getBoolean(R.styleable.TabIndicator_tab_show,isShowTab);
-        isCanScroll = ta.getBoolean(R.styleable.TabIndicator_tab_iscanscroll,true);
+        isShowTab = ta.getBoolean(R.styleable.TabIndicator_tab_show, isShowTab);
+        isCanScroll = ta.getBoolean(R.styleable.TabIndicator_tab_iscanscroll, true);
         ta.recycle();
         initData();
+
+        getViewTreeObserver().addOnGlobalLayoutListener(this);
 
     }
 
@@ -123,6 +130,7 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
 
     /**
      * 重绘三角形或者圆条
+     *
      * @param canvas
      */
     @Override
@@ -140,8 +148,10 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        int count = getChildCount() ;
-        mRightBorder = getChildAt(count -1).getRight();
+        int count = getChildCount();
+        if (count > 0) {
+            mRightBorder = getChildAt(count - 1).getRight();
+        }
     }
 
     @Override
@@ -169,13 +179,17 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
         return super.onInterceptTouchEvent(event);
     }
 
-    private int mRightBorder ;
+    private int mRightBorder;
 
+    private boolean isMove = false;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (isCanScroll) {
             switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    isMove = false;
+                    break;
                 case MotionEvent.ACTION_MOVE:
                     mMoveX = event.getRawX();
                     int scrolledX = (int) (mLastMoveX - mMoveX);
@@ -191,8 +205,9 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
                     isColorMove = true;
                     mLastMoveX = mMoveX;
                     break;
-                case MotionEvent.ACTION_UP :
-                    invalidate();
+                case MotionEvent.ACTION_UP:
+                    //invalidate();
+                    isMove = true;
                     break;
                 default:
                     break;
@@ -205,81 +220,109 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     @Override
     public void computeScroll() {
         //开始移动
-        if (mScroller.computeScrollOffset()){
-            scrollTo(mScroller.getCurrX(),0);
+        if (mScroller.computeScrollOffset()) {
+            scrollTo(mScroller.getCurrX(), 0);
             invalidate();
         }
     }
 
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-        mWidth = wm.getDefaultDisplay().getWidth();
-    }
 
     /**
      * 设置viewpager的切换速度
+     *
      * @param viewPager
      * @param time
      */
-    public void setViewPagerSwitchSpeed(ViewPager viewPager,int time){
-        ViewPagerHelperUtils.initSwitchTime(getContext(),viewPager,time);
+    public void setViewPagerSwitchSpeed(ViewPager viewPager, int time) {
+        ViewPagerHelperUtils.initSwitchTime(getContext(), viewPager, time);
     }
 
-
+    @Override
+    public void onGlobalLayout() {
+        if (isFirstLoadData) {
+            isFirstLoadData = false;
+            if (!mTitles.isEmpty() && mListener != null) {
+                readyToLoadData(mTitles, mListener);
+            }
+        }
+    }
 
 
     /**
      * 顶部点击事件的监听
      */
-    public interface TabClickListener{
+    public interface TabClickListener {
         void onClick(int position);
     }
 
     /**
      * 这个函数，则表示使用在 TabIndicator xml 的控件
      */
-    public void setTabData(ViewPager viewPager,TabClickListener listener){
-        setTabData(viewPager,null,listener);
+    public void setTabData(ViewPager viewPager, TabClickListener listener) {
+        setTabData(viewPager, null, listener);
     }
 
     /**
      * 如果使用这个函数，则在xml里面的子控件将被清除，
+     *
      * @param viewPager
-     * @param titles textview 的内容
+     * @param titles    textview 的内容
      */
     public void setTabData(final ViewPager viewPager, final List<String> titles,
-                           final TabClickListener listener){
-        if (titles != null && titles.size() > 0){
+                           final TabClickListener listener) {
+        if (viewPager != null) {
+            viewPager.addOnPageChangeListener(this);
+        }
+        mTitles.clear();
+        mTitles.addAll(titles);
+        mListener = listener;
+        if (mWidth > 0) {
+            readyToLoadData(titles, listener);
+        }
+
+
+    }
+
+    /**
+     * 开始加载数据
+     *
+     * @param titles
+     * @param listener
+     */
+    private void readyToLoadData(List<String> titles, final TabClickListener listener) {
+        if (titles.size() > 0) {
             removeAllViews();
             for (int i = 0; i < titles.size(); i++) {
                 String title = titles.get(i);
 
                 if (mTextType == TabTextType.COLOR) {
                     ColorTextView textView = new ColorTextView(getContext());
-                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
+                    LayoutParams params = new LayoutParams(0,
                             LayoutParams.MATCH_PARENT);
-                    params.width = mWidth / mVisiableSize;
-
-                    textView.setText(title);
-                    textView.setLayoutParams(params);
-                    textView.setCusTextColor(mDefaultColor, mChangeColor, mTextSize);
-                    addView(textView);
-                }else{
-                    TextView textView = new TextView(getContext());
-                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-                            LayoutParams.MATCH_PARENT);
-                    params.width = mWidth / mVisiableSize;
+                    params.width = (int) (mWidth * 1.0f / mVisiableSize);
                     textView.setText(title);
                     textView.setGravity(Gravity.CENTER);
-                    textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,mTextSize);
+                    textView.setLayoutParams(params);
+
+                    textView.setCusTextColor(mDefaultColor, mChangeColor, mTextSize);
                     if (i == 0) {
                         textView.setTextColor(mChangeColor);
-                    }else{
+                    }
+                    addView(textView);
+                } else {
+                    TextView textView = new TextView(getContext());
+                    LayoutParams params = new LayoutParams(0,
+                            LayoutParams.MATCH_PARENT);
+                    params.width = (int) (mWidth * 1.0f / mVisiableSize);
+                    textView.setText(title);
+                    textView.setLayoutParams(params);
+                    textView.setGravity(Gravity.CENTER);
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
+                    if (i == 0) {
+                        textView.setTextColor(mChangeColor);
+                    } else {
                         textView.setTextColor(mDefaultColor);
                     }
-                    textView.setLayoutParams(params);
                     addView(textView);
                 }
             }
@@ -289,49 +332,48 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
         for (int i = 0; i < getChildCount(); i++) {
             final int finalI = i;
             getChildAt(i).setOnClickListener(new OnClickListener() {
-               @Override
-               public void onClick(View view) {
-                   listener.onClick(finalI);
-                   //在点击的时候，我们需要做一些处理
-                   int moveX = getScrollX();
-                   if (moveX < 1920) {
-                       mScroller.startScroll(0, 0,  0, 0);
-                       invalidate();
-                   }
+                @Override
+                public void onClick(View view) {
+                    listener.onClick(finalI);
+                    //在点击的时候，我们需要做一些处理
+                    int moveX = getScrollX();
+                    mMoveLastIndex = mMoveClickIndex;
+                    mMoveClickIndex = finalI;
+                    if (moveX < mWidth) {
+                        if (isMove) {
+                            mScroller.startScroll(0, 0, 0, 0);
+                            //invalidate();
+                            isMove = false;
+                        }
+                    }
 
-               }
-           });
+                }
+            });
         }
-
-        if (viewPager != null){
-            viewPager.addOnPageChangeListener(this);
-        }
-
     }
-
 
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mHeight = h;
-
+        mWidth = w;
         mPath = new Path();
-        int width = mWidth/ mVisiableSize;
-        if (mTabtyle == TabShapeType.TRI){
+        int width = mWidth / mVisiableSize;
+        if (mTabtyle == TabShapeType.TRI) {
             //画三角形
             mPaint.setPathEffect(new CornerPathEffect(2)); //使三角形更加圆润
             mPath.moveTo((width - mTabWidth) / 2, mHeight);
             mPath.lineTo((width + mTabWidth) / 2, mHeight);
             mPath.lineTo(width / 2, mHeight - mTabHeight);
 
-        }else {
+        } else {
             mPath.close();
             //画条状
-            mPath.moveTo((width - mTabWidth)/2 ,mHeight);
-            mPath.lineTo((width + mTabWidth)/2 ,mHeight);
-            mPath.lineTo((width + mTabWidth)/2 ,mHeight - mTabHeight);
-            mPath.lineTo((width - mTabWidth)/2 ,mHeight - mTabHeight);
+            mPath.moveTo((width - mTabWidth) / 2, mHeight);
+            mPath.lineTo((width + mTabWidth) / 2, mHeight);
+            mPath.lineTo((width + mTabWidth) / 2, mHeight - mTabHeight);
+            mPath.lineTo((width - mTabWidth) / 2, mHeight - mTabHeight);
             mPath.close();
         }
 
@@ -339,11 +381,9 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     }
 
 
-
-
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        onScroll(position,positionOffset);
+        onScroll(position, positionOffset);
     }
 
     @Override
@@ -354,10 +394,6 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
                     TextView currentView = (TextView) getChildAt(position);
                     if (currentView != null) {
                         currentView.setTextColor(mChangeColor);
-                        ObjectAnimator alpha = ObjectAnimator.ofFloat(currentView, "alpha", 0.2f, 1);
-                        alpha.setDuration(1000);
-                        alpha.setInterpolator(new AccelerateDecelerateInterpolator());
-
                     }
                 } else {
                     TextView lastview = (TextView) getChildAt(i);
@@ -369,35 +405,39 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
+        /**
+         * 当viewpager停止了，再去取消颜色值，避免卡顿
+         */
+        if (isColorMove && mTextType == TabTextType.COLOR && state == 0) {
+            ColorTextView lastView = (ColorTextView) getChildAt(mMoveLastIndex);
+            if (lastView != null) {
+                lastView.setTextColor(mDefaultColor);
+            }
+            ColorTextView textView = (ColorTextView) getChildAt(mMoveClickIndex);
+            if (textView != null) {
+                textView.setTextColor(mChangeColor);
+            }
+            isColorMove = false;
+        }
     }
 
     private void onScroll(int position, float offset) {
-        int tabWidth = getWidth()/ mVisiableSize;
-        mLineTransX = (int) (tabWidth*position + tabWidth*offset);
-        if (position >= (mVisiableSize - 1) && offset >0 ){
+        int tabWidth = mWidth / mVisiableSize;
+        mLineTransX = (int) (tabWidth * position + tabWidth * offset);
+        if (position >= (mVisiableSize - 1) && offset > 0) {
             scrollTo(
-                    (position - (mVisiableSize - 1))*tabWidth+(int)(tabWidth*offset),
-                    0 );
+                    (position - (mVisiableSize - 1)) * tabWidth + (int) (tabWidth * offset),
+                    0);
         }
         if (mTextType == TabTextType.COLOR) {
             if (offset >= 0) {
                 try {
-                    //避免移动之后，颜色不对问题
-                    if (isColorMove){
-                        int count = getChildCount();
-                        for (int i = 0; i < count; i++) {
-                            ColorTextView textView = (ColorTextView) getChildAt(i);
-                            textView.setTextColor(mDefaultColor);
-                        }
-                        ColorTextView textView = (ColorTextView) getChildAt(position);
-                        textView.setTextColor(mChangeColor);
-                        isColorMove = false;
+                     if (!isColorMove){
+                        ColorTextView leftView = (ColorTextView) getChildAt(position);
+                        ColorTextView rightView = (ColorTextView) getChildAt(position + 1);
+                        leftView.setprogress(1 - offset, ColorTextView.DEC_RIGHT);
+                        rightView.setprogress(offset, ColorTextView.DEC_LEFT);
                     }
-                    ColorTextView leftView = (ColorTextView) getChildAt(position);
-                    ColorTextView rightView = (ColorTextView) getChildAt(position + 1);
-                    leftView.setprogress(1 - offset, ColorTextView.DEC_RIGHT);
-                    rightView.setprogress(offset, ColorTextView.DEC_LEFT);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -409,55 +449,58 @@ public class TabIndicator extends LinearLayout implements ViewPager.OnPageChange
     }
 
 
-    public TabIndicator visiabelSize(int size){
+    public TabIndicator visiabelSize(int size) {
         mVisiableSize = size;
         return this;
     }
 
-    public TabIndicator tabColor(int color){
+    public TabIndicator tabColor(int color) {
         mTabColor = color;
         return this;
     }
 
-    public TabIndicator showTab(boolean showtab){
+    public TabIndicator showTab(boolean showtab) {
         isShowTab = showtab;
         return this;
     }
 
-    public TabIndicator tabTextType(TabTextType textType){
+    public TabIndicator tabTextType(TabTextType textType) {
         mTextType = textType;
         return this;
     }
-    public TabIndicator tabWidth(int width){
+
+    public TabIndicator tabWidth(int width) {
         mTabWidth = width;
         return this;
     }
 
-    public TabIndicator tabHeight(int height){
+    public TabIndicator tabHeight(int height) {
         mTabHeight = height;
         return this;
     }
 
 
-    public TabIndicator textSize(int size){
+    public TabIndicator textSize(int size) {
         mTextSize = size;
         return this;
     }
 
-    public TabIndicator defaultColor(int color){
+    public TabIndicator defaultColor(int color) {
         mDefaultColor = color;
         return this;
     }
-    public TabIndicator moveColor(int color){
-         mChangeColor = color;
+
+    public TabIndicator moveColor(int color) {
+        mChangeColor = color;
         return this;
     }
-    public TabIndicator tabShapeType(TabShapeType type){
+
+    public TabIndicator tabShapeType(TabShapeType type) {
         mTabtyle = type;
         return this;
     }
 
-    public TabIndicator isCanScroll(boolean isCanScroll){
+    public TabIndicator isCanScroll(boolean isCanScroll) {
         this.isCanScroll = isCanScroll;
         return this;
     }

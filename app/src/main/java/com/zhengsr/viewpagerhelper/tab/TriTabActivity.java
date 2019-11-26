@@ -30,9 +30,7 @@ public class TriTabActivity extends AppCompatActivity {
         }
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new CusAdapter(getSupportFragmentManager()));
-        /**
-         * 把 TabIndicator 跟viewpager关联起来
-         */
+
         TabIndicator tabIndecator = (TabIndicator) findViewById(R.id.line_indicator);
         //设置viewpager滑动速度
         tabIndecator.setViewPagerSwitchSpeed(viewPager,600);

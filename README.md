@@ -25,7 +25,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v1.8'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 ```
 
 
@@ -124,6 +124,9 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.8'
 
 
 ## 版本说明    
+
+**v1.9**
+- 处理TabIndicator第一次没加载数据报错和优化部分代码
 
 **v1.8**
 - 修改ArcImageView 

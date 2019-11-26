@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.zhengsr.viewpagerhelper.activity.ArcActivity;
 import com.zhengsr.viewpagerhelper.activity.loop.LoopActivity;
@@ -16,18 +17,24 @@ import com.zhengsr.viewpagerhelper.tab.TabActivity;
 import com.zhengsr.viewpagerlib.view.ArcImageView;
 import com.zhengsr.viewpagerlib.view.ColorTextView;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "zsr";
     private static final int[] RES = {R.mipmap.guide1,R.mipmap.guide2,R.mipmap.guide3,
             R.mipmap.guide4 };
     private ColorTextView mColorTextView;
-
+    private List<String> mTitle = Arrays.asList("新闻\n不是新闻","娱乐","学习","测试后");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mColorTextView = (ColorTextView) findViewById(R.id.colortext);
+
+
+
 
     }
 

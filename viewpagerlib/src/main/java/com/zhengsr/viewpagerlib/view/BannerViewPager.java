@@ -73,7 +73,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
             super.handleMessage(msg);
             if (msg.what == LOOP_MSG){
                 if (isAutoLoop) {
-                    isDataConfigFinish = true;
                     mCurrentIndex = getCurrentItem(); //重新获取index
                     if (mCurrentIndex >= LOOP_COUNT / 2) {
                         mCurrentIndex++;
@@ -174,7 +173,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         adapter.notifyDataSetChanged();
         setAdapter(adapter);
         int startSelectItem = getStartSelectItem(params.getDatas().size());
-        Log.d(TAG, "zsr setPageListener: "+mLoopMaxCount+" "+isCycle+" "+startSelectItem);
         setCurrentItem(startSelectItem);
         setOffscreenPageLimit(3);
         View indicator = params.getIndicator();
@@ -200,7 +198,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
 
                 @Override
                 public void onPageSelected(int position) {
-                    Log.d(TAG, "zsr onPageSelected: "+position);
                     if (!isCycle) {
                         listener.getItemView(mCurrentContent,params.getDatas().get(position%params.getDatas().size()));
                     }
@@ -242,16 +239,13 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     /**
      * 当有触摸时停止
      */
-    private boolean isDataConfigFinish = false;
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         mHandler.removeMessages(LOOP_MSG);
         switch (motionEvent.getAction()){
             case MotionEvent.ACTION_DOWN:
-                isDataConfigFinish = false;
                 break;
             case MotionEvent.ACTION_UP :
-                isDataConfigFinish = true;
                 if (isAutoLoop) {
                     mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
                 }
@@ -342,16 +336,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         public Object instantiateItem(ViewGroup container, int position) {
             mCurrentContent = mInflater.inflate(layoutid,BannerViewPager.this,false);
             final int index ;
-            /*if (isCycle) {
-                int cacheSize = BannerViewPager.this.getOffscreenPageLimit();
-                if (cacheSize == list.size() - 1 && isDataConfigFinish) {
-                    if (position > ViewPagerHelperUtils.LOOP_COUNT / 2) {
-                        position++;
-                    } else {
-                        position--;
-                    }
-                }
-            }*/
+
             index = position % list.size();
             if (isCycle) {
                 listener.getItemView(mCurrentContent, this.list.get(index));
