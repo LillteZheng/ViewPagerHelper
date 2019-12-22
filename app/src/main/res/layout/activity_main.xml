@@ -24,7 +24,6 @@
             android:text="引导图" />
 
 
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +45,6 @@
             android:layout_marginTop="5dp"
             android:onClick="arc"
             android:text="弧形图片" />
-
 
 
         <com.zhengsr.viewpagerlib.view.ColorTextView
@@ -82,6 +80,51 @@
         </LinearLayout>
 
 
+        <com.zhengsr.viewpagerhelper.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="1" />
 
 
     </LinearLayout>
