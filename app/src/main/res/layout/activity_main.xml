@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:orientation="vertical"
+    android:background="#747474"
     tools:context="com.zhengsr.viewpagerhelper.MainActivity">
 
 
@@ -47,84 +48,17 @@
             android:text="弧形图片" />
 
 
-        <com.zhengsr.viewpagerlib.view.ColorTextView
-            android:id="@+id/colortext"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:background="#3333"
-            android:text="sdfsdfsdf"
-            app:colortext_change_color="@color/red"
-            app:colortext_default_color="@color/black"
-            app:colortext_size="24sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:onClick="leftchange"
-                android:text="从左到右变化" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:onClick="rightchange"
-                android:text="从右到左变化" />
-        </LinearLayout>
 
 
-        <com.zhengsr.viewpagerhelper.FlowLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+       <Button
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="FlowLayout标签布局"
+           android:onClick="FlowLayout"
+           />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="1" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="1" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="1" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="1" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="1" />
 
 
     </LinearLayout>
