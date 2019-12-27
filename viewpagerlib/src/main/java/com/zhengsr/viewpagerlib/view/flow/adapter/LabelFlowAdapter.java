@@ -13,10 +13,10 @@ import java.util.List;
  * @author by  zhengshaorui on 2019/10/8
  * Describe:
  */
-public abstract class TagFlowAdapter<T>  extends BaseFlowAdapter<T>{
+public abstract class LabelFlowAdapter<T>  extends BaseFlowAdapter<T>{
 
 
-    public TagFlowAdapter(int layoutId, List<T> datas) {
+    public LabelFlowAdapter(int layoutId, List<T> datas) {
         super(layoutId, datas);
     }
 

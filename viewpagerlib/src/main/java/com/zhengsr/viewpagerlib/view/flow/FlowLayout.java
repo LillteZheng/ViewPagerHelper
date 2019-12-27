@@ -2,8 +2,11 @@ package com.zhengsr.viewpagerlib.view.flow;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.zhengsr.viewpagerlib.view.flow.adapter.BaseFlowAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +15,9 @@ import java.util.List;
  * @auther by zhengshaorui on 2019/12/21
  * describe: 流瀑布布局,提供横竖两种布局
  */
-public class FlowLayout extends ViewGroup {
+public abstract class FlowLayout extends ViewGroup implements BaseFlowAdapter.DataListener {
     private static final String TAG = "FlowLayout";
+    private BaseFlowAdapter mAdapter;
     private List<List<View>> mAllViews = new ArrayList<>();
     private List<Integer> mLineHeights = new ArrayList<>();
 
@@ -28,6 +32,30 @@ public class FlowLayout extends ViewGroup {
     public FlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
+
+    public void setAdapter(BaseFlowAdapter adapter){
+        mAdapter = adapter;
+        mAdapter.setListener(this);
+        notifyDataChanged();
+    }
+
+    @Override
+    public void notifyDataChanged() {
+        removeAllViews();
+        int childCount = mAdapter.getItemCount();
+        for (int i = 0; i < childCount; i++) {
+            View view = LayoutInflater.from(getContext()).inflate(mAdapter.getLayoutId(),this,false);
+            mAdapter.onBindView(view,mAdapter.getDatas().get(i),i);
+            addView(view);
+            onViewClick(mAdapter,view,i);
+        }
+    }
+
+    /**
+     * 子view 点击事件
+     */
+    protected abstract void onViewClick( BaseFlowAdapter baseAdapter,  View view,  int position);
 
     /**
      * 模式为竖向测量
@@ -258,5 +286,6 @@ public class FlowLayout extends ViewGroup {
     protected boolean checkLayoutParams(LayoutParams p) {
         return p instanceof MarginLayoutParams;
     }
+
 
 }

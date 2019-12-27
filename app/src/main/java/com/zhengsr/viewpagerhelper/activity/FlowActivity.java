@@ -8,14 +8,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zhengsr.viewpagerhelper.R;
-import com.zhengsr.viewpagerlib.view.flow.adapter.TagFlowAdapter;
-import com.zhengsr.viewpagerlib.view.flow.TagFlowLayout;
+import com.zhengsr.viewpagerlib.view.flow.TabFlowLayout;
+import com.zhengsr.viewpagerlib.view.flow.adapter.TabFlowAdapter;
+import com.zhengsr.viewpagerlib.view.flow.adapter.LabelFlowAdapter;
+import com.zhengsr.viewpagerlib.view.flow.LabelFlowLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class FlowActivity extends AppCompatActivity {
+    private static final String TAG = "FlowActivity";
     private List<String> mTitle = new ArrayList<>(Arrays.asList("新闻", "娱乐", "学习", "测试后", "新闻", "娱乐", "学习", "测试后"));
     private List<String> mTitle2 = new ArrayList<>(Arrays.asList("An Android TabLayout Lib has 3 kinds of TabLayout at present.".split(" ")));
     private TagAdapter mAdapter;
@@ -23,15 +26,20 @@ public class FlowActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flow);
-        TagFlowLayout tagFlowLayout1 = findViewById(R.id.tabflow1);
+        LabelFlowLayout tagFlowLayout1 = findViewById(R.id.tagflow1);
         mAdapter = new TagAdapter(R.layout.item_textview, mTitle);
         tagFlowLayout1.setAdapter(mAdapter);
 
-        TagFlowLayout tagFlowLayout2 = findViewById(R.id.tabflow2);
+        LabelFlowLayout tagFlowLayout2 = findViewById(R.id.tagflow2);
         TagAdapter2 adapter2 = new TagAdapter2(R.layout.item_textview, mTitle2);
         tagFlowLayout2.setMaxCount(3);
         tagFlowLayout2.setAdapter(adapter2);
 
+
+
+        TabFlowLayout tabFlowLayout = findViewById(R.id.tabflow);
+        tabFlowLayout.setAdapter(new TabAdapter(R.layout.item_tab_text, mTitle2));
+        
 
     }
 
@@ -41,7 +49,27 @@ public class FlowActivity extends AppCompatActivity {
         mAdapter.notifyDataChanged();
     }
 
-    class TagAdapter extends TagFlowAdapter<String> {
+
+    /**
+     * 横向布局
+     */
+    class TabAdapter extends TabFlowAdapter<String>{
+
+        public TabAdapter(int layoutId, List<String> datas) {
+            super(layoutId, datas);
+        }
+
+        @Override
+        public void onBindView(View view, String data, int position) {
+            TextView textView = view.findViewById(R.id.item_text);
+            textView.setText(data);
+        }
+    }
+
+    /**
+     * 单项选择
+     */
+    class TagAdapter extends LabelFlowAdapter<String> {
 
         public TagAdapter(int layoutId, List<String> datas) {
             super(layoutId, datas);
@@ -72,7 +100,10 @@ public class FlowActivity extends AppCompatActivity {
 
     }
 
-    class TagAdapter2 extends TagFlowAdapter<String> {
+    /**
+     * 多项选择
+     */
+    class TagAdapter2 extends LabelFlowAdapter<String> {
 
         public TagAdapter2(int layoutId, List<String> datas) {
             super(layoutId, datas);

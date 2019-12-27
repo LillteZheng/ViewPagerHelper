@@ -1,5 +1,6 @@
 package com.zhengsr.viewpagerlib.view.flow.adapter;
 
+import android.util.SparseArray;
 import android.view.View;
 
 import java.util.List;
@@ -15,7 +16,6 @@ public abstract class BaseFlowAdapter<T> {
     public BaseFlowAdapter(int layoutId, List<T> datas) {
         this.layoutId = layoutId;
         this.datas = datas;
-
     }
 
     /**
@@ -48,6 +48,7 @@ public abstract class BaseFlowAdapter<T> {
      */
     public abstract void onBindView(View view, T data, int position);
 
+
     /**
      * 点击事件
      */
@@ -67,6 +68,8 @@ public abstract class BaseFlowAdapter<T> {
     public void setDatas(List<T> datas){
         this.datas = datas;
     }
+
+
 
     /**
      * 刷新数据

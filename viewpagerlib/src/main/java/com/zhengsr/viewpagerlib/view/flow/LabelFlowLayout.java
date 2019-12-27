@@ -3,11 +3,10 @@ package com.zhengsr.viewpagerlib.view.flow;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.zhengsr.viewpagerlib.view.flow.adapter.BaseFlowAdapter;
-import com.zhengsr.viewpagerlib.view.flow.adapter.TagFlowAdapter;
+import com.zhengsr.viewpagerlib.view.flow.adapter.LabelFlowAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,62 +15,26 @@ import java.util.List;
  * @author by  zhengshaorui on 2019/10/8
  * Describe: TagFlowLayout 为标签瀑布流布局，支持单选，多选
  */
-public class TagFlowLayout extends FlowLayout implements BaseFlowAdapter.DataListener {
+public class LabelFlowLayout extends FlowLayout  {
     private static final String TAG = "TagFlowLayout";
-    private TagFlowAdapter mAdapter;
     private int mMaxSelectCount = 1;
     private int mLastPosition = 0;
 
-    public TagFlowLayout(Context context) {
+    public LabelFlowLayout(Context context) {
         this(context, null);
     }
 
-    public TagFlowLayout(Context context, @Nullable AttributeSet attrs) {
+    public LabelFlowLayout(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public TagFlowLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public LabelFlowLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setAdapter(TagFlowAdapter adapter) {
-        mAdapter = adapter;
-        mAdapter.setListener(this);
-        notifyDataChanged();
-    }
-
-    public TagFlowLayout setMaxCount(int maxCount) {
-        mMaxSelectCount = maxCount;
-        return this;
-    }
-
-
     @Override
-    public void notifyDataChanged() {
-        removeAllViews();
-        final TagFlowAdapter adapter = mAdapter;
-        int count = adapter.getItemCount();
-        for (int i = 0; i < count; i++) {
-            View view = LayoutInflater.from(getContext()).inflate(adapter.getLayoutId(), this, false);
-            adapter.onBindView(view, adapter.getDatas().get(i), i);
-            addView(view);
-            final int finalI = i;
-            onItemClick(adapter, view, finalI);
-
-            //判断开始是否有人是选中的
-            if (view.isSelected()) {
-                adapter.onItemSelectState(view, true);
-            }
-        }
-    }
-
-    /**
-     * 单个view 点击
-     *
-     * @param adapter
-     * @param view
-     */
-    private void onItemClick(final TagFlowAdapter adapter, final View view, final int position) {
+    protected void onViewClick(final BaseFlowAdapter baseAdapter, final View view,final int position) {
+        final LabelFlowAdapter adapter = (LabelFlowAdapter) baseAdapter;
         view.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,6 +79,16 @@ public class TagFlowLayout extends FlowLayout implements BaseFlowAdapter.DataLis
             }
         });
     }
+
+
+    public LabelFlowLayout setMaxCount(int maxCount) {
+        mMaxSelectCount = maxCount;
+        return this;
+    }
+
+
+
+
 
     /**
      * 获取选中的个数
