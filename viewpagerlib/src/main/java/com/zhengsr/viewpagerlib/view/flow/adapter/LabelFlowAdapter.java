@@ -26,5 +26,13 @@ public abstract class LabelFlowAdapter<T>  extends BaseFlowAdapter<T>{
 
     public  void onFocusChanged(View oldView, View newView){};
 
+    /**
+     * 恢复所有状态
+     */
+    public void resetStatus(){
+        if (listener != null) {
+            listener.resetAll();
+        }
+    }
 
 }

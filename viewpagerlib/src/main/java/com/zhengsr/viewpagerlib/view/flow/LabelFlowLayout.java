@@ -1,10 +1,12 @@
 package com.zhengsr.viewpagerlib.view.flow;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.view.flow.adapter.BaseFlowAdapter;
 import com.zhengsr.viewpagerlib.view.flow.adapter.LabelFlowAdapter;
 
@@ -17,8 +19,9 @@ import java.util.List;
  */
 public class LabelFlowLayout extends FlowLayout  {
     private static final String TAG = "TagFlowLayout";
-    private int mMaxSelectCount = 1;
+    private int mMaxSelectCount ;
     private int mLastPosition = 0;
+    private LabelFlowAdapter mAdapter;
 
     public LabelFlowLayout(Context context) {
         this(context, null);
@@ -30,11 +33,16 @@ public class LabelFlowLayout extends FlowLayout  {
 
     public LabelFlowLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.LabelFlowLayout);
+        mMaxSelectCount = ta.getInteger(R.styleable.LabelFlowLayout_label_max_count,1);
+        ta.recycle();
     }
 
     @Override
-    protected void onViewClick(final BaseFlowAdapter baseAdapter, final View view,final int position) {
+    protected void onItemViewConfig(final BaseFlowAdapter baseAdapter, final View view, final int position) {
+        mAdapter = (LabelFlowAdapter) baseAdapter;
         final LabelFlowAdapter adapter = (LabelFlowAdapter) baseAdapter;
+        //单选
         view.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +86,13 @@ public class LabelFlowLayout extends FlowLayout  {
                 mLastPosition = position;
             }
         });
+
+        view.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                return adapter.onItemLongClick(view,position);
+            }
+        });
     }
 
 
@@ -85,8 +100,6 @@ public class LabelFlowLayout extends FlowLayout  {
         mMaxSelectCount = maxCount;
         return this;
     }
-
-
 
 
 
@@ -133,4 +146,13 @@ public class LabelFlowLayout extends FlowLayout  {
         return indexs;
     }
 
+    @Override
+    public void resetAll() {
+        int childCount = getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View view = getChildAt(i);
+            view.setSelected(false);
+            mAdapter.onItemSelectState(view,false);
+        }
+    }
 }

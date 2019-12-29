@@ -57,6 +57,11 @@
            android:onClick="FlowLayout"
            />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tab布局"
+            android:onClick="tabflowlayout"/>
 
 
 

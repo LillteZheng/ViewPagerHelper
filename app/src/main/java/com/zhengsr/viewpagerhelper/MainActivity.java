@@ -7,9 +7,11 @@ import android.view.View;
 
 import com.zhengsr.viewpagerhelper.activity.ArcActivity;
 import com.zhengsr.viewpagerhelper.activity.FlowActivity;
+import com.zhengsr.viewpagerhelper.activity.TabFlowActivity;
 import com.zhengsr.viewpagerhelper.activity.loop.LoopActivity;
 import com.zhengsr.viewpagerhelper.activity.guide.GuideActivity;
 import com.zhengsr.viewpagerhelper.tab.TabActivity;
+import com.zhengsr.viewpagerlib.view.flow.TabFlowLayout;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "zsr";
@@ -51,5 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void FlowLayout(View view) {
         startActivity(new Intent(this, FlowActivity.class));
+    }
+
+    public void tabflowlayout(View view) {
+        startActivity(new Intent(this, TabFlowActivity.class));
     }
 }

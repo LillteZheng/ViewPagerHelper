@@ -48,14 +48,18 @@ public abstract class FlowLayout extends ViewGroup implements BaseFlowAdapter.Da
             View view = LayoutInflater.from(getContext()).inflate(mAdapter.getLayoutId(),this,false);
             mAdapter.onBindView(view,mAdapter.getDatas().get(i),i);
             addView(view);
-            onViewClick(mAdapter,view,i);
+            onItemViewConfig(mAdapter,view,i);
         }
+
     }
 
+
+
+
     /**
-     * 子view 点击事件
+     * 子view 一些配置
      */
-    protected abstract void onViewClick( BaseFlowAdapter baseAdapter,  View view,  int position);
+    protected abstract void onItemViewConfig(BaseFlowAdapter baseAdapter, View view, int position);
 
     /**
      * 模式为竖向测量

@@ -105,4 +105,8 @@
         <attr name="scale_max_factor" format="integer"/>
         <attr name="scale_interrupt_parent_touch" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="LabelFlowLayout">
+        <attr name="label_max_count" format="integer"/>
+    </declare-styleable>
 </resources>

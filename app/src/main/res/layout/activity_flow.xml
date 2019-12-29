@@ -7,13 +7,24 @@
     android:background="#506E7A"
     tools:context="com.zhengsr.viewpagerhelper.activity.FlowActivity">
 
+    <TextView
+        android:id="@+id/signle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="单选"/>
+
     <com.zhengsr.viewpagerlib.view.flow.LabelFlowLayout
         android:id="@+id/tagflow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="10dp"
+       app:layout_constraintTop_toBottomOf="@id/signle"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         />
@@ -27,27 +38,50 @@
         android:onClick="update"
         />
 
+    <TextView
+        android:id="@+id/multi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/update_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="多选"/>
+
     <com.zhengsr.viewpagerlib.view.flow.LabelFlowLayout
         android:id="@+id/tagflow2"
-        app:layout_constraintTop_toBottomOf="@id/update_btn"
+        app:layout_constraintTop_toBottomOf="@id/multi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"
+        app:label_max_count="3"
+        android:layout_marginTop="10dp"
         />
 
-
-    <com.zhengsr.viewpagerlib.view.flow.TabFlowLayout
-        android:id="@+id/tabflow"
+    <TextView
+        android:id="@+id/search"
         android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tagflow2"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/white"
         android:layout_marginTop="10dp"
-        android:tag="horizontal"
-        android:background="#71B4C4"
+        app:layout_constraintTop_toBottomOf="@id/tagflow2"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_height="wrap_content"/>
+        android:text="支持长按"/>
+
+    <com.zhengsr.viewpagerlib.view.flow.LabelFlowLayout
+        android:id="@+id/tagflow3"
+        app:layout_constraintTop_toBottomOf="@id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        />
 
 
 </android.support.constraint.ConstraintLayout>

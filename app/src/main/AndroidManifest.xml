@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.FlowActivity"></activity>
+        <activity android:name=".activity.TabFlowActivity"></activity>
+        <activity android:name=".activity.FlowActivity" />
         <activity android:name=".activity.ArcActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
