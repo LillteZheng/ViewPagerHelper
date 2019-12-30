@@ -2,6 +2,7 @@ package com.zhengsr.viewpagerlib.view.flow;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,6 +121,15 @@ public abstract class FlowLayout extends ViewGroup implements BaseFlowAdapter.Da
             height += getPaddingTop()+getPaddingBottom();
         }else{
             height = heightSize;
+        }
+
+        if (widthMode == MeasureSpec.EXACTLY){
+            width = widthSize;
+        }else if (widthMode == MeasureSpec.AT_MOST){
+            width = Math.min(width,widthSize);
+            width += getPaddingLeft() + getPaddingRight();
+        }else{
+            width += getPaddingLeft() + getPaddingRight();
         }
         setMeasuredDimension(width,height);
     }

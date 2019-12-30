@@ -12,6 +12,6 @@ public abstract class TabFlowAdapter<T> extends BaseFlowAdapter<T> {
     public TabFlowAdapter(int layoutId, List<T> datas) {
         super(layoutId, datas);
     }
-
+    public void onItemViewFocus(View newView, View oldView,int position){}
 
 }
