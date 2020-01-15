@@ -7,42 +7,11 @@
     tools:context="com.zhengsr.viewpagerhelper.activity.loop.NetWorkActivity"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/content"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="正在加载...."
-            android:gravity="center"/>
-    </FrameLayout>
+        android:layout_height="wrap_content"/>
 
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        android:layout_height="200dp">
-
-        <com.zhengsr.viewpagerlib.view.BannerViewPager
-            android:id="@+id/recy_banner"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:banner_isAutoLoop ="true"
-            app:banner_looptime="3000"
-            app:banner_switchtime="600" />
-
-        <com.zhengsr.viewpagerlib.indicator.TextIndicator
-            android:id="@+id/recy_text_indicator"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_marginRight="5dp"
-            app:word_circle_color="@color/black_ff"
-            app:word_show_circle="true"
-            app:word_text_color="@color/white"
-            app:word_text_size="14sp"
-            />
-    </FrameLayout>
 
 </LinearLayout>

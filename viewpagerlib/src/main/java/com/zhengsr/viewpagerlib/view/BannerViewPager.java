@@ -32,6 +32,7 @@ import com.zhengsr.viewpagerlib.indicator.TransIndicator;
 import com.zhengsr.viewpagerlib.indicator.ZoomIndicator;
 import com.zhengsr.viewpagerlib.type.BannerTransType;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -130,6 +131,36 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         mScreentRect = new Rect(0,0,dm.widthPixels,dm.heightPixels);
 
     }
+
+
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        //处理因为recyclerview的回收机制，导致轮播图不起作用的问题
+        if (getAdapter() != null) {
+            try {
+                Field mFirstLayout = ViewPager.class.getDeclaredField("mFirstLayout");
+                mFirstLayout.setAccessible(true);
+                mFirstLayout.set(this, false);
+                setCurrentItem(getCurrentItem());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        /**
+         * 在 onDetachedFromWindow 由于 mscroller 动画被取消了，所以会出现 页面在中间的情况，
+         * 可以不调用 super.onDetachedFromWindow() ，这样动画不会停止，不太好；后面再看看用什么方法解决
+         */
+
+    }
+
 
 
     private int getStartSelectItem(int readCount){

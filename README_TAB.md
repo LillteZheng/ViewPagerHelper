@@ -14,6 +14,9 @@
 
 </table>
 
+> TabIndicator 已经不再维护；推荐大家使用新库：https://github.com/LillteZheng/FlowHelper
+  支持更多效果，功能更强大，且支持自己自定义
+
 ## 使用
 
 主要为 **TabIndicator** 这个类，在布局中，把它放在viewpager的上面即可，如下：

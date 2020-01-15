@@ -8,6 +8,9 @@ viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每�
 ![](https://img.shields.io/github/forks/LillteZheng/ViewPagerHelper.svg)
 [![](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-%E9%83%91%E5%B0%91%E9%94%90-green.svg)](https://blog.csdn.net/u011418943)
 
+**注意！！！ 后面这个库专门维护Banner，其他不再维护，如果需要使用 Tab，推荐大家使用新库：
+https://github.com/LillteZheng/FlowHelper  支持更多效果，功能更强大，且支持自己自定义**
+
 详细内容可以参考这篇博客：
 http://blog.csdn.net/u011418943/article/details/78493002
 
@@ -74,7 +77,10 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 
 [轮播使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_Banner.md)
 
-## **Tab指示器**
+## ~~Tab指示器~~
+
+> TabIndicator 已经不再维护；推荐大家使用新库：https://github.com/LillteZheng/FlowHelper
+  支持更多效果，功能更强大，且支持自己自定义
 
 <table  align="center">
  <tr>

@@ -34,6 +34,11 @@ import java.util.List;
  * Created by Administrator on 2017/10/21.
  */
 
+/**
+ * 不再维护这个类，扩展性差，维护麻烦
+ * 建议使用新库：https://github.com/LillteZheng/FlowHelper
+ */
+@Deprecated()
 public class TabIndicator extends LinearLayout implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnGlobalLayoutListener {
     private static final String TAG = "TabIndicator";
     /**

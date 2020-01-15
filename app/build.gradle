@@ -47,5 +47,6 @@ dependencies {
 
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
 
 }

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="4dp"
+    app:cardElevation="0dp"
     android:orientation="vertical">
     <ImageView
         android:id="@+id/icon"

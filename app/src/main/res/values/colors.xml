@@ -150,4 +150,5 @@
     <color name="gray_cccc">#a0f3ecec</color><!--灰色cc -->
     <color name="gray_8f">#8f8f8f</color><!--灰色8f -->
     <color name="mycolor">#2b8fff</color>
+    <color name="wechat">#323232</color>
 </resources>
