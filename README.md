@@ -95,7 +95,7 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 
 </table>
 
-**https://github.com/LillteZheng/FlowHelper的效果如下：**
+**https://github.com/LillteZheng/FlowHelper   的效果如下：**
 
 <table  align="center">
  <tr>
