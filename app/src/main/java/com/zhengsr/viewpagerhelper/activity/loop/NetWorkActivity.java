@@ -80,13 +80,13 @@ public class NetWorkActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(List<BannerBean> bannerBeans) {
-                        PageBean bean = new PageBean.Builder<BannerBean>()
+                        /*PageBean bean = new PageBean.Builder<BannerBean>()
                                 .data(bannerBeans)
                                 .indicator(mTabIndicator)
                                 .builder();
                         mBannerView.setPageListener(bean, R.layout.banner_item_layout, new PageHelperListener<BannerBean>() {
                             @Override
-                            public void getItemView(final View view, final BannerBean bannerBean) {
+                            public void getItemView(View view, BannerBean bannerBean, int position) {
                                 ImageView imageView = view.findViewById(R.id.banner_icon);
                                 TextView textView = view.findViewById(R.id.banner_text);
                                 Glide.with(NetWorkActivity.this)
@@ -95,7 +95,8 @@ public class NetWorkActivity extends AppCompatActivity {
                                 textView.setText(bannerBean.getTitle());
                             }
 
-                        });
+
+                        });*/
                         mAdapter.notifyDataSetChanged();
                     }
 

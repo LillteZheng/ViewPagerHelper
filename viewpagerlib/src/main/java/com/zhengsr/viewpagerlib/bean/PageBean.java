@@ -1,5 +1,6 @@
 package com.zhengsr.viewpagerlib.bean;
 
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.zhengsr.viewpagerlib.type.BannerTransType;
@@ -7,136 +8,45 @@ import com.zhengsr.viewpagerlib.type.BannerTransType;
 import java.util.List;
 
 /**
- * created by zhengshaorui on 2019/8/12
+ * created by zhengshaorui on 2017/8/12
  * Describe: 用来构建banneer 的一些数据
  */
 
 public class PageBean {
 
-    private Builder mBuilder;
-    private PageBean(Builder builder) {
-       mBuilder = builder;
-    }
+    /**
+     * 轮播的时间，即每一个 item 停留的时间
+     */
+    public int loopTime;
+    /**
+     * viewpager 的切换时间
+     */
+    public int smoothScrollTime;
+    /**
+     * 支持循环轮播的最大个数，比如设置为3，当你的数据只有2个时，不支持轮播
+     */
+    public int loopMaxCount = -1;
+    /**
+     * 是否一开始就轮播
+     */
+    public boolean isAutoLoop;
 
-    public Builder getParams() {
-        return mBuilder;
-    }
-
-    public static class Builder<T>{
-        private View indicator;
-        private View openview;
-        private List<T> datas;
-        private boolean useCode ;
-        private boolean isAutoLoop;
-        private int loopTime = -1;
-        private int pagerSwitchTime = -1;
-        private int cardHeight = -1;
-        private int loopMaxCount = -1;
-        private boolean isCycle;
-        private BannerTransType bannerTransformer = BannerTransType.UNKNOWN;
-
-        public Builder indicator(View bottomLayout){
-            this.indicator = bottomLayout;
-            return this;
-        }
-        public Builder openView(View openView){
-            this.openview = openView;
-            return this;
-        }
-
-        public Builder cycle(boolean isCycle){
-            this.isCycle = isCycle;
-            return this;
-        }
-
-        public Builder data(List<T> datas){
-            this.datas = datas;
-            return this;
-        }
-
-        public Builder useCode(boolean useCode){
-            this.useCode = useCode;
-            return this;
-        }
-
-        public Builder autoLoop(boolean isAutoLoop){
-            this.isAutoLoop = isAutoLoop;
-            return this;
-        }
-
-        public Builder loopTime(int loopTime){
-            this.loopTime = loopTime;
-            return this;
-        }
-
-        public Builder pagerSwitchTime(int pagerSwitchTime){
-            this.pagerSwitchTime = pagerSwitchTime;
-            return this;
-        }
-
-        public Builder cardHeight(int cardHeight){
-            this.cardHeight = cardHeight;
-            return this;
-        }
-        public Builder loopMaxCount(int loopMaxCount){
-            this.loopMaxCount = loopMaxCount;
-            return this;
-        }
-
-        public Builder bannerTransformer(BannerTransType bannerTransformer){
-            this.bannerTransformer = bannerTransformer;
-            return this;
-        }
+    /**
+     * 是否循环填充数据，当 isAutoLoop 为true，则isAutoCycle 也为true，
+     * 当数据大于 loopMaxCount 时，也为true，如果不需要自动轮播，只需要循环，可填这个为true
+     */
+    public boolean isAutoCycle;
+    /**
+     *  卡片高度
+     */
+    public int cardHeight;
+    /**
+     * viewpager 的 transFormer 效果，默认支持4中
+     */
+    public BannerTransType transFormer;
 
 
-        public PageBean builder(){
-            return new PageBean(this);
-        }
 
 
-        public View getIndicator() {
-            return indicator;
-        }
-
-        public View getOpenview() {
-            return openview;
-        }
-
-        public List<T> getDatas() {
-            return datas;
-        }
-
-        public boolean isAutoLoop() {
-            return isAutoLoop;
-        }
-
-        public int getLoopTime() {
-            return loopTime;
-        }
-
-        public int getPagerSwitchTime() {
-            return pagerSwitchTime;
-        }
-
-        public int getLoopMaxCount() {
-            return loopMaxCount;
-        }
-
-        public BannerTransType getBannerTransformer() {
-            return bannerTransformer;
-        }
-
-        public boolean isUseCode() {
-            return useCode;
-        }
-
-        public int getCardHeight() {
-            return cardHeight;
-        }
-
-        public boolean isCycle() {
-            return isCycle;
-        }
-    }
 
 }

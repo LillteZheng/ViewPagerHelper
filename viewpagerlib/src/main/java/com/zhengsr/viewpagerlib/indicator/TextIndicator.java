@@ -37,7 +37,6 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
     private Paint mPaint;
     private Paint mTextPaint;
 
-    private View mOpenView;
     private int mRadius;
     private String mTextString = "";
     private int mCircleColor;
@@ -46,22 +45,22 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
 
 
     public TextIndicator(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public TextIndicator(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public TextIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TextIndicator);
-        mShowCircle = ta.getBoolean(R.styleable.TextIndicator_word_show_circle,false);
+        mShowCircle = ta.getBoolean(R.styleable.TextIndicator_word_show_circle, false);
         mCircleColor = ta.getResourceId(R.styleable.TextIndicator_word_circle_color,
                 R.color.page_black_cc);
-        mTextcolor = ta.getResourceId(R.styleable.TextIndicator_word_text_color,R.color.page_white);
-        mTextsize = ta.getDimensionPixelSize(R.styleable.TextIndicator_word_text_size,15);
+        mTextcolor = ta.getResourceId(R.styleable.TextIndicator_word_text_color, R.color.page_white);
+        mTextsize = ta.getDimensionPixelSize(R.styleable.TextIndicator_word_text_size, 15);
         ta.recycle();
         setGravity(Gravity.CENTER);
 
@@ -78,7 +77,6 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
     }
 
 
-
     /**
      * 获取自定义控件，防止wrap_content的情况
      */
@@ -86,8 +84,8 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int height = measureHeight(heightMeasureSpec);
         int width = measureWidth(widthMeasureSpec);
-        mRadius = Math.min(height,width)/2;
-        setMeasuredDimension(width,height);
+        mRadius = Math.min(height, width) / 2;
+        setMeasuredDimension(width, height);
 
     }
 
@@ -103,25 +101,24 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
         //绘制文字
 
         float textWidth = mTextPaint.measureText(mTextString);
-        float x = mRadius - textWidth/2;
+        float x = mRadius - textWidth / 2;
         Paint.FontMetrics metrics = mTextPaint.getFontMetrics();
-        float dy = (metrics.descent+metrics.ascent)/2;
+        float dy = (metrics.descent + metrics.ascent) / 2;
         float ty = mRadius - dy;
-        canvas.drawText(mTextString,x,ty,mTextPaint);
+        canvas.drawText(mTextString, x, ty, mTextPaint);
 
     }
 
-    public void addPagerData(PageBean bean, ViewPager viewPager){
-        if (bean != null) {
-            mCount = bean.getParams().getDatas().size();
-            mTextString = 1+"/"+mCount;
-            if (viewPager != null){
-                viewPager.addOnPageChangeListener(this);
-            }
+    public void addPagerData(int count, ViewPager viewPager) {
+        if (count == 0){
+            return;
         }
-        if (bean.getParams().getOpenview() != null){
-            mOpenView = bean.getParams().getOpenview();
+        mCount = count;
+        mTextString = 1 + "/" + mCount;
+        if (viewPager != null) {
+            viewPager.addOnPageChangeListener(this);
         }
+
         invalidate();
 
     }
@@ -134,8 +131,7 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
 
     @Override
     public void onPageSelected(int position) {
-        viewPagerSeleted(position%mCount);
-        showStartView(position%mCount);
+        viewPagerSeleted(position % mCount);
     }
 
 
@@ -145,44 +141,16 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
     }
 
     /**
-     *  用于viewpager 滑动时，文字的显示
+     * 用于viewpager 滑动时，文字的显示
+     *
      * @param position
      */
     private void viewPagerSeleted(int position) {
-        mTextString = (position+1)+"/"+mCount;
+        mTextString = (position + 1) + "/" + mCount;
         invalidate();
     }
 
 
-    /**
-     * 显示最后一页的状态
-     * @param position
-     */
-    private void showStartView(int position) {
-        // 最后一页
-        if (position == mCount - 1) {
-            if (mOpenView != null) {
-                mOpenView.setVisibility(VISIBLE);
-                ObjectAnimator animator = ObjectAnimator.ofFloat(mOpenView,
-                        "alpha", 0, 1);
-                animator.setDuration(500);
-                animator.setInterpolator(new AccelerateDecelerateInterpolator());
-                animator.start();
-                if (mDismissOpen){
-                    setVisibility(View.GONE);
-                }
-            }
-        } else {
-            if (mOpenView != null) {
-
-                mOpenView.setVisibility(GONE);
-
-                if (mDismissOpen){
-                    setVisibility(VISIBLE);
-                }
-            }
-        }
-    }
 
 
 
@@ -196,7 +164,7 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
 
         if (specMode == MeasureSpec.EXACTLY) {
             result = specSize;
-        }else{
+        } else {
             result = 100; //如果是wrap_content ,给个初始值
             if (specMode == MeasureSpec.AT_MOST) {
                 result = Math.min(result, specSize);
@@ -204,6 +172,7 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
         }
         return result;
     }
+
     //设置宽的大小
     private int measureWidth(int widthMeasureSpec) {
         // TODO Auto-generated method stub
@@ -214,7 +183,7 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
 
         if (specMode == MeasureSpec.EXACTLY) {
             result = specSize;
-        }else{
+        } else {
             result = 100; //如果是wrap_content ,给个初始值
             if (specMode == MeasureSpec.AT_MOST) {
                 result = Math.min(result, specSize);
@@ -224,21 +193,22 @@ public class TextIndicator extends LinearLayout implements ViewPager.OnPageChang
     }
 
 
-    public TextIndicator showCircle(boolean showcircle){
+    public TextIndicator showCircle(boolean showcircle) {
         mShowCircle = showcircle;
         return this;
     }
-    public TextIndicator circleColor(int color){
+
+    public TextIndicator circleColor(int color) {
         mCircleColor = color;
         return this;
     }
 
-    public TextIndicator textColor(int color){
+    public TextIndicator textColor(int color) {
         mTextcolor = color;
         return this;
     }
 
-    public TextIndicator textSize(int size){
+    public TextIndicator textSize(int size) {
         mTextsize = size;
         return this;
     }

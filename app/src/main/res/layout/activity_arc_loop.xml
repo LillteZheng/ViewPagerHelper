@@ -30,17 +30,7 @@
             app:banner_transformer="mz"
             app:banner_switchtime="600" />
 
-        <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
-            android:id="@+id/bottom_zoom_arc"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="bottom|right"
-            android:layout_marginRight="20dp"
-            android:gravity="center"
-            app:zoom_alpha_min="0.5"
-            app:zoom_leftmargin="10dp"
-            app:zoom_max="1.5"
-            app:zoom_selector="@drawable/bottom_circle" />
+
     </FrameLayout>
 
 

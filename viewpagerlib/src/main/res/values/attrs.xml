@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--放大缩小的 indicator-->
-    <declare-styleable name="ZoomIndicator">
-        <attr name="zoom_selector" format="reference"/> <!--selecotr，一般就一个圆点即可-->
-        <attr name="zoom_leftmargin" format="dimension"/><!--两个圆点之间的间距-->
-        <attr name="zoom_max" format="float"/> <!--小圆点放大的倍数-->
-        <attr name="zoom_alpha_min" format="float"/><!--小圆点缩小的倍数-->
-        <attr name="zoom_dismiss_open" format="boolean"/><!--做引导页的最后一页，是否隐藏圆点-->
-    </declare-styleable>
-
-    <!--与上面同理-->
-    <declare-styleable name="NormalIndicator">
-        <attr name="normal_selector" format="reference"/>
-        <attr name="normal_leftmargin" format="dimension"/>
-        <attr name="normal_dismiss_open" format="boolean"/>
-    </declare-styleable>
-
-    <!--移动indicator indicator-->
-    <declare-styleable name="TransIndicator">
-        <attr name="trans_width" format="dimension"/> <!--指示器的大小-->
-        <attr name="trans_height" format="dimension"/> <!--指示器的大小-->
-        <attr name="trans_defaultcolor" format="color|reference"/> <!--指示器默认的颜色-->
-        <attr name="trans_leftmargin" format="dimension"/>
-        <attr name="trans_movecolor" format="color|reference"/> <!--指示器移动的颜色-->
-        <attr name="trans_dismiss_open" format="boolean"/>
-        <attr name="trans_round_radius" format="dimension"/>
-        <attr name="trans_type">
-            <enum name="circle" value="0"/>
-            <enum name="round" value="1"/>
-        </attr>
-    </declare-styleable>
-
     <!--文字indicator-->
     <declare-styleable name="TextIndicator">
         <attr name="word_show_circle" format="boolean"/> <!--是否显示外援的圆圈-->
@@ -106,7 +75,32 @@
         <attr name="scale_interrupt_parent_touch" format="boolean"/>
     </declare-styleable>
 
-    <declare-styleable name="LabelFlowLayout">
-        <attr name="label_max_count" format="integer"/>
+
+    <declare-styleable name="CircleIndicator">
+        <attr name="cir_type">
+            <enum name="normal" value="0"/>
+            <enum name="cirToRect" value="1"/>
+            <enum name="scale" value="2"/>
+        </attr>
+        <attr name="cir_normalColor" format="color"/>
+        <attr name="cir_canMove" format="boolean"/>
+        <attr name="cir_selectedColor" format="color"/>
+        <attr name="cir_horizon_margin" format="dimension"/>
+        <attr name="cir_size" format="dimension"/>
+        <attr name="cir_rect_width" format="dimension"/>
+        <attr name="cir_scale_factor" format="float"/>
     </declare-styleable>
+
+
+    <declare-styleable name="RectIndicator">
+        <attr name="rect_normalColor" format="color"/>
+        <attr name="rect_canMove" format="boolean"/>
+        <attr name="rect_selectedColor" format="color"/>
+        <attr name="rect_width" format="dimension"/>
+        <attr name="rect_height" format="dimension"/>
+        <attr name="rect_round_size" format="dimension"/>
+        <attr name="rect_horizon_margin" format="dimension"/>
+    </declare-styleable>
+
+
 </resources>

@@ -29,19 +29,6 @@
             app:banner_iscycle="true"
             app:banner_switchtime="600" />
 
-        <com.zhengsr.viewpagerlib.indicator.TransIndicator
-            android:id="@+id/bottom_trans_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="bottom|right"
-            android:layout_marginRight="10dp"
-            app:trans_defaultcolor="@color/gray_cccc"
-            app:trans_leftmargin="10dp"
-            app:trans_movecolor="@color/white"
-            app:trans_type="round"
-            app:trans_round_radius="4dp"
-            app:trans_width="15dp"
-            app:trans_height="5dp"/>
     </FrameLayout>
 
     <TextView

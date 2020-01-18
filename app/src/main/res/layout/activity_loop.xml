@@ -7,23 +7,26 @@
     android:background="#15000000"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="卡片效果"
-        android:onClick="card"/>
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="魅族效果"
-        android:onClick="mz"/>
+        android:text="CircleIndicator 效果"
+        android:textAllCaps="false"
+        android:onClick="circleIndicator"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="扇形效果"
         android:onClick="arc"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="卡片效果"
+        android:onClick="card"/>
 
 
     <Button

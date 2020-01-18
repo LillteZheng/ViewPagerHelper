@@ -17,13 +17,6 @@
         android:clipChildren="false"
         android:orientation="vertical">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:onClick="guide"
-            android:text="引导图" />
-
 
         <Button
             android:layout_width="match_parent"
@@ -47,23 +40,10 @@
             android:onClick="arc"
             android:text="弧形图片" />
 
-
-
-
-       <Button
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:text="FlowLayout标签布局"
-           android:onClick="FlowLayout"
-           />
-
-        <Button
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tab布局"
-            android:onClick="tabflowlayout"/>
-
-
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>
