@@ -95,6 +95,20 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 
 </table>
 
+**https://github.com/LillteZheng/FlowHelper的效果如下：**
+
+<table  align="center">
+ <tr>
+    <th>没有结合ViewPager</th>
+    <th>结合ViewPager</th>
+  </tr>
+   <tr>
+    <td><a href="url"><img src="https://github.com/LillteZheng/FlowHelper/raw/master/gif/tab_click.gif" align="left"height="789" width="479"></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/FlowHelper/raw/master/gif/tab_viewpager.gif" align="left" height="789" width="479" ></a></td>
+  </tr>
+
+</table>
+
 [Tab指示器使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_TAB.md)
 
 ## **弧形图片，支持高斯模糊**
