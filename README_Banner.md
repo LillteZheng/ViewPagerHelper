@@ -186,8 +186,8 @@ PageBean 为要添加的数据，这里也支持动态数据添加，比如卡�
     <th>RectIndicator</th>
   </tr>
    <tr>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/circleindicator.gif" align="left" height="480" width="340"></a></td>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rectindicator.gif" align="left" height="480" width="340" ></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/circleindicator.gif" align="left" height="600" width="350"></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rectindicator.gif" align="left" height="600" width="350" ></a></td>
   </tr>
 
 </table>
