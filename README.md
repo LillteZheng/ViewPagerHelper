@@ -27,9 +27,10 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v2.0'
 ```
 
+**v2.0 与之前变动较大，建议更新到最新版，支持更多效果和修复不少bug**
 
 ##  **效果图**
 
@@ -55,8 +56,8 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
     <th>RectIndicator</th>
   </tr>
    <tr>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/circleindicator.gif" align="left" height="480" width="340"></a></td>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rectindicator.gif" align="left" height="480" width="340" ></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/circleindicator.gif" align="left" height="600" width="350"></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rectindicator.gif" align="left" height="600" width="350" ></a></td>
   </tr>
 
 </table>
@@ -125,25 +126,17 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 </table>
 
 
-### app 启动引导页
 
-<table  align="center">
- <tr>
-    <th>正常版</th>
-    <th>移动版</th>
-     <th>缩放版</th>
-  </tr>
-   <tr>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/glidenormal.gif" align="left" height="480" width="340"></a></td>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/glidetrans.gif" align="left" height="480" width="340" ></a></td>
-        <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/glidezoom.gif" align="left" height="480" width="340" ></a></td>
-  </tr>
-</table>
-
-[引导页使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_GUIDE.md)
 
 
 ## 版本说明    
+
+**v2.0**
+- 大改动，去掉了之前很多无用代码和逻辑
+- Indicator 效果全部统一到了 CircleIndicator 和 RectIndicator，其他的去掉
+- BannerViewPager 增加 setCurrentPosition(int page) 默认选中第几页方法
+- BannerViewPager 修复和 Recyclerview 结合，移除窗口后回来，滚动失败的问题
+
 
 **v1.9**
 - 处理TabIndicator第一次没加载数据报错和优化部分代码
