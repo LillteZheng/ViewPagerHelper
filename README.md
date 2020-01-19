@@ -33,17 +33,17 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 
 ##  **效果图**
 
-首先，大家最常用到的就是轮播图了，这里给大家提供了 4 中常用的 Indicator
+首先，大家最常用到的就是轮播图了，这里给大家提供了 常用的 Indicator
 
 ### **轮播图**
 
 <table  align="center">
  <tr>
-    <th>魅族效果</th>
+    <th>文字效果</th>
     <th>扇形效果</th>
   </tr>
    <tr>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_scale.gif" align="left" height="200" width="340"></a></td>
+      <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif" align="left" height="200" width="340" ></a></td>
     <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif" align="left" height="200" width="340" ></a></td>
   </tr>
 
@@ -51,12 +51,12 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 
 <table  align="center">
  <tr>
-    <th>条状效果</th>
-    <th>文字效果</th>
+    <th>CircleIndicator</th>
+    <th>RectIndicator</th>
   </tr>
    <tr>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_line.gif" align="left" height="200" width="340"></a></td>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_text.gif" align="left" height="200" width="340" ></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/circleindicator.gif" align="left" height="480" width="340"></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rectindicator.gif" align="left" height="480" width="340" ></a></td>
   </tr>
 
 </table>
@@ -73,8 +73,9 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 
 </table>
 
+**跟多说明请参考** [轮播使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_Banner.md)
 
-[轮播使用说明](https://github.com/LillteZheng/ViewPagerHelper/blob/master/README_Banner.md)
+
 
 ## ~~Tab指示器~~
 
@@ -197,46 +198,38 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 |banner_iscycle|boolean|是否循环|
 |banner_transformer|card,mz,zoom,depath|transformer的效果|
 
-**ZoomIndicator**
+**CircleIndicator**
+
 
 | 名称 | 类型 |说明 |
 |---|---|---|
-|zoom_selector|reference|selecotr，一般就一个圆点即可|
-|zoom_leftmargin|dimension|两个圆点之间的间距|
-|zoom_max|float|小圆点放大的倍数|
-|zoom_alpha_min|float|小圆点缩小的倍数|
-|zoom_dismiss_open|boolean|做引导页的最后一页，是否隐藏圆点|
+|cir_type|integer|效果，支持3中，normal、cirToRect、scale|
+|cir_normalColor|color|默认的颜色|
+|cir_selectedColor|color|选中时的颜色|
+|cir_horizon_margin|dimension|两个小圆球的距离|
+|cir_size|dimension|小球的大小|
+|cir_rect_width|dimension|当type为 cirToRect时，矩形的宽度|
+|cir_scale_factor|float|当type 为scale，放大倍数|
+|cir_canMove|boolean|是否可移动，默认支持移动|
 
-**NormalIndicator**
+**RectIndicator**
 
-| 名称 | 类型 |说明 |
-|---|---|---|
-|normal_selector|reference|selecotr，一般就一个圆点即可-|
-|normal_leftmargin|dimension|两个圆点之间的间距|
-|normal_dismiss_open|boolean|做引导页的最后一页，是否隐藏圆点|
-
-**TransIndicator**
 
 | 名称 | 类型 |说明 |
 |---|---|---|
-|trans_width|dimension|指示器宽度|
-|trans_height|dimension|指示器高度|
-|trans_defaultcolor|color,reference|指示器默认的颜色|
-|trans_leftmargin|dimension|两个圆点之间的间距|
-|trans_movecolor|color,reference|指示器移动的颜色|
-|trans_dismiss_open|boolean|做引导页的最后一页，是否隐藏圆点|
-|trans_round_radius|dimension|矩形圆角|
-|trans_type|round,circle|矩形圆角|
+
+|rect_normalColor|color|默认的颜色|
+|rect_selectedColor|color|选中时的颜色|
+|rect_horizon_margin|dimension|两个矩形的距离|
+|rect_width|dimension|矩形的宽度|
+|rect_height|dimension|矩形的高度|
+|rect_round_size|dimension|矩形的圆角|
+|rect_canMove|boolean|是否可移动，默认支持移动|
 
 
 **TextIndicator**
 
-| 名称 | 类型 |说明 |
-|---|---|---|
-|word_show_circle|boolean|是否显示外援的圆圈|
-|word_circle_color|reference,color|圆圈的颜色|
-|word_text_color|reference,color|文字颜色|
-|word_text_size|reference|文字大小|
+其实就是一个 textview ，自己配置大小颜色和背景即可
 
 **弧形图片 ArcImageView**
 
@@ -269,7 +262,7 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v1.9'
 
 
 
-**渐变文字 TextIndicator**
+**渐变文字 ColorTextVIew**
 
 | 名称 | 类型 |说明 |
 |---|---|---|

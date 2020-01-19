@@ -38,30 +38,17 @@ public class CardLoopActivity extends AppCompatActivity {
             beans.add(bean);
         }
 
-       /* PageBean pageBean = new PageBean.Builder<CardBean>()
-                .useCode(true) //比填，不然不起作用
-                .autoLoop(true) //自动轮播
-                .pagerSwitchTime(600) //切换速度
-                .loopTime(4000)  //轮播事件
-                .data(beans) //添加数据
-                .cardHeight(30)  //卡片的高度
-                .cycle(true)  //是否填充可以循环
-                .bannerTransformer(BannerTransType.CARD)  //设置 transformer，即卡片效果，也可以是魅族，zoom，depath的效果
-                .builder();*/
+        mBannerViewPager.setCurrentPosition(1);
 
 
-        /**
-         * 配置数据，记得在 PageHelperListener 配置你的泛型数据哦
-         */
-       /* mBannerViewPager.setPageListener(pageBean, R.layout.item_card, new PageHelperListener<CardBean>() {
+       mBannerViewPager.setPageListener(R.layout.item_card, beans, new PageHelperListener<CardBean>() {
+           @Override
+           public void bindView(View view, CardBean data, int position) {
+               TextView textView = view.findViewById(R.id.item_card_tv);
+               textView.setText(data.msg);
+           }
+       });
 
-            @Override
-            public void getItemView(View view, CardBean data, int position) {
-                TextView textView = view.findViewById(R.id.item_card_tv);
-                textView.setText(data.msg);
-            }
-
-        });*/
     }
 
 

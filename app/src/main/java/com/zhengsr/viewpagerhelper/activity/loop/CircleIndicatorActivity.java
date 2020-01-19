@@ -44,8 +44,6 @@ public class CircleIndicatorActivity extends AppCompatActivity {
             mDatas.add(bean);
         }
 
-        //todo  viewpager 默认选中某个，indicator 可以点击
-
         normal();
         cirToRect();
         circle();
@@ -116,10 +114,20 @@ public class CircleIndicatorActivity extends AppCompatActivity {
     private void showBanner(BannerViewPager bannerViewPager, CircleIndicator indicator) {
         bannerViewPager.addIndicator(indicator);
 
+        /**
+         * 设置监听即可，loop_layout 为要展示的内容，比如一个 ImageView，或者参考示例
+         * 其中，setText 为模板方法，为了简便代码，当然还有其他一些方法，可查阅 PageHelperListener
+         * onItemClick 为点击事件，当然还有其他方法，重写即可，比如子控件事件 onItemChildClick，如果有子控件
+         * 的点击事件，需要先在 bindView 中注册，比如 addChildrenClick(view,R.id.item_text,position)，
+         * 其他一些方法，可查阅 PageHelperListener
+         */
         bannerViewPager.setPageListener(R.layout.loop_layout, mDatas, new PageHelperListener<TestBean>() {
             @Override
             public void bindView(View view, final TestBean data, int position) {
                 setText(view, R.id.loop_text, data.msg);
+
+                //注册子控件事件
+                //addChildrenClick(view,R.id.item_text,position);
 
                 ImageView imageView = view.findViewById(R.id.loop_icon);
                 GlideApp.with(view)
@@ -132,6 +140,8 @@ public class CircleIndicatorActivity extends AppCompatActivity {
                 super.onItemClick(view, data, position);
                 Toast.makeText(CircleIndicatorActivity.this, data.msg+" "+position, Toast.LENGTH_SHORT).show();
             }
+
+
         });
     }
 

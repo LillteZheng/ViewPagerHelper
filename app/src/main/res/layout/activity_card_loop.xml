@@ -30,6 +30,8 @@
             android:layout_height="match_parent"
             android:clipChildren="false"
             android:layout_marginBottom="20dp"
+            app:banner_card_height="20dp"
+            app:banner_transformer="card"
             />
 
     </LinearLayout>

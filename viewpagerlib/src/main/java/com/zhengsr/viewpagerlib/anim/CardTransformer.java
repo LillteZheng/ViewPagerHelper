@@ -10,6 +10,7 @@ import android.view.View;
  * Describe: 卡片式viewpager
  */
 public class CardTransformer implements ViewPager.PageTransformer {
+    private static final String TAG = "CardTransformer";
     private float mCardHeight = 10;
 
     public CardTransformer(float cardheight) {

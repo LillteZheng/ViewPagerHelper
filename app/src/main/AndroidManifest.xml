@@ -11,6 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.loop.TextIndicatorActivity"></activity>
+        <activity android:name=".activity.loop.RectIndicatorActivity" />
         <activity android:name=".activity.ArcActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -19,18 +21,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.guide.GlideZoomActivity" />
-        <activity android:name=".activity.guide.GlideTransActivity" />
         <activity android:name=".activity.loop.LoopActivity" />
         <activity android:name=".tab.TabActivity" />
         <activity android:name=".tab.TriTabActivity" />
         <activity android:name=".tab.RectTabActivity" />
         <activity android:name=".tab.ColorTabActivity" />
         <activity android:name=".activity.loop.NetWorkActivity" />
-        <activity android:name=".activity.guide.GuideActivity" />
         <activity android:name=".activity.loop.CardLoopActivity" />
         <activity android:name=".activity.loop.CircleIndicatorActivity" />
         <activity android:name=".activity.loop.ArcLoopActivity" />
+        <activity android:name=".activity.loop.ScaleImageActivity"/>
     </application>
 
 </manifest>

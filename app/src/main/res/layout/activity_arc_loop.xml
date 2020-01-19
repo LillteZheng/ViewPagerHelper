@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clipChildren="false"
     tools:context="com.zhengsr.viewpagerhelper.activity.loop.ArcLoopActivity">
 
     <TextView
@@ -24,11 +25,24 @@
             android:id="@+id/loop_viewpager_arc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             app:banner_isAutoLoop="false"
             app:banner_transformer="mz"
             app:banner_switchtime="600" />
+
+        <com.zhengsr.viewpagerlib.indicator.CircleIndicator
+            android:id="@+id/bottom_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            app:cir_horizon_margin="15dp"
+            app:cir_normalColor="@color/white"
+            app:cir_selectedColor="@color/darkcyan"
+            app:cir_type="cirToRect"
+            app:cir_rect_width="20dp"
+            app:cir_size="10dp"
+
+            />
 
 
     </FrameLayout>

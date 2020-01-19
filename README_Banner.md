@@ -6,7 +6,7 @@
     <th>扇形效果</th>
   </tr>
    <tr>
-    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_scale.gif" align="left" height="200" width="340"></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/cirtorect.gif" align="left" height="200" width="340"></a></td>
     <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/loop_arc.gif" align="left" height="200" width="340" ></a></td>
   </tr>
 
@@ -40,8 +40,8 @@
 
 主要为 **BannerViewPager** 这个类，在布局中，添加自己喜欢的 Indicator 即可。
 
-### 魅族效果
-比如魅族的效果，布局如下,记得 clipChildren="false"：
+### Banner + Indicator
+首先，一个简单的 banner + indicator 如下，如果想要第一种效果，记得父布局 clipChildren="false"：
 ```
 <FrameLayout
     android:layout_width="match_parent"
@@ -60,74 +60,72 @@
         app:banner_iscycle="true"
         app:banner_switchtime="600" />
 
-    <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
-        android:id="@+id/scale_indicator"
+    <com.zhengsr.viewpagerlib.indicator.CircleIndicator
+        android:id="@+id/rect_indicator"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_gravity="bottom|right"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        app:zoom_alpha_min="0.5"
-        app:zoom_leftmargin="10dp"
-        app:zoom_max="1.5"
-        />
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="20dp"
+        app:cir_size="5dp"
+        app:cir_rect_width="10dp"
+        app:cir_normalColor="@color/gray"
+        app:cir_selectedColor="@color/white"
+        app:cir_horizon_margin="10dp"
+        app:cir_type="cirToRect" />
 
 </FrameLayout>
 ```
-这里仅仅是 viewpager + indicator ， 具体的图片和局部需要自己写，往下看。
 
-ZoomIndicator 圆圈放大效果，banner_transformer 可以配置不同效果，共有4中，card、zoom、mz、depath ，可以自行体验
-接着去到配置数据：
+首先，设置 Banner 是自动播放且循环的，然后 indicator 为圆点，选中的矩形；当然这些自定义属性也支持动态配置，
+具体参考demo或者看示例、
+
+接着，在 Activity 中，这样配置：
+
 ```
-private void initView() {
-        BannerViewPager bannerViewPager = findViewById(R.id.loop_viewpager_mz);
-        ZoomIndicator zoomIndicator = findViewById(R.id.scale_indicator);
-        List<MzBean> beans = new ArrayList<>();
-        //配置数据，这里是resid和text
-        for (int i = 0; i < TEXT.length; i++) {
-            MzBean bean = new MzBean();
-            bean.resId = RESID[i];
-            bean.msg = TEXT[i];
-            beans.add(bean);
-        }
-
-        /**
-         * PageBean 必填，记得泛型写上自己的类型
-         */
-        PageBean pageBean = new PageBean.Builder<MzBean>()
-                .data(beans)
-                .indicator(zoomIndicator)
-                .builder();
-
-        /**
-         * 可以在 PageHelperListener 写上泛型，这样就可以直接拿到数据了
-         */
-        bannerViewPager.setPageListener(pageBean, R.layout.loop_layout, new PageHelperListener<MzBean>() {
-
-            @Override
-            public void getItemView(View view, final MzBean data) {
-                ImageView imageView = view.findViewById(R.id.loop_icon);
-                GlideApp.with(view)
-                        .load(data.resId)
-                        .into(imageView);
-                TextView textView = view.findViewById(R.id.loop_text);
-                textView.setText(data.msg);
-                
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(MzLoopActivity.this, data.msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+BannerViewPager bannerViewPager = findViewById(R.id.rect_banner);
+CircleIndicator indicator = findViewById(R.id.rect_indicator);
+//指定从哪一页开始
+//bannerViewPager.setCurrentPosition(1);
+//添加自定义数据,PageBean
+//bannerViewPager.addPageBean(bean)
+//把需要的 indicator 添加进去
+bannerViewPager.addIndicator(indicator);
 
 
+/**
+ * 设置监听即可，loop_layout 为要展示的内容，比如一个 ImageView，或者参考示例
+ * 其中，setText 为模板方法，为了简便代码，当然还有其他一些方法，可查阅 PageHelperListener
+ * onItemClick 为点击事件，当然还有其他方法，重写即可，比如子控件事件 onItemChildClick，如果有子控件
+ * 的点击事件，需要先在 bindView 中注册，比如 addChildrenClick(view,R.id.item_text,position)，
+ * 其他一些方法，可查阅 PageHelperListener
+ */
+bannerViewPager.setPageListener(R.layout.loop_layout, mDatas, new PageHelperListener<TestBean>() {
+    @Override
+    public void bindView(View view, final TestBean data, int position) {
+        setText(view, R.id.loop_text, data.msg);
+        
+        //注册子控件事件
+        //addChildrenClick(view,R.id.item_text,position);
+
+        ImageView imageView = view.findViewById(R.id.loop_icon);
+        GlideApp.with(view)
+                .load(data.resId)
+                .into(imageView);
     }
-```
-R.layout.loop_layout 为你真正要添加的布局，即上图的 iamgeview+textview的显示。
 
-如果你要使用弧形图片，可以用 ArcImageView 这个控件，可以这样配置：
+    @Override
+    public void onItemClick(View view, TestBean data, int position) {
+        super.onItemClick(view, data, position);
+        Toast.makeText(CircleIndicatorActivity.this, data.msg+" "+position, Toast.LENGTH_SHORT).show();
+    }
+    
+    
+});
+
+```
+
+
+如果你要使用弧形图片，可以用在你的layout 中，使用 ArcImageView 这个控件，可以这样配置：
 ```
  <!--弧形图片，arc_height 为弧度的高度-->
     <com.zhengsr.viewpagerlib.view.ArcImageView
@@ -163,54 +161,36 @@ PageBean 为要添加的数据，这里也支持动态数据添加，比如卡�
     android:orientation="vertical">
 
 
-    <com.zhengsr.viewpagerlib.view.BannerViewPager
-        android:id="@+id/loop_viewpager_card"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="20dp"
-        />
+     <com.zhengsr.viewpagerlib.view.BannerViewPager
+         android:id="@+id/loop_viewpager_card"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:clipChildren="false"
+         android:layout_marginBottom="20dp"
+         app:banner_card_height="20dp"
+         app:banner_transformer="card"
+         />
 
 </LinearLayout>
 ```
-看到我们只是添加 BannerViewPager，数据都是动态的，如：
-```
-private void initView() {
-    mBannerViewPager = findViewById(R.id.loop_viewpager_card);
 
-    List<CardBean> beans = new ArrayList<>();
-    for (int i = 0; i < TEXT.length; i++) {
-        CardBean bean = new CardBean();
-        bean.msg = TEXT[i];
-        beans.add(bean);
-    }
+## Indicator
 
-    PageBean pageBean = new PageBean.Builder<CardBean>()
-            .useCode(true) //比填，不然不起作用
-            .autoLoop(true) //自动轮播
-            .pagerSwitchTime(600) //切换速度
-            .loopTime(4000)  //轮播事件
-            .data(beans) //添加数据
-            .cardHeight(30)  //卡片的高度
-            .cycle(true)  //是否填充可以循环
-            .bannerTransformer(BannerTransType.CARD)  //设置 transformer，即卡片效果，也可以是魅族，zoom，depath的效果
-            .builder();
+在本库中，只提供三种 Indicator，如圆点 CircleIndicator，矩形 RectIndicator 和文字 TextIndicator 三种；
 
+效果如下:
 
-    /**
-     * 配置数据，记得在 PageHelperListener 配置你的泛型数据哦
-     */
-    mBannerViewPager.setPageListener(pageBean, R.layout.item_card, new PageHelperListener<CardBean>() {
+<table  align="center">
+ <tr>
+    <th>CircleIndicator</th>
+    <th>RectIndicator</th>
+  </tr>
+   <tr>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/circleindicator.gif" align="left" height="480" width="340"></a></td>
+    <td><a href="url"><img src="https://github.com/LillteZheng/ViewPagerHelper/raw/master/gif/rectindicator.gif" align="left" height="480" width="340" ></a></td>
+  </tr>
 
-        @Override
-        public void getItemView(View view, CardBean data) {
-            TextView textView = view.findViewById(R.id.item_card_tv);
-            textView.setText(data.msg);
-        }
-    });
-}
-```
-
-只需要动态配置 PageBean 即可。
+</table>
 
 ## 其他说明
 
@@ -222,8 +202,8 @@ private void initView() {
 ## 代码帮助
 可以通过代码去查看怎么配置
 
-[魅族xml](https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/res/layout/activity_mz_loop.xml)
-[魅族Activity](https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/MzLoopActivity.java)
+[CircleIndicator xml](https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/res/layout/activity_mz_loop.xml)
+[CircleIndicator Activity](https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CircleIndicatorActivity.java)
 
 [卡片xml](https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/res/layout/activity_card_loop.xml)
 [卡片Activity](https://github.com/LillteZheng/ViewPagerHelper/blob/master/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CardLoopActivity.java)

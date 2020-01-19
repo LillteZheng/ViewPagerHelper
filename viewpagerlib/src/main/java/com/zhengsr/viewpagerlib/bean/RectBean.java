@@ -6,12 +6,33 @@ package com.zhengsr.viewpagerlib.bean;
  */
 public class RectBean {
 
-    public int normalColor;
-    public int selectedColor;
+    /**
+     * 圆点默认颜色
+     */
+    public int normalColor = -2;
+    /**
+     * 圆点选中颜色
+     */
+    public int selectedColor = -2;
+    /**
+     * 矩形之间的margin
+     */
     public int horizonMargin;
-    public boolean isCanMove;
+    /**
+     * 是否可以移动的，默认为true
+     */
+    public boolean isCanMove = true;
+    /**
+     * 矩形的宽度
+     */
     public int width;
+    /**
+     * 矩形的高度
+     */
     public int height;
+    /**
+     * 矩形的圆角
+     */
     public int roundRadius;
 
 }

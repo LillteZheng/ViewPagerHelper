@@ -8,6 +8,7 @@ import com.zhengsr.viewpagerhelper.GlideApp;
 import com.zhengsr.viewpagerhelper.R;
 import com.zhengsr.viewpagerlib.bean.PageBean;
 import com.zhengsr.viewpagerlib.callback.PageHelperListener;
+import com.zhengsr.viewpagerlib.indicator.CircleIndicator;
 import com.zhengsr.viewpagerlib.view.ArcImageView;
 import com.zhengsr.viewpagerlib.view.BannerViewPager;
 
@@ -29,8 +30,8 @@ public class ArcLoopActivity extends AppCompatActivity {
     }
 
     private void initView() {
-      /*  BannerViewPager bannerViewPager = findViewById(R.id.loop_viewpager_arc);
-        ZoomIndicator zoomIndicator = findViewById(R.id.bottom_zoom_arc);
+        BannerViewPager bannerViewPager = findViewById(R.id.loop_viewpager_arc);
+        CircleIndicator indicator = findViewById(R.id.bottom_indicator);
         List<ArcBean> beans = new ArrayList<>();
         for (int i = 0; i < RESID.length; i++) {
             ArcBean bean = new ArcBean();
@@ -38,23 +39,19 @@ public class ArcLoopActivity extends AppCompatActivity {
             beans.add(bean);
         }
 
-        PageBean pageBean = new PageBean.Builder<ArcBean>()
-                .data(beans)
-                .indicator(zoomIndicator)
-                .builder();
+        //添加 indicator
+        bannerViewPager.addIndicator(indicator);
 
-        bannerViewPager.setPageListener(pageBean, R.layout.arc_loop_layout, new PageHelperListener<ArcBean>() {
-
+        bannerViewPager.setPageListener(R.layout.arc_loop_layout, beans, new PageHelperListener<ArcBean>() {
             @Override
-            public void getItemView(View view, ArcBean data) {
+            public void bindView(View view, ArcBean data, int position) {
                 ArcImageView imageView = view.findViewById(R.id.arc_icon);
                 GlideApp.with(view)
                         .load(data.resId)
                         .into(imageView);
-
             }
         });
-*/
+
 
     }
 

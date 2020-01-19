@@ -38,4 +38,17 @@ public class LoopActivity extends AppCompatActivity {
     public void net(View view) {
         startActivity(new Intent(this,NetWorkActivity.class));
     }
+
+    public void rectIndicator(View view) {
+        startActivity(new Intent(this,RectIndicatorActivity.class));
+    }
+
+    public void recttext(View view) {
+
+        startActivity(new Intent(this,TextIndicatorActivity.class));
+    }
+
+    public void scaleiamge(View view) {
+        startActivity(new Intent(this,ScaleImageActivity.class));
+    }
 }

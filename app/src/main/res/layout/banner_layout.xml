@@ -19,21 +19,22 @@
             app:banner_isAutoLoop="true"
             app:banner_looptime="4000"
             app:banner_iscycle="true"
-            android:clipChildren="false"
             app:banner_transformer="mz"
             app:banner_switchtime="600" />
 
-        <com.zhengsr.viewpagerlib.indicator.TextIndicator
+        <com.zhengsr.viewpagerlib.indicator.CircleIndicator
             android:id="@+id/banner_indicator"
-            android:layout_width="40dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="bottom|end"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="20dp"
             android:gravity="center_vertical"
-            app:word_circle_color="@android:color/transparent"
-            app:word_show_circle="false"
-            app:word_text_color="@color/white"
-            app:word_text_size="14sp"
+            app:cir_type="cirToRect"
+            app:cir_normalColor="@color/white_ff"
+            app:cir_selectedColor="@color/white"
+            app:cir_size="5dp"
+            app:cir_rect_width="13dp"
+            app:cir_horizon_margin="10dp"
             />
     </FrameLayout>
 </android.support.v7.widget.CardView>

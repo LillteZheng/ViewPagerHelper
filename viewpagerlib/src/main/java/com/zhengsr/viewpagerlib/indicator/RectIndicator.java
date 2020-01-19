@@ -10,12 +10,14 @@ import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.zhengsr.viewpagerlib.R;
+import com.zhengsr.viewpagerlib.bean.RectBean;
 
 /**
  * @author by  zhengshaorui on 2019/10/8
@@ -142,6 +144,40 @@ public class RectIndicator extends LinearLayout {
         }
     }
 
+    /**
+     * 配置动态数据
+     * @param bean
+     */
+    public void addRectBean(RectBean bean) {
+        if (bean.isCanMove != isCanMove){
+            isCanMove  =bean.isCanMove;
+        }
+
+        if (bean.normalColor != -2) {
+            mDefaultColor = bean.normalColor;
+        }
+        if (bean.selectedColor != -2){
+            mSelectedColor = bean.selectedColor;
+        }
+
+        if (bean.horizonMargin != 0){
+            mMargin = bean.horizonMargin;
+        }
+
+        if (bean.width != 0){
+            mRectWidth = bean.width;
+        }
+
+        if (bean.height != 0){
+            mRectHeight = bean.height;
+        }
+
+        if (bean.roundRadius != 0){
+            mRoundSize = bean.roundRadius;
+        }
+
+    }
+
     class PagerListener implements ViewPager.OnPageChangeListener {
 
         @Override
@@ -165,12 +201,11 @@ public class RectIndicator extends LinearLayout {
                 /**
                  * 处理不移动的情况
                  */
+
                 position = position % mCount;
-                if (position == (mCount - 1)) {
-                    mMoveDistance = 0;
-                } else {
-                    mMoveDistance = mMoveSize + position * mMoveSize;
-                }
+
+                mMoveDistance =   position * mMoveSize;
+
                 invalidate();
             }
         }

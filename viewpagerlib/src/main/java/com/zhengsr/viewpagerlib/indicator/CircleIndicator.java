@@ -244,11 +244,10 @@ public class CircleIndicator extends LinearLayout {
                  * 处理不移动的情况
                  */
                 position = position % mCount;
-                if (position == (mCount - 1)) {
-                    mMoveDistance = 0;
-                } else {
-                    mMoveDistance = mMoveSize + position * mMoveSize;
-                }
+                position = position % mCount;
+
+                mMoveDistance =   position * mMoveSize;
+
                 /**
                  * 处理放大缩小的
                  */

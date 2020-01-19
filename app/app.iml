@@ -153,8 +153,5 @@
     <orderEntry type="library" name="Gradle: com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30@aar" level="project" />
     <orderEntry type="library" name="Gradle: de.hdodenhof:circleimageview:3.0.1@aar" level="project" />
     <orderEntry type="module" module-name="viewpagerlib" />
-    <orderEntry type="module" module-name="viewpagerlib" />
-    <orderEntry type="module" module-name="viewpagerlib" />
-    <orderEntry type="module" module-name="viewpagerlib" />
   </component>
 </module>

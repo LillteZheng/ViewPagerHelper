@@ -16,6 +16,14 @@
         android:textAllCaps="false"
         android:onClick="circleIndicator"/>
 
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RectIndicator 效果"
+        android:textAllCaps="false"
+        android:onClick="rectIndicator"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

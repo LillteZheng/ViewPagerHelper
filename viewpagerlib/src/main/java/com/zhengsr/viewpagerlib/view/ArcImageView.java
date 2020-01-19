@@ -6,9 +6,11 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -22,6 +24,7 @@ import android.renderscript.ScriptIntrinsicBlur;
 import android.support.annotation.DrawableRes;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.zhengsr.viewpagerlib.R;
 
@@ -37,6 +40,7 @@ public class ArcImageView extends AppCompatImageView  {
     private Path mPath;
     private Bitmap mBitmap;
     private Bitmap mBlurBitmap;
+    private RectF mRectF;
     /**
      * attrs
      */
@@ -81,10 +85,16 @@ public class ArcImageView extends AppCompatImageView  {
         mPaint.setDither(true);
         if (mUseColor != -2) {
             mPaint.setColor(mUseColor);
+        }else{
+            setBackgroundColor(Color.TRANSPARENT);
         }
         mPath = new Path();
         mMatrix = new Matrix();
+
         initializeBitmap();
+
+
+
     }
 
     @Override
@@ -95,7 +105,12 @@ public class ArcImageView extends AppCompatImageView  {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        setUp();
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        initializeBitmap();
     }
 
     /**
@@ -118,6 +133,7 @@ public class ArcImageView extends AppCompatImageView  {
         mPath.lineTo(0, h - arc);
         mPath.quadTo(w / 2, h + mArcHeight, w, h - arc);
         mPath.lineTo(w, 0);
+
     }
 
 
@@ -166,7 +182,6 @@ public class ArcImageView extends AppCompatImageView  {
 
         configPath();
         if (mUseColor == -2) {
-
             mPaint.setShader(null);
 
             if (mArcBlur != -1) {
@@ -320,7 +335,7 @@ public class ArcImageView extends AppCompatImageView  {
     }
 
     public void update(){
-        postInvalidate();;
+        postInvalidate();
     }
 
 

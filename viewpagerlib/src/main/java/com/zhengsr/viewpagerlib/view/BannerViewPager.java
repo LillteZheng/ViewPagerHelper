@@ -62,7 +62,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     /**
      * others
      */
-    private int mCurrentIndex;
+    private int mCurrentIndex = 0;
     private LayoutInflater mInflater;
     private Rect mScreentRect;
     private View mCurrentContent;
@@ -106,6 +106,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         mLoopMaxCount = ta.getInteger(R.styleable.BannerViewPager_banner_loop_max_count, -1);
         mCardHeight = ta.getDimensionPixelSize(R.styleable.BannerViewPager_banner_card_height, 15);
         isCycle = ta.getBoolean(R.styleable.BannerViewPager_banner_iscycle, false);
+        int type = ta.getInteger(R.styleable.BannerViewPager_banner_transformer, -1);
         /**
          * 如果支持自动轮播，则自动循环填充数据
          */
@@ -113,7 +114,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
             isCycle = true;
         }
 
-        int type = ta.getInteger(R.styleable.BannerViewPager_banner_transformer, -1);
         if (type != -1) {
             mBannerTransType = BannerTransType.values()[type];
         } else {
@@ -134,7 +134,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
 
     }
 
-
+    private boolean firstLayout = true;
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -143,7 +143,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
             try {
                 Field mFirstLayout = ViewPager.class.getDeclaredField("mFirstLayout");
                 mFirstLayout.setAccessible(true);
-                mFirstLayout.set(this, false);
+                mFirstLayout.set(this, firstLayout);
                 setCurrentItem(getCurrentItem());
             } catch (Exception e) {
                 e.printStackTrace();
@@ -159,6 +159,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
          * 在 onDetachedFromWindow 由于 mscroller 动画被取消了，所以会出现 页面在中间的情况，
          * 可以不调用 super.onDetachedFromWindow() ，这样动画不会停止，不太好；后面再看看用什么方法解决
          */
+        firstLayout = false;
     }
 
 
@@ -184,6 +185,10 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         }
     }
 
+    public BannerViewPager setCurrentPosition(int index){
+        mCurrentIndex = index;
+        return this;
+    }
 
     /**
      * 配置需要的indicator
@@ -260,32 +265,17 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         CusViewPagerAdapter adapter = new CusViewPagerAdapter<T>(datas, layoutId, listener);
         setAdapter(adapter);
         int startSelectItem = getStartSelectItem(dataCount);
+        startSelectItem += mCurrentIndex;
         setCurrentItem(startSelectItem);
         setOffscreenPageLimit(3);
+
+
         if (mIndicator != null) {
             chooseIndicator(datas.size(), mIndicator);
         }
-        addOnPageChangeListener(new OnPageChangeListener() {
 
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
 
-            }
 
-            @Override
-            public void onPageSelected(int position) {
-                if (!isCycle) {
-                    if (mCurrentContent != null) {
-                        listener.bindView(mCurrentContent, datas.get(position % dataCount),
-                                position % dataCount);
-                    }
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-            }
-        });
     }
 
 
@@ -311,7 +301,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         mHandler.removeMessages(LOOP_MSG);
-        Log.d(TAG, "zsr - onTouch: ");
         switch (motionEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 break;
@@ -379,12 +368,12 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     class CusViewPagerAdapter<T> extends PagerAdapter {
         PageHelperListener listener;
         List<T> list;
-        int layoutid;
+        int layoutId;
 
         public CusViewPagerAdapter(List<T> list, @Nullable int layoutId, PageHelperListener listener) {
             this.listener = listener;
             this.list = list;
-            this.layoutid = layoutId;
+            this.layoutId = layoutId;
 
         }
 
@@ -404,15 +393,15 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            mCurrentContent = mInflater.inflate(layoutid, BannerViewPager.this, false);
+            mCurrentContent = mInflater.inflate(layoutId, BannerViewPager.this, false);
             final int index;
-
-            index = position % list.size();
             if (isCycle) {
-                listener.bindView(mCurrentContent, this.list.get(index), index);
-            } else {
-                listener.bindView(mCurrentContent, this.list.get(index), index);
+                index = position % list.size();
+            }else{
+                index = position;
             }
+            listener.bindView(mCurrentContent, this.list.get(index), index);
+
             container.addView(mCurrentContent);
 
             viewTouch(mCurrentContent,listener,index);
@@ -433,7 +422,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
             view.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    Log.d(TAG, "zsr - child onTouch: ");
                     stopAnim();
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
