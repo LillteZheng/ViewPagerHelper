@@ -27,7 +27,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v2.0'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v2.1'
 ```
 
 **v2.0 与之前变动较大，建议更新到最新版，支持更多效果和修复不少bug**
@@ -131,7 +131,7 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v2.0'
 
 ## 版本说明    
 
-**v2.0**
+**v2.1**
 - 大改动，去掉了之前很多无用代码和逻辑
 - Indicator 效果全部统一到了 CircleIndicator 和 RectIndicator，其他的去掉
 - BannerViewPager 增加 setCurrentPosition(int page) 默认选中第几页方法
