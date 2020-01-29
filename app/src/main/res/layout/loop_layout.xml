@@ -20,12 +20,15 @@
         android:layout_height="30dp">
         <TextView
             android:id="@+id/loop_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
             android:textSize="16sp"
             android:gravity="center_vertical"
+            android:clickable="true"
             android:textColor="@color/white"/>
+
+
     </FrameLayout>
 
 

@@ -1,16 +1,31 @@
 package com.zhengsr.viewpagerlib.callback;
 
 import android.graphics.Bitmap;
+import android.util.Log;
+import android.util.SparseArray;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/11/9.
  */
 
 public abstract class PageHelperListener<T> {
+    private static final String TAG = "PageHelperListener";
 
+    private List<Object> mDatas;
+    public PageHelperListener() {
+        mDatas = new ArrayList<>();
+    }
+
+    public void setDatas(List<Object> datas){
+        mDatas.addAll(datas);
+    }
 
     /**
      * 拿到数据
@@ -25,14 +40,14 @@ public abstract class PageHelperListener<T> {
      * @param childView
      * @param position
      */
-    public void onItemChildClick(View childView,int position){}
+    public void onItemChildClick(View childView, T data,int position){}
 
     /**
      * 子控件长按事件
      * @param childView
      * @param position
      */
-    public boolean onItemChildLongClick(View childView,int position){
+    public boolean onItemChildLongClick(View childView,T data,int position){
         return true;
     }
 
@@ -47,7 +62,7 @@ public abstract class PageHelperListener<T> {
             child.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onItemChildClick(child,position);
+                    onItemChildClick(child, (T) mDatas.get(position),position);
                 }
             });
         }
@@ -64,12 +79,14 @@ public abstract class PageHelperListener<T> {
             child.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    return onItemChildLongClick(child,position);
+                    return onItemChildLongClick(child, (T) mDatas.get(position),position);
                 }
             });
         }
         return this;
     }
+
+
 
 
     /**

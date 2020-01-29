@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,7 +40,7 @@ import java.util.List;
  * Created by Administrator on 2017/11/9.
  */
 
-public class BannerViewPager extends ViewPager implements View.OnTouchListener {
+public class BannerViewPager extends ViewPager  {
     /**
      * const
      */
@@ -124,7 +125,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
 
         ta.recycle();
         mInflater = LayoutInflater.from(context);
-        setOnTouchListener(this);
         ViewPagerHelperUtils.initSwitchTime(getContext(), this, mSmoothTime);
 
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -261,6 +261,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         }
         mDatas.clear();
         mDatas.addAll(datas);
+        listener.setDatas(mDatas);
 
         CusViewPagerAdapter adapter = new CusViewPagerAdapter<T>(datas, layoutId, listener);
         setAdapter(adapter);
@@ -273,6 +274,7 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
         if (mIndicator != null) {
             chooseIndicator(datas.size(), mIndicator);
         }
+
 
 
 
@@ -295,26 +297,6 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
     }
 
 
-    /**
-     * 当有触摸时停止
-     */
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        mHandler.removeMessages(LOOP_MSG);
-        switch (motionEvent.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                break;
-            case MotionEvent.ACTION_UP:
-                if (isAutoLoop) {
-                    mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
-                }
-                break;
-
-            default:
-                break;
-        }
-        return false;
-    }
 
     /**
      * 手动停止
@@ -427,10 +409,9 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
                         case MotionEvent.ACTION_DOWN:
                             mLastTime = System.currentTimeMillis();
                             break;
-
                         case MotionEvent.ACTION_UP:
                             long time = System.currentTimeMillis() - mLastTime;
-                            if (time > 200){
+                            if (time < 200){
                                 if (listener != null && mDatas.size() > 0) {
                                     listener.onItemClick(view,mDatas.get(position),position);
                                 }
@@ -443,6 +424,8 @@ public class BannerViewPager extends ViewPager implements View.OnTouchListener {
                     return false;
                 }
             });
+
+
         }
     }
 

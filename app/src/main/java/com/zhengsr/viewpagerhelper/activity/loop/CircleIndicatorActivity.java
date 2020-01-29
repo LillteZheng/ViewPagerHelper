@@ -3,7 +3,9 @@ package com.zhengsr.viewpagerhelper.activity.loop;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -124,16 +126,20 @@ public class CircleIndicatorActivity extends AppCompatActivity {
         bannerViewPager.setPageListener(R.layout.loop_layout, mDatas, new PageHelperListener<TestBean>() {
             @Override
             public void bindView(View view, final TestBean data, int position) {
-                setText(view, R.id.loop_text, data.msg);
+               setText(view, R.id.loop_text, data.msg);
+
 
                 //注册子控件事件
                 //addChildrenClick(view,R.id.item_text,position);
+
 
                 ImageView imageView = view.findViewById(R.id.loop_icon);
                 GlideApp.with(view)
                         .load(data.resId)
                         .into(imageView);
             }
+
+
 
             @Override
             public void onItemClick(View view, TestBean data, int position) {
