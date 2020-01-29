@@ -27,10 +27,10 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v2.1'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v2.2'
 ```
 
-**v2.0 与之前变动较大，建议更新到最新版，支持更多效果和修复不少bug**
+**v2.0 之后与之前的工程变动较大，建议更新到最新版，支持更多效果和修复不少bug**
 
 ##  **效果图**
 
