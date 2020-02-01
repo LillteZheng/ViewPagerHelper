@@ -174,6 +174,10 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v2.2'
 - **v0.2  --> 修复TabIndicator的宽度，不是 match_parent时，通过SetTabData添加数据，却显示不全的问题**
 - **v0.1  --> 发布稳定版**
 
+## 如果该项目对您有帮助，赞赏一下吧 ^_^
+
+<img src="https://github.com/LillteZheng/FlowHelper/raw/master/gif/wechat.png" height="320" width="240">
+
 下面可以看一下自定义的属性，方便大家在用的时候调用：
 
 **一些自定义属性：**
