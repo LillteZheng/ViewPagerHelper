@@ -30,7 +30,7 @@ allprojects {
 implementation 'com.github.LillteZheng:ViewPagerHelper:v2.2'
 ```
 
-**如果要在 AndroidX 中使用，确保你的工程有以下代码，就可以了，不影响使用: **
+**如果要在 AndroidX 中使用，确保你的工程有以下代码，就可以了，不影响使用:**
 
 ```
 android.useAndroidX=true
