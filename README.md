@@ -30,6 +30,14 @@ allprojects {
 implementation 'com.github.LillteZheng:ViewPagerHelper:v2.2'
 ```
 
+**如果要在 AndroidX 中使用，确保你的工程有以下代码，就可以了，不影响使用: **
+
+```
+android.useAndroidX=true
+# Automatically convert third-party libraries to use AndroidX
+android.enableJetifier=true
+```
+
 **v2.0 之后与之前的工程变动较大，建议更新到最新版，支持更多效果和修复不少bug**
 
 ##  **效果图**
