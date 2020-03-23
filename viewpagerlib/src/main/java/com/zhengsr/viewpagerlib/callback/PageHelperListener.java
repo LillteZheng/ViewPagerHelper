@@ -24,6 +24,7 @@ public abstract class PageHelperListener<T> {
     }
 
     public void setDatas(List<Object> datas){
+        mDatas.clear();
         mDatas.addAll(datas);
     }
 

@@ -68,6 +68,10 @@ public class NetWorkActivity extends AppCompatActivity {
 
     }
 
+    public void zengjia(View view) {
+        loadData();
+    }
+
     private void loadData() {
         //banner
         HttpCreate.getServer().getBanner()
@@ -135,6 +139,7 @@ public class NetWorkActivity extends AppCompatActivity {
                 });
 
     }
+
 
 
 
