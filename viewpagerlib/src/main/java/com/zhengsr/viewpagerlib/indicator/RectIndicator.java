@@ -85,6 +85,7 @@ public class RectIndicator extends LinearLayout {
      */
     public void addPagerData(int count, ViewPager viewPager) {
 
+        removeAllViews();
         if (count == 0) {
             return;
         }

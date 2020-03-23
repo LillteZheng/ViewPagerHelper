@@ -137,6 +137,7 @@ public class NetWorkActivity extends AppCompatActivity {
     }
 
 
+
     public class ArticleAdapter extends BaseQuickAdapter<ArticleData, BaseViewHolder> {
 
 

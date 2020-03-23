@@ -49,6 +49,7 @@ public class TextIndicator extends AppCompatTextView implements ViewPager.OnPage
 
 
     public void addPagerData(int count, ViewPager viewPager) {
+
         if (count == 0){
             return;
         }
