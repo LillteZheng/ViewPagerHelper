@@ -142,8 +142,7 @@ android.enableJetifier=true
 
 ## 版本说明    
 
-**v2.3**
-- 修复indicator刷新时，成倍增加的问题
+
 
 **v2.1**
 - 大改动，去掉了之前很多无用代码和逻辑
