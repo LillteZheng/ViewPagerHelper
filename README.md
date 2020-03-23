@@ -10,6 +10,9 @@ viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每�
 
 
 
+**工程实际使用 - 玩Android 客户端 : https://github.com/LillteZheng/WanAndroid**
+
+
 详细内容可以参考这篇博客：
 http://blog.csdn.net/u011418943/article/details/78493002
 
@@ -30,7 +33,15 @@ allprojects {
 implementation 'com.github.LillteZheng:ViewPagerHelper:v2.2'
 ```
 
-**v2.0 与之前变动较大，建议更新到最新版，支持更多效果和修复不少bug**
+**如果要在 AndroidX 中使用，确保你的工程有以下代码，就可以了，不影响使用:**
+
+```
+android.useAndroidX=true
+# Automatically convert third-party libraries to use AndroidX
+android.enableJetifier=true
+```
+
+**v2.0 之后与之前的工程变动较大，建议更新到最新版，支持更多效果和修复不少bug**
 
 ##  **效果图**
 
@@ -173,6 +184,10 @@ implementation 'com.github.LillteZheng:ViewPagerHelper:v2.2'
 - **v0.3  --> 从lib中移除glide的依赖，防止干扰其他项目，去掉和优化一些代码，谢谢各位的提醒**
 - **v0.2  --> 修复TabIndicator的宽度，不是 match_parent时，通过SetTabData添加数据，却显示不全的问题**
 - **v0.1  --> 发布稳定版**
+
+## 如果该项目对您有帮助，赞赏一下吧 ^_^
+
+<img src="https://github.com/LillteZheng/FlowHelper/raw/master/gif/wechat.png" height="320" width="240">
 
 下面可以看一下自定义的属性，方便大家在用的时候调用：
 
