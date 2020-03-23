@@ -30,7 +30,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v2.2'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v2.3'
 ```
 
 **如果要在 AndroidX 中使用，确保你的工程有以下代码，就可以了，不影响使用:**
@@ -141,6 +141,9 @@ android.enableJetifier=true
 
 
 ## 版本说明    
+
+**v2.3**
+- 修复indicator刷新时，成倍增加的问题
 
 **v2.1**
 - 大改动，去掉了之前很多无用代码和逻辑
