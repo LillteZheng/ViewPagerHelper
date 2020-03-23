@@ -92,6 +92,7 @@ public class BannerViewPager extends ViewPager  {
             }
         }
     };
+    private CusViewPagerAdapter adapter;
 
 
     public BannerViewPager(Context context) {
@@ -250,6 +251,7 @@ public class BannerViewPager extends ViewPager  {
     public <T> void setPageListener(int layoutId, final List<T> datas, final PageHelperListener<T> listener) {
         //先停止动画
         stopAnim();
+        mCurrentIndex = 0;
         if (datas == null || datas.isEmpty()) {
             return;
         }
@@ -267,19 +269,15 @@ public class BannerViewPager extends ViewPager  {
         /**
          * 判断是否上次有 adapter 的存在
          */
-        if (getAdapter() !=null) {
-            setAdapter(null);
-        }else{
-            setOffscreenPageLimit(3);
-        }
 
         listener.setDatas(mDatas);
-        CusViewPagerAdapter adapter = new CusViewPagerAdapter<T>(datas, layoutId, listener);
+        adapter = new CusViewPagerAdapter<T>(datas, layoutId, listener);
         setAdapter(adapter);
         int startSelectItem = getStartSelectItem(dataCount);
         startSelectItem += mCurrentIndex;
         setCurrentItem(startSelectItem);
 
+        setOffscreenPageLimit(3);
 
 
         if (mIndicator != null) {

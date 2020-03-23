@@ -23,6 +23,7 @@ import com.zhengsr.viewpagerhelper.bean.BaseResponse;
 import com.zhengsr.viewpagerhelper.bean.PageDataInfo;
 import com.zhengsr.viewpagerhelper.rx.HttpCreate;
 import com.zhengsr.viewpagerhelper.rx.RxUtils;
+import com.zhengsr.viewpagerhelper.view.BannerView;
 import com.zhengsr.viewpagerlib.bean.PageBean;
 import com.zhengsr.viewpagerlib.callback.PageHelperListener;
 import com.zhengsr.viewpagerlib.indicator.CircleIndicator;
@@ -43,7 +44,7 @@ public class NetWorkActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private List<ArticleData> mArticleBeans = new ArrayList<>();
     private ArticleAdapter mAdapter;
-    private BannerViewPager mBannerView;
+    private BannerView mBannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +58,10 @@ public class NetWorkActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recycler);
         mRecyclerView.setLayoutManager(manager);
         mAdapter = new ArticleAdapter(R.layout.item_article_recy_layout, mArticleBeans);
-        View headerView = LayoutInflater.from(this).inflate(R.layout.banner_layout,null);
-        mBannerView = headerView.findViewById(R.id.banner);
-        CircleIndicator indicator = headerView.findViewById(R.id.banner_indicator);
-        mBannerView.addIndicator(indicator);
-        mAdapter.addHeaderView(headerView);
+
+        mBannerView = new BannerView(this);
+
+        mAdapter.addHeaderView(mBannerView);
         mRecyclerView.setAdapter(mAdapter);
 
         loadData();
@@ -72,6 +72,7 @@ public class NetWorkActivity extends AppCompatActivity {
         loadData();
     }
 
+    private boolean isSecond;
     private void loadData() {
         //banner
         HttpCreate.getServer().getBanner()
@@ -86,17 +87,8 @@ public class NetWorkActivity extends AppCompatActivity {
                     @Override
                     public void onNext(List<BannerBean> bannerBeans) {
 
-                        mBannerView.setPageListener(R.layout.banner_item_layout, bannerBeans, new PageHelperListener<BannerBean>() {
-                            @Override
-                            public void bindView(View view, BannerBean data, int position) {
-                                ImageView imageView = view.findViewById(R.id.banner_icon);
-                                TextView textView = view.findViewById(R.id.banner_text);
-                                Glide.with(NetWorkActivity.this)
-                                        .load(data.getImagePath())
-                                        .into(imageView);
-                                textView.setText(data.getTitle());
-                            }
-                        });
+                        mBannerView.setData(bannerBeans);
+                        mAdapter.notifyDataSetChanged();
 
 
                     }

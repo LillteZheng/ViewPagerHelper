@@ -33,8 +33,8 @@
             app:cir_normalColor="@color/white_ff"
             app:cir_selectedColor="@color/white"
             app:cir_size="5dp"
-            app:cir_rect_width="13dp"
-            app:cir_horizon_margin="10dp"
+            app:cir_rect_width="15dp"
+            app:cir_horizon_margin="15dp"
             />
     </FrameLayout>
 </android.support.v7.widget.CardView>

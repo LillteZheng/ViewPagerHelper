@@ -109,7 +109,12 @@ public class CircleIndicator extends LinearLayout {
      */
     public void addPagerData(int count, ViewPager viewPager) {
 
+        /**
+         * 还原一些状态
+         */
         removeAllViews();
+        mMoveDistance = 0;
+
         if (count == 0) {
             return;
         }

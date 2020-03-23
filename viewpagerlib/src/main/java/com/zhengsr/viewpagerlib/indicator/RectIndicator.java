@@ -90,9 +90,7 @@ public class RectIndicator extends LinearLayout {
             return;
         }
         mCount = count;
-        if (mCount == 0) {
-            return;
-        }
+
         GradientDrawable drawable = new GradientDrawable();
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setSize(mRectWidth, mRectHeight);
