@@ -7,11 +7,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -83,7 +85,7 @@ public class RectIndicator extends LinearLayout {
      * 添加数据
      * @param viewPager
      */
-    public void addPagerData(int count, ViewPager viewPager) {
+    public void addPagerData(int count, View viewPager) {
 
         removeAllViews();
         if (count == 0) {
@@ -113,7 +115,11 @@ public class RectIndicator extends LinearLayout {
             addView(imageView);
         }
         if (viewPager != null) {
-            viewPager.addOnPageChangeListener(new PagerListener());
+            if (viewPager instanceof ViewPager) {
+                ((ViewPager) viewPager).addOnPageChangeListener(new PagerListener());
+            }else if (viewPager instanceof ViewPager2){
+                ((ViewPager2) viewPager).registerOnPageChangeCallback(new PagerListener2());
+            }
         }
     }
 
@@ -213,5 +219,38 @@ public class RectIndicator extends LinearLayout {
         public void onPageScrollStateChanged(int i) {
 
         }
+    }
+    class PagerListener2 extends ViewPager2.OnPageChangeCallback {
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            /**
+             * 由于距离时确定的，所以很好判断移动的渐变
+             */
+            if (isCanMove) {
+                if (position % mCount == (mCount - 1) && positionOffset > 0) {
+                    mMoveDistance = 0;
+                } else {
+                    mMoveDistance = (int) (positionOffset * mMoveSize + position % mCount * mMoveSize);
+                }
+                invalidate();
+            }
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if (!isCanMove) {
+                /**
+                 * 处理不移动的情况
+                 */
+
+                position = position % mCount;
+
+                mMoveDistance =   position * mMoveSize;
+
+                invalidate();
+            }
+        }
+
     }
 }

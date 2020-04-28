@@ -1,11 +1,8 @@
 package com.zhengsr.viewpagerlib.bean;
 
-import android.support.annotation.Nullable;
-import android.view.View;
+import androidx.annotation.Nullable;
 
 import com.zhengsr.viewpagerlib.type.BannerTransType;
-
-import java.util.List;
 
 /**
  * created by zhengshaorui on 2017/8/12

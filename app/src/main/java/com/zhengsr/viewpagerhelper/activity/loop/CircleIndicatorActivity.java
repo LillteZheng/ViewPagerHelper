@@ -1,11 +1,9 @@
 package com.zhengsr.viewpagerhelper.activity.loop;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,7 +13,6 @@ import com.zhengsr.viewpagerlib.bean.CirBean;
 import com.zhengsr.viewpagerlib.bean.PageBean;
 import com.zhengsr.viewpagerlib.callback.PageHelperListener;
 import com.zhengsr.viewpagerlib.indicator.CircleIndicator;
-import com.zhengsr.viewpagerlib.indicator.RectIndicator;
 import com.zhengsr.viewpagerlib.type.BannerTransType;
 import com.zhengsr.viewpagerlib.type.CircleIndicatorType;
 import com.zhengsr.viewpagerlib.view.BannerViewPager;

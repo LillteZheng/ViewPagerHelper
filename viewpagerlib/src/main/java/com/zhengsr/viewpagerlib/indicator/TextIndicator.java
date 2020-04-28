@@ -1,20 +1,13 @@
 package com.zhengsr.viewpagerlib.indicator;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.AppCompatTextView;
-import android.util.AttributeSet;
-import android.view.Gravity;
-import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.LinearLayout;
 
-import com.zhengsr.viewpagerlib.R;
-import com.zhengsr.viewpagerlib.bean.PageBean;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.viewpager2.widget.ViewPager2;
+
+import android.util.AttributeSet;
+import android.view.View;
 
 
 /**
@@ -48,7 +41,7 @@ public class TextIndicator extends AppCompatTextView implements ViewPager.OnPage
     }
 
 
-    public void addPagerData(int count, ViewPager viewPager) {
+    public void addPagerData(int count, View viewPager) {
 
         if (count == 0){
             return;
@@ -57,7 +50,19 @@ public class TextIndicator extends AppCompatTextView implements ViewPager.OnPage
         mTextString = 1 + "/" + mCount;
         setText(mTextString);
         if (viewPager != null) {
-            viewPager.addOnPageChangeListener(this);
+            if (viewPager instanceof ViewPager) {
+                ((ViewPager) viewPager).addOnPageChangeListener(this);
+            }else if (viewPager instanceof ViewPager2){
+                ((ViewPager2) viewPager).registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+
+
+                    @Override
+                    public void onPageSelected(int position) {
+                        super.onPageSelected(position);
+                        viewPagerSeleted(position % mCount);
+                    }
+                });
+            }
         }
 
 

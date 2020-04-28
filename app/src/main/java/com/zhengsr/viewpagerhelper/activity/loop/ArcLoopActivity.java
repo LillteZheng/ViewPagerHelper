@@ -1,12 +1,11 @@
 package com.zhengsr.viewpagerhelper.activity.loop;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.zhengsr.viewpagerhelper.GlideApp;
 import com.zhengsr.viewpagerhelper.R;
-import com.zhengsr.viewpagerlib.bean.PageBean;
 import com.zhengsr.viewpagerlib.callback.PageHelperListener;
 import com.zhengsr.viewpagerlib.indicator.CircleIndicator;
 import com.zhengsr.viewpagerlib.view.ArcImageView;

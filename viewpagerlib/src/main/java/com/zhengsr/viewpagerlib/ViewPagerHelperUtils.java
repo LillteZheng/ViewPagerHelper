@@ -1,7 +1,9 @@
 package com.zhengsr.viewpagerlib;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
 import android.widget.Scroller;
 
 import java.lang.reflect.Field;
@@ -37,6 +39,7 @@ public class ViewPagerHelperUtils {
         }
     }
 
+
     static class ViewPagerScroller extends Scroller {
         int time;
         public ViewPagerScroller(Context context, int time) {
@@ -44,11 +47,6 @@ public class ViewPagerHelperUtils {
             this.time = time;
         }
 
-        /*@Override
-        public void startScroll(int startX, int startY, int dx, int dy) {
-            super.startScroll(startX, startY, dx, time);
-        }
-*/
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duration) {
             super.startScroll(startX, startY, dx, dy, time);

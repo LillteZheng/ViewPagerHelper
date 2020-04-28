@@ -21,10 +21,9 @@ import android.renderscript.Element;
 import android.renderscript.RSRuntimeException;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
-import android.support.annotation.DrawableRes;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import com.zhengsr.viewpagerlib.R;
 

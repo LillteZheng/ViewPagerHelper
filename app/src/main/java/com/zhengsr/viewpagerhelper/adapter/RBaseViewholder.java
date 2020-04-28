@@ -1,7 +1,7 @@
 package com.zhengsr.viewpagerhelper.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +13,7 @@ import android.widget.TextView;
  * Created by zhengshaorui on 2018/4/13.
  */
 public class RBaseViewholder extends RecyclerView.ViewHolder {
-    private static final String TAG = "RBaseViewholder";
+    private static final String TAG = "RViewholder";
     private SparseArray<View> mViewSparseArray; //用来保存 itemview；
     private View mConserView;
     public RBaseViewholder(View itemView) {

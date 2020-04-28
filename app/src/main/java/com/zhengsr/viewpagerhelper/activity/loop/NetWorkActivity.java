@@ -1,21 +1,17 @@
 package com.zhengsr.viewpagerhelper.activity.loop;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
-import com.zhengsr.viewpagerhelper.GlideApp;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.zhengsr.viewpagerhelper.R;
 import com.zhengsr.viewpagerhelper.bean.ArticleData;
 import com.zhengsr.viewpagerhelper.bean.BannerBean;
@@ -24,12 +20,6 @@ import com.zhengsr.viewpagerhelper.bean.PageDataInfo;
 import com.zhengsr.viewpagerhelper.rx.HttpCreate;
 import com.zhengsr.viewpagerhelper.rx.RxUtils;
 import com.zhengsr.viewpagerhelper.view.BannerView;
-import com.zhengsr.viewpagerlib.bean.PageBean;
-import com.zhengsr.viewpagerlib.callback.PageHelperListener;
-import com.zhengsr.viewpagerlib.indicator.CircleIndicator;
-import com.zhengsr.viewpagerlib.indicator.TabIndicator;
-import com.zhengsr.viewpagerlib.indicator.TextIndicator;
-import com.zhengsr.viewpagerlib.view.BannerViewPager;
 
 import java.util.ArrayList;
 import java.util.List;

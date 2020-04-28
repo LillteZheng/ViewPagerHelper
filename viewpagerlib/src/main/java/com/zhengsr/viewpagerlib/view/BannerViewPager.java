@@ -6,13 +6,12 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -85,7 +84,7 @@ public class BannerViewPager extends ViewPager  {
                         mCurrentIndex = LOOP_COUNT / 2;
                     }
                     //Log.d(TAG, "zsr --> handleMessage: "+mCurrentIndex);
-                    setCurrentItem(mCurrentIndex);
+                    setCurrentItem(mCurrentIndex,true);
                     mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
 
                 }
@@ -275,7 +274,7 @@ public class BannerViewPager extends ViewPager  {
         setAdapter(adapter);
         int startSelectItem = getStartSelectItem(dataCount);
         startSelectItem += mCurrentIndex;
-        setCurrentItem(startSelectItem);
+        setCurrentItem(startSelectItem,false);
 
         setOffscreenPageLimit(3);
 
@@ -283,11 +282,8 @@ public class BannerViewPager extends ViewPager  {
         if (mIndicator != null) {
             chooseIndicator(datas.size(), mIndicator);
         }
-
-
-
-
     }
+
 
 
     /**

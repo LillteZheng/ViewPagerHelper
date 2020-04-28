@@ -55,6 +55,11 @@
         android:layout_height="wrap_content"
         android:text="网络效果"
         android:onClick="net"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ViewPager2"
+        android:onClick="viewpager2"/>
 
 
 </LinearLayout>

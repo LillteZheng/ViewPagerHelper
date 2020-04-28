@@ -10,17 +10,135 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ArcLoopActivity.java" line="32" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="490e5ffe-c83c-4037-ad70-696a5950ca75" name="Default Changelist" comment="">
+    <list default="true" id="1415a9ac-2a29-45ec-ad71-64defc77f058" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__android_sdk_Sdk_build_tools_28_0_3_renderscript_lib_androidx_rs_jar_unspecified_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__android_sdk_Sdk_build_tools_28_0_3_renderscript_lib_renderscript_v8_jar_unspecified_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_1_1_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_adapters_3_6_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_common_3_6_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_runtime_3_6_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_viewbinding_3_6_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_2_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_CymChad_BaseRecyclerViewAdapterHelper_3_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_11_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_11_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_11_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_11_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_sdk_build_tools_28_0_3_renderscript_lib_renderscript_v8_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_android_28.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_CymChad_BaseRecyclerViewAdapterHelper_2_9_30_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_CymChad_BaseRecyclerViewAdapterHelper_2_9_30_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/zhengsr/viewpagerhelper/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/zhengsr/viewpagerhelper/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/CustomViewPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/CustomViewPager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/ArcActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/ArcActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ArcLoopActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ArcLoopActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CardLoopActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CardLoopActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CircleIndicatorActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CircleIndicatorActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/LoopActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/LoopActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/NetWorkActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/NetWorkActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/RectIndicatorActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/RectIndicatorActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ScaleImageActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ScaleImageActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/TextIndicatorActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/TextIndicatorActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/adapter/RBaseAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/adapter/RBaseAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/adapter/RBaseViewholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/adapter/RBaseViewholder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/fragment/CusFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/fragment/CusFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/tab/ColorTabActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/tab/ColorTabActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/tab/RectTabActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/tab/RectTabActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/tab/TabActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/tab/TabActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/tab/TriTabActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/tab/TriTabActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/view/BannerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/view/BannerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_arc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_arc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_arc_loop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_arc_loop.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_colortab_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_colortab_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_loop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_loop.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_rect_text_loop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_rect_text_loop.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recttab_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recttab_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recyclerview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recyclerview.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_scale_image.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_scale_image.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tab.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tritab_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tritab_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/banner_item_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/banner_item_layout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/banner_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/banner_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/image_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/image_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_article_recy_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_article_recy_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_scaleview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_scaleview.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_search_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_search_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/loop_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/loop_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/androidTest/java/com/zhengsr/viewpagerlib/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/androidTest/java/com/zhengsr/viewpagerlib/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/ViewPagerHelperUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/ViewPagerHelperUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/CardTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/CardTransformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/DepthPageTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/DepthPageTransformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/MzTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/MzTransformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/ZoomOutPageTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/ZoomOutPageTransformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/bean/PageBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/bean/PageBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/CircleIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/CircleIndicator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/RectIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/RectIndicator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/TabIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/TabIndicator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/TextIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/TextIndicator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/ArcImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/ArcImageView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/ScaleImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/ScaleImageView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/src/main/res/values/attrs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/src/main/res/values/attrs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpagerlib/viewpagerlib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/viewpagerlib/viewpagerlib.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,9 +147,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Galaxy_Nexus24" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="127.0.0.1:62001" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -40,12 +159,19 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPager.java">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPager2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2628">
-              <caret line="301" column="48" selection-start-line="301" selection-start-column="48" selection-end-line="301" selection-end-column="48" />
+            <state relative-caret-position="473">
+              <caret line="163" column="54" lean-forward="true" selection-start-line="163" selection-start-column="54" selection-end-line="163" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#242#243#0" expanded="true" />
+                <element signature="e#276#277#0" expanded="true" />
+                <element signature="e#11032#11033#0" expanded="true" />
+                <element signature="e#11065#11066#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,95 +179,83 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CircleIndicatorActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="73" column="56" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="56" />
+            <state relative-caret-position="330">
+              <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mz_loop.xml">
-          <provider editor-type-id="android-designer2" />
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.viewpager/viewpager/1.0.0/db045f92188b9d247d5f556866f8861ab68528f0/viewpager-1.0.0-sources.jar!/androidx/viewpager/widget/ViewPager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1601">
-              <caret line="122" column="28" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="28" />
+            <state relative-caret-position="219">
+              <caret line="867" column="29" selection-start-line="867" selection-start-column="16" selection-end-line="867" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/CircleIndicator.java">
+        <entry file="file://$PROJECT_DIR$/viewpagerlib/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="116" selection-start-line="116" selection-end-line="116" />
-              <folding>
-                <element signature="e#10171#10482#0" expanded="true" />
-                <element signature="e#10481#10482#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="594">
+              <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/RectIndicator.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ViewPager2Activity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="92" selection-start-line="92" selection-end-line="92" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/NetWorkActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
-              <folding>
-                <element signature="e#2579#2580#0" expanded="true" />
-                <element signature="e#2605#2606#0" expanded="true" />
-                <element signature="e#4111#4112#0" expanded="true" />
-                <element signature="e#4190#4191#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_article_recy_layout.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-342" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/view/BannerView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="41" column="71" lean-forward="true" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
+            <state relative-caret-position="211">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1039#1040#0" expanded="true" />
-                <element signature="e#1073#1074#0" expanded="true" />
-                <element signature="e#1583#2054#0" expanded="true" />
-                <element signature="e#2053#2054#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/banner_item_layout.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/MzTransformer2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/banner_layout.xml">
-          <provider editor-type-id="android-designer2" />
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/DepthPageTransformer2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="32" column="49" lean-forward="true" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+            <state relative-caret-position="154">
+              <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/ZoomOutPageTransformer2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="858">
+              <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/MzTransformer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="616">
+              <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/CardTransformer2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -151,31 +265,30 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
         <option value="Class" />
-        <option value="resourceFile" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>viewPagerSeleted</find>
-      <find>mPath</find>
-      <find>configPath</find>
-      <find>setUp</find>
-      <find>setcurrentitem</find>
-      <find>mUseColor</find>
-      <find>mPaint</find>
-      <find>transformPage</find>
-      <find>mBannerTransType</find>
-      <find>mViewSparseArray</find>
-      <find>zsr</find>
+      <find>BannerViewPager_banner</find>
+      <find>mViewPager</find>
+      <find>banner_</find>
+      <find>BannerViewPager</find>
+      <find>mCurrentItem</find>
+      <find>mRecyclerView</find>
+      <find>mScroller</find>
+      <find>fling</find>
+      <find>mSmoothTime</find>
+      <find>banner2_switchtime</find>
       <find>mCurrentIndex</find>
-      <find>startanim</find>
-      <find>isAutoLoop</find>
-      <find>mMoveDistance</find>
-      <find>mHandler</find>
+      <find>setTransformer</find>
     </findStrings>
+    <replaceStrings>
+      <replace>BannerViewPager2_banner2</replace>
+      <replace>banner2_</replace>
+      <replace>BannerViewPager2</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -183,65 +296,48 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_search_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/select_search.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/shape_search.xml" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/res/values/attrs.xml" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/flow/LabelFlowLayout.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_flow.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/TabActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_tab_text.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tab.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/TabFlowActivity.java" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/flow/TabFlowLayout.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/FlowActivity.java" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/flow/FlowLayout.java" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/flow/adapter/LabelFlowAdapter.java" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/flow/adapter/BaseFlowAdapter.java" />
-        <option value="$PROJECT_DIR$/local.properties" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/RectInficatorActivity.java" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/bean/RectBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ArcLoopActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/arc_loop_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_loop.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_arc_loop.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_card_loop.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CardLoopActivity.java" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/CardTransformer.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/TextIndicatorActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/shape_back_ff_.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_text_indicator.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ScaleImageActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/LoopActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/ArcImageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/RectIndicatorActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rect_inficator.xml" />
-        <option value="$PROJECT_DIR$/README_Banner.md" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/viewpagerlib/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/loop_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CircleIndicatorActivity.java" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/TextIndicator.java" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recyclerview.xml" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/callback/PageHelperListener.java" />
+        <option value="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/com/zhengsr/viewpagerhelper/GlideRequest.java" />
+        <option value="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/com/zhengsr/viewpagerhelper/GlideRequests.java" />
+        <option value="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/com/zhengsr/viewpagerhelper/GlideOptions.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/NetWorkActivity.java" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPager.java" />
-        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/RectIndicator.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_loop.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/LoopActivity.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BaseBanner.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPage2.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/CardTransformer.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CardLoopActivity.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/adapter/RNormalAdapter.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/adapter/RBaseViewholder.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/adapter/RBaseAdapter.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/TextIndicator.java" />
         <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/CircleIndicator.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/view/BannerView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/banner_layout.xml" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/RectIndicator.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ViewPager2Activity.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/adapter/RViewholder.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/adapter/RAdapter.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/ViewPagerHelperUtils.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/res/values/attrs.xml" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPager.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/CardTransformer2.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_pager2.xml" />
+        <option value="$PROJECT_DIR$/viewpagerlib/build.gradle" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/DepthPageTransformer2.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/ZoomOutPageTransformer2.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/MzTransformer.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CircleIndicatorActivity.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/MzTransformer2.java" />
+        <option value="$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPager2.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-6" />
-    <option name="y" value="-6" />
-    <option name="width" value="1549" />
-    <option name="height" value="877" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -251,6 +347,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -320,30 +417,9 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ViewPagerHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ViewPagerHelper" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ViewPagerHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ViewPagerHelper" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ViewPagerHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ViewPagerHelper" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="gif" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="viewpagerhelper" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ViewPagerHelper" type="b2602c69:ProjectViewProjectNode" />
@@ -388,7 +464,17 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="viewpagerlib" type="462c0819:PsiDirectoryNode" />
-              <item name="indicator" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ViewPagerHelper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ViewPagerHelper" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="viewpagerlib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="viewpagerlib" type="462c0819:PsiDirectoryNode" />
+              <item name="anim" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ViewPagerHelper" type="b2602c69:ProjectViewProjectNode" />
@@ -422,31 +508,29 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Galaxy_Nexus24" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-03-23T13:46:00.869Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="127.0.0.1:62001" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-04-28T08:17:05.220Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="android.sdk.path" value="D:/Android/sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/gif" />
-    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="android.sdk.path" value="D:/android/sdk/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ViewPager2PageTransformers" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
       <recent name="com.zhengsr.viewpagerhelper.activity.loop" />
-      <recent name="com.zhengsr.viewpagerhelper.activity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.zhengsr.viewpagerhelper.view" />
+      <recent name="com.zhengsr.viewpagerlib.anim" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Android\ViewPagerHelper\gif" />
-      <recent name="E:\Android\ViewPagerHelper\app\src\main\res\drawable" />
-      <recent name="E:\Android\ViewPagerHelper\app\src\main\res\mipmap-xhdpi" />
+      <recent name="E:\android\git\ViewPagerHelper\viewpagerlib\src\main\java\com\zhengsr\viewpagerlib\adapter" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -528,533 +612,413 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="490e5ffe-c83c-4037-ad70-696a5950ca75" name="Default Changelist" comment="" />
-      <created>1576911415114</created>
+      <changelist id="1415a9ac-2a29-45ec-ad71-64defc77f058" name="Default Changelist" comment="" />
+      <created>1588056201431</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1576911415114</updated>
+      <updated>1588056201431</updated>
     </task>
-    <task id="LOCAL-00001" summary="添加 flowlayout ，在测试">
-      <created>1577055154561</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1577055154561</updated>
-    </task>
-    <task id="LOCAL-00002" summary="1、完善 LabelFlowLayout ，支持单选、多选、长按、子控件点击事件&#10;2、添加 TabFlowLayout，目前左滑不是很顺畅，待优化">
-      <created>1577627638613</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1577627638614</updated>
-    </task>
-    <task id="LOCAL-00003" summary="功能和说明文档增加完成">
-      <created>1579426924837</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1579426924837</updated>
-    </task>
-    <task id="LOCAL-00004" summary="功能和说明文档增加完成">
-      <created>1579490023780</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1579490023781</updated>
-    </task>
-    <task id="LOCAL-00005" summary="处理点击事件不执行的问题">
-      <created>1580286643123</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1580286643123</updated>
-    </task>
-    <task id="LOCAL-00006" summary="修复刷新时，indicator 成倍增加的问题">
-      <created>1584969908179</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1584969908179</updated>
-    </task>
-    <task id="LOCAL-00007" summary="处理刷新后，导致数据不对的问题">
-      <created>1584972555029</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1584972555029</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" visible="true" weight="0.20628998" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Build Variants" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Resources Explorer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.17643923" />
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Build Variants" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="Resources Explorer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.32991204" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.454343" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.32991204" />
-      <window_info anchor="bottom" id="Terminal" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32962137" />
-      <window_info anchor="bottom" id="Build" order="9" weight="0.3040089" />
-      <window_info anchor="bottom" id="Find" order="10" weight="0.32991204" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Flutter Inspector" order="4" />
-      <window_info anchor="right" id="Flutter Outline" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info active="true" anchor="right" id="Preview" order="7" visible="true" weight="0.32889125" />
+      <window_info anchor="bottom" id="Run" weight="0.32907662" />
+      <window_info active="true" anchor="bottom" id="Logcat" visible="true" weight="0.32907662" />
+      <window_info anchor="bottom" id="Version Control" weight="0.32907662" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Android Profiler" />
+      <window_info anchor="bottom" id="Debug" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Build" weight="0.32907662" />
+      <window_info anchor="bottom" id="Find" weight="0.32907662" />
+      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Gradle" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Preview" weight="0.32995737" />
+      <window_info anchor="right" id="make" />
+      <window_info anchor="right" id="Palette&#9;" />
     </layout>
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="添加 flowlayout ，在测试" />
-    <MESSAGE value="1、完善 LabelFlowLayout ，支持单选、多选、长按、子控件点击事件&#10;2、添加 TabFlowLayout，目前左滑不是很顺畅，待优化" />
-    <MESSAGE value="功能和说明文档增加完成" />
-    <MESSAGE value="处理点击事件不执行的问题" />
-    <MESSAGE value="修复刷新时，indicator 成倍增加的问题" />
-    <MESSAGE value="处理刷新后，导致数据不对的问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="处理刷新后，导致数据不对的问题" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/glide_bottom_selector.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/glide_bottom_btn_bg.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/LoopBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="138" column="25" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="25" />
+        <state relative-caret-position="132">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Android/sdk/platforms/android-28/android.jar!/android/os/Build.class">
+    <entry file="file://$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/com/zhengsr/viewpagerhelper/GlideRequests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
+        <state relative-caret-position="484">
+          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_arc_loop.xml">
-      <provider editor-type-id="android-designer2" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/NetWorkActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
+        <state relative-caret-position="-2179">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/com/zhengsr/viewpagerhelper/GlideRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/com/zhengsr/viewpagerhelper/GlideOptions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/ArcActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ArcLoopActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-          <folding>
-            <element signature="e#1424#1596#0" expanded="true" />
-            <element signature="e#1595#1596#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/CardTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
-          <folding>
-            <element signature="e#396#397#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/image_layout.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/TextIndicatorActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
-          <folding>
-            <element signature="e#1561#1969#0" expanded="true" />
-            <element signature="e#1968#1969#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_back_ff_.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_text_indicator.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="28" column="39" lean-forward="true" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ScaleImageActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scale_image.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="35" lean-forward="true" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+        <state relative-caret-position="88">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_loop.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+        <state relative-caret-position="832">
+          <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/LoopActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="51" column="62" selection-start-line="51" selection-start-column="62" selection-end-line="51" selection-end-column="62" />
+        <state relative-caret-position="457">
+          <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
           <folding>
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1252#1253#0" expanded="true" />
+            <element signature="e#1330#1331#0" expanded="true" />
+            <element signature="e#1365#1366#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BaseBanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="32" column="68" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/arc_loop_layout.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/ArcImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="129" column="29" lean-forward="true" selection-start-line="129" selection-start-column="29" selection-end-line="129" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="506">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#222#223#0" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_card_loop.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="26" selection-start-line="26" selection-end-line="34" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/tab/RectTabActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="38" column="23" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="23" />
-          <folding>
-            <element signature="e#1576#1759#0" expanded="true" />
-            <element signature="e#1758#1759#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/beauty1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rect_inficator.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/RectIndicatorActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README_Banner.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3724">
-          <caret line="196" column="25" selection-start-line="196" selection-start-column="25" selection-end-line="196" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gif/circleindicator.gif">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CardLoopActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="40" column="43" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpagerlib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="94" selection-start-line="20" selection-start-column="94" selection-end-line="20" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1786">
-          <caret line="94" selection-start-line="94" selection-end-line="102" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/sdk/sources/android-28/android/view/ViewGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="2431" column="19" selection-start-line="2431" selection-start-column="19" selection-end-line="2431" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/sdk/sources/android-28/android/util/SparseArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
+        <state relative-caret-position="792">
+          <caret line="46" column="12" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
           <folding>
-            <element signature="e#4077#4078#0" expanded="true" />
-            <element signature="e#4114#4115#0" expanded="true" />
+            <element signature="e#1175#1444#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/adapter/RBaseAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/adapter/RBaseViewholder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="50" column="36" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/loop_layout.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/TextIndicator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-197">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recyclerview.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="32" column="59" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/callback/PageHelperListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/31039b2dcf2fc8eac85fe9756ae04d02/viewpager-28.0.0/jars/classes.jar!/android/support/v4/view/ViewPager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="326" column="16" selection-start-line="326" selection-start-column="16" selection-end-line="326" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/RectIndicator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="462">
+          <caret line="64" column="13" lean-forward="true" selection-start-line="52" selection-start-column="12" selection-end-line="64" selection-end-column="13" />
+          <folding>
+            <element signature="e#1481#1752#0" expanded="true" />
+            <element signature="e#1751#1752#0" expanded="true" />
+            <element signature="e#2056#2057#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/CircleIndicator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
-          <folding>
-            <element signature="e#10171#10482#0" expanded="true" />
-            <element signature="e#10481#10482#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="510">
+          <caret line="150" column="9" selection-start-line="144" selection-start-column="8" selection-end-line="150" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/indicator/RectIndicator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1562">
+          <caret line="253" selection-start-line="253" selection-end-line="253" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mz_loop.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1601">
-          <caret line="122" column="28" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="28" />
+        <state relative-caret-position="506">
+          <caret line="23" column="44" selection-end-line="168" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_article_recy_layout.xml">
-      <provider editor-type-id="android-designer2" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-342" />
+        <state relative-caret-position="407">
+          <caret line="51" column="65" selection-start-line="51" selection-start-column="65" selection-end-line="51" selection-end-column="65" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CircleIndicatorActivity.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.1.0-alpha02/1a24e9f62af2b129dbc5535693ee99904a5c828f/appcompat-1.1.0-alpha02-sources.jar!/androidx/appcompat/app/AppCompatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="73" column="56" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="56" />
+        <state relative-caret-position="330">
+          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/adapter/RViewholder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1210#1211#0" expanded="true" />
+            <element signature="e#1242#1243#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/adapter/RAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1473#1669#0" expanded="true" />
+            <element signature="e#1668#1669#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/callback/PageHelperListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1897">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="1780" column="16" selection-start-line="1780" selection-start-column="16" selection-end-line="1780" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.viewpager2/viewpager2/1.0.0-alpha01/5af6808dc343bf3fc581d2987fbbbbdc18ff8845/viewpager2-1.0.0-alpha01-sources.jar!/androidx/viewpager2/widget/ViewPager2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="461" column="40" selection-start-line="461" selection-start-column="40" selection-end-line="461" selection-end-column="40" />
+          <folding>
+            <element signature="e#16091#16092#0" expanded="true" />
+            <element signature="e#16133#16134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/ViewPagerHelperUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/res/values/attrs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/CardTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="49" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="49" />
+          <folding>
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/ColorTextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_pager2.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2628">
-          <caret line="301" column="48" selection-start-line="301" selection-start-column="48" selection-end-line="301" selection-end-column="48" />
+        <state relative-caret-position="792">
+          <caret line="278" column="6" selection-start-line="278" selection-start-column="6" selection-end-line="278" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/NetWorkActivity.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.viewpager2/viewpager2/1.0.0/3c3569044e6969f1ee5c3aa03b08e6717a2d782f/viewpager2-1.0.0-sources.jar!/androidx/viewpager2/widget/ViewPager2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
-          <folding>
-            <element signature="e#2579#2580#0" expanded="true" />
-            <element signature="e#2605#2606#0" expanded="true" />
-            <element signature="e#4111#4112#0" expanded="true" />
-            <element signature="e#4190#4191#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="219">
+          <caret line="68" column="19" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/banner_item_layout.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/view/BannerView.java">
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="41" column="71" lean-forward="true" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
+        <state relative-caret-position="594">
+          <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/ViewPager2Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1039#1040#0" expanded="true" />
-            <element signature="e#1073#1074#0" expanded="true" />
-            <element signature="e#1583#2054#0" expanded="true" />
-            <element signature="e#2053#2054#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/banner_layout.xml">
-      <provider editor-type-id="android-designer2" />
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/DepthPageTransformer2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="32" column="49" lean-forward="true" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+        <state relative-caret-position="154">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/ZoomOutPageTransformer2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/MzTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.viewpager/viewpager/1.0.0/db045f92188b9d247d5f556866f8861ab68528f0/viewpager-1.0.0-sources.jar!/androidx/viewpager/widget/ViewPager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="867" column="29" selection-start-line="867" selection-start-column="16" selection-end-line="867" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/viewpagerhelper/activity/loop/CircleIndicatorActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/CardTransformer2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/anim/MzTransformer2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpagerlib/src/main/java/com/zhengsr/viewpagerlib/view/BannerViewPager2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="163" column="54" lean-forward="true" selection-start-line="163" selection-start-column="54" selection-end-line="163" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#242#243#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#11032#11033#0" expanded="true" />
+            <element signature="e#11065#11066#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>Android API 17 Platform</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

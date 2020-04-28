@@ -11,10 +11,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
@@ -22,7 +25,6 @@ import android.widget.LinearLayout;
 
 import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.bean.CirBean;
-import com.zhengsr.viewpagerlib.type.BannerTransType;
 import com.zhengsr.viewpagerlib.type.CircleIndicatorType;
 
 /**
@@ -107,7 +109,7 @@ public class CircleIndicator extends LinearLayout {
      * 添加数据
      * @param viewPager
      */
-    public void addPagerData(int count, ViewPager viewPager) {
+    public void addPagerData(int count, View viewPager) {
 
         /**
          * 还原一些状态
@@ -118,7 +120,6 @@ public class CircleIndicator extends LinearLayout {
         if (count == 0) {
             return;
         }
-        mViewPager = viewPager;
         mCount = count;
 
         GradientDrawable drawable = new GradientDrawable();
@@ -142,7 +143,11 @@ public class CircleIndicator extends LinearLayout {
             addView(imageView);
         }
         if (viewPager != null) {
-            viewPager.addOnPageChangeListener(new PagerListener());
+            if (viewPager instanceof ViewPager) {
+                ((ViewPager) viewPager).addOnPageChangeListener(new PagerListener());
+            }else if (viewPager instanceof ViewPager2){
+                ((ViewPager2) viewPager).registerOnPageChangeCallback(new PagerListener2());
+            }
         }
     }
 
@@ -224,6 +229,59 @@ public class CircleIndicator extends LinearLayout {
         if (mType == CircleIndicatorType.SCALE) {
             isCanMove = false;
         }
+    }
+
+    class PagerListener2 extends ViewPager2.OnPageChangeCallback {
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            /**
+             * 由于距离时确定的，所以很好判断移动的渐变
+             */
+            if (isCanMove) {
+                if (position % mCount == (mCount - 1) && positionOffset > 0) {
+                    mMoveDistance = 0;
+                } else {
+                    mMoveDistance = (int) (positionOffset * mMoveSize + position % mCount * mMoveSize);
+                }
+                invalidate();
+            }
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if (!isCanMove) {
+                /**
+                 * 处理不移动的情况
+                 */
+                position = position % mCount;
+                position = position % mCount;
+
+                mMoveDistance =   position * mMoveSize;
+
+                /**
+                 * 处理放大缩小的
+                 */
+                if (mType == CircleIndicatorType.SCALE) {
+                    ImageView lastView;
+                    if (mLastPosition >= 0) {
+                        lastView = (ImageView) getChildAt(mLastPosition);
+                        if (lastView != null) {
+                            lastView.setSelected(false);
+                            doScaleAnim(lastView, ANIM_IN);
+                        }
+                    }
+                    ImageView currentView = (ImageView) getChildAt(position);
+                    if (currentView != null) {
+                        currentView.setSelected(true);
+                        doScaleAnim(currentView, ANIM_OUT);
+                    }
+                    mLastPosition = position;
+                }
+                invalidate();
+            }
+        }
+
     }
 
     class PagerListener implements ViewPager.OnPageChangeListener {

@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.loop.TextIndicatorActivity"></activity>
+        <activity android:name=".activity.loop.ViewPager2Activity"></activity>
+        <activity android:name=".activity.loop.TextIndicatorActivity" />
         <activity android:name=".activity.loop.RectIndicatorActivity" />
         <activity android:name=".activity.ArcActivity" />
         <activity android:name=".MainActivity">
@@ -30,7 +31,7 @@
         <activity android:name=".activity.loop.CardLoopActivity" />
         <activity android:name=".activity.loop.CircleIndicatorActivity" />
         <activity android:name=".activity.loop.ArcLoopActivity" />
-        <activity android:name=".activity.loop.ScaleImageActivity"/>
+        <activity android:name=".activity.loop.ScaleImageActivity" />
     </application>
 
 </manifest>

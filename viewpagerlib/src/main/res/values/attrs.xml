@@ -25,6 +25,27 @@
         </attr>
     </declare-styleable>
 
+    <!--轮播控件的属性-->
+    <declare-styleable name="BannerViewPager2">
+        <attr name="banner2_looptime" format="integer"/> <!--自动轮播的时间-->
+        <attr name="banner2_loop_max_count" format="integer"/> <!--超过这个数字时，才会轮播效果-->
+        <attr name="banner2_isAutoLoop" format="boolean"/> <!--是否自动轮播-->
+        <attr name="banner2_card_height" format="integer|dimension"/>
+        <attr name="banner2_iscycle" format="boolean"/> <!--是否循环-->
+        <attr name="banner2_transformer">
+            <enum name="card" value="0"/>
+            <enum name="mz" value="1"/>
+            <enum name="zoom" value="2"/>
+            <enum name="depth" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <!--轮播控件的属性-->
+    <declare-styleable name="BaseBanner">
+        <attr name="test_looptime" format="integer"/> <!--自动轮播的时间-->
+
+    </declare-styleable>
+
     <!--弧形图片-->
     <declare-styleable name="ArcImageView">
         <attr name="arc_height" format="dimension"/> <!--弧度的高度-->

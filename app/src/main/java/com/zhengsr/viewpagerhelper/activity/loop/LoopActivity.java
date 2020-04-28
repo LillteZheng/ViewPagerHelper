@@ -2,7 +2,7 @@ package com.zhengsr.viewpagerhelper.activity.loop;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.zhengsr.viewpagerhelper.R;
@@ -50,5 +50,9 @@ public class LoopActivity extends AppCompatActivity {
 
     public void scaleiamge(View view) {
         startActivity(new Intent(this,ScaleImageActivity.class));
+    }
+
+    public void viewpager2(View view) {
+        startActivity(new Intent(this,ViewPager2Activity.class));
     }
 }
