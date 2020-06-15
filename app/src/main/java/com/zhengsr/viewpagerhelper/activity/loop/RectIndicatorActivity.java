@@ -112,7 +112,8 @@ public class RectIndicatorActivity extends AppCompatActivity {
         bean.transFormer = BannerTransType.MZ;
 
         bannerViewPager.addPageBean(bean)
-                .addIndicator(indicator);
+                .addIndicator(indicator)
+                .setCurrentPosition(1);
 
         showBanner(bannerViewPager);
     }

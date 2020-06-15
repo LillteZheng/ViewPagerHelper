@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.zhengsr.viewpagerhelper.GlideApp;
 import com.zhengsr.viewpagerhelper.R;
 import com.zhengsr.viewpagerlib.bean.CirBean;
@@ -50,6 +51,8 @@ public class CircleIndicatorActivity extends AppCompatActivity {
         cirToRect();
         circle();
         scale();
+
+
     }
 
 
@@ -58,6 +61,7 @@ public class CircleIndicatorActivity extends AppCompatActivity {
         CircleIndicator indicator = findViewById(R.id.normal_indicator);
 
         bannerViewPager.addIndicator(indicator);
+        bannerViewPager.setCurrentPosition(1);
 
         showBanner(bannerViewPager,indicator);
     }
@@ -65,6 +69,7 @@ public class CircleIndicatorActivity extends AppCompatActivity {
     private void cirToRect(){
         BannerViewPager bannerViewPager = findViewById(R.id.rect_banner);
         CircleIndicator indicator = findViewById(R.id.rect_indicator);
+
 
         showBanner(bannerViewPager, indicator);
     }
@@ -82,6 +87,7 @@ public class CircleIndicatorActivity extends AppCompatActivity {
         BannerViewPager bannerViewPager = findViewById(R.id.scale_banner);
         CircleIndicator indicator = findViewById(R.id.scale_indicator);
 
+        bannerViewPager.setCurrentPosition(1);
         CirBean cirBean = new CirBean();
         cirBean.type = CircleIndicatorType.SCALE;
         cirBean.cirSize = 20;

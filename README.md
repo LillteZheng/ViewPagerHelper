@@ -30,7 +30,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v2.6'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v2.7'
 ```
 
 **如果要在 AndroidX 中使用，确保你的工程有以下代码，就可以了，不影响使用:**
@@ -140,7 +140,10 @@ android.enableJetifier=true
 
 
 
-## 版本说明    
+## 版本说明
+
+**v2.7**
+- 处理设置 setCurrentPosition 的问题
 
 **v2.6**
 - 处理刷新时，indicator 成倍增加，以及动画和位置不是从头再来的问题

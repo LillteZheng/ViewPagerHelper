@@ -45,6 +45,8 @@ public class BannerView extends FrameLayout {
         mBannerViewPager = mView.findViewById(R.id.banner);
         CircleIndicator indicator = mView.findViewById(R.id.banner_indicator);
 
+        mBannerViewPager.setCurrentPosition(1);
+
         mBannerViewPager.addIndicator(indicator);
     }
 

@@ -68,7 +68,7 @@ public class NetWorkActivity extends AppCompatActivity {
 
     }
 
-    public void zengjia(View view) {
+    public void update(View view) {
         loadData();
     }
 

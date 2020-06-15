@@ -10,8 +10,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="zengjia"
-        android:onClick="zengjia"/>
+        android:text="更新"
+        android:onClick="update"/>
 
 
     <android.support.v7.widget.RecyclerView

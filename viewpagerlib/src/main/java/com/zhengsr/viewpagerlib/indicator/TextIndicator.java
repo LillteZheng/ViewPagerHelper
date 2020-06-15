@@ -58,6 +58,7 @@ public class TextIndicator extends AppCompatTextView implements ViewPager.OnPage
         setText(mTextString);
         if (viewPager != null) {
             viewPager.addOnPageChangeListener(this);
+            viewPagerSeleted(viewPager.getCurrentItem());
         }
 
 
@@ -71,7 +72,7 @@ public class TextIndicator extends AppCompatTextView implements ViewPager.OnPage
 
     @Override
     public void onPageSelected(int position) {
-        viewPagerSeleted(position % mCount);
+        viewPagerSeleted(position);
     }
 
 
@@ -86,6 +87,7 @@ public class TextIndicator extends AppCompatTextView implements ViewPager.OnPage
      * @param position
      */
     private void viewPagerSeleted(int position) {
+        position = position % mCount;
         mTextString = (position + 1) + "/" + mCount;
         setText(mTextString);
     }

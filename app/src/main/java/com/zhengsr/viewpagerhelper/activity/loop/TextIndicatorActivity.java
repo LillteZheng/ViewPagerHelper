@@ -39,6 +39,7 @@ public class TextIndicatorActivity extends AppCompatActivity {
         TextIndicator indicator = findViewById(R.id.normal_indicator);
 
         bannerViewPager.addIndicator(indicator);
+        bannerViewPager.setCurrentPosition(1);
 
         bannerViewPager.setPageListener(R.layout.image_layout, mDatas, new PageHelperListener<TestBean>() {
             @Override

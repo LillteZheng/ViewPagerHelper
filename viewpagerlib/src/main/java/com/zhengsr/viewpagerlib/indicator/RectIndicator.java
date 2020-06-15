@@ -45,6 +45,7 @@ public class RectIndicator extends LinearLayout {
     private int mMoveSize;
     private RectF mRect;
     private Paint mPaint;
+    private ViewPager mViewPager;
 
 
     public RectIndicator(Context context) {
@@ -90,7 +91,7 @@ public class RectIndicator extends LinearLayout {
             return;
         }
         mCount = count;
-
+        mViewPager = viewPager;
         GradientDrawable drawable = new GradientDrawable();
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setSize(mRectWidth, mRectHeight);
@@ -128,6 +129,7 @@ public class RectIndicator extends LinearLayout {
             float cb = ct + child.getMeasuredHeight();
             mRect.set(cl, ct, cr, cb);
             mMoveSize = mMargin + mRectWidth;
+            moveToPosition(mViewPager.getCurrentItem());
         }
     }
 
@@ -197,15 +199,7 @@ public class RectIndicator extends LinearLayout {
         @Override
         public void onPageSelected(int position) {
             if (!isCanMove) {
-                /**
-                 * 处理不移动的情况
-                 */
-
-                position = position % mCount;
-
-                mMoveDistance =   position * mMoveSize;
-
-                invalidate();
+                moveToPosition(position);
             }
         }
 
@@ -213,5 +207,17 @@ public class RectIndicator extends LinearLayout {
         public void onPageScrollStateChanged(int i) {
 
         }
+    }
+
+    private void moveToPosition(int position) {
+        /**
+         * 处理不移动的情况
+         */
+
+        position = position % mCount;
+
+        mMoveDistance =   position * mMoveSize;
+
+        invalidate();
     }
 }

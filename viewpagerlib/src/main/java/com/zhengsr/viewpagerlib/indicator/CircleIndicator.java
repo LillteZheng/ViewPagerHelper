@@ -14,6 +14,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -169,9 +170,14 @@ public class CircleIndicator extends LinearLayout {
             mRect.set(cl, ct, cr, cb);
             mMoveSize = mMargin + mSize;
 
+            int currentItem = mViewPager.getCurrentItem();
             if (mType == CircleIndicatorType.SCALE) {
-                doScaleAnim(child, ANIM_OUT);
+                if (currentItem % mCount == 0) {
+                    doScaleAnim(child, ANIM_OUT);
+                }
             }
+
+            moveToPosition(mViewPager.getCurrentItem());
 
         }
     }
@@ -246,34 +252,7 @@ public class CircleIndicator extends LinearLayout {
         @Override
         public void onPageSelected(int position) {
             if (!isCanMove) {
-                /**
-                 * 处理不移动的情况
-                 */
-                position = position % mCount;
-                position = position % mCount;
-
-                mMoveDistance =   position * mMoveSize;
-
-                /**
-                 * 处理放大缩小的
-                 */
-                if (mType == CircleIndicatorType.SCALE) {
-                    ImageView lastView;
-                    if (mLastPosition >= 0) {
-                        lastView = (ImageView) getChildAt(mLastPosition);
-                        if (lastView != null) {
-                            lastView.setSelected(false);
-                            doScaleAnim(lastView, ANIM_IN);
-                        }
-                    }
-                    ImageView currentView = (ImageView) getChildAt(position);
-                    if (currentView != null) {
-                        currentView.setSelected(true);
-                        doScaleAnim(currentView, ANIM_OUT);
-                    }
-                    mLastPosition = position;
-                }
-                invalidate();
+                moveToPosition(position);
             }
         }
 
@@ -281,6 +260,37 @@ public class CircleIndicator extends LinearLayout {
         public void onPageScrollStateChanged(int i) {
 
         }
+    }
+
+    private void moveToPosition(int position) {
+        /**
+         * 处理不移动的情况
+         */
+        position = position % mCount;
+        position = position % mCount;
+
+        mMoveDistance =   position * mMoveSize;
+
+        /**
+         * 处理放大缩小的
+         */
+        if (mType == CircleIndicatorType.SCALE) {
+            ImageView lastView;
+            if (mLastPosition >= 0 ) {
+                lastView = (ImageView) getChildAt(mLastPosition);
+                if (lastView != null) {
+                    lastView.setSelected(false);
+                    doScaleAnim(lastView, ANIM_IN);
+                }
+            }
+            ImageView currentView = (ImageView) getChildAt(position);
+            if (currentView != null) {
+                currentView.setSelected(true);
+                doScaleAnim(currentView, ANIM_OUT);
+            }
+            mLastPosition = position;
+        }
+        invalidate();
     }
 
     /**

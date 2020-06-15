@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 
 import com.zhengsr.viewpagerlib.R;
@@ -93,6 +94,7 @@ public class BannerViewPager extends ViewPager  {
         }
     };
     private CusViewPagerAdapter adapter;
+    private int mDataCount;
 
 
     public BannerViewPager(Context context) {
@@ -251,13 +253,13 @@ public class BannerViewPager extends ViewPager  {
     public <T> void setPageListener(int layoutId, final List<T> datas, final PageHelperListener<T> listener) {
         //先停止动画
         stopAnim();
-        mCurrentIndex = 0;
+      //  mCurrentIndex = 0;
         if (datas == null || datas.isEmpty()) {
             return;
         }
-        final int dataCount = datas.size();
+        mDataCount = datas.size();
         if (mLoopMaxCount != -1) {
-            if (dataCount >= mLoopMaxCount) {
+            if (mDataCount >= mLoopMaxCount) {
                 isCycle = true;
             } else {
                 isCycle = false;
@@ -273,20 +275,23 @@ public class BannerViewPager extends ViewPager  {
         listener.setDatas(mDatas);
         adapter = new CusViewPagerAdapter<T>(datas, layoutId, listener);
         setAdapter(adapter);
-        int startSelectItem = getStartSelectItem(dataCount);
-        startSelectItem += mCurrentIndex;
-        setCurrentItem(startSelectItem);
+        final int startSelectItem = getStartSelectItem(mDataCount)+mCurrentIndex;
 
         setOffscreenPageLimit(3);
 
+        setCurrentItem(startSelectItem);
 
         if (mIndicator != null) {
             chooseIndicator(datas.size(), mIndicator);
         }
 
-
-
-
+       /* getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                setCurrentItem(startSelectItem);
+                getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });*/
     }
 
 
@@ -304,7 +309,6 @@ public class BannerViewPager extends ViewPager  {
             ((RectIndicator) indicator).addPagerData(count, this);
         }
     }
-
 
 
     /**
@@ -473,5 +477,6 @@ public class BannerViewPager extends ViewPager  {
         super.detachAllViewsFromParent();
         mHandler.removeCallbacksAndMessages(null);
     }
+
 
 }
