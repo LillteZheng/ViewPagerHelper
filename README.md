@@ -13,6 +13,16 @@ viewpager+fragment 的 tab 指示器等等，这些虽然简单，但却是每�
 **工程实际使用 - 玩Android 客户端 : https://github.com/LillteZheng/WanAndroid**
 
 
+**注意注意注意！！！**
+**提问题的时候，请遵循以下标准**
+
+- **现象: 操作步骤，应用场景**
+- **对应代码: 贴图或者贴代码**
+- **机型或版本: 可选**
+
+**后面对描述不清的问题，不予理会，精力有限，感谢理解**
+
+
 详细内容可以参考这篇博客：
 http://blog.csdn.net/u011418943/article/details/78493002
 
