@@ -12,7 +12,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/kotlinlib" />
             <option value="$PROJECT_DIR$/viewpagerlib" />
+            <option value="$PROJECT_DIR$/viewpagerlibx" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

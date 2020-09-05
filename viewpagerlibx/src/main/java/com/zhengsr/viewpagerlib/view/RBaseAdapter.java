@@ -1,0 +1,63 @@
+package com.zhengsr.viewpagerlib.view;
+
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
+/**
+ * Created by zhengshaorui on 2018/4/13.
+ */
+abstract class RBaseAdapter<T> extends RecyclerView.Adapter<RViewholder> {
+    private int mLayoutId;
+    private List<T> mDatas; //取泛型是因为不知道bean是啥类型的。
+    private int mWidth;
+
+    private RViewholder mViewholder;
+
+    public RBaseAdapter(int layoutid,List<T> list) {
+        mLayoutId = layoutid;
+        mDatas = list;
+    }
+    public interface onItemClickListener{
+        void onItemClick(View view, int position);
+    }
+    private onItemClickListener mOnItemClickListener;
+    public void setonItemClickListener(onItemClickListener listener){
+        mOnItemClickListener = listener;
+    }
+
+
+    @Override
+    public RViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
+        mViewholder = RViewholder.getViewHolder(parent.getContext(),
+                mLayoutId,parent);
+        return mViewholder;
+    }
+
+    @Override
+    public void onBindViewHolder(RViewholder holder, int position) {
+        if (mOnItemClickListener != null){
+            final int pos = position;
+            holder.getConserView().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onItemClick(v,pos);
+                }
+            });
+
+        }
+        getConver(holder,mDatas.get(position)); //提供 viewholder 出去，数据由用户处理
+    }
+
+    public abstract void getConver(RViewholder holder, T data);
+
+    //edit by fang
+    @Override
+    public int getItemCount() {
+        return mDatas!=null?mDatas.size():0;
+    }
+	//end 
+}

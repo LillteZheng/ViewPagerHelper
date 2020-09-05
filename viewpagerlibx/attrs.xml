@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--文字indicator-->
+    <declare-styleable name="TextIndicator">
+        <attr name="word_show_circle" format="boolean"/> <!--是否显示外援的圆圈-->
+        <attr name="word_circle_color" format="reference|color"/> <!--圆圈的颜色-->
+        <attr name="word_text_color" format="reference|color"/> <!--文字颜色-->
+        <attr name="word_text_size" format="dimension"/> <!--文字大小-->
+    </declare-styleable>
+
+    <!--轮播控件的属性-->
+    <declare-styleable name="BannerViewPager">
+        <attr name="banner_looptime" format="integer"/> <!--自动轮播的时间-->
+        <attr name="banner_switchtime" format="integer"/> <!--轮播时，viewpager的切换速度-->
+        <attr name="banner_loop_max_count" format="integer"/> <!--超过这个数字时，才会轮播效果-->
+        <attr name="banner_isAutoLoop" format="boolean"/> <!--是否自动轮播-->
+        <attr name="banner_card_height" format="integer|dimension"/>
+        <attr name="banner_iscycle" format="boolean"/> <!--是否循环-->
+        <attr name="banner_transformer">
+            <enum name="card" value="0"/>
+            <enum name="mz" value="1"/>
+            <enum name="zoom" value="2"/>
+            <enum name="depth" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <!--弧形图片-->
+    <declare-styleable name="ArcImageView">
+        <attr name="arc_height" format="dimension"/> <!--弧度的高度-->
+        <attr name="arc_blur" format="integer"/>
+        <attr name="arc_use_color" format="color|reference"/>
+        <attr name="arc_scaleX" format="dimension"/>
+        <attr name="arc_scaleY" format="dimension"/>
+        <attr name="arc_scaleFactor" format="float"/>
+        <attr name="arc_auto_fix" format="boolean"/>
+    </declare-styleable>
+
+    <!--顶部viewpager指示器-->
+    <declare-styleable name="TabIndicator">
+        <attr name="visiabel_size" format="integer"/> <!--可视化个数，比如有一排，我们就只要显示4个-->
+        <attr name="tab_color" format="color|reference"/> <!--指示器的颜色-->
+        <attr name="tab_width" format="dimension"/>  <!--指示器的宽度-->
+        <attr name="tab_height" format="dimension"/> <!--指示器的高度-->
+        <attr name="tab_textsize" format="dimension"/> <!--顶部文字的大小-->
+        <attr name="tab_text_default_color" format="color|reference"/> <!--顶部文字默认的颜色-->
+        <attr name="tab_text_change_color" format="color|reference"/> <!--移动时，顶部文字的颜色-->
+        <attr name="tab_show" format="boolean"/>  <!--是否显示指示器-->
+        <attr name="tab_text_type">               <!--顶部文字的类型，nromaltext为普通的textview，
+                                                       corlortext为文件渐变-->
+            <enum name="normaltext" value="0"/>
+            <enum name="colortext" value="1"/>
+        </attr>
+        <attr name="tap_type" >           <!--指示器类型，有三角形或者圆条-->
+            <enum name="tri" value="0"/>
+            <enum name="rect" value="1"/>
+        </attr>
+        <attr name="tab_iscanscroll" format="boolean"/>
+    </declare-styleable>
+
+    <!--文件渐变属性-->
+    <declare-styleable name="ColorTextView">
+        <attr name="colortext_size" format="dimension"/>
+        <attr name="colortext_default_color" format="color|reference"/> <!--默认颜色-->
+        <attr name="colortext_change_color" format="color|reference"/> <!--渐变颜色-->
+    </declare-styleable>
+
+    <!--图片缩放类-->
+    <declare-styleable name="ScaleImageView">
+        <attr name="scale_auto_time" format="reference|integer"/>
+        <attr name="scale_limit_board" format="boolean"/>
+        <attr name="scale_autofit" format="boolean"/>
+        <attr name="scale_double_factor" format="integer"/>
+        <attr name="scale_max_factor" format="integer"/>
+        <attr name="scale_interrupt_parent_touch" format="boolean"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="CircleIndicator">
+        <attr name="cir_type">
+            <enum name="normal" value="0"/>
+            <enum name="cirToRect" value="1"/>
+            <enum name="scale" value="2"/>
+        </attr>
+        <attr name="cir_normalColor" format="color"/>
+        <attr name="cir_canMove" format="boolean"/>
+        <attr name="cir_selectedColor" format="color"/>
+        <attr name="cir_horizon_margin" format="dimension"/>
+        <attr name="cir_size" format="dimension"/>
+        <attr name="cir_rect_width" format="dimension"/>
+        <attr name="cir_scale_factor" format="float"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="RectIndicator">
+        <attr name="rect_normalColor" format="color"/>
+        <attr name="rect_canMove" format="boolean"/>
+        <attr name="rect_selectedColor" format="color"/>
+        <attr name="rect_width" format="dimension"/>
+        <attr name="rect_height" format="dimension"/>
+        <attr name="rect_round_size" format="dimension"/>
+        <attr name="rect_horizon_margin" format="dimension"/>
+    </declare-styleable>
+
+
+</resources>
