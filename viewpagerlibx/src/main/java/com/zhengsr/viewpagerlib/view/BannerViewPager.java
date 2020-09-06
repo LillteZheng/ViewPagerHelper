@@ -22,6 +22,7 @@ import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.ViewPagerHelperUtils;
 import com.zhengsr.viewpagerlib.anim.CardTransformer;
 import com.zhengsr.viewpagerlib.anim.DepthPageTransformer;
+import com.zhengsr.viewpagerlib.anim.Itransformer;
 import com.zhengsr.viewpagerlib.anim.MzTransformer;
 import com.zhengsr.viewpagerlib.anim.ZoomOutPageTransformer;
 import com.zhengsr.viewpagerlib.bean.PageBean;
@@ -334,21 +335,29 @@ public class BannerViewPager extends ViewPager {
      * @param transformer
      */
     private void setTransformer(BannerTransType transformer, int cardHeight) {
+        Itransformer itransformer = null;
         switch (transformer) {
             case CARD:
-                setPageTransformer(true, new CardTransformer(cardHeight));
+                itransformer = new CardTransformer(cardHeight);
                 break;
             case MZ:
-                setPageTransformer(false, new MzTransformer());
+                itransformer = new MzTransformer();
                 break;
             case ZOOM:
-                setPageTransformer(false, new ZoomOutPageTransformer());
+                itransformer = new ZoomOutPageTransformer();
                 break;
             case DEPATH:
-                setPageTransformer(false, new DepthPageTransformer());
+                itransformer = new DepthPageTransformer();
                 break;
             default:
                 break;
+        }
+        if (itransformer != null) {
+            if (itransformer instanceof CardTransformer){
+                setPageTransformer(true,itransformer.getTransformer());
+            }else {
+                setPageTransformer(false,itransformer.getTransformer());
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+include ':appx'
 include ':viewpagerlibx'
 include ':kotlinlib'
 include ':app', ':viewpagerlib'

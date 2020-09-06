@@ -2,17 +2,25 @@ package com.zhengsr.viewpagerlib.anim;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 /**
  * Created by Administrator on 2017/11/8.
  */
 
-public class MzTransformer implements ViewPager.PageTransformer {
+public class MzTransformer extends Itransformer {
     private static final float MAX_SCALE = 1.0f;
     private static final float MIN_SCALE = 0.9f;//0.85f
+
+
+
+
+
+
     @Override
-    public void transformPage(View view, float position) {
+    public void transform(View view, float position) {
         //setScaleY只支持api11以上
         if (position < -1) {
             // view.setScaleX(MIN_SCALE);

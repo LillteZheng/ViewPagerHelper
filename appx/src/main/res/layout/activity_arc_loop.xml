@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipChildren="false"
+    tools:context="com.zhengsr.viewpagerhelper.activity.loop.ArcLoopActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="放大版，弧形不轮播加魅族效果"
+        android:textSize="20sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:clipChildren="false">
+
+        <com.zhengsr.viewpagerlib.view.BannerViewPager
+            android:id="@+id/loop_viewpager_arc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:banner_isAutoLoop="false"
+            app:banner_transformer="mz"
+            app:banner_switchtime="600" />
+
+        <com.zhengsr.viewpagerlib.indicator.CircleIndicator
+            android:id="@+id/bottom_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            app:cir_horizon_margin="15dp"
+            app:cir_normalColor="@color/white"
+            app:cir_selectedColor="@color/darkcyan"
+            app:cir_type="cirToRect"
+            app:cir_rect_width="20dp"
+            app:cir_size="10dp"
+
+            />
+
+
+    </FrameLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

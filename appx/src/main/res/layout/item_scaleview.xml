@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    >
+
+    <com.zhengsr.viewpagerlib.view.ScaleImageView
+        android:id="@+id/scaleview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:scale_double_factor="2"
+        app:scale_auto_time="5"
+        app:scale_autofit="true"
+        app:scale_max_factor="6"
+        app:scale_limit_board="true"
+        app:scale_interrupt_parent_touch="true"/>
+
+</androidx.cardview.widget.CardView>

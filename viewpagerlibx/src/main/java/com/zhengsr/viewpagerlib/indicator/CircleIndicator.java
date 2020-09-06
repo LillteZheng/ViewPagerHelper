@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.bean.CirBean;
@@ -60,6 +61,7 @@ public class CircleIndicator extends LinearLayout {
     private int mMoveSize;
     private int mLastPosition = 0;
     private ViewPager mViewPager;
+    private ViewPager2 mViewPager2;
 
     public CircleIndicator(Context context) {
         this(context, null);
@@ -109,6 +111,41 @@ public class CircleIndicator extends LinearLayout {
      */
     public void addPagerData(int count, ViewPager viewPager) {
 
+        mViewPager = viewPager;
+        if (configView(count)) {
+            return;
+        }
+        if (viewPager != null) {
+            viewPager.addOnPageChangeListener(new PagerListener());
+        }
+    }
+
+    public void addPagerData(int count, ViewPager2 viewPager2){
+        mViewPager2 = viewPager2;
+        if (configView(count)) {
+            return;
+        }
+        if (viewPager2 != null) {
+            viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                    circleScroll(position, positionOffset);
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    if (!isCanMove) {
+                        moveToPosition(position);
+                    }
+                }
+
+            });
+        }
+
+    }
+
+    private boolean configView(int count) {
         /**
          * 还原一些状态
          */
@@ -116,9 +153,8 @@ public class CircleIndicator extends LinearLayout {
         mMoveDistance = 0;
 
         if (count == 0) {
-            return;
+            return true;
         }
-        mViewPager = viewPager;
         mCount = count;
 
         GradientDrawable drawable = new GradientDrawable();
@@ -141,10 +177,11 @@ public class CircleIndicator extends LinearLayout {
             imageView.setLayoutParams(params);
             addView(imageView);
         }
-        if (viewPager != null) {
-            viewPager.addOnPageChangeListener(new PagerListener());
-        }
+        return false;
     }
+
+
+
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -169,14 +206,17 @@ public class CircleIndicator extends LinearLayout {
             mRect.set(cl, ct, cr, cb);
             mMoveSize = mMargin + mSize;
 
-            int currentItem = mViewPager.getCurrentItem();
+            //int currentItem = mViewPager.getCurrentItem();
+            int currentItem = mViewPager != null ? mViewPager.getCurrentItem():mViewPager2.getCurrentItem();
+
             if (mType == CircleIndicatorType.SCALE) {
                 if (currentItem % mCount == 0) {
                     doScaleAnim(child, ANIM_OUT);
                 }
             }
 
-            moveToPosition(mViewPager.getCurrentItem());
+           // moveToPosition(mViewPager.getCurrentItem());
+            moveToPosition(currentItem);
 
         }
     }
@@ -235,17 +275,7 @@ public class CircleIndicator extends LinearLayout {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            /**
-             * 由于距离时确定的，所以很好判断移动的渐变
-             */
-            if (isCanMove) {
-                if (position % mCount == (mCount - 1) && positionOffset > 0) {
-                    mMoveDistance = 0;
-                } else {
-                    mMoveDistance = (int) (positionOffset * mMoveSize + position % mCount * mMoveSize);
-                }
-                invalidate();
-            }
+            circleScroll(position, positionOffset);
         }
 
         @Override
@@ -258,6 +288,20 @@ public class CircleIndicator extends LinearLayout {
         @Override
         public void onPageScrollStateChanged(int i) {
 
+        }
+    }
+
+    private void circleScroll(int position, float positionOffset) {
+        /**
+         * 由于距离时确定的，所以很好判断移动的渐变
+         */
+        if (isCanMove) {
+            if (position % mCount == (mCount - 1) && positionOffset > 0) {
+                mMoveDistance = 0;
+            } else {
+                mMoveDistance = (int) (positionOffset * mMoveSize + position % mCount * mMoveSize);
+            }
+            invalidate();
         }
     }
 

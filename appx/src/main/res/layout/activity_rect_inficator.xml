@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zhengsr.viewpagerhelper.activity.loop.RectIndicatorActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="Indicator无效果"
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:clipChildren="false">
+
+        <com.zhengsr.viewpagerlib.view.BannerViewPager
+            android:id="@+id/normal_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:banner_isAutoLoop="false"
+            app:banner_iscycle="true"
+            app:banner_looptime="3000"
+            app:banner_switchtime="600"
+            app:banner_transformer="mz" />
+
+        <com.zhengsr.viewpagerlib.indicator.RectIndicator
+            android:id="@+id/normal_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="20dp"
+            app:rect_canMove="false"
+            app:rect_width="15dp"
+            app:rect_normalColor="@color/gray"
+            app:rect_selectedColor="@color/white"
+            app:rect_horizon_margin="10dp"
+            app:rect_round_size="2dp"
+            app:rect_height="5dp" />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="数据动态配置，Indicator移动"
+        android:textSize="14sp" />
+
+   <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:clipChildren="false">
+
+        <com.zhengsr.viewpagerlib.view.BannerViewPager
+            android:id="@+id/scale_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+
+        <com.zhengsr.viewpagerlib.indicator.RectIndicator
+            android:id="@+id/scale_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="20dp"
+            />
+    </FrameLayout>
+
+
+</LinearLayout>

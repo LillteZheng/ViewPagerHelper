@@ -25,10 +25,12 @@ public class CardTransformer implements ViewPager.PageTransformer {
         }else {
             view.setTranslationX(-view.getWidth() * position);
             float scale = (view.getWidth() - mCardHeight * position) / view.getWidth();
-            view.setScaleX(scale);
-            view.setScaleY(scale);
-            view.setClickable(false);
-            view.setTranslationY(mCardHeight * position);
+            if (scale >0 && scale < 1) {
+                view.setScaleX(scale);
+                view.setScaleY(scale);
+                view.setClickable(false);
+                view.setTranslationY(mCardHeight * position);
+            }
         }
 
     }

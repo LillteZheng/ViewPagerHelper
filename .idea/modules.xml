@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ViewPagerHelper.iml" filepath="$PROJECT_DIR$/ViewPagerHelper.iml" group="ViewPagerHelper" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="ViewPagerHelper/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/appx/appx.iml" filepath="$PROJECT_DIR$/.idea/modules/appx/appx.iml" group="ViewPagerHelper/appx" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlinlib/kotlinlib.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlinlib/kotlinlib.iml" group="ViewPagerHelper/kotlinlib" />
       <module fileurl="file://$PROJECT_DIR$/viewpagerlib/viewpagerlib.iml" filepath="$PROJECT_DIR$/viewpagerlib/viewpagerlib.iml" group="ViewPagerHelper/viewpagerlib" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/viewpagerlibx/viewpagerlibx.iml" filepath="$PROJECT_DIR$/.idea/modules/viewpagerlibx/viewpagerlibx.iml" group="ViewPagerHelper/viewpagerlibx" />

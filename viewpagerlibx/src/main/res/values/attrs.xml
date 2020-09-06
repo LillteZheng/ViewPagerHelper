@@ -23,7 +23,11 @@
             <enum name="zoom" value="2"/>
             <enum name="depth" value="3"/>
         </attr>
+        <attr name="banner2_l_margin" format="dimension"/>
+        <attr name="banner2_r_margin" format="dimension"/>
     </declare-styleable>
+
+
 
     <!--弧形图片-->
     <declare-styleable name="ArcImageView">

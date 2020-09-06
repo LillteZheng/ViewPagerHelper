@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="矩形版，已填充循环"
+        android:textSize="20sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <com.zhengsr.viewpagerlib.view.BannerViewPager
+            android:id="@+id/loop_rect"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:banner_transformer="zoom"
+            app:banner_iscycle="true"
+            app:banner_switchtime="600" />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="文字版，不自动轮播"
+        android:textSize="20sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="200dp">
+
+        <com.zhengsr.viewpagerlib.view.BannerViewPager
+            android:id="@+id/loop_viewpager_text"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:banner_transformer="depth"
+            app:banner_switchtime="600" />
+
+        <com.zhengsr.viewpagerlib.indicator.TextIndicator
+            android:id="@+id/bottom_text_layout"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="5dp"
+            app:word_circle_color="@color/black_ff"
+            app:word_show_circle="true"
+            app:word_text_color="@color/white"
+            app:word_text_size="14sp"
+            />
+    </FrameLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.bean.RectBean;
@@ -46,6 +47,7 @@ public class RectIndicator extends LinearLayout {
     private RectF mRect;
     private Paint mPaint;
     private ViewPager mViewPager;
+    private ViewPager2 mViewPager2;
 
 
     public RectIndicator(Context context) {
@@ -86,12 +88,44 @@ public class RectIndicator extends LinearLayout {
      */
     public void addPagerData(int count, ViewPager viewPager) {
 
-        removeAllViews();
-        if (count == 0) {
+        mViewPager = viewPager;
+        if (configView(count)) {
             return;
         }
+        if (viewPager != null) {
+            viewPager.addOnPageChangeListener(new PagerListener());
+        }
+    }
+
+    public void addPagerData(int count, ViewPager2 viewPager2) {
+
+        mViewPager2 = viewPager2;
+        if (configView(count)) {
+            return;
+        }
+        if (viewPager2 != null) {
+            viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                    rectScroll(position, positionOffset);
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    if (!isCanMove) {
+                        moveToPosition(position);
+                    }
+                }
+            });
+        }
+    }
+
+    private boolean configView(int count) {
+        removeAllViews();
+        if (count == 0) {
+            return true;
+        }
         mCount = count;
-        mViewPager = viewPager;
         GradientDrawable drawable = new GradientDrawable();
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setSize(mRectWidth, mRectHeight);
@@ -113,9 +147,7 @@ public class RectIndicator extends LinearLayout {
             imageView.setLayoutParams(params);
             addView(imageView);
         }
-        if (viewPager != null) {
-            viewPager.addOnPageChangeListener(new PagerListener());
-        }
+        return false;
     }
 
     @Override
@@ -129,7 +161,8 @@ public class RectIndicator extends LinearLayout {
             float cb = ct + child.getMeasuredHeight();
             mRect.set(cl, ct, cr, cb);
             mMoveSize = mMargin + mRectWidth;
-            moveToPosition(mViewPager.getCurrentItem());
+            int currentItem = mViewPager != null ? mViewPager.getCurrentItem():mViewPager2.getCurrentItem();
+            moveToPosition(currentItem);
         }
     }
 
@@ -183,17 +216,7 @@ public class RectIndicator extends LinearLayout {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            /**
-             * 由于距离时确定的，所以很好判断移动的渐变
-             */
-            if (isCanMove) {
-                if (position % mCount == (mCount - 1) && positionOffset > 0) {
-                    mMoveDistance = 0;
-                } else {
-                    mMoveDistance = (int) (positionOffset * mMoveSize + position % mCount * mMoveSize);
-                }
-                invalidate();
-            }
+            rectScroll(position, positionOffset);
         }
 
         @Override
@@ -206,6 +229,20 @@ public class RectIndicator extends LinearLayout {
         @Override
         public void onPageScrollStateChanged(int i) {
 
+        }
+    }
+
+    private void rectScroll(int position, float positionOffset) {
+        /**
+         * 由于距离时确定的，所以很好判断移动的渐变
+         */
+        if (isCanMove) {
+            if (position % mCount == (mCount - 1) && positionOffset > 0) {
+                mMoveDistance = 0;
+            } else {
+                mMoveDistance = (int) (positionOffset * mMoveSize + position % mCount * mMoveSize);
+            }
+            invalidate();
         }
     }
 

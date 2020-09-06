@@ -40,6 +40,14 @@
 
 主要为 **BannerViewPager** 这个类，在布局中，添加自己喜欢的 Indicator 即可。
 
+
+## ViewPager2 的使用
+
+ViewPager2 使用的类是 BannerViewPager2，所以它的使用与 BannerViewPager 差不多，只是魅族方法中，
+偏移量使用的是 **banner2_l_margin和banner2_r_margin**，也可以动态设置，使用**setMzMargin()**,
+当然，此时 xml 就不要用 layout_margin = "20dp"这样的方法了。
+为什么不统一？ViewPager2 是final，继承不了，没辙。。。。
+
 ### Banner + Indicator
 首先，一个简单的 banner + indicator 如下，如果想要第一种效果，记得父布局 clipChildren="false"：
 ```

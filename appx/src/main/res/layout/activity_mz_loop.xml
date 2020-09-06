@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical"
+    tools:context="com.zhengsr.viewpagerhelper.activity.loop.CircleIndicatorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="魅族效果，Indicator无效果"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipChildren="false">
+
+            <com.zhengsr.viewpagerlib.view.BannerViewPager2
+                android:id="@+id/normal_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:banner2_l_margin = "20dp"
+                app:banner2_r_margin = "20dp"
+                app:banner_isAutoLoop="true"
+                app:banner_looptime="3000"
+                app:banner_switchtime="600"
+                app:banner_transformer="mz" />
+
+            <com.zhengsr.viewpagerlib.indicator.CircleIndicator
+                android:id="@+id/normal_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="20dp"
+                app:cir_canMove="false"
+                app:cir_size="10dp"
+                app:cir_normalColor="@color/gray"
+                app:cir_selectedColor="@color/white"
+                app:cir_horizon_margin="10dp"
+                app:cir_type="normal" />
+
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="魅族效果，Indicator圆点变矩形,可以移动"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipChildren="false">
+
+            <com.zhengsr.viewpagerlib.view.BannerViewPager2
+                android:id="@+id/rect_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:banner2_l_margin = "20dp"
+                app:banner2_r_margin = "20dp"
+                app:banner_isAutoLoop="true"
+                app:banner_looptime="3000"
+                app:banner_switchtime="600"
+                app:banner_transformer="mz" />
+
+            <com.zhengsr.viewpagerlib.indicator.CircleIndicator
+                android:id="@+id/rect_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="20dp"
+                app:cir_size="5dp"
+                app:cir_rect_width="10dp"
+                app:cir_normalColor="@color/gray"
+                app:cir_selectedColor="@color/white"
+                app:cir_horizon_margin="10dp"
+                app:cir_type="cirToRect" />
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="不自动轮播，Indicator圆点移动，请手动滑动"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipChildren="false">
+
+            <com.zhengsr.viewpagerlib.view.BannerViewPager2
+                android:id="@+id/move_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:banner_iscycle="true"
+                app:banner_looptime="3000"
+                app:banner_switchtime="600"
+                app:banner_transformer="zoom" />
+
+            <com.zhengsr.viewpagerlib.indicator.CircleIndicator
+                android:id="@+id/move_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="20dp"
+                app:cir_size="10dp"
+                app:cir_rect_width="10dp"
+                app:cir_normalColor="@color/gray"
+                app:cir_selectedColor="@color/white"
+                app:cir_horizon_margin="10dp"
+                app:cir_type="normal" />
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="数据动态配置，Indicator放大缩小效果"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipChildren="false">
+
+            <com.zhengsr.viewpagerlib.view.BannerViewPager2
+                android:id="@+id/scale_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <com.zhengsr.viewpagerlib.indicator.CircleIndicator
+                android:id="@+id/scale_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="20dp"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</ScrollView>

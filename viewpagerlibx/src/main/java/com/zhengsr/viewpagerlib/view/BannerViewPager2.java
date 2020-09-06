@@ -8,23 +8,27 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.zhengsr.viewpagerlib.R;
 import com.zhengsr.viewpagerlib.ViewPagerHelperUtils;
 import com.zhengsr.viewpagerlib.anim.CardTransformer;
 import com.zhengsr.viewpagerlib.anim.DepthPageTransformer;
+import com.zhengsr.viewpagerlib.anim.Itransformer;
 import com.zhengsr.viewpagerlib.anim.MzTransformer;
 import com.zhengsr.viewpagerlib.anim.ZoomOutPageTransformer;
 import com.zhengsr.viewpagerlib.bean.PageBean;
@@ -44,7 +48,7 @@ import java.util.List;
  * gai该类用来支持 viewpager2
  */
 
-public class BannerViewPager2 extends ViewPager2 {
+public class BannerViewPager2 extends FrameLayout {
     /**
      * const
      */
@@ -71,6 +75,7 @@ public class BannerViewPager2 extends ViewPager2 {
     private LayoutInflater mInflater;
     private Rect mScreentRect;
     private View mCurrentContent;
+    private int mLeftMargin,mRightMargin;
     private List<Object> mDatas = new ArrayList<>();
     /**
      * handle
@@ -81,7 +86,7 @@ public class BannerViewPager2 extends ViewPager2 {
             super.handleMessage(msg);
             if (msg.what == LOOP_MSG) {
                 if (isAutoLoop) {
-                    mCurrentIndex = getCurrentItem(); //重新获取index
+                    mCurrentIndex = mViewPager2.getCurrentItem(); //重新获取index
                     if (mCurrentIndex >= LOOP_COUNT / 2) {
                         mCurrentIndex++;
                     }
@@ -89,7 +94,7 @@ public class BannerViewPager2 extends ViewPager2 {
                         mCurrentIndex = LOOP_COUNT / 2;
                     }
                     //Log.d(TAG, "zsr --> handleMessage: "+mCurrentIndex);
-                    setCurrentItem(mCurrentIndex);
+                    mViewPager2.setCurrentItem(mCurrentIndex);
                     mHandler.sendEmptyMessageDelayed(LOOP_MSG, mLoopTime);
 
                 }
@@ -98,6 +103,7 @@ public class BannerViewPager2 extends ViewPager2 {
     };
     private ViewAdapter adapter;
     private int mDataCount;
+    private ViewPager2 mViewPager2;
 
 
     public BannerViewPager2(Context context) {
@@ -106,6 +112,18 @@ public class BannerViewPager2 extends ViewPager2 {
 
     public BannerViewPager2(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        /**
+         * Viewpager2 为 final 类，不能继承，只能通过 framelayout 来添加了
+         */
+        removeAllViews();
+        setClipChildren(false);
+        mViewPager2 = new ViewPager2(context);
+        mViewPager2.setClipToPadding(false);
+        MarginLayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        mViewPager2.setLayoutParams(params);
+        addView(mViewPager2);
+
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.BannerViewPager);
         isAutoLoop = ta.getBoolean(R.styleable.BannerViewPager_banner_isAutoLoop, false);
         mLoopTime = ta.getInteger(R.styleable.BannerViewPager_banner_looptime, 2000);
@@ -114,6 +132,8 @@ public class BannerViewPager2 extends ViewPager2 {
         mCardHeight = ta.getDimensionPixelSize(R.styleable.BannerViewPager_banner_card_height, 15);
         isCycle = ta.getBoolean(R.styleable.BannerViewPager_banner_iscycle, false);
         int type = ta.getInteger(R.styleable.BannerViewPager_banner_transformer, -1);
+        mLeftMargin = ta.getDimensionPixelSize(R.styleable.BannerViewPager_banner2_l_margin,0);
+        mRightMargin = ta.getDimensionPixelSize(R.styleable.BannerViewPager_banner2_r_margin,0);
         /**
          * 如果支持自动轮播，则自动循环填充数据
          */
@@ -132,7 +152,7 @@ public class BannerViewPager2 extends ViewPager2 {
         ta.recycle();
         mInflater = LayoutInflater.from(context);
         //todo 改变速率
-       // ViewPagerHelperUtils.initSwitchTime(getContext(), this, mSmoothTime);
+        ViewPagerHelperUtils.initSwitchTime(getContext(), mViewPager2, mSmoothTime);
 
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
@@ -146,12 +166,12 @@ public class BannerViewPager2 extends ViewPager2 {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         //处理因为recyclerview的回收机制，导致轮播图不起作用的问题
-        if (getAdapter() != null) {
+        if (mViewPager2.getAdapter() != null) {
             try {
                 Field mFirstLayout = ViewPager.class.getDeclaredField("mFirstLayout");
                 mFirstLayout.setAccessible(true);
                 mFirstLayout.set(this, firstLayout);
-                setCurrentItem(getCurrentItem());
+                mViewPager2.setCurrentItem(mViewPager2.getCurrentItem());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -278,12 +298,12 @@ public class BannerViewPager2 extends ViewPager2 {
 
         listener.setDatas(mDatas);
         adapter = new ViewAdapter(datas, layoutId, listener);
-        setAdapter(adapter);
+        mViewPager2.setAdapter(adapter);
         final int startSelectItem = getStartSelectItem(mDataCount)+mCurrentIndex;
 
-        setOffscreenPageLimit(3);
+        mViewPager2.setOffscreenPageLimit(3);
 
-        setCurrentItem(startSelectItem);
+        mViewPager2.setCurrentItem(startSelectItem);
 
         if (mIndicator != null) {
             chooseIndicator(datas.size(), mIndicator);
@@ -301,16 +321,15 @@ public class BannerViewPager2 extends ViewPager2 {
 
     /**
      * 选择不同的 indicator
-     *
      * @param indicator
      */
     private void chooseIndicator(int count, View indicator) {
         if (indicator instanceof TextIndicator) {
-            ((TextIndicator) indicator).addPagerData(count, this);
+            ((TextIndicator) indicator).addPagerData(count, mViewPager2);
         } else if (indicator instanceof CircleIndicator) {
-            ((CircleIndicator) indicator).addPagerData(count, this);
+            ((CircleIndicator) indicator).addPagerData(count, mViewPager2);
         } else if (indicator instanceof RectIndicator) {
-            ((RectIndicator) indicator).addPagerData(count, this);
+            ((RectIndicator) indicator).addPagerData(count, mViewPager2);
         }
     }
 
@@ -340,23 +359,31 @@ public class BannerViewPager2 extends ViewPager2 {
      * @param transformer
      */
     private void setTransformer(BannerTransType transformer, int cardHeight) {
+        Itransformer itransformer = null;
         switch (transformer) {
             case CARD:
-                setPageTransformer(true, new CardTransformer(cardHeight));
-                break;
+               // itransformer = new CardTransformer(cardHeight);
+                //viewpager2 暂时不支持卡片模式
+                throw new RuntimeException("BannerViewpager2 cannot support Card mode ,please use BannerViewpager ");
             case MZ:
-                setPageTransformer(false, new MzTransformer());
+                setMzMargin(mLeftMargin,mRightMargin);
+                itransformer = new MzTransformer();
                 break;
             case ZOOM:
-                setPageTransformer(false, new ZoomOutPageTransformer());
+                itransformer = new ZoomOutPageTransformer();
                 break;
             case DEPATH:
-                setPageTransformer(false, new DepthPageTransformer());
+                itransformer = new DepthPageTransformer();
                 break;
             default:
                 break;
         }
+        if (itransformer != null) {
+            mViewPager2.setPageTransformer(itransformer.getTransformer2());
+        }
     }
+
+
 
 
     class ViewAdapter<T> extends RecyclerView.Adapter<RViewholder>{
@@ -377,12 +404,20 @@ public class BannerViewPager2 extends ViewPager2 {
         @Override
         public RViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(layoutId,parent,false);
-            return new RViewholder(view);
+            RViewholder viewholder = new RViewholder(view);
+            return viewholder;
         }
 
         @Override
         public void onBindViewHolder(@NonNull RViewholder holder, int position) {
-            listener.bindView(holder.itemView,list.get(position),position);
+            final int index;
+            if (isCycle) {
+                index = position % list.size();
+            }else{
+                index = position;
+            }
+            viewTouch(holder.itemView,listener,index);
+            listener.bindView(holder.itemView,list.get(index),index);
         }
 
 
@@ -405,7 +440,7 @@ public class BannerViewPager2 extends ViewPager2 {
     private long mLastTime;
 
     private void viewTouch(final View view, final PageHelperListener listener, final int position) {
-        if (view != null) {
+        if (view != null && position >= 0) {
             view.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -415,6 +450,7 @@ public class BannerViewPager2 extends ViewPager2 {
                             mLastTime = System.currentTimeMillis();
                             break;
                         case MotionEvent.ACTION_UP:
+                        case MotionEvent.ACTION_CANCEL:
                             long time = System.currentTimeMillis() - mLastTime;
                             if (time < 200){
                                 if (listener != null && mDatas.size() > 0) {
@@ -451,6 +487,21 @@ public class BannerViewPager2 extends ViewPager2 {
         }
     }
 
+
+    /**
+     * 设置两边的边距
+     * @param leftWidth 左边的margin
+     * @param rightWidth 右边的margin
+     */
+    public void setMzMargin(int leftWidth, int rightWidth) {
+        RecyclerView recyclerView = (RecyclerView) mViewPager2.getChildAt(0);
+        if ( mViewPager2.getOrientation() == ViewPager2.ORIENTATION_HORIZONTAL) {
+            recyclerView.setPadding(leftWidth , mViewPager2.getPaddingTop(),
+                    rightWidth , mViewPager2.getPaddingBottom());
+        }
+        mViewPager2.setPageTransformer(new MzTransformer().getTransformer2());
+        recyclerView.setClipToPadding(false);
+    }
     /**
      * 判断是否移出可见屏幕外
      *
@@ -470,5 +521,7 @@ public class BannerViewPager2 extends ViewPager2 {
         mHandler.removeCallbacksAndMessages(null);
     }
 
-
+    public ViewPager2 getViewPager2() {
+        return mViewPager2;
+    }
 }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_search_pager_group"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/item_article_author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/content"
+            app:layout_constraintStart_toStartOf="@+id/content"
+            app:layout_constraintEnd_toEndOf="@id/content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            android:gravity="left"
+            android:textColor="@color/colorPrimary"
+            tools:text="Carson_Ho" />
+
+        <TextView
+            android:id="@+id/item_article_share"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/item_article_author"
+            app:layout_constraintTop_toTopOf="@id/item_article_author"
+            app:layout_constraintBottom_toBottomOf="@id/item_article_author"
+            android:layout_marginStart="10dp"
+            android:text="查看分享文章"
+            android:padding="2dp"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:textColor="@color/colorPrimary"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/item_article_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="2019/11/18"
+            android:textColor="@color/wechat"
+            app:layout_constraintTop_toTopOf="@id/item_article_author"
+            app:layout_constraintBottom_toBottomOf="@id/item_article_author"
+            app:layout_constraintEnd_toEndOf="@+id/content"
+            app:layout_constraintStart_toStartOf="@id/content"
+            android:gravity="end"
+            android:layout_marginEnd="12dp"
+             />
+
+        <TextView
+            android:id="@+id/item_article_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Android Handler: 手把手带你深入分析Handler机制源码,要写一个自己的APK，不然都不知道流程了"
+            android:textColor="@color/wechat"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintTop_toBottomOf="@id/item_article_author"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/item_article_chapat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Android四大组件"
+            android:textColor="@color/wechat"
+            app:layout_constraintTop_toBottomOf="@id/item_article_title"
+            app:layout_constraintBottom_toBottomOf="@+id/content"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

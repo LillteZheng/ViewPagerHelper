@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, TabActivity.class));
     }
 
-
-
     public void arc(View view) {
         startActivity(new Intent(this, ArcActivity.class));
     }

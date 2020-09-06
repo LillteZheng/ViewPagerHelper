@@ -152,6 +152,10 @@ android.enableJetifier=true
 
 ## 版本说明
 
+**v2.8**
+
+- 添加 Androidx lib，支持viewpager2
+
 **v2.7**
 - 处理设置 setCurrentPosition 的问题
 
@@ -221,6 +225,8 @@ android.enableJetifier=true
 |banner_card_height|integer,dimension|卡片的高度|
 |banner_iscycle|boolean|是否循环|
 |banner_transformer|card,mz,zoom,depath|transformer的效果|
+|banner2_l_margin|dimension|Viewpager2专属，左边偏移量|
+|banner2_r_margin|dimension|Viewpager2专属，右边偏移量|
 
 **CircleIndicator**
 
