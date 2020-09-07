@@ -40,7 +40,7 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v2.9'
+implementation 'com.github.LillteZheng.ViewPagerHelper:viewpagerlib:v2.9'
 ```
 
 **如果你使用 androidx 也想要使用 ViewPager2，可以添加 androidx 库**
