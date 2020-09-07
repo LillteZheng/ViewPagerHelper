@@ -40,18 +40,20 @@ allprojects {
 然后在你的 module 中添加：
 
 ```
-implementation 'com.github.LillteZheng:ViewPagerHelper:v2.7'
+implementation 'com.github.LillteZheng:ViewPagerHelper:v2.9'
 ```
 
-**如果要在 AndroidX 中使用，确保你的工程有以下代码，就可以了，不影响使用:**
+**如果你使用 androidx 也想要使用 ViewPager2，可以添加 androidx 库**
 
 ```
-android.useAndroidX=true
-# Automatically convert third-party libraries to use AndroidX
-android.enableJetifier=true
+implementation 'com.github.LillteZheng.ViewPagerHelper:viewpagerlibx:v2.9'
 ```
 
-**v2.0 之后与之前的工程变动较大，建议更新到最新版，支持更多效果和修复不少bug**
+> ViewPager2 使用的是 BannerViewPager2 这个类，只支持横向的 ViewPager2，竖直的后面有时间再搞
+> 使用与 BannerViewPageer 一样，只是多了 **banner2_l_margin和banner2_r_margin**，或者**setMzMargin()**
+> 去设置一屏多页(魅族)的效果。
+
+
 
 ##  **效果图**
 
