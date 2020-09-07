@@ -154,9 +154,10 @@ implementation 'com.github.LillteZheng.ViewPagerHelper:viewpagerlibx:v2.9'
 
 ## 版本说明
 
-**v2.8**
+**v2.9**
 
 - 添加 Androidx lib，支持viewpager2
+- 修复card mode 快速滑报错问题
 
 **v2.7**
 - 处理设置 setCurrentPosition 的问题
