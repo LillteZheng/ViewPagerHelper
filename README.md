@@ -208,6 +208,12 @@ implementation 'com.github.LillteZheng.ViewPagerHelper:viewpagerlibx:v2.9'
 - **v0.2  --> 修复TabIndicator的宽度，不是 match_parent时，通过SetTabData添加数据，却显示不全的问题**
 - **v0.1  --> 发布稳定版**
 
+## QQ群
+为方便大家交流，创建了一个qq群，群号216618259
+
+
+<img src="https://img-blog.csdnimg.cn/20210518100138264.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE0MTg5NDM=,size_16,color_FFFFFF,t_70#pic_center" height="320" width="240">
+
 ## 如果该项目对您有帮助，赞赏一下吧 ^_^
 
 <img src="https://github.com/LillteZheng/FlowHelper/raw/master/gif/wechat.png" height="320" width="240">
