@@ -209,7 +209,7 @@ implementation 'com.github.LillteZheng.ViewPagerHelper:viewpagerlibx:v2.9'
 - **v0.1  --> 发布稳定版**
 
 ## QQ群
-为方便大家交流，创建了一个qq群，群号932176989
+为方便大家交流，创建了一个qq群，群号216618259
 
 
 <img src="https://img-blog.csdnimg.cn/20210518100138264.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE0MTg5NDM=,size_16,color_FFFFFF,t_70#pic_center" height="320" width="240">
