@@ -132,6 +132,40 @@ bannerViewPager.setPageListener(R.layout.loop_layout, mDatas, new PageHelperList
 
 ```
 
+**关于Databinding的使用**
+
+由于库并没有支持 databinding，所以可以在banner的布局中，添加自定义的 bindingAdapter ，再去配置数据，如下：
+
+```
+    @JvmStatic
+    @BindingAdapter("banner")
+    fun banner(bannerViewPager2: BannerViewPager2,datas: MutableList<BannerBean>?){
+        datas?.let {
+            val viewGroup = bannerViewPager2.parent as ViewGroup
+            //通过拿到父布局去加载 indicator
+            val circleIndicator = viewGroup.findViewById<CircleIndicator>(R.id.banner_indicator)
+            bannerViewPager2.addIndicator(circleIndicator)
+            bannerViewPager2.setPageListener(R.layout.banner_item_layout,it,object:PageHelperListener<BannerBean>(){
+                override fun bindView(view: View, data: BannerBean, position: Int) {
+                    val imageView: ImageView = view.findViewById(R.id.banner_icon)
+                    val title: String =
+                        data.title.replace("&ldquo;", "\"").replace("&rdquo;", "\"")
+                    setText(view, R.id.banner_text, title)
+                    GlideApp.with(view)
+                        .load(data.imagePath)
+                        .dontAnimate()
+                        .centerCrop()
+                        .placeholder(R.drawable.ic_loading)
+                        .error(R.drawable.ic_not_network)
+                        .into(imageView)
+                }
+
+            })
+        }
+    }
+
+```
+
 
 如果你要使用弧形图片，可以用在你的layout 中，使用 ArcImageView 这个控件，可以这样配置：
 ```
