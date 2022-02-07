@@ -150,7 +150,7 @@ bannerViewPager.setPageListener(R.layout.loop_layout, mDatas, new PageHelperList
 ```
     @JvmStatic
     @BindingAdapter("banner")
-    fun banner(bannerViewPager2: BannerViewPager2,datas: MutableList<BannerBean>?){
+    fun banner(bannerView: BannerView,datas: MutableList<BannerBean>?){
         datas?.let {
             bannerView.setData(datas)
         }
