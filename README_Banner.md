@@ -134,7 +134,9 @@ bannerViewPager.setPageListener(R.layout.loop_layout, mDatas, new PageHelperList
 
 **关于Databinding的使用**
 
-由于库并没有支持 databinding，所以可以在banner的布局中，添加自定义的 bindingAdapter ，再去配置数据，如下：
+由于库并没有支持 databinding，所以可以在banner的布局中，添加自定义的 bindingAdapter ，再去配置数据。
+推荐自定义viewgroup，将banner和indicator封装成一个view，然后通过 BindingAdapter 传递数据。如下：
+
 **xml**
 ```
 <com.zhengsr.wanandroid_jetpack.ui.BannerView
@@ -149,7 +151,6 @@ bannerViewPager.setPageListener(R.layout.loop_layout, mDatas, new PageHelperList
     @JvmStatic
     @BindingAdapter("banner")
     fun banner(bannerViewPager2: BannerViewPager2,datas: MutableList<BannerBean>?){
-        //直接自定义viewgroup，将banner和indicator封装成一个view，然后通过 BindingAdapter 传递数据即可
         datas?.let {
             bannerView.setData(datas)
         }
