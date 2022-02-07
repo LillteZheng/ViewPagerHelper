@@ -140,27 +140,9 @@ bannerViewPager.setPageListener(R.layout.loop_layout, mDatas, new PageHelperList
     @JvmStatic
     @BindingAdapter("banner")
     fun banner(bannerViewPager2: BannerViewPager2,datas: MutableList<BannerBean>?){
+        //直接自定义viewgroup，用demo的bannerview，setData即可
         datas?.let {
-            val viewGroup = bannerViewPager2.parent as ViewGroup
-            //通过拿到父布局去加载 indicator
-            val circleIndicator = viewGroup.findViewById<CircleIndicator>(R.id.banner_indicator)
-            bannerViewPager2.addIndicator(circleIndicator)
-            bannerViewPager2.setPageListener(R.layout.banner_item_layout,it,object:PageHelperListener<BannerBean>(){
-                override fun bindView(view: View, data: BannerBean, position: Int) {
-                    val imageView: ImageView = view.findViewById(R.id.banner_icon)
-                    val title: String =
-                        data.title.replace("&ldquo;", "\"").replace("&rdquo;", "\"")
-                    setText(view, R.id.banner_text, title)
-                    GlideApp.with(view)
-                        .load(data.imagePath)
-                        .dontAnimate()
-                        .centerCrop()
-                        .placeholder(R.drawable.ic_loading)
-                        .error(R.drawable.ic_not_network)
-                        .into(imageView)
-                }
-
-            })
+            bannerView.setData(datas)
         }
     }
 
