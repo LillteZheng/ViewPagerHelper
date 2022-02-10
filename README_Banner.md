@@ -146,13 +146,29 @@ bannerViewPager.setPageListener(R.layout.loop_layout, mDatas, new PageHelperList
     app:layout_scrollFlags="exitUntilCollapsed|scroll|enterAlwaysCollapsed"
     />
 ```
-**代码**
+** 中代码**
 ```
     @JvmStatic
     @BindingAdapter("banner")
     fun banner(bannerView: BannerView,datas: MutableList<BannerBean>?){
         datas?.let {
             bannerView.setData(datas)
+        }
+    }
+    
+        public void setData(LoopBannerBean beans){
+        if (beans != null && beans.data != null) {
+            mBannerViewPager.setPageListener(R.layout.banner_item_layout, beans.data, new PageHelperListener<BannerBean>() {
+                @Override
+                public void bindView(View view, BannerBean data, int position) {
+                    ViewDataBinding bind = DataBindingUtil.bind(view);
+                    if (bind != null) {
+                        bind.setVariable(BR.bean,data);
+                    }
+                }
+            });
+            mBannerViewPager.startAnim();
+
         }
     }
 ```
